@@ -1,0 +1,3 @@
+[submodule "lib/2026-Controls_Core"]
+	path = lib/2026-Controls_Core
+	url = https://github.com/CalPolyWindPower/2026-Controls_Core.git
