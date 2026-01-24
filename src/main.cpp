@@ -7,11 +7,44 @@
 // #include "2026Core/Net/NetAdapter_A.hpp"
 #include "esp_log.h"
 #include <Arduino.h>
+#include "MCP23008T.hpp"
 
 /* Config */
 static constexpr char *TAG = "LoMa";
+static constexpr uint8_t LOAD_ADDR = 0x00; // I2C address
+
+/* Global Objects */
+MCP23008T loadDevice(LOAD_ADDR, &Wire);
+bool loadConfigured = false;
 
 /* Function Prototypes */
+bool configureLoad() {
+    if (!loadDevice.begin()) {
+        ESP_LOGE(TAG, "Failed to initialize MCP23008T device at 0x%02X",
+                 LOAD_ADDR);
+        return false;
+    }
+
+    // First six pins outputs, made last two inputs as that's the default
+    if (!loadDevice.setIODir(0b1100'0000)) {
+        ESP_LOGE(TAG, "Failed to set IODIR on MCP23008T at 0x%02X", LOAD_ADDR);
+        return false;
+    }
+
+    // Disable sequential operation, other settings default
+    if (!loadDevice.setConfig(0b0010'0000)) {
+        ESP_LOGW(TAG, "Failed to set IOCON on MCP23008T at 0x%02X", LOAD_ADDR);
+    }
+
+    // Set all outputs low, note that pin 0 is inverted
+    if (!loadDevice.setGPIO(0b0000'0000)) {
+        ESP_LOGE(TAG, "Failed to set GPIO on MCP23008T at 0x%02X", LOAD_ADDR);
+        return false;
+    }
+
+    // Else: success
+    return true;
+}
 
 /**
  * MARK: Setup
@@ -19,6 +52,9 @@ static constexpr char *TAG = "LoMa";
  */
 void setup() {
     pinMode(LED::LED_PIN, OUTPUT);
+
+    // Configure Devices
+    loadConfigured = configureLoad();
 
     // Set up tasks
     xTaskCreate(vTaskStatusLED, // Task function
@@ -28,6 +64,7 @@ void setup() {
                 1,              // Priority of the task
                 nullptr         // Task handle
     );
+    xTaskCreate(vTaskConfigure, "Cfg", 1024, nullptr, 50, nullptr);
 }
 
 /**
@@ -43,6 +80,25 @@ void vTaskStatusLED(void *pvParameters) {
         delay(LED::BLINK_ON_MILLIS);
         digitalWrite(LED::LED_PIN, LOW);
         delay(LED::BLINK_OFF_MILLIS);
+    }
+}
+
+void vTaskConfigure(void *pvParameters) {
+    while (true) {
+        if (!loadConfigured) {
+            if (loadDevice.begin()) {
+                ESP_LOGI(TAG, "MCP23008T initialized successfully.");
+                loadConfigured = true;
+            } else {
+                ESP_LOGE(
+                    TAG,
+                    "Failed to initialize MCP23008T. Retrying in 5 seconds...");
+                delay(5000);
+            }
+        } else {
+            // Sleep for 30 seconds
+            delay(30000);
+        }
     }
 }
 
