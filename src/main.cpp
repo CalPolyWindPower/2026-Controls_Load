@@ -5,7 +5,9 @@
 /* Includes */
 #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
+#include "CommonConfig.hpp"
 #include "esp_log.h"
+#include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
 #include "MCP23008T.hpp"
 
@@ -14,6 +16,7 @@ static constexpr char *TAG = "LoMa";
 static constexpr uint8_t LOAD_ADDR = 0x00; // I2C address
 
 /* Global Objects */
+Adafruit_NeoPixel leds(1, UM_PROS3::LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
 MCP23008T loadDevice(LOAD_ADDR, &Wire);
 bool loadConfigured = false;
 
@@ -51,9 +54,11 @@ bool configureLoad() {
  * put your setup code here, to run once:
  */
 void setup() {
-    pinMode(LED::LED_PIN, OUTPUT);
-
     // Configure Devices
+    if (!leds.begin()) {
+        ESP_LOGE(TAG, "Failed to initialize LED");
+        leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // Orange
+    }
     loadConfigured = configureLoad();
 
     // Set up tasks
@@ -76,9 +81,9 @@ void setup() {
 
 void vTaskStatusLED(void *pvParameters) {
     while (true) {
-        digitalWrite(LED::LED_PIN, HIGH);
+        leds.setPixelColor(0, 0x00, 0xFF, 0x00); // Green
         delay(LED::BLINK_ON_MILLIS);
-        digitalWrite(LED::LED_PIN, LOW);
+        leds.clear();
         delay(LED::BLINK_OFF_MILLIS);
     }
 }
