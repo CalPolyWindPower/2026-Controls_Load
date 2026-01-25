@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build API Docs (Windows)",
+            "type": "shell",
+            "command": ".\\docs\\Docs_RunDoxygen.bat",
+        },
+        {
+            "label": "Build & Open API Docs (Windows)",
+            "type": "shell",
+            "command": ".\\docs\\Docs_RunDoxygenOpen.bat",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}

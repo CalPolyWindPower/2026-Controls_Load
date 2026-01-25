@@ -1,0 +1,3 @@
+@echo Opening HTML documentation in browser...
+.\docs\generated\html\index.html
+
