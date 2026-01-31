@@ -1,7 +1,6 @@
 #pragma once
 
-static_assert(__cplusplus >= 202302L,
-              "C++23 standard or later required.");
+static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 
 // Imports
 #include <cstdint>
@@ -40,3 +39,22 @@ namespace RUN {
     constexpr uint32_t SLEEP_TIME_MILLIS =
         SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
 } // namespace RUN
+
+namespace LOAD {
+    constexpr uint8_t PINS_MASK = 0b0011'1111; // First six pins
+    constexpr uint_fast8_t NUM_PINS = 6;
+    constexpr etl::array<uint_fast16_t, NUM_PINS> PIN_VALUES_mOhms = {
+        500, 1000, 2000, 3000, 5000, 10000}; // in mOhms, in series // TODO
+    static_assert(PIN_VALUES_mOhms.size() == NUM_PINS,
+                  "PIN_VALUES size mismatch");
+    static_assert(PIN_VALUES_mOhms.back() < UINT16_MAX,
+                  "PIN_VALUES value too large");
+
+    // Pin 6 is connected by default in hardware
+    constexpr uint_fast8_t INVERTED_PIN_INDEX = 5;
+    constexpr uint8_t INVERTED_PIN_MASK = (1 << INVERTED_PIN_INDEX);
+    static_assert(INVERTED_PIN_MASK == 0b0010'0000,
+                  "INVERTED_PIN_MASK value incorrect");
+    constexpr uint8_t DEFAULT_LOAD_STATE = INVERTED_PIN_MASK;
+
+} // namespace LOAD
