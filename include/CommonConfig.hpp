@@ -58,6 +58,7 @@ namespace LOAD {
      * @brief Number of load pins available.
      */
     constexpr uint_fast8_t NUM_PINS = 6;
+    static_assert(NUM_PINS <= 8, "We only have 8 pins available");
 
     /**
      * @brief Total number of possible pin combinations (2^NUM_PINS).
@@ -264,6 +265,11 @@ namespace LOAD {
             detail::deduplicateSortedArray<NUM_COMBINATIONS,
                                            NUM_UNIQUE_COMBINATIONS>(
                 ALL_COMBINATIONS_mOhms);
+    static_assert(NUM_UNIQUE_COMBINATIONS > 0,
+                  "There must be at least one unique combination");
+    static_assert(UNIQUE_COMBINATIONS_mOhms[0] == 0,
+                  "Zero-resistance combination (mask 0) must be present "
+                  "and the minimum value");
 
     /**
      * @brief Index of the pin that is connected (logical 1) by default.
