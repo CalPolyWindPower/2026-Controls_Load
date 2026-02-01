@@ -4,6 +4,9 @@ static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 
 // Imports
 #include <cstdint>
+#include <etl/array.h>
+#include <etl/combinations.h>
+#include <etl/vector.h>
 
 // CommonConfig.hpp
 
@@ -43,12 +46,22 @@ namespace RUN {
 namespace LOAD {
     constexpr uint8_t PINS_MASK = 0b0011'1111; // First six pins
     constexpr uint_fast8_t NUM_PINS = 6;
+    constexpr uint_fast8_t NUM_COMBINATIONS =
+        etl::combinations<NUM_PINS, 0>::value +
+        etl::combinations<NUM_PINS, 1>::value +
+        etl::combinations<NUM_PINS, 2>::value +
+        etl::combinations<NUM_PINS, 3>::value +
+        etl::combinations<NUM_PINS, 4>::value +
+        etl::combinations<NUM_PINS, 5>::value +
+        etl::combinations<NUM_PINS, 6>::value;
     constexpr etl::array<uint_fast16_t, NUM_PINS> PIN_VALUES_mOhms = {
         500, 1000, 2000, 3000, 5000, 10000}; // in mOhms, in series // TODO
     static_assert(PIN_VALUES_mOhms.size() == NUM_PINS,
                   "PIN_VALUES size mismatch");
     static_assert(PIN_VALUES_mOhms.back() < UINT16_MAX,
                   "PIN_VALUES value too large");
+    constexpr etl::array<uint_fast16_t, NUM_COMBINATIONS>
+        ALL_COMBINATIONS_mOhms = getAllCombinations(PIN_VALUES_mOhms);
 
     // Pin 6 is connected by default in hardware
     constexpr uint_fast8_t INVERTED_PIN_INDEX = 5;
