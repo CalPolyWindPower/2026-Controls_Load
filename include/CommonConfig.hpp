@@ -3,10 +3,12 @@
 static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 
 // Imports
+#include <cstddef>
 #include <cstdint>
 #include <etl/array.h>
 #include <etl/combinations.h>
 #include <etl/vector.h>
+#include <utility>
 
 // CommonConfig.hpp
 
@@ -54,12 +56,62 @@ namespace LOAD {
         etl::combinations<NUM_PINS, 4>::value +
         etl::combinations<NUM_PINS, 5>::value +
         etl::combinations<NUM_PINS, 6>::value;
+
+    // According to GitHub Copilot, GPT-5.1, Ask mode
+    static_assert(NUM_COMBINATIONS == (1u << NUM_PINS),
+                  "NUM_COMBINATIONS must be 2^NUM_PINS");
+
     constexpr etl::array<uint_fast16_t, NUM_PINS> PIN_VALUES_mOhms = {
         500, 1000, 2000, 3000, 5000, 10000}; // in mOhms, in series // TODO
     static_assert(PIN_VALUES_mOhms.size() == NUM_PINS,
                   "PIN_VALUES size mismatch");
     static_assert(PIN_VALUES_mOhms.back() < UINT16_MAX,
                   "PIN_VALUES value too large");
+
+    /**
+     * @brief Detail namespace for combination sum calculations
+     * @author GitHub Copilot, GPT-5.1, Ask mode
+     * @author BobSaidHi
+     * @details Prompt: Using C++23 consteval functions and templates, I would
+     * like to create an array of all possible combinations of values in
+     * PIN_VALUES_mOhms. (included some relevant lines of my own attempts as
+     * context)
+     */
+    namespace detail {
+        // Sum of selected pins for a given bitmask
+        consteval uint_fast16_t
+        sum_for_mask(uint_fast8_t mask,
+                     const etl::array<uint_fast16_t, NUM_PINS> &values) {
+
+            uint_fast16_t sum = 0;
+            for (std::size_t i = 0; i < NUM_PINS; ++i) {
+                if (mask & (1u << i)) {
+                    sum += values[i];
+                }
+            }
+            return sum;
+        }
+
+        template <std::size_t... Is>
+        consteval etl::array<uint_fast16_t, NUM_COMBINATIONS>
+        make_all_combinations(const etl::array<uint_fast16_t, NUM_PINS> &values,
+                              std::index_sequence<Is...>) {
+
+            return {sum_for_mask(static_cast<uint_fast8_t>(Is), values)...};
+        }
+    } // namespace detail
+
+    /**
+     * @brief get all combinations of values
+     * @author GitHub Copilot, GPT-5.1, Ask mode
+     * @author BobSaidHi
+     */
+    consteval etl::array<uint_fast16_t, NUM_COMBINATIONS>
+    getAllCombinations(const etl::array<uint_fast16_t, NUM_PINS> &values) {
+        return detail::make_all_combinations(
+            values, std::make_index_sequence<NUM_COMBINATIONS>{});
+    }
+
     constexpr etl::array<uint_fast16_t, NUM_COMBINATIONS>
         ALL_COMBINATIONS_mOhms = getAllCombinations(PIN_VALUES_mOhms);
 
