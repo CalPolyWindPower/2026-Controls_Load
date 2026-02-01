@@ -38,6 +38,7 @@ namespace LED {
 
 } // namespace LED
 
+// MARK: Run
 namespace RUN {
     constexpr uint32_t SLEEP_TIME_MINS = 10;
     constexpr uint32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS * CONSTS::SECS_PER_MIN;
@@ -45,10 +46,25 @@ namespace RUN {
         SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
 } // namespace RUN
 
+// MARK: Load
 namespace LOAD {
-    constexpr uint8_t PINS_MASK = 0b0011'1111; // First six pins
+    /**
+     * @brief Bitmask for the load control pins.
+     * @details Only the first 6 pins (0-5) are used for load control.
+     */
+    constexpr uint8_t PINS_Msk = 0b0011'1111;
+
+    /**
+     * @brief Number of load pins available.
+     */
     constexpr uint_fast8_t NUM_PINS = 6;
-    constexpr uint_fast8_t NUM_COMBINATIONS =
+
+    /**
+     * @brief Total number of possible pin combinations (2^NUM_PINS).
+     *
+     * @details Computed using etl::combinations
+     */
+    constexpr size_t NUM_COMBINATIONS_sizeT =
         etl::combinations<NUM_PINS, 0>::value +
         etl::combinations<NUM_PINS, 1>::value +
         etl::combinations<NUM_PINS, 2>::value +
@@ -56,11 +72,21 @@ namespace LOAD {
         etl::combinations<NUM_PINS, 4>::value +
         etl::combinations<NUM_PINS, 5>::value +
         etl::combinations<NUM_PINS, 6>::value;
+    constexpr uint_fast8_t NUM_COMBINATIONS =
+        static_cast<uint_fast8_t>(NUM_COMBINATIONS_sizeT);
+
+    static_assert(UINT8_MAX >= NUM_COMBINATIONS_sizeT,
+                  "NUM_COMBINATIONS value too large for uint8_t");
 
     // According to GitHub Copilot, GPT-5.1, Ask mode
     static_assert(NUM_COMBINATIONS == (1u << NUM_PINS),
                   "NUM_COMBINATIONS must be 2^NUM_PINS");
 
+    /**
+     * @brief Resistor values, in milli‑ohms, corresponding to each pin.  Note
+     * that the resistors will be connected in series, so the total resistance
+     * is the sum of the selected resistors.
+     */
     constexpr etl::array<uint_fast16_t, NUM_PINS> PIN_VALUES_mOhms = {
         500, 1000, 2000, 3000, 5000, 10000}; // in mOhms, in series // TODO
     static_assert(PIN_VALUES_mOhms.size() == NUM_PINS,
@@ -69,7 +95,11 @@ namespace LOAD {
                   "PIN_VALUES value too large");
 
     /**
+     * MARK: detail
      * @brief Detail namespace for combination sum calculations
+     * @details Contains compile‑time helpers used to build and deduplicate the
+     * combination sums derived from PIN_VALUES_mOhms.
+     *
      * @author GitHub Copilot, GPT-5.1, Ask mode
      * @author BobSaidHi
      * @details Prompt: Using C++23 consteval functions and templates, I would
@@ -82,10 +112,16 @@ namespace LOAD {
      * and a constexpr array of the deduplicated values?
      */
     namespace detail {
-        // Sum of selected pins for a given bitmask
+        /**
+         * @brief Compute the sum of selected pins for a given bitmask.
+         *
+         * @param mask Bitmask over NUM_PINS
+         * @param values Per‑pin resistance values.
+         * @returns Sum of selected values in milli‑ohms.
+         */
         consteval uint_fast16_t
-        sum_for_mask(uint_fast8_t mask,
-                     const etl::array<uint_fast16_t, NUM_PINS> &values) {
+        sumForMask(uint_fast8_t mask,
+                   const etl::array<uint_fast16_t, NUM_PINS> &values) {
 
             uint_fast16_t sum = 0;
             for (std::size_t i = 0; i < NUM_PINS; ++i) {
@@ -96,19 +132,35 @@ namespace LOAD {
             return sum;
         }
 
+        /**
+         * @brief Build the array of all combination sums for the given values.
+         *
+         * @tparam Sequence of indices [0, NUM_COMBINATIONS).
+         * @param values array of per‑pin resistance values.
+         * @returns Array where index i holds the sum for bitmask i.
+         */
         template <std::size_t... Is>
         consteval etl::array<uint_fast16_t, NUM_COMBINATIONS>
-        make_all_combinations(const etl::array<uint_fast16_t, NUM_PINS> &values,
-                              std::index_sequence<Is...>) {
-
-            return {sum_for_mask(static_cast<uint_fast8_t>(Is), values)...};
+        makeAllCombinations(const etl::array<uint_fast16_t, NUM_PINS> &values,
+                            std::index_sequence<Is...>) {
+            return {sumForMask(static_cast<uint_fast8_t>(Is), values)...};
         }
 
-        // --- helpers for deduplication ---
+        /* Helpers for deduplication */
 
+        /**
+         * @brief Return a sorted copy of the input array (ascending).
+         *
+         * @details Implements a "simple" O(N^2) sort that is usable in
+         * consteval context.
+         *
+         * @tparam N Number of elements.
+         * @param input Input array.
+         * @returns Sorted copy of @p input.
+         */
         template <std::size_t N>
         consteval etl::array<uint_fast16_t, N>
-        sorted_copy(const etl::array<uint_fast16_t, N> &input) {
+        makeSortedCopy(const etl::array<uint_fast16_t, N> &input) {
             auto result = input;
             for (std::size_t i = 0; i < N; ++i) {
                 for (std::size_t j = i + 1; j < N; ++j) {
@@ -120,10 +172,17 @@ namespace LOAD {
             return result;
         }
 
+        /**
+         * @brief Count the number of unique values in the input array.
+         *
+         * @tparam N Number of elements.
+         * @param input Input array (not required to be sorted).
+         * @returns Number of distinct values in @p input.
+         */
         template <std::size_t N>
         consteval std::size_t
-        count_unique(const etl::array<uint_fast16_t, N> &input) {
-            auto sorted = sorted_copy(input);
+        countUnique(const etl::array<uint_fast16_t, N> &input) {
+            auto sorted = makeSortedCopy(input);
             std::size_t count = 0;
             bool first = true;
             uint_fast16_t last = 0;
@@ -139,10 +198,18 @@ namespace LOAD {
             return count;
         }
 
+        /**
+         * @brief Create a sorted array containing only the unique values.
+         *
+         * @tparam InN Size of the input array.
+         * @tparam OutN Size of the output array (must equal countUnique()).
+         * @param input Input array (not required to be sorted).
+         * @returns Sorted array of unique values from @p input.
+         */
         template <std::size_t InN, std::size_t OutN>
         consteval etl::array<uint_fast16_t, OutN>
-        unique_sorted(const etl::array<uint_fast16_t, InN> &input) {
-            auto sorted = sorted_copy(input);
+        deduplicateSortedArray(const etl::array<uint_fast16_t, InN> &input) {
+            auto sorted = makeSortedCopy(input);
             etl::array<uint_fast16_t, OutN> out{};
             std::size_t out_i = 0;
             bool first = true;
@@ -161,37 +228,60 @@ namespace LOAD {
     } // namespace detail
 
     /**
-     * @brief get all combinations of values
-     * @author GitHub Copilot, GPT-5.1, Ask mode
-     * @author BobSaidHi
+     * @brief Compute all possible combination sums for the given pin values.
+     *
+     * @param values Per‑pin resistance values.
+     * @returns Array of size NUM_COMBINATIONS with sum for each bitmask.
      */
     consteval etl::array<uint_fast16_t, NUM_COMBINATIONS>
     getAllCombinations(const etl::array<uint_fast16_t, NUM_PINS> &values) {
-        return detail::make_all_combinations(
+        return detail::makeAllCombinations(
             values, std::make_index_sequence<NUM_COMBINATIONS>{});
     }
 
+    /**
+     * @brief All combination sums derived from PIN_VALUES_mOhms.
+     *
+     * Index i corresponds to bitmask i over the NUM_PINS pins.
+     */
     constexpr etl::array<uint_fast16_t, NUM_COMBINATIONS>
         ALL_COMBINATIONS_mOhms = getAllCombinations(PIN_VALUES_mOhms);
 
-    // number of unique combination values
-    constexpr std::size_t NUM_UNIQUE_COMBINATIONS =
-        detail::count_unique(ALL_COMBINATIONS_mOhms);
+    /**
+     * @brief Number of unique combination sums in ALL_COMBINATIONS_mOhms.
+     */
+    constexpr uint_fast8_t NUM_UNIQUE_COMBINATIONS =
+        detail::countUnique(ALL_COMBINATIONS_mOhms);
 
     static_assert(NUM_UNIQUE_COMBINATIONS <= NUM_COMBINATIONS,
                   "NUM_UNIQUE_COMBINATIONS must be <= NUM_COMBINATIONS");
 
-    // deduplicated, sorted combination values
+    /**
+     * @brief Sorted array of unique combination sums (deduplicated).
+     */
     constexpr etl::array<uint_fast16_t, NUM_UNIQUE_COMBINATIONS>
         UNIQUE_COMBINATIONS_mOhms =
-            detail::unique_sorted<NUM_COMBINATIONS, NUM_UNIQUE_COMBINATIONS>(
+            detail::deduplicateSortedArray<NUM_COMBINATIONS,
+                                           NUM_UNIQUE_COMBINATIONS>(
                 ALL_COMBINATIONS_mOhms);
 
-    // Pin 6 is connected by default in hardware
+    /**
+     * @brief Index of the pin that is connected (logical 1) by default.
+     *
+     * Used to build the default load state mask.
+     */
     constexpr uint_fast8_t INVERTED_PIN_INDEX = 5;
+
+    /**
+     * @brief Bitmask for the default‑connected pin.
+     */
     constexpr uint8_t INVERTED_PIN_MASK = (1 << INVERTED_PIN_INDEX);
     static_assert(INVERTED_PIN_MASK == 0b0010'0000,
                   "INVERTED_PIN_MASK value incorrect");
+
+    /**
+     * @brief Default load state bitmask applied at startup.
+     */
     constexpr uint8_t DEFAULT_LOAD_STATE = INVERTED_PIN_MASK;
 
 } // namespace LOAD
