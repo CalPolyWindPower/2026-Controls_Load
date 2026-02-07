@@ -48,6 +48,8 @@ namespace RUN {
 
 // MARK: Load
 namespace LOAD {
+    constexpr uint8_t I2C_ADDRESS = 0x4E; // A0-A2 all high
+
     /**
      * @brief Bitmask for the load control pins.
      * @details Only the first 6 pins (0-5) are used for load control.

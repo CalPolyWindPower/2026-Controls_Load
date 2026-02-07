@@ -4,6 +4,11 @@
 #include <Adafruit_I2CDevice.h>
 #include <cstdint>
 
+/**
+ * @brief Class to interface with the MCP23008T I2C 8-Bit I/O Expander
+ * @see
+ * https://www.digikey.com/en/products/detail/microchip-technology/MCP23008T-E-SS/736037
+ */
 class MCP23008T {
   public:
     static constexpr uint16_t REG_IODIR_ADDR = 0x00;
@@ -20,7 +25,21 @@ class MCP23008T {
 
     static constexpr uint8_t ONE_BYTE = 1;
 
-    MCP23008T(uint8_t address, TwoWire *wire = &Wire) : device(address, wire) {}
+    /**
+     * Valid addresses are 0x40, 0x42, 0x44, 0x46, 0x48, 0x4A, 0x4C, & 0x4E
+     */
+    enum I2C_ADDRESS: uint8_t {
+        I2C_ADDR_0x40 = 0x40,
+        I2C_ADDR_0x42 = 0x42,
+        I2C_ADDR_0x44 = 0x44,
+        I2C_ADDR_0x46 = 0x46,
+        I2C_ADDR_0x48 = 0x48,
+        I2C_ADDR_0x4A = 0x4A,
+        I2C_ADDR_0x4C = 0x4C,
+        I2C_ADDR_0x4E = 0x4E
+    };
+
+    MCP23008T(I2C_ADDRESS address = I2C_ADDR_0x40, TwoWire *wire = &Wire) : device(address, wire) {}
 
     bool begin() {
         if (!device.begin()) {
