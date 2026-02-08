@@ -91,7 +91,7 @@ namespace LOAD {
      * is the sum of the selected resistors.
      */
     constexpr etl::array<uint_fast16_t, NUM_PINS> PIN_VALUES_mOhms = {
-        500, 1000, 2000, 3000, 5000, 10000}; // in mOhms, in series // TODO
+        500, 1000, 2000, 2200, 5000, 10000}; // in mOhms, in series // TODO
     static_assert(PIN_VALUES_mOhms.size() == NUM_PINS,
                   "PIN_VALUES size mismatch");
     static_assert(PIN_VALUES_mOhms.back() < UINT16_MAX,
