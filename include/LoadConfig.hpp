@@ -37,6 +37,9 @@ namespace UM_PROS3 {
     // Onboard LED
     constexpr uint_fast8_t LED_DATA_PIN = RGB_DATA;
 
+    // ESTOP
+    constexpr uint_fast8_t ESTOP_PIN = 5;
+
     // I2C
     constexpr uint_fast8_t I2C_SDA_PIN = SDA;
     constexpr uint_fast8_t I2C_SCL_PIN = SCL;
@@ -46,6 +49,16 @@ namespace UM_PROS3 {
     constexpr uint_fast8_t SPI_CLK_PIN = SCK;   // todo
     constexpr uint_fast8_t SPI_COPI_PIN = MOSI; // todo
     constexpr uint_fast8_t SPI_CS_PIN = SS;     // todo
+
+    // UART
+    constexpr uint_fast8_t UART_TX_PIN = TX;
+    constexpr uint_fast8_t UART_RX_PIN = RX;
+
+    // JTAG
+    constexpr uint_fast8_t JTAG_MTCK_PIN = 39;
+    constexpr uint_fast8_t JTAG_MTDO_PIN = 40;
+    constexpr uint_fast8_t JTAG_MTDI_PIN = 41;
+    constexpr uint_fast8_t JTAG_MTMS_PIN = 42;
 } // namespace UM_PROS3
 
 // MARK: Constants
