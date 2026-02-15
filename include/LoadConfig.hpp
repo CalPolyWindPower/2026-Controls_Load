@@ -1,3 +1,6 @@
+/**
+ * @file LoadConfig.hpp
+ */
 #pragma once
 
 static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
@@ -10,11 +13,39 @@ static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 #include <etl/vector.h>
 #include <utility>
 
-// CommonConfig.hpp
+/**
+ * @brief Debugging Setup
+ * @see
+ * https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/log.html
+ */
+#pragma region Debugging Setup
+
+#define PROJECT_ID "WT26L" // CONFIG - Project ID to use with logger
+
+#pragma endregion // Debugging Setup
 
 // MARK: Boards
+// Make sure the hardware pins are imported
+#include <pins_arduino.h>
+#define ESP32S3 2
+#define BOARD ESP32S3
+#if not(BOARD == ESP32S3)
+#    warning "Not using production load board!"
+#endif
+
 namespace UM_PROS3 {
-    constexpr uint_fast8_t LED_DATA_PIN = 18;
+    // Onboard LED
+    constexpr uint_fast8_t LED_DATA_PIN = RGB_DATA;
+
+    // I2C
+    constexpr uint_fast8_t I2C_SDA_PIN = SDA;
+    constexpr uint_fast8_t I2C_SCL_PIN = SCL;
+
+    // SPI
+    constexpr uint_fast8_t SPI_CIPO_PIN = MISO; // todo
+    constexpr uint_fast8_t SPI_CLK_PIN = SCK;   // todo
+    constexpr uint_fast8_t SPI_COPI_PIN = MOSI; // todo
+    constexpr uint_fast8_t SPI_CS_PIN = SS;     // todo
 } // namespace UM_PROS3
 
 // MARK: Constants
