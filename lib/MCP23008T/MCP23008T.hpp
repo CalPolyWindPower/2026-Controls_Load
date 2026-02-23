@@ -8,6 +8,25 @@
  * @brief Class to interface with the MCP23008T I2C 8-Bit I/O Expander
  * @see
  * https://www.digikey.com/en/products/detail/microchip-technology/MCP23008T-E-SS/736037
+ * @details Implementation note - Most of these simple functions/methods are
+ * marked inline, as I think it makes since to inline them.  Not sure if it
+ * helps much, and some of these functions may even default to inlined,
+ * especially at higher optimization levels, like we tend ot use..
+ * @see
+ * https://stackoverflow.com/questions/1932311/when-to-use-the-inline-function-and-when-not-to-use-it
+ * @see
+ * https://stackoverflow.com/questions/145838/what-are-the-benefits-of-inline-functions
+ * @see https://isocpp.org/wiki/faq/inline-functions
+ * @see http://www.gotw.ca/gotw/033.htm
+ * @see
+ * https://web.archive.org/web/20221012105337/http://www.drdobbs.com/to-inline-or-not-to-inline/184405660
+ * @details Implementation note - constexpr, inline, & static and replacing
+ * #define for type safety
+ * @see https://en.cppreference.com/w/cpp/language/constexpr.html
+ * @see
+ * https://www.geeksforgeeks.org/cpp/understanding-constexper-specifier-in-cpp/
+ * @see
+ * https://collab.dvb.bayern/download/attachments/63265333/Riedel%20report%20-%20Constexpr%20and%20Inline%20Variables%20in%20C%2B%2B17.pdf?version=1&modificationDate=1532345169027&api=v2
  */
 class MCP23008T {
   public:
@@ -28,7 +47,7 @@ class MCP23008T {
     /**
      * Valid addresses are 0x40, 0x42, 0x44, 0x46, 0x48, 0x4A, 0x4C, & 0x4E
      */
-    enum I2C_ADDRESS: uint8_t {
+    enum I2C_ADDRESS : uint8_t {
         I2C_ADDR_0x40 = 0x40,
         I2C_ADDR_0x42 = 0x42,
         I2C_ADDR_0x44 = 0x44,
@@ -39,7 +58,8 @@ class MCP23008T {
         I2C_ADDR_0x4E = 0x4E
     };
 
-    MCP23008T(I2C_ADDRESS address = I2C_ADDR_0x40, TwoWire *wire = &Wire) : device(address, wire) {}
+    MCP23008T(I2C_ADDRESS address = I2C_ADDR_0x40, TwoWire *wire = &Wire)
+        : device(address, wire) {}
 
     bool begin() {
         if (!device.begin()) {
