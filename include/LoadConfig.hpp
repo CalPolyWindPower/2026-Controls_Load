@@ -84,10 +84,23 @@ namespace LED {
 
 // MARK: Run
 namespace RUN {
-    constexpr uint32_t SLEEP_TIME_MINS = 10;
-    constexpr uint32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS * CONSTS::SECS_PER_MIN;
-    constexpr uint32_t SLEEP_TIME_MILLIS =
-        SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
+    // Task Execution Intervals
+    enum TASK_INTERVALS : uint32_t {
+        TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz)
+        TI_ADJUST_LOAD_mS = 10, // CONFIG - 10 ms (100 Hz)
+        TI_RECV_ms = 100,       // CONFIG - 100 ms (10 Hz)
+        TI_SEND_ms = 10,        // CONFIG - 10 ms (100 Hz)
+        TI_CFG_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
+        TI_TELNET_ms = 500,     // CONFIG - 500 ms (2 Hz)
+        TI_OTA_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
+        TI_LOG_DATA_ms = 4000   // CONFIG - 4000 ms (0.25 Hz)
+    };
+
+    // todo: What was this for?
+    // constexpr uint32_t SLEEP_TIME_MINS = 10;
+    // constexpr uint32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS *
+    // CONSTS::SECS_PER_MIN; constexpr uint32_t SLEEP_TIME_MILLIS =
+    //     SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
 } // namespace RUN
 
 // MARK: Load
