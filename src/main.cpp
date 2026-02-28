@@ -20,7 +20,6 @@
 
 /* Config */
 static constexpr char *TAG = "LoMa";
-static constexpr uint8_t LOAD_ADDR = 0x00; // I2C address
 
 // MARK: Function Prototypes
 // Main Tasks
@@ -87,24 +86,27 @@ bool loadConfigured = false;
 bool configureLoad() {
     if (!loadDevice.begin()) {
         ESP_LOGE(TAG, "Failed to initialize MCP23008T device at 0x%02X",
-                 LOAD_ADDR);
+                 loadDevice.getAddress());
         return false;
     }
 
     // First six pins outputs, made last two inputs as that's the default
     if (!loadDevice.setIODir(0b1100'0000)) {
-        ESP_LOGE(TAG, "Failed to set IODIR on MCP23008T at 0x%02X", LOAD_ADDR);
+        ESP_LOGE(TAG, "Failed to set IODIR on MCP23008T at 0x%02X",
+                 loadDevice.getAddress());
         return false;
     }
 
     // Disable sequential operation, other settings default
     if (!loadDevice.setConfig(0b0010'0000)) {
-        ESP_LOGW(TAG, "Failed to set IOCON on MCP23008T at 0x%02X", LOAD_ADDR);
+        ESP_LOGW(TAG, "Failed to set IOCON on MCP23008T at 0x%02X",
+                 loadDevice.getAddress());
     }
 
     // Set all outputs low, note that pin 0 is inverted
     if (!loadDevice.setGPIO(0b0000'0000)) {
-        ESP_LOGE(TAG, "Failed to set GPIO on MCP23008T at 0x%02X", LOAD_ADDR);
+        ESP_LOGE(TAG, "Failed to set GPIO on MCP23008T at 0x%02X",
+                 loadDevice.getAddress());
         return false;
     }
 
