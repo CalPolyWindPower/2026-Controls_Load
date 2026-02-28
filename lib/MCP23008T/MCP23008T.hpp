@@ -1,5 +1,6 @@
 #pragma once
 
+// MARK: Includes
 #include <Adafruit_BusIO_Register.h>
 #include <Adafruit_I2CDevice.h>
 #include <cstdint>
@@ -29,7 +30,7 @@
  * https://collab.dvb.bayern/download/attachments/63265333/Riedel%20report%20-%20Constexpr%20and%20Inline%20Variables%20in%20C%2B%2B17.pdf?version=1&modificationDate=1532345169027&api=v2
  */
 class MCP23008T {
-  public:
+  public: // MARK: Public Constants
     static constexpr uint16_t REG_IODIR_ADDR = 0x00;
     static constexpr uint16_t REG_IPOL_ADDR = 0x01;
     static constexpr uint16_t REG_GPINTEN_ADDR = 0x02;
@@ -58,6 +59,7 @@ class MCP23008T {
         I2C_ADDR_0x4E = 0x4E
     };
 
+    // MARK: Public Methods
     MCP23008T(I2C_ADDRESS address = I2C_ADDR_0x40, TwoWire *wire = &Wire)
         : device(address, wire) {}
 
@@ -69,6 +71,7 @@ class MCP23008T {
         return true;
     }
 
+    // MARK: Write Methods
     /**
      * @details When a bit is set, the corresponding pin becomes an input (1).
      * When a bit is clear (0), the corresponding pin becomes an output.
@@ -175,6 +178,7 @@ class MCP23008T {
      */
     inline bool setPullUp(uint32_t value) { return regGPPU.write(value); }
 
+    // MARK: Read Methods
     /**
      * @details The INTF register reflects the interrupt condition on the
      * PORT pins of any pin that is enabled for interrupts via
@@ -217,7 +221,17 @@ class MCP23008T {
      */
     inline bool setOLAT(uint32_t value) { return regOLAT.write(value); }
 
-  private:
+  private: // MARK: Getters
+
+    /**
+     * @brief Get the I2C address of the device
+     * @returns The I2C address of the device
+     */
+    uint8_t getAddress() const { // todo- is const okay here?
+        return device.address();
+    }
+
+  private: // MARK: Private
     Adafruit_I2CDevice device;
 
     Adafruit_BusIO_Register regIODIR = Adafruit_BusIO_Register(
