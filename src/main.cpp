@@ -521,23 +521,6 @@ void vTaskLogData(void *pvParameters) {
 }
 
 /**
- * @brief Task to handle Telnet connections
- */
-void vTaskTelnet(void *pvParameters) {
-    while (true) {
-    }
-}
-
-/**
- * @brief Task to handle ElegantOTA connections
- * @deprecated Just use a USB cable if possible
- */
-void vTaskOTA(void *pvParameters) {
-    while (true) {
-    }
-}
-
-/**
  * MARK: loop
  * Arduino: put your main code here, to run repeatedly:
  */
