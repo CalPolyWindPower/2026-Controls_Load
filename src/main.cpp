@@ -75,11 +75,16 @@ enum TASK_IDS : uint_fast8_t {
     TID_LOG
 };
 
-AdapterWLAN adapterWLAN = AdapterWLAN();
-AdapterESPNow adapterESPNow = AdapterESPNow();
-SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+// AdapterWLAN adapterWLAN = AdapterWLAN();
+AdapterWLAN adapterWLAN;
+// AdapterESPNow adapterESPNow = AdapterESPNow();
+AdapterESPNow adapterESPNow;
+// SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+SyncedClock netClock(adapterESPNow); // todo
+
 Adafruit_NeoPixel leds(1, UM_PROS3::LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
-MCP23008T loadDevice(LOAD::I2C_ADDRESS, &Wire);
+MCP23008T loadDevice(static_cast<MCP23008T::I2C_ADDRESS>(LOAD::I2C_ADDRESS),
+                     &Wire);
 bool loadConfigured = false;
 
 // todo: move
