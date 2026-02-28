@@ -97,7 +97,7 @@ class MCP23008T {
      *
      * @returns Returns true on success, false otherwise
      */
-    inline bool setIntOnChange(uint32_t value) {
+    inline bool setIntOnChangeEn(uint32_t value) {
         return regGPINTEN.write(value);
     }
 
@@ -122,7 +122,7 @@ class MCP23008T {
      *
      * @returns Returns true on success, false otherwise
      */
-    inline bool setIntOnChange(uint32_t value) {
+    inline bool setIntOnChangeCmp(uint32_t value) {
         return regINTCON.write(value);
     }
 
@@ -221,13 +221,15 @@ class MCP23008T {
      */
     inline bool setOLAT(uint32_t value) { return regOLAT.write(value); }
 
-  private: // MARK: Getters
-
+    // MARK: Getters
     /**
      * @brief Get the I2C address of the device
      * @returns The I2C address of the device
      */
-    uint8_t getAddress() const { // todo- is const okay here?
+    uint8_t
+    getAddress() { // TODO: This cannot be constant because the fine folks at
+                   // Adafruit thought someone might want to change the address
+                   // for some reason, which seems silly to me. TODO: fork
         return device.address();
     }
 
