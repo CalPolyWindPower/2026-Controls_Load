@@ -311,6 +311,54 @@ void vTaskAdjustLoad(void *pvParameters) {
 //     }
 // }
 
+// MARK: Network Tasks
+
+/**
+ * @brief Task to handle inbound data that has been queued
+ */
+void vTaskRecvData(void *pvParameters) {
+    while (true) {
+        if (false) {
+            delay(RUN::TASK_INTERVALS::TI_RECV_ms);
+        } else {
+            // Suspend until reenabled from interrupt
+            vTaskSuspend(taskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
+        }
+    }
+}
+
+/**
+ * @brief Task to handle inbound data that has been queued
+ */
+// void vTaskHandleInboundData(void *pvParameters) {
+//     while (true) {
+//     }
+// }
+
+/**
+ * @brief Task to handle outbound data that has been queued
+ */
+// void vTaskHandleOutboundData(void *pvParameters) {
+//     while (true) {
+//     }
+// }
+
+/**
+ * @brief Task to handle outbound data that has been queued
+ */
+void vTaskSendData(void *pvParameters) {
+    while (true) {
+        if (false) {
+            delay(RUN::TASK_INTERVALS::TI_SEND_ms);
+        } else {
+            // Suspend until reenabled
+            vTaskSuspend(taskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
+        }
+    }
+}
+
+// MARK: Utility Tasks
+
 void vTaskConfigure(void *pvParameters) {
     while (true) {
         if (!loadConfigured) {
@@ -325,7 +373,7 @@ void vTaskConfigure(void *pvParameters) {
             }
         } else {
             // Sleep for 30 seconds
-            delay(30000);
+            delay(RUN::TASK_INTERVALS::TI_CFG_ms);
         }
     }
 }
@@ -335,6 +383,8 @@ void vTaskConfigure(void *pvParameters) {
  */
 void vTaskTelnet(void *pvParameters) {
     while (true) {
+        // TELNET::loop(); // todo
+        delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
     }
 }
 
@@ -344,6 +394,7 @@ void vTaskTelnet(void *pvParameters) {
  */
 void vTaskOTA(void *pvParameters) {
     while (true) {
+        delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }
 }
 
@@ -366,41 +417,122 @@ void vTaskStatusLED(void *pvParameters) {
 }
 
 /**
- * @brief Task to control run the variable load
+ * @brief Convert Celsius to Fahrenheit
  */
-void vTaskVarLoad(void *pvParameters) {
-    while (true) {
-    }
-}
+// consteval uint_fast8_t celsiusToFahrenheit(uint_fast8_t celsius) {
+//     return (celsius * 9 / 5) + 32;
+// }
+// static_assert(celsiusToFahrenheit(0) == 32);
+// static_assert(celsiusToFahrenheit(130) <= UINT8_MAX,
+//               "Value exceeds uint8_t max");
 
 /**
- * @brief Task to handle inbound data that has been queued
+ * @brief Convert Fahrenheit to Celsius
  */
-void vTaskHandleInboundData(void *pvParameters) {
-    while (true) {
-    }
-}
+// consteval uint_fast8_t fahrenheitToCelsius(uint_fast8_t fahrenheit) {
+//     return (fahrenheit - 32) * 5 / 9;
+// }
 
-/**
- * @brief Task to handle outbound data that has been queued
- */
-void vTaskHandleOutboundData(void *pvParameters) {
-    while (true) {
-    }
-}
-
+constexpr uint32_t ITEMS_TO_LOG = 4;
+constexpr uint32_t LOG_ITEM_INTERVAL_MS =
+    RUN::TASK_INTERVALS::TI_LOG_DATA_ms / ITEMS_TO_LOG;
 /**
  * @brief Task to log data
  */
 void vTaskLogData(void *pvParameters) {
+    /**
+     * @See
+     * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
+     * TODO: The temp. sensor may use more power
+     * TODO: Temp interput/ callback/ hardware monitoring
+     */
+    temperature_sensor_handle_t tempSensHandle = NULL;
+    temperature_sensor_config_t tempSensConfig =
+        TEMPERATURE_SENSOR_CONFIG_DEFAULT(20, 100);
+    ESP_ERROR_CHECK(
+        temperature_sensor_install(&tempSensConfig, &tempSensHandle));
+
+    while (true) {
+        // if (!Serial.isConnected()) {
+        //     delay(LOG_INTERVAL_MS);
+        //     continue;
+        // }
+
+        ESP_LOGD(TAG, "Logging Data:");
+
+        ESP_LOGI(TAG, "Num tasks reported by FreeRTOS: %u",
+                 uxTaskGetNumberOfTasks());
+
+        constexpr uint_fast8_t REC_BYTES_PER_TASK = 40;
+        constexpr uint_fast8_t NUM_ESP_TASKS = 8;
+        constexpr uint_fast16_t STATS_BUFFER_SIZE =
+            REC_BYTES_PER_TASK * (NUM_USR_TASKS + NUM_ESP_TASKS);
+        char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
+        if (uxTaskGetNumberOfTasks() > NUM_USR_TASKS + NUM_ESP_TASKS) {
+            ESP_LOGE(
+                TAG,
+                "Number of tasks (%d) exceeds expected max (%d), skipping to "
+                "prevent memory corruption",
+                uxTaskGetNumberOfTasks(), NUM_USR_TASKS + NUM_ESP_TASKS);
+        } else {
+            // TODO: Not recommended in production
+            vTaskGetRunTimeStats(statsBuffer);
+            statsBuffer[STATS_BUFFER_SIZE - 1] =
+                '\0'; // hard cap, avoid over-read
+            // uxTaskGetSystemState();
+            ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+            delay(LOG_ITEM_INTERVAL_MS);
+
+            for (TaskInfo &taskDesc : taskDescriptions) {
+                taskDesc.minFreeStack_Bytes =
+                    uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
+                ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
+                         taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
+                         taskDesc.minFreeStack_Bytes);
+            }
+        }
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        ESP_LOGI(TAG, "Minimum free heap: %u bytes",
+                 esp_get_minimum_free_heap_size());
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        // Enable temperature sensor
+        ESP_ERROR_CHECK(temperature_sensor_enable(tempSensHandle));
+        // Get converted sensor data
+        float tsens_out;
+        ESP_ERROR_CHECK(
+            temperature_sensor_get_celsius(tempSensHandle, &tsens_out));
+        int32_t tempTrunc_C = (int32_t)tsens_out;
+        constexpr int32_t MAX_EXT_TEMP = 105;
+        constexpr int32_t MIN_EXT_TEMP = -40;
+        if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
+            ESP_LOGE(TAG, "Temperature out of bounds: %d dC", tempTrunc_C);
+        } else {
+            ESP_LOGI(TAG, "Temperature: %d dC", tempTrunc_C);
+        }
+        // Disable the temperature sensor if it is not needed and save the power
+        ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        // esp_wifi_get_bandwidth
+        // esp_wifi_sta_get_rssi
+    }
+}
+
+/**
+ * @brief Task to handle Telnet connections
+ */
+void vTaskTelnet(void *pvParameters) {
     while (true) {
     }
 }
 
 /**
- * @brief Task to track idle time
+ * @brief Task to handle ElegantOTA connections
+ * @deprecated Just use a USB cable if possible
  */
-void vTaskIdle(void *pvParameters) {
+void vTaskOTA(void *pvParameters) {
     while (true) {
     }
 }
@@ -409,4 +541,7 @@ void vTaskIdle(void *pvParameters) {
  * MARK: loop
  * Arduino: put your main code here, to run repeatedly:
  */
-void loop() {}
+void loop() {
+    // ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
+    delay(1000);
+}
