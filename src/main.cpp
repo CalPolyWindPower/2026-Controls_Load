@@ -272,14 +272,44 @@ void setup() {
  * @see https://forum.arduino.cc/t/non-blocking-delay-actions/1044079
  */
 
-void vTaskStatusLED(void *pvParameters) {
+/**
+ * @brief Task to control run the FSM
+ */
+void vTaskUpdateFSM(void *pvParameters) {
     while (true) {
-        leds.setPixelColor(0, 0x00, 0xFF, 0x00); // Green
-        delay(LED::BLINK_ON_MILLIS);
-        leds.clear();
-        delay(LED::BLINK_OFF_MILLIS);
     }
 }
+
+/**
+ * @brief Task to poll high priority sensors
+ */
+void vTaskPollSensors(void *pvParameters) {
+    while (true) {
+        delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
+    }
+}
+
+/**
+ * @brief Task to control the pitch actuator
+ */
+void vTaskAdjustLoad(void *pvParameters) {
+    while (true) {
+        static int i = 0;
+        // ESP_LOGI(TAG, "Pitch PID Output: %f",
+        //          pitchPIDController.compute(
+        //              i)); // todo - just a quick performances test
+        i += 20;
+        delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
+    }
+}
+
+/**
+ * @brief Task to control run the variable load
+ */
+// void vTaskVarLoad(void *pvParameters) {
+//     while (true) {
+//     }
+// }
 
 void vTaskConfigure(void *pvParameters) {
     while (true) {
@@ -317,19 +347,21 @@ void vTaskOTA(void *pvParameters) {
     }
 }
 
-/**
- * @brief Task to poll high priority sensors
- */
-void vTaskPollSensors(void *pvParameters) {
-    while (true) {
-    }
-}
+// MARK: Status Tasks
 
-/**
- * @brief Task to control run the FSM
- */
-void vTaskUpdateFSM(void *pvParameters) {
+void vTaskStatusLED(void *pvParameters) {
     while (true) {
+        ESP_LOGV(TAG, "vTSL");
+        leds.setPixelColor(0, 0x00, 0xFF, 0x00); // Green
+        if (leds.canShow()) {
+            leds.show();
+        }
+        delay(LED::BLINK_ON_MILLIS);
+        leds.clear();
+        delay(LED::BLINK_OFF_MILLIS);
+        if (leds.canShow()) {
+            leds.show();
+        }
     }
 }
 
