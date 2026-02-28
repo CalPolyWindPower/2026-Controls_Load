@@ -119,22 +119,150 @@ bool configureLoad() {
  * put your setup code here, to run once:
  */
 void setup() {
-    // Configure Devices
-    if (!leds.begin()) {
-        ESP_LOGE(TAG, "Failed to initialize LED");
-        leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // Orange
+    static bool serialInitialized = false;
+    if (!serialInitialized) {
+        Serial.begin(115200);
+        ESP_LOGI(TAG, "Serial initialized");
+        serialInitialized = true;
     }
+
+    // Configure Hardware
+    static bool LEDInitialized = false;
+    if (!LEDInitialized) {
+        if (!leds.begin()) {
+            ESP_LOGE(TAG, "Failed to initialize LED");
+            leds.setPixelColor(0, 0xFF, 0x00, 0x00); // Red
+        } else {
+            LEDInitialized = true;
+            leds.setPixelColor(0, 0x00, 0xFF, 0x00); // Green
+            ESP_LOGI(TAG, "LED initialized");
+        }
+    } else {
+        // No need to save power here
+        leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    }
+    if (leds.canShow()) {
+        leds.show();
+    }
+
+    // Configure WiFi
+    static bool wifiInitialized = false;
+    if (!wifiInitialized) {
+        leds.setPixelColor(0, 0x00, 0x00, 0xFF); // blue
+        if (leds.canShow()) {
+            leds.show();
+        }
+        uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
+        leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+        if (leds.canShow()) {
+            leds.show();
+        }
+        ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
+        if (adapterWLAN.begin(optimalChannel)) {
+            ESP_LOGI(TAG, "WiFi initialized");
+            wifiInitialized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize WiFi");
+        }
+    }
+    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    if (leds.canShow()) {
+        leds.show();
+    }
+
+    // Configure ESP-NOW
+    static bool espNowInitalized = false;
+    if (!espNowInitalized) {
+        if (adapterESPNow.begin()) {
+            ESP_LOGI(TAG, "ESP-NOW initialized.");
+            espNowInitalized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+        }
+    }
+    leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    if (leds.canShow()) {
+        leds.show();
+    }
+
+    // Configure ESP-NOW Peers
+    static bool peerRegistered = false;
+    if (!peerRegistered) {
+        if (adapterESPNow.registerPeer(WTbNetConfig::NACELLE_MAC)) {
+            ESP_LOGI(TAG, "Registered peer");
+            peerRegistered = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to register peer");
+        }
+    }
+    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    if (leds.canShow()) {
+        leds.show();
+    }
+
+    // Sync Time // FIXME! - Load accesses fault
+    static bool timeSynced = false;
+    if (!timeSynced) {
+        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+            ESP_LOGI(TAG, "Time sync initialized successfully");
+            timeSynced = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize time sync");
+        }
+    }
+    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    if (leds.canShow()) {
+        leds.show();
+    }
+
+    // Print MAC Address // todo - verify
+    ESP_LOGI(
+        TAG, "MAC Address: %s",
+        AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
+    leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    if (leds.canShow()) {
+        leds.show();
+    }
+
+    // TODO: Check ESP-NOW impl against last years
+    // TODO: Configure response handler, load server
+
     loadConfigured = configureLoad();
+    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    if (leds.canShow()) {
+        leds.show();
+    }
 
     // Set up tasks
-    xTaskCreate(vTaskStatusLED, // Task function
-                "Status LED",   // Name of the task (for debugging)
-                1024,           // Stack size (in words, not bytes)
-                nullptr,        // Task input parameter
-                1,              // Priority of the task
-                nullptr         // Task handle
-    );
-    xTaskCreate(vTaskConfigure, "Cfg", 1024, nullptr, 50, nullptr);
+    static bool tasksSetup = false;
+    if (!tasksSetup) {
+        for (TaskInfo &taskDesc : taskDescriptions) {
+            if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
+                ESP_LOGW(TAG, "Stack size not word aligned");
+            }
+            // Syntax: xTaskCreate(Task function, Name of the task (for
+            // debugging), Stack size (in words, not bytes), Task input
+            // parameter, Priority of the task, Task handle)
+            BaseType_t result =
+                xTaskCreate(taskDesc.function, taskDesc.name,
+                            taskDesc.stackSize_bytes, taskDesc.pvParameters,
+                            taskDesc.priority, &(taskDesc.pxCreatedTask));
+            if (result != pdPASS) {
+                ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
+            } else {
+                ESP_LOGV(
+                    TAG,
+                    "Created task %s with priority %u and stack size %u bytes",
+                    taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
+            }
+        }
+        tasksSetup = true;
+
+        // pitchPIDController.enable(
+        //     0.0f, 1500.0f); // todo - just a quick performances test
+
+        ESP_LOGI(TAG, "Setup complete!");
+    }
 }
 
 /**
