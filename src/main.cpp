@@ -3,24 +3,87 @@
 // https://pvs-studio.com
 
 /* Includes */
-#include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+// #include "2026Core/Net/Net-Application/Telnet.hpp"
+// #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
-#include "CommonConfig.hpp"
-#include "esp_log.h"
+#include "2026Core/CommonConfig.hpp"
+#include "2026Core/Net/Net-Application/NTP.hpp"
+#include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
+#include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#include "LoadConfig.hpp"
+#include "MCP23008T.hpp"
+// #include <2026C0re/Net/Net-Application/OTA.hpp>
 #include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
-#include "MCP23008T.hpp"
+#include <esp_log.h>
+#include <temperature_sensor.h>
 
 /* Config */
 static constexpr char *TAG = "LoMa";
 static constexpr uint8_t LOAD_ADDR = 0x00; // I2C address
 
-/* Global Objects */
+// MARK: Function Prototypes
+// Main Tasks
+void vTaskUpdateFSM(void *pvParameters);
+void vTaskPollSensors(void *pvParameters);
+void vTaskAdjustLoad(void *pvParameters);
+void vTaskRecvData(void *pvParameters);
+
+void vTaskSendData(void *pvParameters);
+void vTaskConfigure(void *pvParameters);
+void vTaskStatusLED(void *pvParameters);
+void vTaskLogData(void *pvParameters);
+
+// Optional Tasks
+void vTaskTelnet(void *pvParameters);
+void vTaskOTA(void *pvParameters);
+
+// Helper Functions
+bool configureLoad();
+
+// MARK:  Global Objects
+struct TaskInfo {
+    const TaskFunction_t function;
+    const char *const name;
+    const configSTACK_DEPTH_TYPE stackSize_bytes = 1024;
+    void *const pvParameters = nullptr;
+    const UBaseType_t priority; // Note: Task priority must be <25 for some
+                                // reason, possible bug
+    TaskHandle_t pxCreatedTask = nullptr;
+    UBaseType_t minFreeStack_Bytes = 0;
+};
+constexpr uint_fast8_t NUM_USR_TASKS = 8; // Must match number of entires!
+// Arduino Loop has priority 1
+// TODO: Note: Task priority must be <25
+etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
+    TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 25, nullptr, 0},
+    TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0},
+    TaskInfo{vTaskAdjustLoad, "ALD", 4096, nullptr, 20, nullptr, 0},
+    TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0},
+
+    TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0},
+    TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0},
+    TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
+    TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
+enum TASK_IDS : uint_fast8_t {
+    TID_FSM = 0,
+    TID_POLL,
+    TID_ADJLD,
+    TID_RECV,
+    TID_SEND,
+    TID_CFG,
+    TID_LED,
+    TID_LOG
+};
+
+AdapterWLAN adapterWLAN = AdapterWLAN();
+AdapterESPNow adapterESPNow = AdapterESPNow();
+SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 Adafruit_NeoPixel leds(1, UM_PROS3::LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
-MCP23008T loadDevice(LOAD_ADDR, &Wire);
+MCP23008T loadDevice(LOAD::I2C_ADDRESS, &Wire);
 bool loadConfigured = false;
 
-/* Function Prototypes */
+// todo: move
 bool configureLoad() {
     if (!loadDevice.begin()) {
         ESP_LOGE(TAG, "Failed to initialize MCP23008T device at 0x%02X",
