@@ -1,0 +1,13 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "customizations": {
+        "codespaces": {
+            "repositories": {
+                "calpolywindpower/2026-Controls_Core": {
+                    "permissions": "write-all"
+                }
+            }
+        }
+    },
+    "postCreateCommand": "git submodule update --init"
+}
