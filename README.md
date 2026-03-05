@@ -2,6 +2,14 @@
 
 Load specific code fore 2026 Controls.
 
+## Actions Status
+
+[![Dependabot Updates](https://github.com/CalPolyWindPower/2026-Controls_Load/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/CalPolyWindPower/2026-Controls_Load/actions/workflows/dependabot/dependabot-updates)
+
+[![Generate Documentation](https://github.com/CalPolyWindPower/2026-Controls_Load/actions/workflows/Documentation2.yml/badge.svg)](https://github.com/CalPolyWindPower/2026-Controls_Load/actions/workflows/Documentation2.yml)
+
+[![PlatformIO CI](https://github.com/CalPolyWindPower/2026-Controls_Load/actions/workflows/platformio.yml/badge.svg)](https://github.com/CalPolyWindPower/2026-Controls_Load/actions/workflows/platformio.yml)
+
 ## Folder/ Directory Structure
 
 - `.github` - GitHub config
