@@ -17,6 +17,58 @@
                 "kind": "build",
                 "isDefault": false
             }
+        },
+        {
+            "label": "Init Git Submodules (non-recursive)",
+            "type": "shell",
+            "command": "git submodule update --init",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Platformio Remote: Initalzie Remote Agent",
+            "type": "shell",
+            "command": "pio remote agent start",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "hide": true
+        },
+        {
+            "label": "Platformio Remote: Build & Upload (GitHub Codespaces)",
+            "type": "shell",
+            "command": "/home/codespace/.platformio/penv/bin/pio remote run -t upload",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Platformio Remote: Monitor (GitHub Codespaces)",
+            "type": "shell",
+            "command": "/home/codespace/.platformio/penv/bin/pio remote run -t monitor",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "hide": true
+        },
+        {
+            "label": "Platformio Remote: Build, Upload & Monitor (GitHub Codespaces)",
+            "type": "shell",
+            "dependsOn": [
+                "Platformio Remote: Build & Upload (GitHub Codespaces)",
+                "Platformio Remote: Monitor (GitHub Codespaces)"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "hide": true
         }
     ]
 }
