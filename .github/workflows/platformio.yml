@@ -19,18 +19,24 @@ jobs:
         with:
           path: |
             ~/.cache/pip/
-            # ~/.platformio/.cache/
-            ~/.platformio/
-            /opt/hostedtoolcache/Python/
-            .pio/
-          key: ${{ runner.os }}-pio-2026
+            # /opt/hostedtoolcache/Python/
+          key: ${{ runner.os }}-pio-2026-python
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            # ~/.platformio/.cache/
+            ~/.platformio/
+          key: ${{ runner.os }}-pio-2026-platformio
       - name: Install PlatformIO Core
         run: pip install --upgrade platformio
-
+      - uses: actions/cache@v4
+        with:
+          path: |
+            .pio/
+          key: ${{ runner.os }}-pio-2026-Nacelle-build
       - name: Build PlatformIO Project
         run: pio run
 
-        
