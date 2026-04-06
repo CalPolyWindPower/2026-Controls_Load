@@ -360,20 +360,21 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        if (!loadConfigured) {
-            if (loadDevice.begin()) {
-                ESP_LOGI(TAG, "MCP23008T initialized successfully.");
-                loadConfigured = true;
-            } else {
-                ESP_LOGE(
-                    TAG,
-                    "Failed to initialize MCP23008T. Retrying in 5 seconds...");
-                delay(5000);
-            }
-        } else {
-            // Sleep for 30 seconds
-            delay(RUN::TASK_INTERVALS::TI_CFG_ms);
-        }
+        // if (!loadConfigured) {
+        //     if (loadDevice.begin()) { // FIXME!
+        //         ESP_LOGI(TAG, "MCP23008T initialized successfully.");
+        //         loadConfigured = true;
+        //     } else {
+        //         ESP_LOGE(
+        //             TAG,
+        //             "Failed to initialize MCP23008T. Retrying in 5
+        //             seconds...");
+        //         delay(5000);
+        //     }
+        // } else {
+        // Sleep for 30 seconds
+        delay(RUN::TASK_INTERVALS::TI_CFG_ms);
+        // }
     }
 }
 
