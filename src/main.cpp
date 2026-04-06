@@ -465,7 +465,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                  uxTaskGetNumberOfTasks());
 
         constexpr uint_fast8_t REC_BYTES_PER_TASK = 40;
-        constexpr uint_fast8_t NUM_ESP_TASKS = 8;
+        constexpr uint_fast8_t NUM_ESP_TASKS =
+            11; // TODO: Why was this set to 8 and why did I need to increase it
+                // by 3?
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
         char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
