@@ -1,0 +1,29 @@
+ELF file SHA256: 52f791024
+
+E (1146) esp_core_dump_flash: Core dump flash config is corrupted! CRC=0x7bd5c66f instead of 0x0
+E (1155) esp_core_dump_elf: Elf write init failed!
+E (1159) esp_core_dump_common: Core dump write failed with error=-1
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037d759
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x10cc
+load:0x403c8700,len:0xc2c
+load:0x403cb700,len:0x30c0
+entry 0x403c88b8
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[     6][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    11][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    16][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+
+assert failed: prvSelectHighestPriorityTaskSMP tasks.c:3642 (xTaskScheduled == ( ( BaseType_t ) 1 ))
+
+
+Backtrace: 0x4037d5a5:0x3fceaf80 0x4037d56d:0x3fceafa0 0x4038488e:0x3fceafc0 0x4037fbef:0x3fceb100 0x4038057c:0x3fceb130 0x4200d990:0x3fceb150 0x4200e476:0x3fceb170 0x4201bf9e:0x3fceb2e0 0x40375d3e:0x3fceb310 0x403ccd59:0x3fceb340 0x403cd115:0x3fceb380 0x403c8925:0x3fceb4b0 0x40045c01:0x3fceb570 0x40043ab6:0x3fceb6f0 0x40034c45:0x3fceb710
+
+
+
+
