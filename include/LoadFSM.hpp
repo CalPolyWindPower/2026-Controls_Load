@@ -21,7 +21,7 @@ class LoadFSM {
      * @param load The LoadContainer object that tracks the overall state
      * of the load
      */
-    LoadFSM(LoadContainer load) : load(load) {
+    LoadFSM(LoadContainer &load) : load(load) {
         // if (!currentState.is_lock_free()) {
         //     ESP_LOGE(TAG,
         //              "Atomic operations on uint_fast8_t are not lock-free on
@@ -143,8 +143,8 @@ class LoadFSM {
         return UPDATE_RESULT::ERROR;
     }
 
-  private:              // MARK: Private
-    LoadContainer load; // todo switch to by reference
+  private:               // MARK: Private
+    LoadContainer &load; // todo switch to by reference
 
     /**
      * @brief Check for C++17 support, which allows us to verify if std::atomic
