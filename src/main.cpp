@@ -19,23 +19,31 @@
 #include <temperature_sensor.h>
 
 /* Config */
-static constexpr char *TAG = "LoMa";
+static constexpr const char *TAG = "LoMa";
 
 // MARK: Function Prototypes
 // Main Tasks
-void vTaskUpdateFSM(void *pvParameters);
-void vTaskPollSensors(void *pvParameters);
-void vTaskAdjustLoad(void *pvParameters);
-void vTaskRecvData(void *pvParameters);
+void
+vTaskUpdateFSM([[maybe_unused]] void *pvParameters);
+void
+vTaskPollSensors([[maybe_unused]] void *pvParameters);
+void
+vTaskAdjustLoad([[maybe_unused]] void *pvParameters);
+void
+vTaskRecvData([[maybe_unused]] void *pvParameters);
 
-void vTaskSendData(void *pvParameters);
-void vTaskConfigure(void *pvParameters);
-void vTaskStatusLED(void *pvParameters);
-void vTaskLogData(void *pvParameters);
+[[noreturn]] void
+vTaskSendData([[maybe_unused]] void *pvParameters);
+[[noreturn]] void
+vTaskConfigure([[maybe_unused]] void *pvParameters);
+[[noreturn]] void
+vTaskStatusLED([[maybe_unused]] void *pvParameters);
+[[noreturn]] void
+vTaskLogData([[maybe_unused]] void *pvParameters);
 
 // Optional Tasks
-void vTaskTelnet(void *pvParameters);
-void vTaskOTA(void *pvParameters);
+[[noreturn]] void vTaskTelnet([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskOTA([[maybe_unused]] void *pvParameters);
 
 // Helper Functions
 bool configureLoad();
@@ -119,6 +127,21 @@ bool configureLoad() {
     return true;
 }
 
+// todo: INA260 addresses: INA260:	0x40, 0x41, 0x44, 0x45
+
+/**
+ * @brief Helper - Checks canShow() and then shows them.
+ * @return Whether the LEDs were updated
+ */
+inline bool showLEDsIfReady() {
+    if (leds.canShow()) {
+        leds.show();
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /**
  * MARK: Setup
  * put your setup code here, to run once:
@@ -146,22 +169,16 @@ void setup() {
         // No need to save power here
         leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
     }
-    if (leds.canShow()) {
-        leds.show();
-    }
+    (void)showLEDsIfReady();
 
     // Configure WiFi
     static bool wifiInitialized = false;
     if (!wifiInitialized) {
         leds.setPixelColor(0, 0x00, 0x00, 0xFF); // blue
-        if (leds.canShow()) {
-            leds.show();
-        }
+        (void)showLEDsIfReady();
         uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
         leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-        if (leds.canShow()) {
-            leds.show();
-        }
+        (void)showLEDsIfReady();
         ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
         if (adapterWLAN.begin(optimalChannel)) {
             ESP_LOGI(TAG, "WiFi initialized");
@@ -171,9 +188,7 @@ void setup() {
         }
     }
     leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    if (leds.canShow()) {
-        leds.show();
-    }
+    (void)showLEDsIfReady();
 
     // Configure ESP-NOW
     static bool espNowInitalized = false;
@@ -186,9 +201,7 @@ void setup() {
         }
     }
     leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-    if (leds.canShow()) {
-        leds.show();
-    }
+    (void)showLEDsIfReady();
 
     // Configure ESP-NOW Peers
     static bool peerRegistered = false;
@@ -201,9 +214,7 @@ void setup() {
         }
     }
     leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    if (leds.canShow()) {
-        leds.show();
-    }
+    (void)showLEDsIfReady();
 
     // Sync Time // FIXME! - Load accesses fault
     static bool timeSynced = false;
@@ -216,27 +227,21 @@ void setup() {
         }
     }
     leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    if (leds.canShow()) {
-        leds.show();
-    }
+    (void)showLEDsIfReady();
 
     // Print MAC Address // todo - verify
     ESP_LOGI(
         TAG, "MAC Address: %s",
         AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
     leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-    if (leds.canShow()) {
-        leds.show();
-    }
+    (void)showLEDsIfReady();
 
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
 
     loadConfigured = configureLoad();
     leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    if (leds.canShow()) {
-        leds.show();
-    }
+    (void)showLEDsIfReady();
 
     // Set up tasks
     static bool tasksSetup = false;
@@ -280,7 +285,8 @@ void setup() {
 /**
  * @brief Task to control run the FSM
  */
-void vTaskUpdateFSM(void *pvParameters) {
+[[noreturn]] void
+vTaskUpdateFSM([[maybe_unused]] void *pvParameters) {
     while (true) {
     }
 }
@@ -288,7 +294,8 @@ void vTaskUpdateFSM(void *pvParameters) {
 /**
  * @brief Task to poll high priority sensors
  */
-void vTaskPollSensors(void *pvParameters) {
+[[noreturn]] void
+vTaskPollSensors([[maybe_unused]] void *pvParameters) {
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
     }
@@ -297,7 +304,8 @@ void vTaskPollSensors(void *pvParameters) {
 /**
  * @brief Task to control the pitch actuator
  */
-void vTaskAdjustLoad(void *pvParameters) {
+[[noreturn]] void
+vTaskAdjustLoad([[maybe_unused]] void *pvParameters) {
     while (true) {
         static int i = 0;
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
@@ -311,7 +319,8 @@ void vTaskAdjustLoad(void *pvParameters) {
 /**
  * @brief Task to control run the variable load
  */
-// void vTaskVarLoad(void *pvParameters) {
+// [[noreturn]] void vTaskVarLoad([[maybe_unused]] void
+// *pvParameters) {
 //     while (true) {
 //     }
 // }
@@ -321,7 +330,8 @@ void vTaskAdjustLoad(void *pvParameters) {
 /**
  * @brief Task to handle inbound data that has been queued
  */
-void vTaskRecvData(void *pvParameters) {
+[[noreturn]] void
+vTaskRecvData([[maybe_unused]] void *pvParameters) {
     while (true) {
         if (false) {
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
@@ -335,7 +345,8 @@ void vTaskRecvData(void *pvParameters) {
 /**
  * @brief Task to handle inbound data that has been queued
  */
-// void vTaskHandleInboundData(void *pvParameters) {
+// [[noreturn]] void vTaskHandleInboundData([[maybe_unused]] void
+// *pvParameters) {
 //     while (true) {
 //     }
 // }
@@ -343,7 +354,8 @@ void vTaskRecvData(void *pvParameters) {
 /**
  * @brief Task to handle outbound data that has been queued
  */
-// void vTaskHandleOutboundData(void *pvParameters) {
+// [[noreturn]] void vTaskHandleOutboundData([[maybe_unused]] void
+// *pvParameters) {
 //     while (true) {
 //     }
 // }
@@ -351,7 +363,8 @@ void vTaskRecvData(void *pvParameters) {
 /**
  * @brief Task to handle outbound data that has been queued
  */
-void vTaskSendData(void *pvParameters) {
+[[noreturn]] void
+vTaskSendData([[maybe_unused]] void *pvParameters) {
     while (true) {
         if (false) {
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
@@ -364,7 +377,8 @@ void vTaskSendData(void *pvParameters) {
 
 // MARK: Utility Tasks
 
-void vTaskConfigure(void *pvParameters) {
+[[noreturn]] void
+vTaskConfigure([[maybe_unused]] void *pvParameters) {
     while (true) {
         if (!loadConfigured) {
             if (loadDevice.begin()) {
@@ -386,7 +400,8 @@ void vTaskConfigure(void *pvParameters) {
 /**
  * @brief Task to handle Telnet connections
  */
-void vTaskTelnet(void *pvParameters) {
+[[noreturn]] void
+vTaskTelnet([[maybe_unused]] void *pvParameters) {
     while (true) {
         // TELNET::loop(); // todo
         delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
@@ -397,7 +412,7 @@ void vTaskTelnet(void *pvParameters) {
  * @brief Task to handle ElegantOTA connections
  * @deprecated Just use a USB cable if possible
  */
-void vTaskOTA(void *pvParameters) {
+[[noreturn]] void vTaskOTA([[maybe_unused]] void *pvParameters) {
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }
@@ -405,7 +420,8 @@ void vTaskOTA(void *pvParameters) {
 
 // MARK: Status Tasks
 
-void vTaskStatusLED(void *pvParameters) {
+[[noreturn]] void
+vTaskStatusLED([[maybe_unused]] void *pvParameters) {
     while (true) {
         ESP_LOGV(TAG, "vTSL");
         leds.setPixelColor(0, 0x00, 0xFF, 0x00); // Green
@@ -444,7 +460,8 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 /**
  * @brief Task to log data
  */
-void vTaskLogData(void *pvParameters) {
+[[noreturn]] void
+vTaskLogData([[maybe_unused]] void *pvParameters) {
     /**
      * @See
      * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
