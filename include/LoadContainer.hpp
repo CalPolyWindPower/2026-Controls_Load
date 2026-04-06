@@ -4,6 +4,7 @@
 
 #include "LoadConfig.hpp"
 #include "LoadTasks.hpp"
+#include "MCP23008T.hpp"
 
 /**
  * @brief Class to manage the container for load data
@@ -51,7 +52,7 @@ class LoadContainer {
         TID_LOG
     };
 
-    LoadContainer() = default;
+    LoadContainer(MCP23008T &loadDevice) : loadDevice(loadDevice) {}
     ~LoadContainer() = default;
 
     inline bool getSafetyFlag() const { return safetyFlag; }
@@ -66,10 +67,13 @@ class LoadContainer {
     inline void updatePowerPositive(bool powerPositive) {
         this->powerPositive = powerPositive;
     }
+    inline void setLoadGPIO(uint_fast8_t value) {
+        loadDevice.setGPIO((uint32_t)value);
+    }
 
   private:
     // INA260&
-    // loa&
+    MCP23008T &loadDevice;
 
     bool safetyFlag = false; // todo
     bool powerPositive = false;

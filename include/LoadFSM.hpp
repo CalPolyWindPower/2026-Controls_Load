@@ -78,7 +78,7 @@ class LoadFSM {
             vTaskSuspend(load.mainTaskDescriptions
                              [LoadContainer::TASK_IDS::TID_ADJUST_LOAD]
                                  .pxHandle);
-            // todo: turn off load
+            load.setLoadGPIO(0b0000'0000); // todo: one inverted?
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sESTOP) &&
@@ -97,7 +97,7 @@ class LoadFSM {
             vTaskSuspend(load.mainTaskDescriptions
                              [LoadContainer::TASK_IDS::TID_ADJUST_LOAD]
                                  .pxHandle);
-            // todo: turn off load (possibly a second time)
+            load.setLoadGPIO(0b0000'0000); // todo: one inverted?
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRST) &&
@@ -123,8 +123,7 @@ class LoadFSM {
             currentState = FSMCommon::States::sRunLoad;
 
             // Nacelle can detect this on it's own
-            // TODO: enable load
-            vTaskResume(
+            vTaskResume( // todo: check load logic
                 load.mainTaskDescriptions
                     [LoadContainer::TASK_IDS::TID_ADJUST_LOAD]
                         .pxHandle); // todo: better way to signal load task?

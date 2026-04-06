@@ -42,13 +42,14 @@ AdapterWLAN adapterWLAN;
 AdapterESPNow adapterESPNow;
 // SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 SyncedClock netClock(adapterESPNow); // todo
-LoadContainer load;
-LoadFSM loadFSM(load);
 
 Adafruit_NeoPixel leds(1, UM_PROS3::LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
 MCP23008T loadDevice(static_cast<MCP23008T::I2C_ADDRESS>(LOAD::I2C_ADDRESS),
                      &Wire);
 bool loadConfigured = false;
+
+LoadContainer load(loadDevice);
+LoadFSM loadFSM(load);
 
 // todo: move
 bool configureLoad() {
