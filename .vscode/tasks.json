@@ -28,6 +28,42 @@
             }
         },
         {
+            "label": "Platformio: Check (Linux)",
+            "type": "shell",
+            "command": "~/.platformio/penv/bin/pio check",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Platformio: Check (Windows)",
+            "type": "shell",
+            "command": "${env:USERPROFILE}\\.platformio\\penv\\Scripts\\pio check",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Platformio: Generate Compilation Database (Linux)",
+            "type": "shell",
+            "command": "~/.platformio/penv/bin/pio run --target compiledb ",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Platformio: Generate Compilation Database (Windows)",
+            "type": "shell",
+            "command": "${env:USERPROFILE}\\.platformio\\penv\\Scripts\\pio run --target compiledb ",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
             "label": "Platformio Remote: Initalzie Remote Agent",
             "type": "shell",
             "command": "pio remote agent start",
