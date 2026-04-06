@@ -43,13 +43,19 @@ class LoadContainer {
      * @SupressWarnings("cpp:S3642") // Does not work
      */
     enum TASK_IDS : uint_fast8_t { // NOSONAR
-        TID_POLL = 0,
+        TID_FSM = 0,
+        TID_POLL,
         TID_ADJUST_LOAD,
         TID_RECV,
         TID_SEND,
         TID_CFG,
         TID_LED,
         TID_LOG
+    };
+
+    enum OPT_TASK_IDS : uint_fast8_t { // NOSONAR
+        TID_TELNET = 0,
+        TID_OTA
     };
 
     LoadContainer(MCP23008T &loadDevice) : loadDevice(loadDevice) {}

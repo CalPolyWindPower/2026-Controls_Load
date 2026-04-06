@@ -226,6 +226,19 @@ void setup() {
         // pitchPIDController.enable(
         //     0.0f, 1500.0f); // todo - just a quick performances test
 
+        // Configure FSM
+        LoadFSM::UPDATE_RESULT result = loadFSM.updateState();
+        if (result == LoadFSM::UPDATE_RESULT::ERROR) {
+            ESP_LOGE(TAG, "Error during FSM init., %d", (uint_fast8_t)result);
+        } else if (result == LoadFSM::UPDATE_RESULT::STATE_CHANGED) {
+            ESP_LOGI(TAG, "Initialized FSM to state %d",
+                     (uint_fast8_t)loadFSM.getCurrentState());
+        } else if (result == LoadFSM::UPDATE_RESULT::NO_CHANGE) {
+            ESP_LOGE(TAG, "Failed to enter a valid state");
+        } else {
+            ESP_LOGE(TAG, "Unknown FSM init. result: %d", (uint_fast8_t)result);
+        }
+
         ESP_LOGI(TAG, "Setup complete!");
     }
 }
