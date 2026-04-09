@@ -203,27 +203,44 @@ void setup() {
     static bool tasksSetup = false;
     if (!tasksSetup) {
         ESP_LOGI(TAG, "Setting up tasks...");
-        for (TaskInfo &taskDesc : load.mainTaskDescriptions) {
-            if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
-                ESP_LOGW(TAG, "Stack size not word aligned");
-            }
-            if (taskDesc.function == nullptr) {
-                ESP_LOGE(TAG, "Caught null task description!");
+        for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
+            if (taskDesc == nullptr) {
+                ESP_LOGE(TAG, "Caught null task description pointer!");
                 continue;
+            }
+
+            if (taskDesc->function == nullptr) {
+                ESP_LOGE(TAG, "Caught null task function!");
+                continue;
+            }
+
+            if (taskDesc->stackSize_bytes % sizeof(StackType_t) != 0) {
+                ESP_LOGE(TAG, "Stack size not aligned");
+                continue;
+            }
+
+            /**
+             * @details For efficiency, stacks should be aligned to the fastest
+             * data type available
+             */
+            if (taskDesc->stackSize_bytes % sizeof(uint_fast8_t) != 0) {
+                ESP_LOGW(TAG, "Stack size not word aligned");
             }
             // Syntax: xTaskCreate(Task function, Name of the task (for
             // debugging), Stack size (in words, not bytes), Task input
             // parameter, Priority of the task, Task handle)
-            BaseType_t result = xTaskCreate(
-                taskDesc.function, taskDesc.name, taskDesc.stackSize_bytes,
-                taskDesc.pvParameters, taskDesc.priority, &(taskDesc.pxHandle));
+            BaseType_t result =
+                xTaskCreate(taskDesc->function, taskDesc->name,
+                            taskDesc->stackSize_bytes, taskDesc->pvParameters,
+                            taskDesc->priority, &(taskDesc->pxHandle));
             if (result != pdPASS) {
-                ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
+                ESP_LOGE(TAG, "Failed to create task %s", taskDesc->name);
             } else {
                 ESP_LOGD(
                     TAG,
                     "Created task %s with priority %u and stack size %u bytes",
-                    taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
+                    taskDesc->name, taskDesc->priority,
+                    taskDesc->stackSize_bytes);
             }
         }
         tasksSetup = true;
@@ -318,9 +335,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
         } else {
             // Suspend until reenabled from interrupt
-            vTaskSuspend(
-                load.mainTaskDescriptions[LoadContainer::TASK_IDS::TID_RECV]
-                    .pxHandle);
+            vTaskSuspend(load.tRecv.pxHandle);
         }
     }
 }
@@ -353,9 +368,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
         } else {
             // Suspend until reenabled
-            vTaskSuspend(
-                load.mainTaskDescriptions[LoadContainer::TASK_IDS::TID_SEND]
-                    .pxHandle);
+            vTaskSuspend(load.tSend.pxHandle);
         }
     }
 }
@@ -502,12 +515,23 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
             Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
 
-            for (TaskInfo &taskDesc : load.mainTaskDescriptions) {
-                taskDesc.minFreeStack_Bytes =
-                    uxTaskGetStackHighWaterMark(taskDesc.pxHandle);
-                ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
-                         taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
-                         taskDesc.minFreeStack_Bytes);
+            for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
+                if (taskDesc == nullptr) {
+                    ESP_LOGE(TAG, "Caught null task description pointer!");
+                    continue;
+                }
+
+                if (taskDesc->pxHandle == nullptr) {
+                    ESP_LOGE(TAG, "Caught null task handle!");
+                    continue;
+                }
+
+                taskDesc->minFreeStack_Bytes =
+                    uxTaskGetStackHighWaterMark(taskDesc->pxHandle);
+                ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
+                         taskDesc->stackSize_bytes -
+                             taskDesc->minFreeStack_Bytes,
+                         taskDesc->minFreeStack_Bytes);
             }
             Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
@@ -524,13 +548,13 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         //     }
         //     delay(LOG_ITEM_INTERVAL_MS);
 
-        //     for (TaskInfo &taskDesc : load.mainTaskDescriptions) {
-        //         taskDesc.minFreeStack_Bytes =
-        //             uxTaskGetStackHighWaterMark(taskDesc.pxHandle);
-        //         ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
-        //                  taskDesc.stackSize_bytes -
-        //                  taskDesc.minFreeStack_Bytes,
-        //                  taskDesc.minFreeStack_Bytes);
+        //     for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
+        //         taskDesc->minFreeStack_Bytes =
+        //             uxTaskGetStackHighWaterMark(taskDesc->pxHandle);
+        //         ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
+        //                  taskDesc->stackSize_bytes -
+        //                  taskDesc->minFreeStack_Bytes,
+        //                  taskDesc->minFreeStack_Bytes);
         //     }
         //     delay(LOG_ITEM_INTERVAL_MS);
         // }

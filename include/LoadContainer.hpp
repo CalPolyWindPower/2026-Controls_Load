@@ -14,49 +14,29 @@ class LoadContainer {
     // constexpr uint_fast8_t NUM_MAIN_TASKS = 1;
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
-    etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
-        TaskInfo{vTaskUpdateFSM, "FSM", 1024, nullptr, 24, nullptr, 0,
-                 false}, // 0
-        TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
-                 false}, // 1
-        TaskInfo{vTaskAdjustLoad, "AdLd", 2048, nullptr, 20, nullptr, 0,
-                 false}, // 2
-        TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0,
-                 false}, // 3
 
-        TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0,
-                 false}, // 4
-        TaskInfo{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0,
-                 false}, // 5
-        TaskInfo{vTaskStatusLED, "LED", 2048, nullptr, 2, nullptr, 0,
-                 false},                                                   // 6
-        TaskInfo{vTLog, "Log", 4096, nullptr, 1, nullptr, 0, false} // 7
-    };
+    TaskInfo tFSM{vTaskUpdateFSM, "FSM", 1024, nullptr, 24, nullptr, 0, false};
+    TaskInfo tPoll{vTaskPollSensors, "Poll", 2048, nullptr, 20,
+                   nullptr,          0,      false};
+    TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048, nullptr, 20,
+                         nullptr,         0,      false};
+    TaskInfo tRecv{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0, false};
 
-    etl::array<TaskInfo, NUM_OPTIONAL_TASKS> optionalTaskDescriptions = {
-        TaskInfo{vTaskTelnet, "Telnet", 4096, nullptr, 1, nullptr, 0,
-                 false},                                                // 0
-        TaskInfo{vTaskOTA, "OTA", 4096, nullptr, 1, nullptr, 0, false}, // 1
-    };
+    TaskInfo tSend{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0, false};
+    TaskInfo tCfg{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0, false};
+    TaskInfo tLED{vTaskStatusLED, "LED", 2048, nullptr, 2, nullptr, 0, false};
+    TaskInfo tLog{vTLog, "Log", 4096, nullptr, 1, nullptr, 0, false};
+    // namespace TaskInfo
 
-    /**
-     * @SupressWarnings("cpp:S3642") // Does not work
-     */
-    enum TASK_IDS : uint_fast8_t { // NOSONAR
-        TID_FSM = 0,
-        TID_POLL,
-        TID_ADJUST_LOAD,
-        TID_RECV,
-        TID_SEND,
-        TID_CFG,
-        TID_LED,
-        TID_LOG
-    };
+    etl::array<TaskInfo *, NUM_MAIN_TASKS> mainTaskDescriptions = {
+        &tFSM, &tPoll, &tAdjustLoad, &tRecv, &tSend, &tCfg, &tLED, &tLog};
 
-    enum OPT_TASK_IDS : uint_fast8_t { // NOSONAR
-        TID_TELNET = 0,
-        TID_OTA
-    };
+    TaskInfo tTelnet{vTaskTelnet, "Telnet", 4096, nullptr,
+                     1,           nullptr,  0,    false};
+    TaskInfo tOTA{vTaskOTA, "OTA", 4096, nullptr, 1, nullptr, 0, false};
+
+    etl::array<TaskInfo *, NUM_OPTIONAL_TASKS> optionalTaskDescriptions = {
+        &tTelnet, &tOTA};
 
     LoadContainer(MCP23008T &loadDevice) : loadDevice(loadDevice) {}
     ~LoadContainer() = default;

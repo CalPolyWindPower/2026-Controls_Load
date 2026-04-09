@@ -64,9 +64,7 @@ class LoadFSM {
             currentState = FSMCommon::States::sESTOP;
 
             // TODO: Signal nacelle to ESTOP (setSafetyFlag)
-            vTaskSuspend(load.mainTaskDescriptions
-                             [LoadContainer::TASK_IDS::TID_ADJUST_LOAD]
-                                 .pxHandle);
+            vTaskSuspend(load.tAdjustLoad.pxHandle);
             load.setLoadGPIO(0b0000'0000); // todo: one inverted?
 
             return UPDATE_RESULT::STATE_CHANGED;
@@ -83,9 +81,7 @@ class LoadFSM {
             currentState = FSMCommon::States::sRST;
 
             // Signal Nacelle (unset safetyFlag)
-            vTaskSuspend(load.mainTaskDescriptions
-                             [LoadContainer::TASK_IDS::TID_ADJUST_LOAD]
-                                 .pxHandle);
+            vTaskSuspend(load.tAdjustLoad.pxHandle);
             load.setLoadGPIO(0b0000'0000); // todo: one inverted?
 
             return UPDATE_RESULT::STATE_CHANGED;
@@ -112,10 +108,9 @@ class LoadFSM {
             currentState = FSMCommon::States::sRunLoad;
 
             // Nacelle can detect this on it's own
-            vTaskResume( // todo: check load logic
-                load.mainTaskDescriptions
-                    [LoadContainer::TASK_IDS::TID_ADJUST_LOAD]
-                        .pxHandle); // todo: better way to signal load task?
+            // todo: check load logic
+            // todo: better way to signal load task?
+            vTaskResume(load.tAdjustLoad.pxHandle);
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRunLoad) &&
