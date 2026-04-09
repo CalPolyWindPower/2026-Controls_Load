@@ -202,9 +202,14 @@ void setup() {
     // Set up tasks
     static bool tasksSetup = false;
     if (!tasksSetup) {
+        ESP_LOGI(TAG, "Setting up tasks...");
         for (TaskInfo &taskDesc : load.mainTaskDescriptions) {
             if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
                 ESP_LOGW(TAG, "Stack size not word aligned");
+            }
+            if (taskDesc.function == nullptr) {
+                ESP_LOGE(TAG, "Caught null task description!");
+                continue;
             }
             // Syntax: xTaskCreate(Task function, Name of the task (for
             // debugging), Stack size (in words, not bytes), Task input
@@ -215,7 +220,7 @@ void setup() {
             if (result != pdPASS) {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
             } else {
-                ESP_LOGV(
+                ESP_LOGD(
                     TAG,
                     "Created task %s with priority %u and stack size %u bytes",
                     taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
@@ -461,8 +466,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 
         ESP_LOGD(TAG, "Logging Data:");
 
-        ESP_LOGI(TAG, "Num tasks reported by FreeRTOS: %u",
-                 uxTaskGetNumberOfTasks());
+        ESP_LOGI(TAG, "FreeRTOS Tasks: %u", uxTaskGetNumberOfTasks());
 
         constexpr uint_fast8_t REC_BYTES_PER_TASK = 40;
         constexpr uint_fast8_t NUM_ESP_TASKS =
@@ -477,13 +481,25 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                 "Number of tasks (%d) exceeds expected max (%d), skipping to "
                 "prevent memory corruption",
                 uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
+            delay(LOG_ITEM_INTERVAL_MS);
         } else {
+            // } else if (statsBuffer[0] == '\0') {
+            // Refresh stats buffer
+
             // TODO: Not recommended in production
             vTaskGetRunTimeStats(statsBuffer);
             statsBuffer[STATS_BUFFER_SIZE - 1] =
                 '\0'; // hard cap, avoid over-read
             // uxTaskGetSystemState();
+            size_t usedBytes = strnlen(statsBuffer, STATS_BUFFER_SIZE);
+            ESP_LOGD(TAG, "Task Buffer Used (%): %d",
+                     usedBytes * 100 / sizeof(statsBuffer));
+            ESP_LOGD(TAG, "Stats Buffer Used: %d bytes", usedBytes);
+            ESP_LOGD(TAG, "Stats Buffer Free: %d bytes",
+                     sizeof(statsBuffer) - usedBytes);
+            ESP_LOGD(TAG, "Stats Buffer Size: %d", sizeof(statsBuffer));
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+            Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
 
             for (TaskInfo &taskDesc : load.mainTaskDescriptions) {
@@ -493,11 +509,33 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                          taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
                          taskDesc.minFreeStack_Bytes);
             }
+            Serial.flush();
+            delay(LOG_ITEM_INTERVAL_MS);
         }
-        delay(LOG_ITEM_INTERVAL_MS);
+        // else {
+        //     // Print buffer
+        //     char *saveptr = nullptr;
+        //     char *line = strtok_r(statsBuffer, "\n", &saveptr);
+        //     delay(LOG_ITEM_INTERVAL_MS);
+        //     ESP_LOGI(TAG, "Task Info: %s:", line);
+        //     while (line != nullptr) {
+        //         line = strtok_r(nullptr, "\n", &saveptr);
+        //         ESP_LOGI(TAG, "Task Info: %s:", line);
+        //     }
+        //     delay(LOG_ITEM_INTERVAL_MS);
 
-        ESP_LOGI(TAG, "Minimum free heap: %u bytes",
-                 esp_get_minimum_free_heap_size());
+        //     for (TaskInfo &taskDesc : load.mainTaskDescriptions) {
+        //         taskDesc.minFreeStack_Bytes =
+        //             uxTaskGetStackHighWaterMark(taskDesc.pxHandle);
+        //         ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
+        //                  taskDesc.stackSize_bytes -
+        //                  taskDesc.minFreeStack_Bytes,
+        //                  taskDesc.minFreeStack_Bytes);
+        //     }
+        //     delay(LOG_ITEM_INTERVAL_MS);
+        // }
+
+        ESP_LOGI(TAG, "Min, free heap: %u b", esp_get_minimum_free_heap_size());
         delay(LOG_ITEM_INTERVAL_MS);
 
         // Enable temperature sensor
@@ -510,9 +548,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
         if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
-            ESP_LOGE(TAG, "Temperature out of bounds: %d dC", tempTrunc_C);
+            ESP_LOGE(TAG, "Temp. out of bounds: %d dC", tempTrunc_C);
         } else {
-            ESP_LOGI(TAG, "Temperature: %d dC", tempTrunc_C);
+            ESP_LOGI(TAG, "Temp.: %d dC", tempTrunc_C);
         }
         // Disable the temperature sensor if it is not needed and save the power
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
