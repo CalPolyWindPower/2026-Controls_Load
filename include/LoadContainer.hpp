@@ -30,7 +30,7 @@ class LoadContainer {
                  false}, // 5
         TaskInfo{vTaskStatusLED, "LED", 2048, nullptr, 2, nullptr, 0,
                  false},                                                   // 6
-        TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0, false} // 7
+        TaskInfo{vTLog, "Log", 4096, nullptr, 1, nullptr, 0, false} // 7
     };
 
     etl::array<TaskInfo, NUM_OPTIONAL_TASKS> optionalTaskDescriptions = {

@@ -445,7 +445,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 /**
  * @brief Task to log data
  */
-[[noreturn]] void vTaskLogData([[maybe_unused]] void *pvParameters) { // NOSONAR
+[[noreturn]] void vTLog([[maybe_unused]] void *pvParameters) { // NOSONAR
     /**
      * @See
      * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html

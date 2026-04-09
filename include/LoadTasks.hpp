@@ -51,7 +51,7 @@ constexpr uint_fast8_t NUM_OPTIONAL_TASKS = 2; // Must match number of entires!
 /**
  * @brief Task to log data
  */
-[[noreturn]] void vTaskLogData([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTLog([[maybe_unused]] void *pvParameters);
 
 // Optional Tasks
 /**
