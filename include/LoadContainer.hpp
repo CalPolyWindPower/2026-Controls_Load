@@ -28,7 +28,7 @@ class LoadContainer {
                  false}, // 4
         TaskInfo{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0,
                  false}, // 5
-        TaskInfo{vTaskStatusLED, "LED", 1024, nullptr, 2, nullptr, 0,
+        TaskInfo{vTaskStatusLED, "LED", 2048, nullptr, 2, nullptr, 0,
                  false},                                                   // 6
         TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0, false} // 7
     };
