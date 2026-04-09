@@ -18,6 +18,7 @@
 #include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
 #include "2026Core/Net/Net-Application/NTP.hpp"
 // #include "2026Core/Net/Net-Application/OTA.hpp"
+#include "2026Core/Logging.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
 #include "LoadContainer.hpp"
@@ -54,15 +55,15 @@ LoadFSM loadFSM(load);
 // todo: move
 bool configureLoad() {
     if (!loadDevice.begin()) {
-        ESP_LOGE(TAG, "Failed to initialize MCP23008T device at 0x%02X",
-                 loadDevice.getAddress());
+        LOGE_LOCKED(TAG, "Failed to initialize MCP23008T device at 0x%02X",
+                    loadDevice.getAddress());
         return false;
     }
 
     // First six pins outputs, made last two inputs as that's the default
     if (!loadDevice.setIODir(0b1100'0000)) {
-        ESP_LOGE(TAG, "Failed to set IODIR on MCP23008T at 0x%02X",
-                 loadDevice.getAddress());
+        LOGE_LOCKED(TAG, "Failed to set IODIR on MCP23008T at 0x%02X",
+                    loadDevice.getAddress());
         return false;
     }
 
@@ -74,8 +75,8 @@ bool configureLoad() {
 
     // Set all outputs low, note that pin 0 is inverted
     if (!loadDevice.setGPIO(0b0000'0000)) {
-        ESP_LOGE(TAG, "Failed to set GPIO on MCP23008T at 0x%02X",
-                 loadDevice.getAddress());
+        LOGE_LOCKED(TAG, "Failed to set GPIO on MCP23008T at 0x%02X",
+                    loadDevice.getAddress());
         return false;
     }
 
@@ -105,10 +106,11 @@ inline bool showLEDsIfReady() {
 void setup() {
     static bool serialInitialized = false;
     if (!serialInitialized) {
-        Serial.begin(115200);
         size_t txBuffer = Serial.setTxBufferSize(1024);
+        Serial.begin(460800);
         ESP_LOGI(TAG, "Serial initialized @ %d baud w/ buffer size %d",
                  Serial.baudRate(), txBuffer);
+        Logging::initLoggingMutex();
         serialInitialized = true;
     }
 
@@ -238,7 +240,7 @@ void setup() {
             if (result != pdPASS) {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc->name);
             } else {
-                ESP_LOGD(
+                ESP_LOGE(
                     TAG,
                     "Created task %s with priority %u and stack size %u bytes",
                     taskDesc->name, taskDesc->priority,
@@ -282,10 +284,10 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         // LoadFSM::UPDATE_RESULT result = loadFSM.updateState();
         // if (result == LoadFSM::UPDATE_RESULT::STATE_CHANGED) {
-        //     ESP_LOGI(TAG, "FSM State Changed: %d",
+        //     LOGI_LOCKED(TAG, "FSM State Changed: %d",
         //     loadFSM.getCurrentState());
         // } else if (result == LoadFSM::UPDATE_RESULT::ERROR) {
-        //     ESP_LOGE(TAG, "Error updating FSM state");
+        //     LOGE_LOCKED(TAG, "Error updating FSM state");
         // }
         delay(RUN::TASK_INTERVALS::TI_FSM_mS);
     }
@@ -308,7 +310,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
 vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static int i = 0;
-        // ESP_LOGI(TAG, "Pitch PID Output: %f",
+        // LOGI_LOCKED(TAG, "Pitch PID Output: %f",
         //          pitchPIDController.compute(
         //              i)); // todo - just a quick performances test
         i += 20;
@@ -382,10 +384,10 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         // if (!loadConfigured) {
         //     if (loadDevice.begin()) { // FIXME!
-        //         ESP_LOGI(TAG, "MCP23008T initialized successfully.");
+        //         LOGI_LOCKED(TAG, "MCP23008T initialized successfully.");
         //         loadConfigured = true;
         //     } else {
-        //         ESP_LOGE(
+        //         LOGE_LOCKED(
         //             TAG,
         //             "Failed to initialize MCP23008T. Retrying in 5
         //             seconds...");
@@ -423,7 +425,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        ESP_LOGV(TAG, "vTSL");
+        LOGV_LOCKED(TAG, "vTSL");
         leds.setPixelColor(0, 0x00, 0xFF, 0x00); // Green
         if (leds.canShow()) {
             leds.show();
@@ -479,9 +481,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         //     continue;
         // }
 
-        ESP_LOGD(TAG, "Logging Data:");
+        LOGD_LOCKED(TAG, "Logging Data:");
 
-        ESP_LOGI(TAG, "FreeRTOS Tasks: %u", uxTaskGetNumberOfTasks());
+        LOGI_LOCKED(TAG, "FreeRTOS Tasks: %u", uxTaskGetNumberOfTasks());
 
         constexpr uint_fast8_t REC_BYTES_PER_TASK = 40;
         constexpr uint_fast8_t NUM_ESP_TASKS =
@@ -489,16 +491,17 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                 // by 3?
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
-        char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
+        static char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
         if (uxTaskGetNumberOfTasks() > NUM_MAIN_TASKS + NUM_ESP_TASKS) {
-            ESP_LOGE(
+            LOGE_LOCKED(
                 TAG,
                 "Number of tasks (%d) exceeds expected max (%d), skipping to "
                 "prevent memory corruption",
                 uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
+            // Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
-        } else {
-            // } else if (statsBuffer[0] == '\0') {
+            // } else {
+        } else if (statsBuffer[0] == '\0') {
             // Refresh stats buffer
 
             // TODO: Not recommended in production
@@ -507,61 +510,78 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                 '\0'; // hard cap, avoid over-read
             // uxTaskGetSystemState();
             size_t usedBytes = strnlen(statsBuffer, STATS_BUFFER_SIZE);
-            ESP_LOGD(TAG, "Task Buffer Used (%): %d",
-                     usedBytes * 100 / sizeof(statsBuffer));
-            ESP_LOGD(TAG, "Stats Buffer Used: %d bytes", usedBytes);
-            ESP_LOGD(TAG, "Stats Buffer Free: %d bytes",
-                     sizeof(statsBuffer) - usedBytes);
-            ESP_LOGD(TAG, "Stats Buffer Size: %d", sizeof(statsBuffer));
-            ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+            LOGD_LOCKED(TAG, "Task Buffer Used (%): %d",
+                        usedBytes * 100 / sizeof(statsBuffer));
+            LOGD_LOCKED(TAG, "Stats Buffer Used: %d bytes", usedBytes);
+            LOGD_LOCKED(TAG, "Stats Buffer Free: %d bytes",
+                        sizeof(statsBuffer) - usedBytes);
+            LOGD_LOCKED(TAG, "Stats Buffer Size: %d", sizeof(statsBuffer));
+            // LOGI_LOCKED(TAG, "Task Run Time Stats:\n%s", statsBuffer);
             // Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
 
+            // for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
+            //     if (taskDesc == nullptr) {
+            //         LOGE_LOCKED(TAG, "Caught null task description
+            //         pointer!"); continue;
+            //     }
+
+            //     if (taskDesc->pxHandle == nullptr) {
+            //         LOGE_LOCKED(TAG, "Caught null task handle!");
+            //         continue;
+            //     }
+
+            //     taskDesc->minFreeStack_Bytes =
+            //         uxTaskGetStackHighWaterMark(taskDesc->pxHandle);
+            //     LOGI_LOCKED(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
+            //                 taskDesc->stackSize_bytes -
+            //                     taskDesc->minFreeStack_Bytes,
+            //                 taskDesc->minFreeStack_Bytes);
+            //     // Serial.flush();
+            //     delay(LOG_ITEM_INTERVAL_MS);
+            // }
+            // Serial.flush();
+            delay(LOG_ITEM_INTERVAL_MS);
+        } else {
+            // Print buffer
+            char *saveptr = nullptr;
+            char *line = strtok_r(statsBuffer, "\n", &saveptr);
+            delay(LOG_ITEM_INTERVAL_MS);
+            LOGI_LOCKED(TAG, "Task Info: %s:", line);
+            while (line != nullptr) {
+                line = strtok_r(nullptr, "\n", &saveptr);
+                LOGI_LOCKED(TAG, "Task Info: %s:", line);
+            }
+            delay(LOG_ITEM_INTERVAL_MS);
+
+            statsBuffer[0] = '\0';
+
             for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
                 if (taskDesc == nullptr) {
-                    ESP_LOGE(TAG, "Caught null task description pointer!");
+                    LOGE_LOCKED(TAG, "Caught null task description pointer!");
                     continue;
                 }
 
                 if (taskDesc->pxHandle == nullptr) {
-                    ESP_LOGE(TAG, "Caught null task handle!");
+                    LOGE_LOCKED(TAG, "Caught null task handle!");
                     continue;
                 }
 
                 taskDesc->minFreeStack_Bytes =
                     uxTaskGetStackHighWaterMark(taskDesc->pxHandle);
-                ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
-                         taskDesc->stackSize_bytes -
-                             taskDesc->minFreeStack_Bytes,
-                         taskDesc->minFreeStack_Bytes);
+                LOGI_LOCKED(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
+                            taskDesc->stackSize_bytes -
+                                taskDesc->minFreeStack_Bytes,
+                            taskDesc->minFreeStack_Bytes);
+                // Serial.flush();
+                delay(LOG_ITEM_INTERVAL_MS);
             }
-            // Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
         }
-        // else {
-        //     // Print buffer
-        //     char *saveptr = nullptr;
-        //     char *line = strtok_r(statsBuffer, "\n", &saveptr);
-        //     delay(LOG_ITEM_INTERVAL_MS);
-        //     ESP_LOGI(TAG, "Task Info: %s:", line);
-        //     while (line != nullptr) {
-        //         line = strtok_r(nullptr, "\n", &saveptr);
-        //         ESP_LOGI(TAG, "Task Info: %s:", line);
-        //     }
-        //     delay(LOG_ITEM_INTERVAL_MS);
 
-        //     for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
-        //         taskDesc->minFreeStack_Bytes =
-        //             uxTaskGetStackHighWaterMark(taskDesc->pxHandle);
-        //         ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
-        //                  taskDesc->stackSize_bytes -
-        //                  taskDesc->minFreeStack_Bytes,
-        //                  taskDesc->minFreeStack_Bytes);
-        //     }
-        //     delay(LOG_ITEM_INTERVAL_MS);
-        // }
-
-        ESP_LOGI(TAG, "Min, free heap: %u b", esp_get_minimum_free_heap_size());
+        LOGI_LOCKED(TAG, "Min, free heap: %u b",
+                    esp_get_minimum_free_heap_size());
+        // Serial.flush();
         delay(LOG_ITEM_INTERVAL_MS);
 
         // Enable temperature sensor
@@ -574,12 +594,13 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
         if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
-            ESP_LOGE(TAG, "Temp. out of bounds: %d dC", tempTrunc_C);
+            LOGE_LOCKED(TAG, "Temp. out of bounds: %d dC", tempTrunc_C);
         } else {
-            ESP_LOGI(TAG, "Temp.: %d dC", tempTrunc_C);
+            LOGI_LOCKED(TAG, "Temp.: %d dC", tempTrunc_C);
         }
         // Disable the temperature sensor if it is not needed and save the power
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
+        // Serial.flush();
         delay(LOG_ITEM_INTERVAL_MS);
 
         // esp_wifi_get_bandwidth
@@ -592,6 +613,6 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
  * Arduino: put your main code here, to run repeatedly:
  */
 void loop() {
-    // ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
+    // LOGI_LOCKED(TAG, "Time: %llu", SyncedClock::getSystemTimer());
     delay(1000);
 }
