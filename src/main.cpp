@@ -7,8 +7,6 @@
 #include <esp_log.h>
 #include <temperature_sensor.h>
 
-#include <cstring>
-
 // Library Includes
 #include <Arduino.h>
 
@@ -493,47 +491,70 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                 // by 3?
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
-        char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
+        static char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
         if (uxTaskGetNumberOfTasks() > NUM_MAIN_TASKS + NUM_ESP_TASKS) {
             LOGE_LOCKED(
                 TAG,
                 "Number of tasks (%d) exceeds expected max (%d), skipping to "
                 "prevent memory corruption",
                 uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
+            // Serial.flush();
+            delay(LOG_ITEM_INTERVAL_MS);
+            // } else {
+        } else if (statsBuffer[0] == '\0') {
+            // Refresh stats buffer
+
+            // TODO: Not recommended in production
+            vTaskGetRunTimeStats(statsBuffer);
+            statsBuffer[STATS_BUFFER_SIZE - 1] =
+                '\0'; // hard cap, avoid over-read
+            // uxTaskGetSystemState();
+            size_t usedBytes = strnlen(statsBuffer, STATS_BUFFER_SIZE);
+            LOGD_LOCKED(TAG, "Task Buffer Used (%): %d",
+                        usedBytes * 100 / sizeof(statsBuffer));
+            LOGD_LOCKED(TAG, "Stats Buffer Used: %d bytes", usedBytes);
+            LOGD_LOCKED(TAG, "Stats Buffer Free: %d bytes",
+                        sizeof(statsBuffer) - usedBytes);
+            LOGD_LOCKED(TAG, "Stats Buffer Size: %d", sizeof(statsBuffer));
+            // LOGI_LOCKED(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+            // Serial.flush();
+            delay(LOG_ITEM_INTERVAL_MS);
+
+            // for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
+            //     if (taskDesc == nullptr) {
+            //         LOGE_LOCKED(TAG, "Caught null task description
+            //         pointer!"); continue;
+            //     }
+
+            //     if (taskDesc->pxHandle == nullptr) {
+            //         LOGE_LOCKED(TAG, "Caught null task handle!");
+            //         continue;
+            //     }
+
+            //     taskDesc->minFreeStack_Bytes =
+            //         uxTaskGetStackHighWaterMark(taskDesc->pxHandle);
+            //     LOGI_LOCKED(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
+            //                 taskDesc->stackSize_bytes -
+            //                     taskDesc->minFreeStack_Bytes,
+            //                 taskDesc->minFreeStack_Bytes);
+            //     // Serial.flush();
+            //     delay(LOG_ITEM_INTERVAL_MS);
+            // }
+            // Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
         } else {
-            if (Logging::takeLogMutex()) {
-            // Refresh stats buffer
-            vTaskGetRunTimeStats(statsBuffer);
-            statsBuffer[STATS_BUFFER_SIZE - 1] = '\0';
-
-            size_t usedBytes = strnlen(statsBuffer, STATS_BUFFER_SIZE);
-            ESP_LOGD(TAG, "Task Buffer Used (%): %u",
-                     static_cast<unsigned>((usedBytes * 100U) /
-                                           STATS_BUFFER_SIZE));
-            ESP_LOGD(TAG, "Stats Buffer Used: %u bytes",
-                     static_cast<unsigned>(usedBytes));
-            ESP_LOGD(TAG, "Stats Buffer Free: %u bytes",
-                     static_cast<unsigned>(STATS_BUFFER_SIZE - usedBytes));
-            ESP_LOGD(TAG, "Stats Buffer Size: %u",
-                     static_cast<unsigned>(STATS_BUFFER_SIZE));
-
+            // Print buffer
             char *saveptr = nullptr;
-            for (char *line = strtok_r(statsBuffer, "\n", &saveptr);
-                 line != nullptr; line = strtok_r(nullptr, "\n", &saveptr)) {
-                size_t crPos = strcspn(line, "\r");
-                line[crPos] = '\0';
-                if (line[0] != '\0') {
-                    ESP_LOGI(TAG, "%s", line);
-                }
-            }
-
-            Logging::giveLogMutex();
-            } else {
-                ESP_LOGW(TAG, "Skipping runtime stats log; mutex unavailable");
-            }
-
+            char *line = strtok_r(statsBuffer, "\n", &saveptr);
             delay(LOG_ITEM_INTERVAL_MS);
+            LOGI_LOCKED(TAG, "Task Info: %s:", line);
+            while (line != nullptr) {
+                line = strtok_r(nullptr, "\n", &saveptr);
+                LOGI_LOCKED(TAG, "Task Info: %s:", line);
+            }
+            delay(LOG_ITEM_INTERVAL_MS);
+
+            statsBuffer[0] = '\0';
 
             for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
                 if (taskDesc == nullptr) {
@@ -552,6 +573,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                             taskDesc->stackSize_bytes -
                                 taskDesc->minFreeStack_Bytes,
                             taskDesc->minFreeStack_Bytes);
+                // Serial.flush();
                 delay(LOG_ITEM_INTERVAL_MS);
             }
             delay(LOG_ITEM_INTERVAL_MS);
