@@ -15,7 +15,7 @@ class LoadContainer {
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
     etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
-        TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 24, nullptr, 0,
+        TaskInfo{vTaskUpdateFSM, "FSM", 1024, nullptr, 24, nullptr, 0,
                  false}, // 0
         TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
                  false}, // 1
@@ -26,9 +26,9 @@ class LoadContainer {
 
         TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0,
                  false}, // 4
-        TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0,
+        TaskInfo{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0,
                  false}, // 5
-        TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0,
+        TaskInfo{vTaskStatusLED, "LED", 1024, nullptr, 2, nullptr, 0,
                  false},                                                   // 6
         TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0, false} // 7
     };
