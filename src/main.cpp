@@ -229,7 +229,7 @@ void setup() {
                 ESP_LOGW(TAG, "Stack size not word aligned");
             }
             // Syntax: xTaskCreate(Task function, Name of the task (for
-            // debugging), Stack size (in words, not bytes), Task input
+            // debugging), Stack size (in bytes, not words), Task input
             // parameter, Priority of the task, Task handle)
             BaseType_t result =
                 xTaskCreate(taskDesc->function, taskDesc->name,
