@@ -106,7 +106,9 @@ void setup() {
     static bool serialInitialized = false;
     if (!serialInitialized) {
         Serial.begin(115200);
-        ESP_LOGI(TAG, "Serial initialized");
+        size_t txBuffer = Serial.setTxBufferSize(1024);
+        ESP_LOGI(TAG, "Serial initialized @ %d baud w/ buffer size %d",
+                 Serial.baudRate(), txBuffer);
         serialInitialized = true;
     }
 
@@ -512,7 +514,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                      sizeof(statsBuffer) - usedBytes);
             ESP_LOGD(TAG, "Stats Buffer Size: %d", sizeof(statsBuffer));
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
-            Serial.flush();
+            // Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
 
             for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
@@ -533,7 +535,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                              taskDesc->minFreeStack_Bytes,
                          taskDesc->minFreeStack_Bytes);
             }
-            Serial.flush();
+            // Serial.flush();
             delay(LOG_ITEM_INTERVAL_MS);
         }
         // else {
