@@ -454,9 +454,8 @@ vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
 //     return (fahrenheit - 32) * 5 / 9;
 // }
 
-constexpr uint32_t ITEMS_TO_LOG = 4;
-constexpr uint32_t LOG_ITEM_INTERVAL_MS =
-    RUN::TASK_INTERVALS::TI_LOG_DATA_ms / ITEMS_TO_LOG;
+// constexpr uint32_t ITEMS_TO_LOG = 4;
+constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
 /**
  * @brief Task to log data
  */
@@ -496,7 +495,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                 "Number of tasks (%d) exceeds expected max (%d), skipping to "
                 "prevent memory corruption",
                 uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
-            delay(LOG_ITEM_INTERVAL_MS);
+            // delay(LOG_ITEM_INTERVAL_MS);
         } else {
             // } else if (statsBuffer[0] == '\0') {
             // Refresh stats buffer
@@ -515,7 +514,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
             ESP_LOGD(TAG, "Stats Buffer Size: %d", sizeof(statsBuffer));
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
             // Serial.flush();
-            delay(LOG_ITEM_INTERVAL_MS);
+            // delay(LOG_ITEM_INTERVAL_MS);
 
             for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
                 if (taskDesc == nullptr) {
@@ -536,33 +535,11 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
                          taskDesc->minFreeStack_Bytes);
             }
             // Serial.flush();
-            delay(LOG_ITEM_INTERVAL_MS);
+            // delay(LOG_ITEM_INTERVAL_MS);
         }
-        // else {
-        //     // Print buffer
-        //     char *saveptr = nullptr;
-        //     char *line = strtok_r(statsBuffer, "\n", &saveptr);
-        //     delay(LOG_ITEM_INTERVAL_MS);
-        //     ESP_LOGI(TAG, "Task Info: %s:", line);
-        //     while (line != nullptr) {
-        //         line = strtok_r(nullptr, "\n", &saveptr);
-        //         ESP_LOGI(TAG, "Task Info: %s:", line);
-        //     }
-        //     delay(LOG_ITEM_INTERVAL_MS);
-
-        //     for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
-        //         taskDesc->minFreeStack_Bytes =
-        //             uxTaskGetStackHighWaterMark(taskDesc->pxHandle);
-        //         ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc->name,
-        //                  taskDesc->stackSize_bytes -
-        //                  taskDesc->minFreeStack_Bytes,
-        //                  taskDesc->minFreeStack_Bytes);
-        //     }
-        //     delay(LOG_ITEM_INTERVAL_MS);
-        // }
 
         ESP_LOGI(TAG, "Min, free heap: %u b", esp_get_minimum_free_heap_size());
-        delay(LOG_ITEM_INTERVAL_MS);
+        // delay(LOG_ITEM_INTERVAL_MS);
 
         // Enable temperature sensor
         ESP_ERROR_CHECK(temperature_sensor_enable(tempSensHandle));
