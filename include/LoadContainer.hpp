@@ -25,14 +25,14 @@ class LoadContainer {
     TaskInfo tSend{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0, false};
     TaskInfo tCfg{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0, false};
     TaskInfo tLED{vTaskStatusLED, "LED", 2048, nullptr, 2, nullptr, 0, false};
-    TaskInfo tLog{vTLog, "Log", 4096, nullptr, 1, nullptr, 0, false};
+    TaskInfo tLog{vTLog, "Log", 4096, nullptr, 2, nullptr, 0, false};
     // namespace TaskInfo
 
     etl::array<TaskInfo *, NUM_MAIN_TASKS> mainTaskDescriptions = {
         &tFSM, &tPoll, &tAdjustLoad, &tRecv, &tSend, &tCfg, &tLED, &tLog};
 
     TaskInfo tTelnet{vTaskTelnet, "Telnet", 4096, nullptr,
-                     1,           nullptr,  0,    false};
+                     1,           nullptr,  1,    false};
     TaskInfo tOTA{vTaskOTA, "OTA", 4096, nullptr, 1, nullptr, 0, false};
 
     etl::array<TaskInfo *, NUM_OPTIONAL_TASKS> optionalTaskDescriptions = {
