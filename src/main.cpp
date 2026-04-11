@@ -570,7 +570,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         float tsens_out;
         ESP_ERROR_CHECK(
             temperature_sensor_get_celsius(tempSensHandle, &tsens_out));
-        int32_t tempTrunc_C = (int32_t)tsens_out;
+        auto tempTrunc_C = (int32_t)tsens_out;
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
         if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
