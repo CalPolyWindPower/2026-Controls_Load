@@ -197,6 +197,12 @@ void setup() {
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
 
+    // Configure I2C
+    if (!Wire.begin(UM_PROS3::I2C_SDA_PIN, UM_PROS3::I2C_SCL_PIN)) {
+        ESP_LOGE(TAG, "Failed to initialize I2C on pins %d (SDA) and %d (SCL)",
+                 UM_PROS3::I2C_SDA_PIN, UM_PROS3::I2C_SCL_PIN);
+    }
+
     loadConfigured = configureLoad();
     leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
     (void)showLEDsIfReady();
