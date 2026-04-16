@@ -205,7 +205,7 @@ void loop() {
       } else {
         Serial.print("\nNew setPoint: ");
         Serial.println(setPoint);
-        LOAD::loadDevice.setGPIO(0b0000'0000);
+        LOAD::loadDevice.setGPIO(setPoint);
       }
 
       Serial.print("Input load setPoint as a bitset: ");
