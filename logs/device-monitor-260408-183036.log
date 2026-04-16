@@ -1,0 +1,402 @@
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[     6][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    11][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    16][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    49][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   353912 B ( 345.6 KB)
+  Free Bytes        :   315076 B ( 307.7 KB)
+  Allocated Bytes   :    33316 B (  32.5 KB)
+  Minimum Free Bytes:   309808 B ( 302.5 KB)
+  Largest Free Block:   258036 B ( 252.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  8 2026 18:24:03
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   171][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fc9d350
+[   172][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fc9d350
+[   172][I][main.cpp:109] setup(): [LoMa] Serial initialized
+[   173][I][main.cpp:122] setup(): [LoMa] LED initialized
+[  3218][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 22
+[  3218][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -66
+[  3218][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -66, iRSSI: 54
+[  3219][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 54, C11: 0
+[  3219][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -67
+[  3219][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -67, iRSSI: 53
+[  3220][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 107, C11: 0
+[  3220][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -67
+[  3220][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -67, iRSSI: 53
+[  3221][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 160, C11: 0
+[  3221][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -67
+[  3221][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -67, iRSSI: 53
+[  3222][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 213, C11: 0
+[  3222][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -67
+[  3222][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -67, iRSSI: 53
+[  3223][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 266, C11: 0
+[  3223][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -70
+[  3223][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -70, iRSSI: 50
+[  3224][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 316, C11: 0
+[  3224][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -70
+[  3224][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -70, iRSSI: 50
+[  3225][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 366, C11: 0
+[  3225][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -70
+[  3225][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -70, iRSSI: 50
+[  3226][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 416, C11: 0
+[  3226][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -70
+[  3226][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -70, iRSSI: 50
+[  3227][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 466, C11: 0
+[  3227][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -78
+[  3227][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -78, iRSSI: 42
+[  3227][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 42, C6: 466, C11: 0
+[  3228][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -78
+[  3228][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -78, iRSSI: 42
+[  3228][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 84, C6: 466, C11: 0
+[  3229][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[  3229][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -79, iRSSI: 41
+[  3229][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 125, C6: 466, C11: 0
+[  3230][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[  3230][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -79, iRSSI: 41
+[  3230][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 166, C6: 466, C11: 0
+[  3231][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[  3231][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -86, iRSSI: 34
+[  3231][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 200, C6: 466, C11: 0
+[  3232][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[  3232][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -89, iRSSI: 31
+[  3232][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 231, C6: 466, C11: 0
+[  3233][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[  3233][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -89, iRSSI: 31
+[  3233][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 262, C6: 466, C11: 0
+[  3234][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[  3234][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 9, RSSI: -89, iRSSI: 31
+[  3234][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 262, C6: 528, C11: 62
+[  3235][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[  3235][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -90, iRSSI: 30
+[  3235][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 292, C6: 528, C11: 62
+[  3236][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[  3236][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -91, iRSSI: 29
+[  3236][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 292, C6: 528, C11: 91
+[  3237][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[  3237][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -92, iRSSI: 28
+[  3237][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 292, C6: 528, C11: 119
+[  3238][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[  3238][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -93, iRSSI: 27
+[  3238][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 292, C6: 528, C11: 146
+[  3239][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -95
+[  3239][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -95, iRSSI: 25
+[  3240][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 292, C6: 528, C11: 171
+[  3240][I][AdapterWLAN.cpp:167] identifyOptimalChannel(): [AW] Optimal Ch.: 11
+[  3240][I][main.cpp:138] setup(): [LoMa] Optimal WiFi Channel: 11
+[  3241][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[  3242][E][main.cpp:143] setup(): [LoMa] Failed to initialize WiFi
+[  3243][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[  3243][I][main.cpp:153] setup(): [LoMa] ESP-NOW initialized.
+[  3244][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[  3244][I][main.cpp:166] setup(): [LoMa] Registered peer
+[  3244][W][AdapterESPNow.cpp:144] send(): [AE] Send failed
+[  3245][E][main.cpp:182] setup(): [LoMa] Failed to initialize time sync
+[  3245][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[  3245][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[  3245][I][main.cpp:189] setup(): [LoMa] MAC Address: ec:da:3b:5b:03:d4
+[  3246][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+[  3247][E][main.cpp:57] configureLoad(): [LoMa] Failed to initialize MCP23008T device at 0x4E
+[  3248][I][main.cpp:205] setup(): [LoMa] Setting up tasks...
+[  3248][D][main.cpp:223] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+[  3249][D][main.cpp:223] setup(): [LoMa] Created task Poll with priority 20 and stack size 2048 bytes
+[  3249][D][main.cpp:223] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+[  3250][D][main.cpp:223] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+[  3250][D][main.cpp:223] setup(): [LoMa] Created task Send with priority 15 and stack size 2048 bytes
+[  3250][D][main.cpp:223] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+[  3251][D][main.cpp:223] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+[  3251][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[  3252][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[  3254][D][(): [LoMa] Task Buffer Used (): 65
+tats Buffer Used: 497 bytes
+P_ERR_INVALID_ST[A T E325
+5][D][main.cpp:500] vTaskLo[g D a3t2a5(5):] [[IL]o[Mmaa]i nSt.actpsp :B2u3f9f]e rs eStiue( :6[
+Ma] Initialized F M3t55 [t]tm in
+cpp:5[0 1 ]3 vT2a5s6k]L[oIg]D[amtaai(n).:c p[pL:o2M4a]7 ]T assekt uRpu(n) :T i[mLeo MSat]a tSs:e
+tluoopTask       	48411		1%
+Log            	0		<1%
+IDLE0          	3111647		95%
+IDLE1          	3148558		96%
+AdLd           	10		<1%
+FSM            	13		<1%
+LED            	64		<1%
+tiT            	1038		<1%
+Cfg            	15		<1%
+Poll           	18		<1%
+sys_evt        	636		<1%
+arduino_events 	369		<1%
+ipc1           	54134		1%
+esp_timer      	1730		<1%
+wifi           	76142		2%
+Recv           	9		<1%
+Send           	8		<1%
+Tmr Svc        p complete!
+=========== After Setup Start ============
+INTERNAL Memory Info:
+-----------48637		1%
+
+  Total Size        :   353912 B ( 345.6 KB)
+  Free Bytes        :   247532 B ( 241.7 KB)
+  Allocated Bytes   :    98036 B (  95.7 KB)
+  Minimum Free Bytes:   247244 B ( 241.4 KB)
+  Largest Free Block:   204788 B ( 200.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8367848 B (8171.7 KB)
+  Allocated Bytes   :    17856 B (  17.4 KB)
+  Minimum Free Bytes:  8366724 B (8170.6 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     8 : I2C_MASTER_SDA[0]
+     9 : I2C_MASTER_SCL[0]
+    18 : RMT_TX
+    19 : USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+[  4258][I][main.cpp:507] vTaskLogData(): [LoMa] T: FSM, U: 696, FTaskLogData(): [LoMa] T: Poll, U: 704, F: 1344
+, F: 1352
+[  4259][I][main.cpp:507] vTaskLogData(): [LoMa] T: Recv, U: 752, F: 1296
+507] vTaskLogData(): [LoMa] T: Send, U: 744, F: 1304
+U: 704, F: 320
+[main.cpp:507] vTaskLogData(): [LoMa] T: LED, U: 888, F: 1160
+, U: 2476, F: 1620
+kLogData(): [LoMa] Min, free heap: 8613968 b
+2][I][main.cpp:551] vTaskLogData(): [LoMa] Temp.: 47 dC
+ta(): [LoMa] Logging Data:
+oMa] FreeRTOS Tasks: 19
+5][D][main.cpp:498] vTaskLogData(): [LoMa] Stats Buffer Free: 25): [LoMa] Stats Buffer Size: 760
+1%
+esp_timer      	2000		<1%
+ipc0           	48637		<1%
+sys_evt        	636		<1%
+
+.cpp:507] vTaskLogData(): [LoMa] T: FSM, U: 696, F: 328
+ain.cpp:507] vTaskLogData(): [LoMa] T: Poll, U: 704, F: 1344
+T: AdLd, U: 696, F: 1352
+p:507] vTaskLogData(): [LoMa] T: Recv, U: 752, F: 1296
+44, F: 1304
+Data(): [LoMa] T: Cfg, U: 704, F: 320
+gData(): [LoMa] T: LED, U: 888, F: 1160
+gData(): [LoMa] T: Log, U: 2752, F: 1344
+9][I][main.cpp:536] vTaskLogData(): [LoMa] Min, free heap: 8613968 b
+ 11271][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+ Tasks: 19
+ogData(): [LoMa] Stats Buffer Used: 513 bytes
+[ 11274][D][main.cpp:498] vTaskLogData(): [LokLogData(): [LoMa] Stats Buffer Size: 760
+:
+Log            	21304		<1%
+IDLE1           	10		<1%
+wifi           	76225		<1%
+ipc0           	48637		<1%
+Tmr Svc        	197		<1%
+esp_timer      	2221		<1%
+sys_evt        	636		<1%
+arduino_events 	369		<1%
+
+: 696, F: 328
+U: 704, F: 1344
+, F: 1352
+, U: 752, F: 1296
+744, F: 1304
+a] T: Cfg, U: 704, F: 320
+ F: 1160
+: Log, U: 2752, F: 1344
+8613968 b
+[ 14280][I][main.cpp:551] vTaskLogData(): [LoMa] Temp.: 47 dC
+n.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 15280][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ffer Used (): 67
+a(): [LoMa] Stats Buffer Used: 514 
+[ 15283][D][main.cpp:500] vTaskLogData(): [LoMa] Stats Buffer Sizn Time Stats:
+Log      	54134		<1%
+
+704, F: 1344
+(): [LoMa] T: AdLd, U: 696, F: 1352
+ U: 752, F: 1296
+, F: 1304
+507] vTaskLogData(): [LoMa] T: Cfg, U: 704, F: 320
+[LoMa] T: LED, U: 888, F: 1160
+n.cpp:507] vTaskLogData(): [LoMa] T: Log, U: 2752, F: 1344
+main.cpp:536] vTaskLogData(): [LoMa] Min, free heap: 8613968 b
+[main.cpp:551] vTaskLogData(): [LoMa] Temp.: 47 dC
+main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[main.cpp:495] vTaskLogData(): [LoMa] Task Buffer Used (): 67
+[askLogData(): [LoMa] Stats Buffer Free: 246 bytes
+ata(): [LoMa] Stats Buffer Size: 760
+AdLd           	10		<1%
+ipc0           	48637		<1%
+sys_evt    <1%
+Tmr Svc        	242		<1%
+esp_timer      	2630		<1%
+ipc1           	54134		<1%
+Recv           	9		<1%
+
+[LoMa] T: Poll, U: 704, F: 1344
+: 696, F: 1352
+[LoMa] T: Recv, U: 752, F: 1296
+4, F: 1304
+704, F: 320
+[ 20296][I][main.cpp:507] vTaskLogData(): [LoMa] T: LED, U: 888, F: 1160
+][I][main.cpp:507] vTaskLogData(): [LoMa] T: Log, U: 2752, F: 1344
+[main.cpp:536] vTaskLogData(): [LoMa] Min, free heap: 8613968 b
+][main.cpp:551] vTaskLogData(): [LoMa] Temp.: 48 dC
+[ 23298][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 23298][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[ 23300][D][main.cpp:495] vTaskLogData(): [Lo4 bytes
+46 bytes
+Buffer Size: 760
+tats:
+Log            	51575		<1%
+IDLE1          	23184712		99%%
+Recv           	9		<1%
+Send           	8		<1%
+
+][I][main.cpp:507] vTaskLogData(): [LoMa] T: FSM, U: 696, F: 328
+): [LoMa] T: Poll, U: 704, F: 1344
+kLogData(): [LoMa] T: AdLd, U: 696, F: 1352
+ta(): [LoMa] T: Recv, U: 752, F: 1296
+(): [LoMa] T: Send, U: 744, F: 1304
+[I][main.cpp:507] vTaskLogData(): [LoMa] T: Cfg, U: 704, F: 320
+D, U: 888, F: 1160
+[ 24305][I][main.cpp:507] vTaskLogData(): [LoMa] T: Log, U: 2752, F: 1344
+: [LoMa] Min, free heap: 8613968 b
+][main.cpp:551] vTaskLogData(): [LoMa] Temp.: 48 dC
+Data:
+ 19
+
+[ 273 Buffer Free: 246 bytes
+Data(): [LoMa] Stats Buffer Size: 760
+kLogData(): [LoMa] Task Run Time Stats:
+Logs   	54134		<1%
+Recv           	9		<1%
+Tmr Svc        	308		<1%
+wifi           	76518		<1%
+esp_timer      	3034		<1%
+Send           	8		<1%
+AdLd           	10		<1%
+
+oMa] T: FSM, U: 696, F: 328
+ U: 704, F: 1344
+[ 28312][I][main.cpp:507] vTaskLogData(): [LoMa] T: AdLd, U: 696, F: 1352
+][I][main.cpp:507] vTaskLogData(): [LoMa] T: Recv, U: 752, F: 1296
+[ 28313][I][main.cpp:507] vTaskLogData(): [LoMa] T: Send, U: 744cpp:507] vTaskLogData(): [LoMa] T: Cfg, U: 704, F: 320
+kLogData(): [LoMa] T: LED, U: 888, F: 1160
+1344
+[ 29314][I][main.cpp:536] vTaskLogData(): [LoMa] Min, free heap: 8613968 b
+[ 30316][I][main.cpp:551] vTaskLogData(): [LoMa] Temp.: 48 dC
+[ 31316][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 31316][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+): [LoMa] Task Buffer Used (): 67
+:497] vTaskLogData(e: 244 bytes
+ze: 760
+76569		<1%
+esp_timer      	3239		<1%
+AdLd           	10		<1%
+ipc0           	48637		<1%
+
+ U: 696, F: 328
+a] T: Poll, U: 704, F: 1344
+[ 32321][I][main.cpp:507] vTaskLogData(): [LoMa] T: AdLd, U: 696, F: 1352
+[ 32322][I][main.cpp:507] vTaskLogData(): [LoMa] T: Recv, U: 752, F: 1296
+gData(): [LoMa] T: Send, U: 744, F: 1304
+20
+oMa] T: LED, U: 888, F: 1160
+2323][I][main.cpp:507] vTaskLogData(): [LoMa] T: Log, U: 2752, F: 1344
+968 b
+ 35325][D][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ain.cpp:495] vTaskLogData(): [LoMa] Task Buffer Used (): 67
+[ 3 516 bytes
+[ 35328][D][main.cpp:498] vTaskLogData(): [LoMa] Stats B
+IDLE1          	35210429		99%
+IDLE0          	48637		<1%
+sys_evt        	636		<1%
+
+[ 36330][I][main.cpp:507] vTaskLogData(): [LoMa] T: FSM, U: 696, F: 328
+[LoMa] T: Poll, U: 704, F: 1344
+52
+.cpp:507] vTaskLogData(): [LoMa] T: Recv, U: 752, F: 1296
+, F: 1304
+[ 36331][I][main.cpp:507] vTaskLogData(): [LoMa] T: Cfg, U: 704, F: 320
+ain.cpp:507] vTaskLogData(): [LoMa] T: LED, U: 888, F: 1160
+main.cpp:507] vTaskLogData(): [LoMa] T: Log, U: 2752, F: 1344
+][main.cpp:536] vTaskLogData(): [LoMa] Min, free heap: 8613968 b
+I][main.cpp:551] vTaskLogData(): [LoMa] Temp.: 48 dC
+ng Data:
+[ 39334][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+s
+] vTaskLogData(): [LoMa] Stats Buffer Free: 244 bytes
+ Buffer Size: 760
+:
+Log       <1%
+ipc0           	486	636		<1%
+arduino_events 	369		<1%
+

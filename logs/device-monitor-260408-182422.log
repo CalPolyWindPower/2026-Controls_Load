@@ -1,0 +1,656 @@
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[     6][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    11][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    16][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    49][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   353912 B ( 345.6 KB)
+  Free Bytes        :   315076 B ( 307.7 KB)
+  Allocated Bytes   :    33316 B (  32.5 KB)
+  Minimum Free Bytes:   309808 B ( 302.5 KB)
+  Largest Free Block:   258036 B ( 252.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  8 2026 18:24:03
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   171][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fc9d350
+[   172][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fc9d350
+[   172][I][main.cpp:109] setup(): [LoMa] Serial initialized
+[   173][I][main.cpp:122] setup(): [LoMa] LED initialized
+[  3221][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 21
+[  3222][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -61
+[  3222][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -61, iRSSI: 59
+[  3222][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 59, C11: 0
+[  3223][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -61
+[  3223][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -61, iRSSI: 59
+[  3223][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 118, C11: 0
+[  3224][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -61
+[  3224][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -61, iRSSI: 59
+[  3224][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 177, C11: 0
+[  3225][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -62
+[  3225][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -62, iRSSI: 58
+[  3225][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 235, C11: 0
+[  3226][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -68
+[  3226][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -68, iRSSI: 52
+[  3226][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 287, C11: 0
+[  3227][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -69
+[  3227][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -69, iRSSI: 51
+[  3227][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 338, C11: 0
+[  3228][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -69
+[  3228][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -69, iRSSI: 51
+[  3228][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 389, C11: 0
+[  3229][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -69
+[  3229][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -69, iRSSI: 51
+[  3229][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 440, C11: 0
+[  3230][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -72
+[  3230][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -72, iRSSI: 48
+[  3230][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 488, C11: 0
+[  3231][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[  3231][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -80, iRSSI: 40
+[  3231][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 40, C6: 488, C11: 0
+[  3232][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[  3232][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -81, iRSSI: 39
+[  3232][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 79, C6: 488, C11: 0
+[  3233][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -82
+[  3233][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -82, iRSSI: 38
+[  3233][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 117, C6: 488, C11: 0
+[  3234][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -82
+[  3234][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -82, iRSSI: 38
+[  3234][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 155, C6: 488, C11: 0
+[  3235][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[  3235][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 9, RSSI: -87, iRSSI: 33
+[  3235][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 155, C6: 554, C11: 66
+[  3236][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[  3236][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -90, iRSSI: 30
+[  3236][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 185, C6: 554, C11: 66
+[  3237][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[  3237][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -91, iRSSI: 29
+[  3237][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 554, C11: 66
+[  3238][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[  3238][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -91, iRSSI: 29
+[  3238][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 243, C6: 554, C11: 66
+[  3239][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[  3239][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -91, iRSSI: 29
+[  3239][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 272, C6: 554, C11: 66
+[  3240][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[  3240][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -94, iRSSI: 26
+[  3240][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 272, C6: 554, C11: 92
+[  3241][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -95
+[  3241][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -95, iRSSI: 25
+[  3241][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 272, C6: 554, C11: 117
+[  3242][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -95
+[  3242][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -95, iRSSI: 25
+[  3242][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 272, C6: 554, C11: 142
+[  3243][I][AdapterWLAN.cpp:167] identifyOptimalChannel(): [AW] Optimal Ch.: 11
+[  3243][I][main.cpp:138] setup(): [LoMa] Optimal WiFi Channel: 11
+[  3244][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[  3245][E][main.cpp:143] setup(): [LoMa] Failed to initialize WiFi
+[  3246][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[  3246][I][main.cpp:153] setup(): [LoMa] ESP-NOW initialized.
+[  3247][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[  3247][I][main.cpp:166] setup(): [LoMa] Registered peer
+[  3247][W][AdapterESPNow.cpp:144] send(): [AE] Send failed
+[  3247][E][main.cpp:182] setup(): [LoMa] Failed to initialize time sync
+[  3248][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[  3248][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[  3248][I][main.cpp:189] setup(): [LoMa] MAC Address: ec:da:3b:5b:03:d4
+[  3249][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+[  3250][E][main.cpp:57] configureLoad(): [LoMa] Failed to initialize MCP23008T device at 0x4E
+[  3251][I][main.cpp:205] setup(): [LoMa] Setting up tasks...
+[  3251][D][main.cpp:223] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+[  3252][D][main.cpp:223] setup(): [LoMa] Created task Poll with priority 20 and stack size 2048 bytes
+[  3252][D][main.cpp:223] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+[  3252][D][main.cpp:223] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+[  3253][D][main.cpp:223] setup(): [LoMa] Created task Send with priority 15 and stack size 2048 bytes
+[  3253][D][main.cpp:223] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+[  3254][D][main.cpp:223] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+[  3254][D][main.cpp:223] setup(): [LoMa] Created task Log with priority 1 and stack size 4096 bytes
+ain.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[  [3 2 5352]5[5I]][[Em]a[ien.scpp3p2:-4h69a]l -viT2acs-knLgo.gcD:a2t7a5(]) :i 2[cLWorMai]t eF(r)e:e RiT2OcS_ mTaasstkesr:_ t1r9a
+nsmit failed: [259] ESP_ERR_INVALID_STATE
+[  3257][I][main.cpp:239] setup(): [LoMa] Initialized FSM to stat4a7(]) :s e[tLuopM(a)]:  T[aLsko MBau]f fSeert uUps ecdo m(p)l:t u3p2 5S8t]a[Dr]t[ m=a=i=n=.=c=====p=p=:
+496] vTaskLogData(): [LoMa] Stats Buffer Used: 499 bIyNtTeEsRN
+AL Memory Ig-D-a-t-a-(
+): [LoMa] Stats Buffer Free: 261 bytes
+[  3258][D][main.cp p :T4o9t9a]l  vSTiazsek L o g D a t a (:) :   [3L5o3M9a1]2  SBt a(t s3 4B5u.f6f erK BS)i
+ze: 760
+  Free Byte[s    3 2 5 8 ] [ I:] [ m a2i4n.8c1p2p:85 2B3 ](  v2T4a2s.k3L oKgBD)a
+ta(): [LoMa] Min, free heap:   8A6l1l4o1c5a2t ebd 
+Bytes   :    97440 B (  95.2 KB)
+  Minimum Free Bytes:   247312 B ( 241.5 KB)
+  Largest Free Block:   204788 B ( 200.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8367848 B (8171.7 KB)
+  Allocated Bytes   :    17856 B (  17.4 KB)
+  Minimum Free Bytes:  8366840 B (8170.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     8 : I2C_MASTER_SDA[0]
+     9 : I2C_MASTER_SCL[0]
+    18 : RMT_TX
+    19 : USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+[  4261][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ogData(): [LoMa] Task Buffer Used (): 66
+[  5264][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Us vTaskLogData(): [LoMa] Stats Buffer Free: 255 bytes
+: 8614152 b
+[  6266][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[  7266][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[  7266][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[  7268][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Use Buffer Used: 510 bytes
+(): [LoMa] Stats Buffer Free: 25[LoMa] Stats Buffer Size: 760
+ b
+[  8271][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+ain.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[  9271][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+fer Used: 511 bytes
+49 bytes
+ffer Size: 760
+ta(): [LoMa] Min, free heap: 8614152 b
+[ 10276][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 11276][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+d (): 67
+[ 11278][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 513 bytes
+bytes
+vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 11279][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 12281][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 13281][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 13281][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+askLogData(): [LoMa] Task Buffer Used (): 67
+[ 13284][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 514 bytes
+[ 1 246 bytes
+[ 13284][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 13284][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+(): [LoMa] Temp.: 47 dC
+gging Data:
+asks: 19
+ vTaskLogData(): [LoMa] Task Buffer Used (): 67
+[ 15289][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 515 bytes
+ee: 245 bytes
+[ 15289][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 15290][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+LogData(): [LoMa] Logging Data:
+S Tasks: 19
+Free: 245 bytes
+(): [LoMa] Stats Buffer Size: 760
+(): [LoMa] Min, free heap: 8614152 b
+skLogData(): [LoMa] Temp.: 47 dC
+[ 19297][D][main.cpp:467] vTasI][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+p:494] vTaskLogData(): [LoMa] Task Buffer Used (): 67
+Buffer Used: 515 bytes
+[ 19300][D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Frp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+: [LoMa] Min, free heap: 8614152 b
+][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+RTOS Tasks: 19
+[ 21304][D][main.cpp:494
+[ 21305][D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 245 bytes
+[ 21305][D][main.cpp:499] vTaskLogData(): [LoMa]in.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 22307][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 23307][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 23307][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+pp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 67
+ed: 515 bytes
+Free: 245 bytes
+tats Buffer Size: 760
+kLogData(): [LoMa] Min, free heap: 8614152 b
+[ 24312][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 25312][D][main.cpp:467] vmain.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 515 byte Free: 245 bytes
+
+5][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 26317][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 27317][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[ 27319][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Useuffer Free: 244 bytes
+ze: 760
+ta(): [LoMa] Min, free heap: 8614152 b
+[ 28322][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 29322][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 29322][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+LoMa] Task Buffer Used (): 67
+4][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 516 bytes
+[ 29325][D][main.cpp:497] vTaskLogData(): [LoMa] Stats oMa] Stats Buffer Size: 760
+oMa] Min, free heap: 8614152 b
+ Temp.: 47 dC
+[ 31327][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+pp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+: [LoMa] Stats Buffer Used: 516 bytes
+fer Free: 244 bytes
+a(): [LoMa] Stats Buffer Size: 760
+ee heap: 8614152 b
+[ 32332][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 33332][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 33332][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+
+[LoMa] Stats Buffer Used: 517 (): [LoMa] Stats Buffer Free: 243 bytes
+.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+ b
+[ 34337][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 35337][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:gData(): [LoMa] FreeRTOS Tasks: 19
+[ 35339][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Usefer Used: 517 bytes
+ee: 243 bytes
+ata(): [LoMa] Stats Buffer Size: 760
+ 35340][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+n.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 37342][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+.cpp:494] vTaskLog5][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 51497] vTaskLogData(): [LoMa] Stats Buffer Free: 242 bytes
+45][D][main.cpp:499] vTaskLogData()LogData(): [LoMa] Min, free heap: 8614152 b
+[ 38347][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 39347][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[ 39349][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Use8 bytes
+ Buffer Free: 242 bytes
+p:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+Data(): [LoMa] Min, free heap: 8614152 b
+LoMa] Temp.: 47 dC
+[ 41352][D][main.cp(): [LoMa] FreeRTOS Tasks: 19
+vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[ 41355][D][main518 bytes
+[ 41355][D][main.cpp:497] vTaskLogData(): [LoMa] StatskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 42358][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+gging Data:
+): [LoMa] FreeRTOS Tasks: 19
+d (): 68
+[ 4Used: 518 bytes
+tes
+LogData(): [LoMa] Stats Buffer Size: 760
+askLogData(): [LoMa] Min, free heap: 8614152 b
+ 45363][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+OS Tasks: 19
+main.cpp:494] vTaskLogData(45365][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Usedcpp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 242 bytes
+[ 45366][D][main.cpp:499] vTaskLogDaTaskLogData(): [LoMa] Min, free heap: 8614152 b
+8][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+pp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[ 47371][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 518 ata(): [LoMa] Stats Buffer Size: 760
+[ 47372][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 48374][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+n.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 49374][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[ 49376][D][main.cpp Buffer Us42 bytes
+499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 49377][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 50379][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 51379][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[ 51381][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffesed: 519 bytes
+[ 51382][D][main.cTaskLogData(): [LoMa] Stats Buffer Size: 760
+ Min, free heap: 8614152 b
+[ 52384][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 53384][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[D][main.cpp:4
+[ 53386][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer ytes
+][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+ Min, free heap: 8614152 b
+[ 54389][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 55389][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ Used (): 68
+Used: 519 bytes
+ 55392][D][main.cpp:497] vTaskLogData(): [LoMr Size: 760
+.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 56394][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 57394][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+Stats BuffeaskLogData(): [LoMa] Stats Buffer Free: 241 bytes
+[ 57397][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+pp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 58399][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 47 dC
+[ 59399][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 59399][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+n.cpp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[D][main.cpp:496] vTaskLogDa Stats Buffer Used: 519 bytes
+LoMa] Stats Buffer Free: 241 bytes
+LoMa] Stats Buffer Size: 760
+:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[ 61406][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer fer Used: 519 bytes
+[ 61407][D][main.cpp:497] vTaskLogData(): [ts Buffer Size: 760
+ 8614152 b
+LoMa] Temp.: 48 dC
+[ 63409][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+68
+[ 63412][D][main.cpp:496] vT): [LoMa] Stats Buffer Used: 519 bytes
+] vTaskLogData(): TaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 63412][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 64414][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[ 65414][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data: 19
+ Used (): 68
+[ 65416][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 519 bytes
+[ 65417][D][main.cpp:497] vTaskLogData():99] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+152 b
+19][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+ata(): [LoMa] Logging Data:
+ Tasks: 19
+pp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[ 67422][D][main.cpp:496] vTaskLogData(): [LoMa] Stats  vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 67423][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+
+[ 69425][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+oMa] Stats Buffer Used: 519 bytes
+[ 69428][D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Frcpp:499n.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 70430][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[430][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+a] Task Buffer Used (): 68
+sed: 519 bytes
+] vTaskLogData499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+4152 b
+[ 72435][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+ [LoMa] FreeRTOS Tasks: 19
+.cpp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[ 73437][D][main.cpa(): [LoMa] Stats Buffer Free: 241 bytes
+[ 73438][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 73439][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+ 74441][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+s: 19
+ze: 760
+[ 75444][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+gData(): [LoMa] FreeRTOS Tasks: 19
+ Buffer Used: 519 bytes
+a(): [LoMa] Stats Buffer Free: 241 bytes
+:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+ heap: 8614152 b
+1][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+a] Logging Data:
+eeRTOS Tasks: 19
+ffer Used (): 68
+ffer Used: 519 bytes
+Data(): [LoMa] Stats Buffer Free: 241 bytes
+[ 79454][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+ree heap: 8614152 b
+[ 80456][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+a] Logging Data:
+[ 81456][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ 68
+ Stats Buffer Used: 519 bytes
+ Stats Buffer Free: 241 bytes
+ain.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+ap: 8614152 b
+61][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 83461][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+fer Used (): 68
+[ 83464][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Free: 241 bytes
+kLogData(): [LoMa] Stats Buffer Size: 760
+[I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+
+][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+(): [LoMa] Task Buffer Used (): 68
+s Buffer Used: 519 bytes
+497] vTaskLogData(): [LoMa] Stats Buffer Free: 241 bytes
+.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+(): [LoMa] Min, free heap: 8614152 b
+[ 86471][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+DataskLogData(): [LoMa] FreeRTOS Tasks: 19
+Stats Buffer Used: 519 bytes
+1 bytes
+ze: 760
+] Min, free heap: 8614152 b
+[I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[ 89476][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 89476][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[ 89478][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[ 89478][Ds
+D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 241 b499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+Data(): [LoMa] Min, free heap: 8614152 b
+81][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+ Tasks: 19
+.cpp:494] vTaskLogData(): [LoMa] TaskLoMa] Stats Buffer Used: 519 bytes
+uffer Free: 241 bytes
+(): [LoMa] Stats Buffer Size: 760
+[ 91484][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+ 93486][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+ Tasks: 19
+d (): 68
+[ 93489][D][main.cpp:496] vTaskLogData(): [LoMa] StatsoMa] Stats Buffer Free: 241 bytes
+[oMa] Min, free heap: 8614152 b
+[ 94491][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[ 95491][D][main.cpp:467] vTaskLogData(): [LoMa] LoggingS Tasks: 19
+vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[ 95494][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 519 bytes
+[vTaskLogData(): [LoMa] Stats Buffer Free: 241 bytes
+[ 95494][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[ 95495][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[ 96497][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[ 97497][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 97497][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+sed (): 68
+: [LoMa] Stats Buffer Used: 519 bytes
+[ 97500][D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Frize: 760
+eap: 8614152 b
+[ 98502][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[ 99502][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[ 99502][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+LoMa] ): [LoMa] Stats Buffer Used: 519 bytes
+[ 99505][D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 241 bytes
+[ 99505][D][main.cpp:499] vTaskLogData(): [LoMa] heap: 8614152 b
+[100507][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+19
+] Stats Buffer Used: 521 bytes
+r Free: 239 bytes
+LoMa] Stats Buffer Size: 760
+heap: 8614152 b
+ging Data:
+[103512][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+Used (): 68
+cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 522 bytes
+97] vTaskLogData(): [LoMa] Stats Buffer Free: 238 bytes
+s Buffer Size: 760
+ 8614152 b
+[104517][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[105517][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[105519][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer UseTaskLogDa497] vTaskLogData(): [LoMa] Stats Buffer Free: 238 bytes
+] Stats Buffer Size: 760
+LogData(): [LoMa] Min, free heap: 8614152 b
+ 19
+[107524][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[107525][D][main.cpp:496] vTaskLogD:497] vTaskLogData(): [LoMa] Stats Buffer Free: 238 bytes
+[1075eap: 8614152 b
+[108527][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+LogData(): [LoMa] Logging Data:
+(): [LoMa] FreeRTOS Tasks: 19
+ Used (): 68
+ts Buffer Used: 522 bytes
+[109530][D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 238 bytes
+[109530][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[109530][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[110532][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+: [LoMa] FreeRTOS Tasks: 19
+a(): [LoMa] Task Buffer Used (): 68
+[111534][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Uspp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 238 bytes
+): [LoMa] Stats Buffer Size: 760
+ 8614152 b
+ain.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[113537][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[113537][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+][main.cpp:4923 bytes
+a] Stats Buffer Free: 237 bytes
+[main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[113540][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[114542][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+ain.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ [LoMa] Task Buffer Used (): 68
+[115545][D][main.cpp:496] vTask Free: 237 bytes
+Size: 760
+[115545][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+Ma] FreeRTOS Tasks: 19
+[117549][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Usecpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 523 bytes
+askLogData(): [LoMa] Stats Buffer Free: 237 bytes
+60
+[117550][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+oMa] Logging Data:
+119552][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[119554][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Used: 523 bytes
+[LoMa] Stats Buffer Free: 237 bytes
+Size: 760
+eap: 8614152 b
+C
+ain.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[121560][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 523 bytes
+[121560][D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 237 bytes
+[121560][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[121561][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[122563][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[123563][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+19
+ (): 68
+Ma] Stats Buffer Used: 523 bytes
+uffer Free: 237 bytes
+uffer Size: 760
+ata(): [LoMa] Min, free heap: 8614152 b
+125568][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+125570][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Use Buffer Free: 237 bytes
+Data(): [LoMa] Stats Buffer Size: 760
+gData(): [LoMa] Min, free heap: 8614152 b
+[126573][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+: [LoMa] Logging Data:
+[127573][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+d (): 68
+[127576][D][main.cpp:496] vTaskLogData(): [LoMa] StatsaskLogData(): [LoMa] Stats Buffer Size: 760
+ap: 8614152 b
+(): [LoMa] Temp.: 48 dC
+[129578][D][main.cpp:467] vTaskLogData( vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ain.cpp:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[12D][main.cpp:497] vTaskLogData(): [LoMa] Stats Buffer Free: 237 bytes
+[129581][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Bufpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[131583][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+gData(): [LoMa] Task Buffer Used (): 68
+r Used: 524 bytes
+fer Free: 236 bytes
+: [LoMa] Stats Buffer Size: 760
+ free heap: 8614152 b
+[132588][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+a(): [LoMa] FreeRTOS Tasks: 19
+in.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 524 bytesLogData(): [LoMa] Stats Buffer Free: 236[main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+ 8614152 b
+[134593][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 49 dC
+ta(): [LoMa] Logging Data:
+[135593][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+er Used (): 68
+135595][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 524 bytes
+[13559askLogData(): [LoMa] Stats Buffer Size: 760
+] Min, free heap: 8614152 b
+kLogData(): [LoMa] Temp.: 48 dC
+[137598][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[137598][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+[137600][D][main.cpp:494] vTaskLogData(): [LoMa] Task Buffer Usee: 236 bytes
+:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+Ma] Min, free heap: 8614152 b
+[138603][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+ain.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ffer Used: 524 bytes
+
+s Buffer Size: 760
+skLogData(): [LoMa] Min, free heap: 8614152 b
+[main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+[141608][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+ain.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 524 bytesgData(): [LoMa] Stats Buffer Fats Buffer Size: 760
+[141611][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+Temp.: 48 dC
+ogData(): [LoMa] FreeRTOS Tasks: 19
+d (): 68
+[143616][D][main.cpp:496] vTaskLogData(): [LoMa] Statsffer Size: 760
+kLogData(): [LoMa] Temp.: 49 dC
+[145618][D][main.cpp:467] vTask9
+: 68
+Used: 524 bytes
+ee: 236 bytes
+ize: 760
+ [LoMa] Min, free heap: 8614152 b
+[146623][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[147623][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+623][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+:494] vTaskLogData(): [LoMa] Task Buffer Used (): 68
+[147626][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 524 bytes
+ee: 236 bytes
+[147626][D][main.cpp:499] vTaskLogData(): [LoMa] Stats Buffer Size: 760
+[147627][I][main.cpp:523] vTaskLogData(): [LoMa] Min, free heap: 8614152 b
+[148629][I][main.cpp:538] vTaskLogData(): [LoMa] Temp.: 48 dC
+[149629][D][main.cpp:467] vTaskLogData(): [LoMa] Logging Data:
+ain.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+d: 524 bytes
+r F Stats Buffer Size: 760
+614152 b
+askLogData(): [LoMa] Logging Data:
+[151634][I][main.cpp:469] vTaskLogData(): [LoMa] FreeRTOS Tasks: 19
+d (): 68
+[151636][D][main.cpp:496] vTaskLogData(): [LoMa] Stats Buffer Used: 524 bytes(): [LoMa] Stats Buffer Size: 760
+a(): [LoMa] Min, free heap: 8614152 b
+: 49 dC
