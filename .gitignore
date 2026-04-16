@@ -5,3 +5,4 @@
 .vscode/ipch
 /docs/doxygen-out
 compile_commands.json
+demos/LoadDemo_v0.2.1.zip
