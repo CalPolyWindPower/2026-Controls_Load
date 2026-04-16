@@ -13,6 +13,9 @@
 #include <Adafruit_BusIO_Register.h>
 #include <Adafruit_I2CDevice.h>
 #include <cstdint>
+#include <etl/format_spec.h>
+#include <etl/string.h>
+#include <etl/to_string.h>
 
 /**
  * @brief Class to interface with the MCP23008T I2C 8-Bit I/O Expander
@@ -40,6 +43,8 @@
  */
 class MCP23008T {
   public: // MARK: Public Constants
+    static constexpr const char *TAG = "IOE";
+
     static constexpr uint16_t REG_IODIR_ADDR = 0x00;
     static constexpr uint16_t REG_IPOL_ADDR = 0x01;
     static constexpr uint16_t REG_GPINTEN_ADDR = 0x02;
@@ -219,7 +224,10 @@ class MCP23008T {
      *
      * @returns Returns true on success, false otherwise
      */
-    inline bool setGPIO(uint32_t value) { return regGPIO.write(value); }
+    inline bool setGPIO(uint32_t value) {
+        ESP_LOGV(TAG, "Setpoint %u", value);
+        return regGPIO.write(value);
+    }
 
     /**
      * @details  The OLAT register provides access to the output latches. A read
@@ -241,6 +249,27 @@ class MCP23008T {
                    // Adafruit thought someone might want to change the address
                    // for some reason, which seems silly to me. TODO: fork
         return device.address();
+    }
+
+    static constexpr uint_fast8_t LOG_STRING_SIZE = 3 + 5 + 2 + (3 * 2) + 1;
+    /**
+     * @brief Get at string that describes the current state of the actuator
+     * @returns the current state of the actuator as a string
+     */
+    etl::string<LOG_STRING_SIZE> getLogString() {
+        etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
+        logString.append(": @ox");                   // 5 chars
+
+        etl::format_spec format2;
+        format2.hex().width(2).fill('0');                       // [2 chars]
+        etl::to_string(getAddress(), logString, format2, true); // 2 chars
+
+        etl::format_spec format3;
+        format3.hex().width(3).fill('0');                        // [3 chars]
+        etl::to_string(readIntCap(), logString, format3, true);  // 3 chars
+        etl::to_string(readIntFlag(), logString, format3, true); // 3 chars
+
+        return logString;
     }
 
   private: // MARK: Private
