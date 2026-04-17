@@ -5,7 +5,7 @@
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
  * @since 20260207 (@07507a)
- * @version 0.2.0
+ * @version 0.3.0
  */
 #pragma once
 
@@ -250,6 +250,15 @@ class MCP23008T {
                    // for some reason, which seems silly to me. TODO: fork
         return device.address();
     }
+
+    /**
+     * @details The GPIO register reflects the value on the port. Reading from
+     * this register reads the port. Writing to this register modifies the
+     * Output Latch (OLAT) register.
+     *
+     * @returns Returns the value of the GPIO register, or 0xFFFFFFFF on failure
+     */
+    inline uint32_t readGPIO() { return regGPIO.read(); }
 
     static constexpr uint_fast8_t LOG_STRING_SIZE = 3 + 5 + 2 + (3 * 2) + 1;
     /**

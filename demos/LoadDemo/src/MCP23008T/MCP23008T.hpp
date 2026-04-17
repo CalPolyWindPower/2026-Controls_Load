@@ -5,7 +5,7 @@
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
  * @since 20260207 (@07507a)
- * @version 0.2.0
+ * @version 0.3.0
  */
 #pragma once
 
@@ -13,9 +13,9 @@
 #include <Adafruit_BusIO_Register.h>
 #include <Adafruit_I2CDevice.h>
 #include <cstdint>
-#include <etl/format_spec.h>
-#include <etl/string.h>
-#include <etl/to_string.h>
+// #include <etl/format_spec.h>
+// #include <etl/string.h>
+// #include <etl/to_string.h>
 
 /**
  * @brief Class to interface with the MCP23008T I2C 8-Bit I/O Expander
@@ -251,26 +251,35 @@ class MCP23008T {
         return device.address();
     }
 
-    static constexpr uint_fast8_t LOG_STRING_SIZE = 3 + 5 + 2 + (3 * 2) + 1;
     /**
-     * @brief Get at string that describes the current state of the actuator
-     * @returns the current state of the actuator as a string
+     * @details The GPIO register reflects the value on the port. Reading from
+     * this register reads the port. Writing to this register modifies the
+     * Output Latch (OLAT) register.
+     *
+     * @returns Returns the value of the GPIO register, or 0xFFFFFFFF on failure
      */
-    etl::string<LOG_STRING_SIZE> getLogString() {
-        etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-        logString.append(": @ox");                   // 5 chars
+    inline uint32_t readGPIO() { return regGPIO.read(); }
 
-        etl::format_spec format2;
-        format2.hex().width(2).fill('0');                       // [2 chars]
-        etl::to_string(getAddress(), logString, format2, true); // 2 chars
+    // static constexpr uint_fast8_t LOG_STRING_SIZE = 3 + 5 + 2 + (3 * 2) + 1;
+    // /**
+    //  * @brief Get at string that describes the current state of the actuator
+    //  * @returns the current state of the actuator as a string
+    //  */
+    // etl::string<LOG_STRING_SIZE> getLogString() {
+    //     etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
+    //     logString.append(": @ox");                   // 5 chars
 
-        etl::format_spec format3;
-        format3.hex().width(3).fill('0');                        // [3 chars]
-        etl::to_string(readIntCap(), logString, format3, true);  // 3 chars
-        etl::to_string(readIntFlag(), logString, format3, true); // 3 chars
+    //     etl::format_spec format2;
+    //     format2.hex().width(2).fill('0');                       // [2 chars]
+    //     etl::to_string(getAddress(), logString, format2, true); // 2 chars
 
-        return logString;
-    }
+    //     etl::format_spec format3;
+    //     format3.hex().width(3).fill('0');                        // [3 chars]
+    //     etl::to_string(readIntCap(), logString, format3, true);  // 3 chars
+    //     etl::to_string(readIntFlag(), logString, format3, true); // 3 chars
+
+    //     return logString;
+    // }
 
   private: // MARK: Private
     Adafruit_I2CDevice device;
