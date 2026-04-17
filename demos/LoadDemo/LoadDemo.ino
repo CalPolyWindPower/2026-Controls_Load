@@ -27,13 +27,14 @@
  *      `https://espressif.github.io/arduino-esp32/package_esp32_index.json`
  *      (See also:
  *       https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
- * 3. Load the attached sketch or the latest version from GitHub:
+ * 3. Go to the library manager in the left sidebar and isntall "Adafruit BusIO" by Adafruit.
+ * 4. Load the attached sketch or the latest version from GitHub:
  *    https://github.com/CalPolyWindPower/2026-Controls_Load/blob/main/demos/LoadDemo/LoadDemo.ino
- * 4. Set the board to "UM PROS3". It may show up as "ESP32 Family Device at first" or even multiple devices (Select the first one).
- * 5. Under Tools, set "USB CDC On Boot" to "Enabled"
- * 6. [Recommended] Under Tools, set "Core Debug Level" to "Info"
- * 7. Select Upload
- * 8. Open a serial terminal
+ * 5. Set the board to "UM PROS3". It may show up as "ESP32 Family Device at first" or even multiple devices (Select the first one).
+ * 6. Under Tools, set "USB CDC On Boot" to "Enabled"
+ * 7. [Recommended] Under Tools, set "Core Debug Level" to "Info"
+ * 8. Select Upload
+ * 9. Open a serial terminal
  *   A. In Arduino IDE, got Tools > Serial Monitor and switch to 115200 baud
  *
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for Cal Poly Wind
