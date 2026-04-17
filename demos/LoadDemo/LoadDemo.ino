@@ -1,7 +1,7 @@
 /**
  * @file LoadDemo.ino
  * @brief Manually control the actuator
- * @version 0.2.1
+ * @version 0.3.0
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -207,6 +207,8 @@ void loop() {
         Serial.println(setPoint);
         LOAD::loadDevice.setGPIO(setPoint);
       }
+      // Serial.print("Reported GPIO Reg: ");
+      // Serial.println(LOAD::loadDevice.readGPIO());
 
       Serial.print("Input load setPoint as a bitset: ");
     }
