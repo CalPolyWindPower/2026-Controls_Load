@@ -1,7 +1,7 @@
 /**
  * @file LoadDemo.ino
  * @brief Manually control the actuator
- * @version 0.3.0
+ * @version 0.3.0 (1.0.0)
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
