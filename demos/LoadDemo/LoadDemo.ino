@@ -1,7 +1,7 @@
 /**
  * @file LoadDemo.ino
  * @brief Manually control the actuator
- * @version 0.3.0 (1.0.0)
+ * @version 0.3.1 (1.0.1)
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -180,7 +180,8 @@ void setup() {
   /**
      * @details The load object, is in the Actuator namespace
      */
-  Wire.begin(8, 9); // SDA, SCL
+  // Wire.begin(8, 9); // SDA, SCL
+  Wire.begin(1, 2); // SDA, SCL
   LOAD::configureLoad();
   LOAD::loadDevice.setGPIO(0b0000'0000);
   Serial.print("Input load setPoint as a 7 bit unsigned integer: ");
