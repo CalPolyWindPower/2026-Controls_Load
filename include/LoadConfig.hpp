@@ -6,6 +6,7 @@
 static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 
 // Imports
+#include <Adafruit_INA260.h>
 #include <cstddef>
 #include <cstdint>
 #include <etl/array.h>
@@ -103,6 +104,31 @@ namespace RUN {
     // CONSTS::SECS_PER_MIN; constexpr uint32_t SLEEP_TIME_MILLIS =
     //     SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
 } // namespace RUN
+
+// MARK: PSENSOR
+namespace PSENSOR {
+    constexpr uint8_t I2C_ADDRESS = 0x41; // 7-bit address for Adafruit INA260
+    // CONFIG - Averaging count for sensor readings
+    constexpr INA260_AveragingCount AVG_COUNT = INA260_COUNT_1;     // CONFIG
+    constexpr INA260_ConversionTime CONV_TIME = INA260_TIME_588_us; // CONFIG
+
+    constexpr uint_fast16_t m_TO_BASE = 1000;
+
+    constexpr int16_t MIN_VOLTAGE_V = -1; // CONFIG
+    // CONFIG
+    constexpr int_fast16_t MIN_VOLTAGE_mV = MIN_VOLTAGE_V * m_TO_BASE;
+    constexpr int_fast16_t MAX_VOLTAGE_V = 48; // CONFIG
+    // CONFIG
+    constexpr uint_fast16_t MAX_VOLTAGE_mV = MAX_VOLTAGE_V * m_TO_BASE;
+    constexpr int_fast16_t MIN_CURRENT_A = -20;                        // CONFIG
+    constexpr int_fast16_t MIN_CURRENT_mA = MIN_CURRENT_A * m_TO_BASE; // CONFIG
+    constexpr int_fast16_t MAX_CURRENT_A = 20;                         // CONFIG
+    constexpr int_fast16_t MAX_CURRENT_mA = MAX_CURRENT_A * m_TO_BASE; // CONFIG
+    // CONFIG
+    constexpr int_fast32_t MIN_POWER_mW = MIN_VOLTAGE_mV * MIN_CURRENT_mA;
+    // CONFIG
+    constexpr int_fast32_t MAX_POWER_mW = MAX_VOLTAGE_mV * MAX_CURRENT_mA;
+} // namespace PSENSOR
 
 // MARK: Load
 namespace LOAD {

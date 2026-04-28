@@ -2,9 +2,11 @@
 
 #include <cstdint>
 
+#include "INA260.hpp"
 #include "LoadConfig.hpp"
 #include "LoadTasks.hpp"
 #include "MCP23008T.hpp"
+#include <Adafruit_INA260.h>
 
 /**
  * @brief Class to manage the container for load data
@@ -42,26 +44,25 @@ class LoadContainer {
     ~LoadContainer() = default;
 
     inline bool getSafetyFlag() const { return safetyFlag; }
-    inline bool isPowerPositive() const { return powerPositive; } // todo
-    inline bool isSteadyRPM() const { return false; }             // todo
-    inline bool isTargetRPMExceeded() const { return false; }     // todo
+    inline bool isPowerPositive() const { return (INA260::current_mA > 0); }
+    inline bool isSteadyRPM() const { return false; }         // todo
+    inline bool isTargetRPMExceeded() const { return false; } // todo
 
     inline void updateSafetyFlag(bool safetyFlag) {
         this->safetyFlag = (digitalRead(UM_PROS3::ESTOP_PIN) ==
-                            LOW) /*|| getPPCCurrent() < threhold*/; // todo
+                            LOW) /*|| getPPCCurrent() < threshold*/; // todo
     }
-    inline void updatePowerPositive(bool powerPositive) {
-        this->powerPositive = powerPositive;
-    }
+    // inline void updatePowerPositive(bool powerPositive) {
+    //     this->powerPositive = powerPositive;
+    // }
     inline void setLoadGPIO(uint_fast8_t value) {
         loadDevice.setGPIO((uint32_t)value);
     }
 
   private:
-    // INA260&
     MCP23008T &loadDevice;
 
     bool safetyFlag = false; // todo
-    bool powerPositive = false;
+    // bool powerPositive = false;
     int_fast16_t currentRPM = 0; // todo
 };

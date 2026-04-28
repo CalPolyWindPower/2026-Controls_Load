@@ -8,6 +8,7 @@
 #include <temperature_sensor.h>
 
 // Library Includes
+#include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
 
 // Project Includes
@@ -20,11 +21,11 @@
 // #include "2026Core/Net/Net-Application/OTA.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#include "INA260.hpp"
 #include "LoadContainer.hpp"
 #include "LoadFSM.hpp"
 #include "LoadTasks.hpp"
 #include "MCP23008T.hpp"
-#include <Adafruit_NeoPixel.h>
 
 /* Config */
 static constexpr const char *TAG = "LoMa";
@@ -53,6 +54,13 @@ LoadFSM loadFSM(load);
 
 // todo: move
 bool configureLoad() {
+    if (!INA260::begin(PSENSOR::I2C_ADDRESS, PSENSOR::AVG_COUNT,
+                       PSENSOR::CONV_TIME)) {
+        ESP_LOGE(TAG, "Failed to initialize INA260 power sensor at 0x%02X",
+                 PSENSOR::I2C_ADDRESS);
+        return false;
+    }
+
     if (!loadDevice.begin()) {
         ESP_LOGE(TAG, "Failed to initialize MCP23008T device at 0x%02X",
                  loadDevice.getAddress());
@@ -303,6 +311,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
+        INA260::updateReadings();
         delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
     }
 }
@@ -563,6 +572,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         }
         // Disable the temperature sensor if it is not needed and save the power
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
+        // delay(LOG_ITEM_INTERVAL_MS);
+
+        ESP_LOGI(TAG, "%s", INA260::getLogString().c_str());
         delay(LOG_ITEM_INTERVAL_MS);
 
         // esp_wifi_get_bandwidth
