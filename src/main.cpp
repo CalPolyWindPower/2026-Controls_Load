@@ -21,7 +21,9 @@
 // #include "2026Core/Net/Net-Application/OTA.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include "INA260.hpp"
+#include "LoadComms.hpp"
 #include "LoadContainer.hpp"
 #include "LoadFSM.hpp"
 #include "LoadTasks.hpp"
@@ -37,19 +39,20 @@ bool configureLoad();
 
 // MARK:  Global Objects
 
+LoadComms loadComms;
 // AdapterWLAN adapterWLAN = AdapterWLAN();
-AdapterWLAN adapterWLAN;
+// AdapterWLAN adapterWLAN;
 // AdapterESPNow adapterESPNow = AdapterESPNow();
-AdapterESPNow adapterESPNow;
+// AdapterESPNow adapterESPNow;
 // SyncedClock netClock = SyncedClock(adapterESPNow); // todo
-SyncedClock netClock(adapterESPNow); // todo
+// SyncedClock netClock(adapterESPNow); // todo
 
 Adafruit_NeoPixel leds(1, UM_PROS3::LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
 MCP23008T loadDevice(static_cast<MCP23008T::I2C_ADDRESS>(LOAD::I2C_ADDRESS),
                      &Wire);
 bool loadConfigured = false;
 
-LoadContainer load(loadDevice);
+LoadContainer load(loadDevice, loadComms);
 LoadFSM loadFSM(load);
 
 // todo: move
@@ -137,70 +140,80 @@ void setup() {
     }
     (void)showLEDsIfReady();
 
+    // Configure ESTOP pin
+    pinMode(UM_PROS3::ESTOP_PIN, INPUT_PULLUP);
+
+    // Configure New ESP-NOW + WiFI implementation
+
     // Configure WiFi
-    static bool wifiInitialized = false;
-    if (!wifiInitialized) {
-        leds.setPixelColor(0, 0x00, 0x00, 0xFF); // blue
-        (void)showLEDsIfReady();
-        uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
-        leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-        (void)showLEDsIfReady();
-        ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
-        if (adapterWLAN.begin(optimalChannel)) {
-            ESP_LOGI(TAG, "WiFi initialized");
-            wifiInitialized = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to initialize WiFi");
-        }
-    }
-    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    (void)showLEDsIfReady();
+    // static bool wifiInitialized = false;
+    // if (!wifiInitialized) {
+    //     leds.setPixelColor(0, 0x00, 0x00, 0xFF); // blue
+    //     (void)showLEDsIfReady();
+    //     uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
+    //     leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    //     (void)showLEDsIfReady();
+    //     ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
+    //     if (adapterWLAN.begin(optimalChannel)) {
+    //         ESP_LOGI(TAG, "WiFi initialized");
+    //         wifiInitialized = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to initialize WiFi");
+    //     }
+    // }
+    // leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    // (void)showLEDsIfReady();
 
     // Configure ESP-NOW
     static bool espNowInitalized = false;
-    if (!espNowInitalized) {
-        if (adapterESPNow.begin()) {
-            ESP_LOGI(TAG, "ESP-NOW initialized.");
-            espNowInitalized = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
-        }
+    if (loadComms.begin()) {
+        espNowInitalized = true;
+    } else {
+        ESP_LOGE(TAG, "Failed to initialize load comms");
     }
-    leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-    (void)showLEDsIfReady();
+    // if (!espNowInitalized) {
+    //     if (adapterESPNow.begin()) {
+    //         ESP_LOGI(TAG, "ESP-NOW initialized.");
+    //         espNowInitalized = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+    //     }
+    // }
+    // leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    // (void)showLEDsIfReady();
 
     // Configure ESP-NOW Peers
-    static bool peerRegistered = false;
-    if (!peerRegistered) {
-        if (adapterESPNow.registerPeer(WTbNetConfig::NACELLE_MAC)) {
-            ESP_LOGI(TAG, "Registered peer");
-            peerRegistered = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to register peer");
-        }
-    }
-    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    (void)showLEDsIfReady();
+    // static bool peerRegistered = false;
+    // if (!peerRegistered) {
+    //     if (adapterESPNow.registerPeer(WTbNetConfig::NACELLE_MAC)) {
+    //         ESP_LOGI(TAG, "Registered peer");
+    //         peerRegistered = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to register peer");
+    //     }
+    // }
+    // leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    // (void)showLEDsIfReady();
 
     // Sync Time // FIXME! - Load accesses fault
-    static bool timeSynced = false;
-    if (!timeSynced) {
-        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
-            ESP_LOGI(TAG, "Time sync initialized successfully");
-            timeSynced = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to initialize time sync");
-        }
-    }
-    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    (void)showLEDsIfReady();
+    // static bool timeSynced = false;
+    // if (!timeSynced) {
+    //     if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+    //         ESP_LOGI(TAG, "Time sync initialized successfully");
+    //         timeSynced = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to initialize time sync");
+    //     }
+    // }
+    // leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    // (void)showLEDsIfReady();
 
     // Print MAC Address // todo - verify
-    ESP_LOGI(
-        TAG, "MAC Address: %s",
-        AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
-    leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-    (void)showLEDsIfReady();
+    // ESP_LOGI(
+    //     TAG, "MAC Address: %s",
+    //     AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
+    // leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    // (void)showLEDsIfReady();
 
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
@@ -348,12 +361,21 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        if (false) {
-            delay(RUN::TASK_INTERVALS::TI_RECV_ms);
-        } else {
-            // Suspend until reenabled from interrupt
-            vTaskSuspend(load.tRecv.pxHandle);
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
+
+        NacellePacket packet;
+        if (xQueueReceive(LoadComms::priorityDataQueue, &packet, 0) == pdPASS) {
+            ESP_LOGV(TAG, "Received packet: rpm=%u", packet.rpm);
+            load.setRPM(packet.rpm);
         }
+
+        BaseType_t xWasDelayed = xTaskDelayUntil(
+            &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
+        if (xWasDelayed != pdTRUE) {
+            ESP_LOGE(TAG, "Timing not met!");
+        }
+
+        // Never need to suspend on the load
     }
 }
 
@@ -376,16 +398,18 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
 // }
 
 /**
- * @brief Task to handle outbound data that has been queued
+ * @brief Task to handle outbound data
  */
 [[noreturn]] void
 vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        if (false) {
-            delay(RUN::TASK_INTERVALS::TI_SEND_ms);
-        } else {
-            // Suspend until reenabled
-            vTaskSuspend(load.tSend.pxHandle);
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
+
+        (void)loadComms.sendLoadboxData((uint8_t)(load.getSafetyFlag()));
+        BaseType_t xWasDelayed = xTaskDelayUntil(
+            &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
+        if (xWasDelayed != pdTRUE) {
+            ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
