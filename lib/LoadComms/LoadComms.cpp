@@ -29,6 +29,7 @@ LoadComms::LoadComms()
       // nacelleRPM_(0.0f) 
       {
   s_instance = this;
+  priorityDataQueue = xQueueCreate(1, sizeof(NacellePacket));
 }
 
 bool LoadComms::begin() {
