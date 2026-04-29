@@ -45,7 +45,7 @@ class LoadContainer {
 
     inline bool getSafetyFlag() const { return safetyFlag; }
     inline bool isPowerPositive() const { return (INA260::current_mA > 0); }
-    inline bool isSteadyRPM() const { return false; }         // todo
+    inline bool isSteadyRPM() const { return false; }         // todo - steady power is actually more important
     inline bool isTargetRPMExceeded() const { return false; } // todo
 
     inline void updateSafetyFlag(bool safetyFlag) {
