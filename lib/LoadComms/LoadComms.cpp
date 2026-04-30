@@ -43,7 +43,7 @@ bool LoadComms::begin() {
         return false;
     }
 
-    if (WiFi.STA.bandwidth(WIFI_BW_HT20)) {
+    if (!WiFi.STA.bandwidth(WIFI_BW_HT20)) {
         ESP_LOGE(TAG, "Failed to set WiFi bandwidth");
         return false;
     }

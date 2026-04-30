@@ -1,0 +1,1184 @@
+[    26][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   338160 B ( 330.2 KB)
+  Free Bytes        :   298932 B ( 291.9 KB)
+  Allocated Bytes   :    33644 B (  32.9 KB)
+  Minimum Free Bytes:   293664 B ( 286.8 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr 29 2026 22:26:20
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   149][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca10c8
+
+[   149][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fca10[   149][I][main.cpp:121] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+
+[   150][I][main.cpp:135] setup(): [LoMa] LED initialized
+
+[   198][I][LoadComms.cpp:92] setupPeer_(): [LCO] Peer added: 30:ED:A0:E0:6B:78
+
+Loadbox ready
+
+[   199][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+
+[   200][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+
+[   250][E][INA260.hpp:36] begin(): [TAG] Failed to initialize INA260 at 0x41
+
+[   251][E][main.cpp:62] configureLoad(): [LoMa] Failed to initialize INA260 power sensor at 0x41
+
+[   251][I][main.cpp:234] setup(): [LoMa] Setting up tasks...
+
+[   252][D][main.cpp:268] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+
+[   252][D][main.cpp:268] setup(): [LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+
+[   253][D][main.cpp:268] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+
+[   253][D][main.cpp:268] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+
+[   254][D][main.cpp:268] setup(): [LoMa] Created task Send with priority 15 and stack size 4096 bytes
+
+[   254][D][main.cpp:268] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+
+[   255][D][main.cpp:268] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+
+[   256][D][main.cpp:539] vTLog(): [LoMa] Logging Data:
+
+[   256][I][main.cpp:541] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[   258][D][main.cpp:567] vTLog(): [LoMa] Task Buffer Used (): 65
+
+[   259][D][main.cpp:569] vTLog(): [LoMa] Stats Buffer Used: 498 bytes
+
+[   259][D][main.cpp:570] vTLog(): [LoMa] Stats Buffer Free: 262 bytes
+
+[   260][D][main.cpp:572] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[   260][I][main.cpp:573] vTLog(): [LoMa] Task Run Time Stats:
+Log            	0		<1%
+
+loopTask       	22799		8%
+
+IDLE0          	174885		67%
+
+IDLE1          	200849		77%
+
+AdLd           	14		<1%
+
+Poll           	243		<1%
+
+FSM            	14		<1%
+
+Recv           	77		<1%
+
+LED            	196		<1%
+
+tiT            	49		<1%
+
+Cfg            	10		<1%
+
+Send           	421		<1%
+
+arduino_events 	175		<1%
+
+ipc1           	31329		12%
+
+esp_timer      	132		<1%
+
+sys_evt        	575		<1%
+
+Tmr Svc        	66		<1%
+
+wifi           	42228		16%
+
+ipc0           	25854		9%
+
+
+
+[   262][I][main.cpp:590] vTLog(): [LoMa] T: FSM, U: 696, F: 328
+
+[   262][I][main.cpp:590] vTLog(): [LoMa] T: Poll, U: 1488, F: 2608
+
+[   262][I][main.cpp:590] vTLog(): [LoMa] T: AdLd, U: 736, F: 1312
+
+[   263][I][main.cpp:590] vTLog(): [LoMa] T: Recv, U: 776, F: 1272
+
+[   263][I][main.cpp:590] vTLog(): [LoMa] T: Send, U: 1064, F: 3032
+
+[   263][I][main.cpp:590] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[   264][I][main.cpp:590] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[   264][I][main.cpp:590] vTLog(): [LoMa] T: Log, U: 2708, F: 1388
+
+[   264][I][main.cpp:599] vTLog(): [LoMa] Min, free heap: 8595096 b
+
+[   267][I][main.cpp:614] vTLog(): [LoMa] Temp.: 96 dC
+
+[   267][I][main.cpp:620] vTLog(): [LoMa] PS: mV: 00000, mA: 00000, W: 00000
+
+[   268][D][main.cpp:268] setup(): [LoMa] Created task Log with priority 2 and stack size 4096 bytes
+
+aster_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   303][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop ret][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+] Tx failed
+
+[   353][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   353][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+
+[   354][I][main.cpp:285] setup(): [LoMa] Initialized FSM to state 2
+
+[   354][I][main.cpp:293] setup(): [LoMa] Setup complete!
+
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   338160 B ( 330.2 KB)
+  Free Bytes        :   222552 B ( 217.3 KB)
+  Allocated Bytes   :   106656 B ( 104.2 KB)
+  Minimum Free Bytes:   222428 B ( 217.2 KB)
+  Largest Free Block:   180212 B ( 176.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8367868 B (8171.7 KB)
+  Allocated Bytes   :    17836 B (  17.4 KB)
+  Minimum Free Bytes:  8367868 B (8171.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     5 : GPIO
+     8 : I2C_MASTER_SDA[0]
+     9 : I2C_MASTER_SCL[0]
+    18 : RMT_TX
+    19 : USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+5][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   397][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+sp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   404][E][Wire.cpp:520] reqINA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   417][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+_STATE
+
+[   456][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonS
+
+[   456][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   461][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   483][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LCO] Tx failed
+
+transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+(): i2cWriteReadNonStop returned Error 259
+
+ds: 4294967295 mV
+
+[   528][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   571][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+sp32-hal-i2c-ng.c:369] i2cWriteReadNonStopt_receive failed: [259] ESP_ERR_INVALID_STATE
+
+questFrom(): i2cWriteReadNonStop returned Error 259
+
+ updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   593][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+15][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   628][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   628][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop retdings(): [TAG] P out of bounds: -1 mW
+
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   659][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   681][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+3][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   719][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_[   720][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   720][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   725][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   769][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+sp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+0][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned .hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   789][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+1][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   822][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+2][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   833][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   855][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   877][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+21][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   943][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   952][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_m952][E][Wire.cpp:520] requeA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   965][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[   987][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+VALID_STATE
+
+urned Error 259
+
+s(): [TAG] C reading out of bounds: -1 mA
+
+09][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1031][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1053][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1054][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_trapp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+f bounds: -1 mW
+
+[  1073][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1117][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1139][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1161][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+5][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1249][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+_ERR_INVALID_STATE
+
+e.cpp:520] requestFrom(): i2turned Error 259
+
+][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[  1271][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+O] Tx failed
+
+(): [LCO] Tx failed
+
+mit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[  1337][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1359][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  1367][E][Wire.cpp:520] requestFrom( P out of bounds: -1 mW
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+3][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+ta(): [LCO] Tx failed
+
+[  1447][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1491][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1513][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1533][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1577][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1599][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+23][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1643][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1709][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1731][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+ERR_INVALID_STATE
+
+equestFrom(): i2cWriteReadNonStop returned Error 259
+
+60.hpp:56] updateReadings: 4294967295 mV
+
+[  1753][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+mit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+eturned Error 259
+
+[  1790][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[  1797][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1819][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1840][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+AG] P out of bounds: -1 mW
+
+): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LCO] Tx failed
+
+[  1907][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+9][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1951][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  1973][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2017][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2039][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2061][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2083][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2105][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2127][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2171][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+ndLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2237][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2257][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2301][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2323][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2345][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2389][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2411][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2433][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2455][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_tranre.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[  2532][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[  2543][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2565][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2582][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_m582][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+ounds: -1 mA
+
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2631][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2633][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+questFrom(): i2cWriteReadNonStop returned Error 259
+
+[  2634][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+ Tx failed
+
+[  2675][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+: [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2761][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2783][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+: [LCO] Tx failed
+
+93][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+15][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+37][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  2981][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LCO] Tx f
+[  3023][E][LoadComms.cpp:1adboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3089][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+x failed
+
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3199][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3265][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3309][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3353][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3373][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3417][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3483][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3505][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3527][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3549][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3615][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3637][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+59][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+03][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3725][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3789][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+11][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3833][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+5][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3877][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3899][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3921][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3943][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  3964][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  3964][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop ret967295 mV
+
+[  3965][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4007][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4015][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmi_ERR_INVALID_STATE
+
+[  4015][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+NA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4066][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  4066][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop ret 4067][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[  4073][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4139][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+61][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4267][D][main.cpp:539] vTLog(): [LoMa] Logging Data:
+
+[  4268][I][main.cpp:541] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[  4270][D][main.cpp:567] vTLog(): [LoMa] Task Buffer Used (): 67
+
+[  4270][D][main.cpp:569] vTLog(): [LoMa] Stats Buffer Used: 515 bytes
+
+[  4271][D][main.cpp:570] vTLog(): [LoMa] Stats Buffer Free.cpp:144] sendLoadbo[x D a4t2a7(1)]:[ D[]L[CmOa] iTnx. cfpapi:l5e7d2
+]
+ vTLog(): [LoMa] Stats Buffer Size: 760
+
+[  4271][I][main.cpp:573] vTLog(): [LoMa] Task Run Time Stats:
+Log            	12150		<1%
+
+IDLE0          	3852611		90%
+
+IDLE1          	4192328		98%
+
+FSM            	451		<1%
+
+Recv           	1145		<1%
+
+loopTask       	29747		<1%
+
+tiT            	1399		<1%
+
+Cfg            	50		<1%
+
+Poll           	33423		<1%
+
+LED            	362		<1%
+
+Send           	91295		2%
+
+ipc1           	31329		<1%
+
+sys_evt        	575		<1%
+
+AdLd           	33		<1%
+
+Tmr Svc        	89		<1%
+
+esp_timer      	1130		<1%
+
+wifi           	249691		5%
+
+ipc0           	25854		<1%
+
+arduino_events 	175		<1%
+
+
+
+[  4273][I][main.cpp:590] vTLog(): [LoMa] T: FSM, U: 696, F: 328
+
+[  4273][I][main.cpp:590] vTLog(): [LoMa] T: Poll, U: 2336, F: 1760
+
+[  4274][I][main.cpp:590] vTLog(): [LoMa] T: AdLd, U: 736, F: 1312
+
+[  4274][I][main.cpp:590] vTLog(): [LoMa] T: Recv, U: 776, F: 1272
+
+[  4274][I][main.cpp:590] vTLog(): [LoMa] T: Send, U: 1976, F: 2120
+
+[  4275][I][main.cpp:590] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[  4275][I][main.cpp:590] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[  4275][I][main.cpp:590] vTLog(): [LoMa] T: Log, U: 2708, F: 1388
+
+[  4276][I][main.cpp:599] vTLog(): [LoMa] Min, free heap: 8589424 b
+
+[  4278][E][main.cpp:612] vTLog(): [LoMa] Temp. out of bounds: 113 dC
+
+[  4278][I][main.cpp:620] vTLog(): [LoMa] PS: mV: 000-1, mA: 000-1, W: 4294967
+
+[  4293][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+4315][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4337][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4359][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4381][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4401][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+ Tx failed
+
+[  4467][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4489][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4511][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4555][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4621][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4707][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+51][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4773][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4817][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4883][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4905][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4927][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4949][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4971][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  4993][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5015][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5059][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5103][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5125][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+xData(): [LCO] Tx failed
+
+9][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5191][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5235][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5257][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5277][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5365][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5387][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+09][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5585][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+1][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5671][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5715][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5737][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5759][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5803][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+5][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+9][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5913][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  5979][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+01][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+3][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6045][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6067][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6089][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6111][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6133][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6177][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+99][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6221][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6241][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6285][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6307][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+iled
+
+Data(): [LCO] Tx failed
+
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6395][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+iled
+
+[  6439][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6505][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6527][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6547][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6591][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6613][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6657][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  6677][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+94967295 mV
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dboxData(): [LCO] Tx failed
+
+aster_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+
+63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[  6745][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6767][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_traSP_ERR_INVALID_STATE
+
+[  6780][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+A260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[  6789][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6811][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+1][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6875][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6897][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6919][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6941][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  6963][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7007][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7029][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7073][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7117][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7139][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7159][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7203][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7225][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7269][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7291][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7335][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7357][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7379][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7443][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+9][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7531][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7553][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7575][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7597][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+sendLoadboxData(): [LCO] Tx failed
+
+[  7663][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7705][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7749][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7771][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7815][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+ata(): [LCO] Tx failed
+
+ata(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7903][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  7947][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+3][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8055][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8099][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8121][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8143][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8165][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8209][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8231][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8253][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8275][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+[  8278][D][main.cpp:539] vTLog(): [LoMa] Logging Data:
+
+[  8279][I][main.cpp:541] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[  8281][D][main.cpp:567] vTLog(): [LoMa] Task Buffer Used (): 68
+
+[  8281][D][main.cpp:569] vTLog(): [LoMa] Stats Buffer Used: 517 bytes
+
+[  8281][D][main.cpp:570] vTLog(): [LoMa] Stats Buffer Free: 243 bytes
+
+[  8282][D][main.cpp:572] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[  8282][I][main.cpp:573] vTLog(): [LoMa] Task Run Time Stats:
+Log            	23428		<1%
+
+IDLE0          	7572349		91%
+
+IDLE1          	8191304		98%
+
+FSM            	895		<1%
+
+Recv           	2233		<1%
+
+loopTask       	29828		<1%
+
+tiT            	2719		<1%
+
+Cfg            	91		<1%
+
+LED            	511		<1%
+
+Poll           	37690		<1%
+
+Send           	178409		2%
+
+sys_evt        	575		<1%
+
+AdLd           	33		<1%
+
+ipc0           	25854		<1%
+
+Tmr Svc        	111		<1%
+
+esp_timer      	1715		<1%
+
+wifi           	446414		5%
+
+arduino_events 	175		<1%
+
+ipc1           	31329		<1%
+
+
+
+[  8284][I][main.cpp:590] vTLog(): [LoMa] T: FSM, U: 696, F: 328
+
+[  8284][I][main.cpp:590] vTLog(): [LoMa] T: Poll, U: 2336, F: 1760
+
+[  8284][I][main.cpp:590] vTLog(): [LoMa] T: AdLd, U: 736, F: 1312
+
+[  8285][I][main.cpp:590] vTLog(): [LoMa] T: Recv, U: 776, F: 1272
+
+[  8285][I][main.cpp:590] vTLog(): [LoMa] T: Send, U: 1976, F: 2120
+
+[  8285][I][main.cpp:590] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[  8286][I][main.cpp:590] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[  8286][I][main.cpp:590] vTLog(): [LoMa] T: Log, U: 2740, F: 1356
+
+[  8286][I][main.cpp:599] vTLog(): [LoMa] Min, free heap: 8589424 b
+
+[  8289][E][main.cpp:612] vTLog(): [LoMa] Temp. out of bounds: 118 dC
+
+[  8289][I][main.cpp:620] vTLog(): [LoMa] PS: mV: 000-1, mA: 000-1, W: 4294967
+
+[  8297][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
