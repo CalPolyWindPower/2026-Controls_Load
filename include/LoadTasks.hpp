@@ -20,7 +20,11 @@ struct TaskInfo {
 };
 
 // MARK: Constants
-constexpr uint_fast8_t NUM_MAIN_TASKS = 8;     // Must match number of entires!
+#define DBG_NUM_DEL_TASKS 0
+#if DBG_NUM_DEL_TASKS > 0
+#warning "Debug Tasks list will be partially skipped
+#endif
+constexpr uint_fast8_t NUM_MAIN_TASKS = 8 - DBG_NUM_DEL_TASKS;     // Must match number of entires!
 constexpr uint_fast8_t NUM_OPTIONAL_TASKS = 2; // Must match number of entires!
 
 // MARK: Function Prototypes
