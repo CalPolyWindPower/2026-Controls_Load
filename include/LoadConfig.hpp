@@ -95,7 +95,12 @@ namespace RUN {
         TI_CFG_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
         TI_TELNET_ms = 500,     // CONFIG - 500 ms (2 Hz)
         TI_OTA_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
-        TI_LOG_DATA_ms = 4000   // CONFIG - 4000 ms (0.25 Hz)
+        TI_LOG_DATA_ms = 4000,  // CONFIG - 4000 ms (0.25 Hz)
+        FAIL_BACKOFF_BASE_FACTOR =
+            10, // CONFIG - Multiplier for task delay on failure
+        FAIL_BACKOFF_MULTIPLIER =
+            2 // CONFIG - Multiplier for backoff factor on subsequent failures
+        // TODO: Consider one or two fixed, precalculated delays instead or add max backoff
     };
 
     // todo: What was this for?

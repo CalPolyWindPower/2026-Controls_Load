@@ -324,8 +324,16 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        INA260::updateReadings();
-        delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
+        static uint32_t backoffFactor =
+            RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
+        if (INA260::updateReadings()) {
+            backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
+            delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
+        } else {
+            // Logging already handled
+            delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS * backoffFactor);
+            backoffFactor *= RUN::TASK_INTERVALS::FAIL_BACKOFF_MULTIPLIER;
+        }
     }
 }
 
@@ -404,10 +412,21 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
 vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
+        static uint32_t backoffFactor =
+            RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
 
-        (void)loadComms.sendLoadboxData((uint8_t)(load.getSafetyFlag()));
-        BaseType_t xWasDelayed = xTaskDelayUntil(
-            &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
+        uint32_t delay_ms = 0;
+        if (loadComms.sendLoadboxData((uint8_t)(load.getSafetyFlag()))) {
+            backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
+            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS;
+        } else {
+            // Logging already handled
+            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS * backoffFactor;
+            backoffFactor *= RUN::TASK_INTERVALS::FAIL_BACKOFF_MULTIPLIER;
+        }
+
+        BaseType_t xWasDelayed =
+            xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(delay_ms));
         if (xWasDelayed != pdTRUE) {
             ESP_LOGE(TAG, "Timing not met!");
         }
