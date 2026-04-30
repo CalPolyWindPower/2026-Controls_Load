@@ -18,7 +18,7 @@ class LoadContainer {
     // TODO: Note: Task priority must be < 25
 
     TaskInfo tFSM{vTaskUpdateFSM, "FSM", 1024, nullptr, 24, nullptr, 0, false};
-    TaskInfo tPoll{vTaskPollSensors, "Poll", 2048, nullptr, 20,
+    TaskInfo tPoll{vTaskPollSensors, "Poll", 4096, nullptr, 20,
                    nullptr,          0,      false};
     TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048, nullptr, 20,
                          nullptr,         0,      false};

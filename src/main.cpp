@@ -116,7 +116,7 @@ inline bool showLEDsIfReady() {
 void setup() {
     static bool serialInitialized = false;
     if (!serialInitialized) {
-        Serial.begin(115200);
+        Serial.begin(2000000);
         size_t txBuffer = Serial.setTxBufferSize(1024);
         ESP_LOGI(TAG, "Serial initialized @ %d baud w/ buffer size %d",
                  Serial.baudRate(), txBuffer);
