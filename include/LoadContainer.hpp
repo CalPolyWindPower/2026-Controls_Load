@@ -24,7 +24,7 @@ class LoadContainer {
                          nullptr,         0,      false};
     TaskInfo tRecv{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0, false};
 
-    TaskInfo tSend{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0, false};
+    TaskInfo tSend{vTaskSendData, "Send", 4096, nullptr, 15, nullptr, 0, false};
     TaskInfo tCfg{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0, false};
     TaskInfo tLED{vTaskStatusLED, "LED", 2048, nullptr, 2, nullptr, 0, false};
     TaskInfo tLog{vTLog, "Log", 4096, nullptr, 2, nullptr, 0, false};
@@ -65,7 +65,7 @@ class LoadContainer {
 
   private:
     MCP23008T &loadDevice;
-    bool safetyFlag = false; // todo
+    bool safetyFlag = false; // todo - make atomic?
     LoadComms &loadComms;
     // bool powerPositive = false;
     int_fast16_t currentRPM = 0; // todo
