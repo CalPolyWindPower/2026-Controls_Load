@@ -112,8 +112,8 @@ void LoadComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t 
 
   const uint8_t *mac = recv_info->src_addr;
 
-  Serial.printf("Packet received from: %02X:%02X:%02X:%02X:%02X:%02X\n",
-                mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+  // Serial.printf("Packet received from: %02X:%02X:%02X:%02X:%02X:%02X\n",
+  //               mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
   if (len == sizeof(NacellePacket)) {
     // memcpy(&s_instance->incomingPacket_, data, sizeof(NacellePacket));
@@ -132,9 +132,9 @@ void LoadComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t 
   }
 }
 
-bool LoadComms::sendLoadboxData(uint8_t estop) {
+bool LoadComms::sendLoadboxData(int16_t d_mVPS, int16_t current_mA, int16_t dIPS, ESTOP_TYPE_NET safety) {
   // if (now - lastSendTime_ >= LOAD_COMMS_SEND_PERIOD_MS) {
-  makeLoadboxPacket(outgoingPacket_, estop);
+  makeLoadboxPacket(outgoingPacket_, d_mVPS, current_mA, dIPS, safety);
   esp_err_t result = esp_now_send(NACELLE_MAC, (uint8_t *)&outgoingPacket_, sizeof(outgoingPacket_));
   if(result == ESP_OK) {
     lastSendTime_ = millis();

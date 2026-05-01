@@ -2,6 +2,7 @@
 
 #include <cstdint>
 
+#include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include "INA260.hpp"
 #include "LoadConfig.hpp"
 #include "LoadTasks.hpp"
@@ -44,7 +45,7 @@ class LoadContainer {
         : loadDevice(loadDevice), loadComms(loadComms) {}
     ~LoadContainer() = default;
 
-    inline bool getSafetyFlag() const { return (safetyFlag); }
+    inline ESTOP_TYPE_FAST getSafetyFlag() const { return (safetyFlag); }
     inline bool isPowerPositive() const { return (INA260::current_mA > 0); }
     inline bool isSteadyRPM() const {
         return false;
@@ -52,8 +53,12 @@ class LoadContainer {
     inline bool isTargetRPMExceeded() const { return false; } // todo
 
     inline void updateSafetyFlag(bool safetyFlag) {
-        this->safetyFlag =
-            (digitalRead(UM_PROS3::ESTOP_PIN) == LOW) || (!isPowerPositive());
+        if (digitalRead(UM_PROS3::ESTOP_PIN) == LOW) {
+            this->safetyFlag = ESTOP_TYPE_FAST::BUTTON;
+        } else if (abs(INA260::current_mA) <
+                   PSENSOR::LOAD_SHED_I_THRESHOLD_mA) {
+            this->safetyFlag = ESTOP_TYPE_FAST::NONE;
+        }
     }
     // inline void updatePowerPositive(bool powerPositive) {
     //     this->powerPositive = powerPositive;
@@ -65,7 +70,7 @@ class LoadContainer {
 
   private:
     MCP23008T &loadDevice;
-    bool safetyFlag = false; // todo - make atomic?
+    ESTOP_TYPE_FAST safetyFlag = ESTOP_TYPE_FAST::NONE; // todo - make atomic?
     LoadComms &loadComms;
     // bool powerPositive = false;
     int_fast16_t currentRPM = 0; // todo

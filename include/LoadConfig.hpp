@@ -93,7 +93,7 @@ namespace RUN {
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz)
         TI_ADJUST_LOAD_mS = 10, // CONFIG - 10 ms (100 Hz)
         TI_RECV_ms = 100,       // CONFIG - 100 ms (10 Hz)
-        TI_SEND_ms = 100,        // CONFIG - 10 ms (100 Hz) // FIXME
+        TI_SEND_ms = 100,       // CONFIG - 10 ms (100 Hz) // FIXME
         TI_CFG_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
         TI_TELNET_ms = 500,     // CONFIG - 500 ms (2 Hz)
         TI_OTA_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
@@ -102,7 +102,8 @@ namespace RUN {
             10, // CONFIG - Multiplier for task delay on failure
         FAIL_BACKOFF_MULTIPLIER =
             2 // CONFIG - Multiplier for backoff factor on subsequent failures
-        // TODO: Consider one or two fixed, precalculated delays instead or add max backoff
+        // TODO: Consider one or two fixed, precalculated delays instead or add
+        // max backoff
     };
 
     // todo: What was this for?
@@ -135,6 +136,9 @@ namespace PSENSOR {
     constexpr int_fast32_t MIN_POWER_mW = MIN_VOLTAGE_mV * MIN_CURRENT_mA;
     // CONFIG
     constexpr int_fast32_t MAX_POWER_mW = MAX_VOLTAGE_mV * MAX_CURRENT_mA;
+
+    static constexpr uint_fast16_t LOAD_SHED_I_THRESHOLD_mA =
+        500; // CONFIG // todo
 } // namespace PSENSOR
 
 // MARK: Load

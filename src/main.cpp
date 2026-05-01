@@ -416,7 +416,10 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
 
         uint32_t delay_ms = 0;
-        if (loadComms.sendLoadboxData((uint8_t)(load.getSafetyFlag()))) {
+        if (loadComms.sendLoadboxData(
+                INA260::dVoltage_mVPS, INA260::current_mA,
+                INA260::dCurrent_mAPS,
+                static_cast<ESTOP_TYPE_NET>(load.getSafetyFlag()))) {
             backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
             delay_ms = RUN::TASK_INTERVALS::TI_SEND_ms;
         } else {

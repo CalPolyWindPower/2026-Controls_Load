@@ -62,7 +62,7 @@ public:
    * @brief Send load box data to nacelle.
    * @param safety Safety value to send.
    */
-  bool sendLoadboxData(uint8_t safety);
+  bool sendLoadboxData(int16_t d_mVPS, int16_t current_mA, int16_t dIPS, ESTOP_TYPE_NET safety);
 
   /**
    * @brief Process communication - call in main loop.
