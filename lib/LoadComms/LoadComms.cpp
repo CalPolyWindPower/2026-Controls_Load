@@ -141,7 +141,7 @@ bool LoadComms::sendLoadboxData(uint8_t estop) {
     linkAlive_ = true;
   } else {
     linkAlive_ = false;
-    ESP_LOGE(TAG, "Tx failed");
+    ESP_LOGE(TAG, "Tx fail w/ %d", result);
   }
 
   // }
