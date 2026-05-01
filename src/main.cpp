@@ -11,23 +11,34 @@
 #include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
 
-// Project Includes
+// Include LoadConfig first
 #include "LoadConfig.hpp"
-// #include "2026Core/Net/Net-Application/Telnet.hpp"
-// #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
-// #include "2026Core/Net/NetAdapter_A.hpp"
+// Project Includes
 #include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
-// #include "2026Core/Net/Net-Application/NTP.hpp"
-// #include "2026Core/Net/Net-Application/OTA.hpp"
-// #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
-// #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
-#include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include "INA260.hpp"
 #include "LoadComms.hpp"
 #include "LoadContainer.hpp"
 #include "LoadFSM.hpp"
 #include "LoadTasks.hpp"
 #include "MCP23008T.hpp"
+#define COMMS_STRATEGY_OLD 0
+#define COMMS_STRATEGY_NEW 1
+#define COMMS_STRATEGY_UCHI 2
+#define COMMS_STRATEGY COMMS_STRATEGY_NEW
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+#    include "2026Core/Net/Net-Application/NTP.hpp"
+#    include "2026Core/Net/Net-Application/OTA.hpp"
+#    include "2026Core/Net/Net-Application/Telnet.hpp"
+#    include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
+#    include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#    include "2026Core/Net/NetAdapter_A.hpp"
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#    include "2026Core/TurbinePacket/TurbinePacket.hpp"
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UCHI
+#    include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+#else
+#    error "Invalid COMMS_STRATEGY"
+#endif
 
 /* Config */
 static constexpr const char *TAG = "LoMa";
