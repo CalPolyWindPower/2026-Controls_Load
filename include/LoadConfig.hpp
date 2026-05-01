@@ -44,6 +44,8 @@ namespace UM_PROS3 {
     // I2C
     constexpr uint_fast8_t I2C_SDA_PIN = SDA;
     constexpr uint_fast8_t I2C_SCL_PIN = SCL;
+    // constexpr uint_fast8_t I2C_SDA_PIN = 2; // FIXME
+    // constexpr uint_fast8_t I2C_SCL_PIN = 1; // FIXME
 
     // SPI
     constexpr uint_fast8_t SPI_CIPO_PIN = MISO; // todo
