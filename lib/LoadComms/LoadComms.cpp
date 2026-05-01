@@ -8,6 +8,8 @@
 
 #include "LoadComms.hpp"
 #include <esp_log.h>
+#include <esp_wifi.h>
+#include <etl/array.h>
 
 // Initialization of static members
 QueueHandle_t LoadComms::priorityDataQueue = nullptr;
@@ -42,6 +44,12 @@ bool LoadComms::begin() {
         ESP_LOGE(TAG, "Failed to set WiFi band mode");
         return false;
     }
+
+    etl::array<uint8_t, 6> MACAddress = {0};
+    esp_err_t opStatus = esp_wifi_get_mac(WIFI_IF_STA, MACAddress.data());
+    ESP_LOGI(TAG, "Device MAC: %02X:%02X:%02X:%02X:%02X:%02X", MACAddress[0],
+      MACAddress[1], MACAddress[2], MACAddress[3], MACAddress[4], MACAddress[5]);
+
 
     if (!WiFi.STA.bandwidth(WIFI_BW_HT20)) {
         ESP_LOGE(TAG, "Failed to set WiFi bandwidth");
