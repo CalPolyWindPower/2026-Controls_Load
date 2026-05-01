@@ -418,10 +418,10 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
         uint32_t delay_ms = 0;
         if (loadComms.sendLoadboxData((uint8_t)(load.getSafetyFlag()))) {
             backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
-            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS;
+            delay_ms = RUN::TASK_INTERVALS::TI_SEND_ms;
         } else {
             // Logging already handled
-            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS * backoffFactor;
+            delay_ms = RUN::TASK_INTERVALS::TI_SEND_ms * backoffFactor;
             backoffFactor *= RUN::TASK_INTERVALS::FAIL_BACKOFF_MULTIPLIER;
         }
 
