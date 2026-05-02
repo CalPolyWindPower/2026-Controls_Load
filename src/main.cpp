@@ -66,6 +66,12 @@ bool loadConfigured = false;
 LoadContainer load(loadDevice, loadComms);
 LoadFSM loadFSM(load);
 
+// static uint_fast32_t txEvents = 0; // DONE: check against last years code
+// static uint_fast32_t bytesSent = 0;
+// static uint_fast32_t bytesNotSent = 0;
+// static uint_fast32_t rxEvents = 0;
+// static uint_fast32_t bytesReceived = 0;
+
 // todo: move
 bool configureLoad() {
     if (!INA260::begin(PSENSOR::I2C_ADDRESS, PSENSOR::AVG_COUNT,
@@ -632,6 +638,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         // delay(LOG_ITEM_INTERVAL_MS);
 
         ESP_LOGI(TAG, "%s", INA260::getLogString().c_str());
+        
+        ESP_LOGI(TAG, "%s", loadComms.getLogString().c_str());  
+
         delay(LOG_ITEM_INTERVAL_MS);
 
         // esp_wifi_get_bandwidth

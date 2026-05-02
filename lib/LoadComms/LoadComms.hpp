@@ -20,6 +20,9 @@
 #include <WiFi.h>
 #include <esp_now.h>
 #include <2026Core/TurbinePacket/TurbinePacket.hpp>
+#include <etl/format_spec.h>
+#include <etl/string.h>
+#include <etl/to_string.h>
 
 /**
  * @brief MAC address of the nacelle controller.
@@ -84,11 +87,25 @@ public:
    */
   // float getNacelleRPM() const;
 
+  // TODO - improve this and null terminator may not be needed
+    static constexpr uint_fast8_t LOG_STRING_SIZE =
+        3 + 7 + 6 + ((8 + 7) * 2) + 7 + 6 + 8 + 7 + 1;
+    /**
+     * @brief Get at string that describes the current state of the PID instance
+     * @returns the current state of the PID instance as a string
+     */
+    etl::string<LOG_STRING_SIZE> getLogString() const;
+
 private:
   NacellePacket incomingPacket_;  ///< Received packet from nacelle.
   LoadboxPacket outgoingPacket_;   ///< Outgoing packet to send.
   unsigned long lastSendTime_;    ///< Timestamp of last transmission.
   unsigned long lastRxTime_;      ///< Timestamp of last received packet.
+  static uint_fast32_t txEvents;  // DONE: check against last years code
+  static uint_fast32_t bytesSent;
+  static uint_fast32_t bytesNotSent;
+  static uint_fast32_t rxEvents;
+  static uint_fast32_t bytesReceived;
   bool linkAlive_;                ///< Link health status.
   // float nacelleRPM_;                     ///< Cached RPM value.
 
