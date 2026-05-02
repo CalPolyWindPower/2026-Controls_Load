@@ -23,6 +23,8 @@
 #include <etl/format_spec.h>
 #include <etl/string.h>
 #include <etl/to_string.h>
+#include <atomic>
+#include <cstdint>
 
 /**
  * @brief MAC address of the nacelle controller.
@@ -101,11 +103,11 @@ private:
   LoadboxPacket outgoingPacket_;   ///< Outgoing packet to send.
   unsigned long lastSendTime_;    ///< Timestamp of last transmission.
   unsigned long lastRxTime_;      ///< Timestamp of last received packet.
-  static uint_fast32_t txEvents;  // DONE: check against last years code
-  static uint_fast32_t bytesSent;
-  static uint_fast32_t bytesNotSent;
-  static uint_fast32_t rxEvents;
-  static uint_fast32_t bytesReceived;
+  static std::atomic<uint_fast32_t> txEvents;  // DONE: check against last years code
+  static std::atomic<uint_fast32_t> bytesSent;
+  static std::atomic<uint_fast32_t> bytesNotSent;
+  static std::atomic<uint_fast32_t> rxEvents;
+  static std::atomic<uint_fast32_t> bytesReceived;
   bool linkAlive_;                ///< Link health status.
   // float nacelleRPM_;                     ///< Cached RPM value.
 

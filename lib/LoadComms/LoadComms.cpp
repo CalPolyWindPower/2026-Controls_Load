@@ -13,11 +13,11 @@
 
 // Initialization of static members
 QueueHandle_t LoadComms::priorityDataQueue = nullptr;
-uint_fast32_t LoadComms::txEvents = 0; // DONE: check against last years code
-uint_fast32_t LoadComms::bytesSent = 0;
-uint_fast32_t LoadComms::bytesNotSent = 0;
-uint_fast32_t LoadComms::rxEvents = 0;
-uint_fast32_t LoadComms::bytesReceived = 0;
+std::atomic<uint_fast32_t> LoadComms::txEvents = 0; // DONE: check against last years code
+std::atomic<uint_fast32_t> LoadComms::bytesSent = 0;
+std::atomic<uint_fast32_t> LoadComms::bytesNotSent = 0;
+std::atomic<uint_fast32_t> LoadComms::rxEvents = 0;
+std::atomic<uint_fast32_t> LoadComms::bytesReceived = 0;
 
 /**
  * @brief MAC address of the nacelle controller.
@@ -122,19 +122,19 @@ etl::string<LoadComms::LOG_STRING_SIZE> LoadComms::getLogString() const {
          * https://stackoverflow.com/questions/12346487/what-do-each-memory-order-mean
          * @see https://en.cppreference.com/cpp/atomic/memory_order
          */
-        etl::to_string(txEvents, logString, decFormatA, true); // 6 chars
+        etl::to_string(txEvents.load(std::memory_order_relaxed), logString, decFormatA, true); // 6 chars
         logString.append(", TxBS: "); // 8 chars
 
         etl::format_spec decFormatB;
         decFormatB.width(7).fill('0'); // [7 chars]
-        etl::to_string(bytesSent, logString, decFormatB, true); // 7 chars
+        etl::to_string(bytesSent.load(std::memory_order_relaxed), logString, decFormatB, true); // 7 chars
         logString.append(", TxBF: ");                 // 8 chars
-        etl::to_string(bytesNotSent, logString, decFormatB, true); // 7 chars
+        etl::to_string(bytesNotSent.load(std::memory_order_relaxed), logString, decFormatB, true); // 7 chars
 
         logString.append(", RxE: ");                 // 7 chars
-        etl::to_string(rxEvents, logString, decFormatA, true); // 6 chars
+        etl::to_string(rxEvents.load(std::memory_order_relaxed), logString, decFormatA, true); // 6 chars
         logString.append(", RxBS: "); // 8 chars
-        etl::to_string(bytesReceived, logString, decFormatB, true); // 7 chars
+        etl::to_string(bytesReceived.load(std::memory_order_relaxed), logString, decFormatB, true); // 7 chars
 
         return logString;
     }
@@ -154,6 +154,9 @@ void LoadComms::onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_status_t
 }
 
 void LoadComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t *data, int len) {
+  rxEvents++;
+  bytesReceived += len;
+
   if (s_instance == nullptr) {
     ESP_LOGE(TAG, "Rx CB: Invalid instance");
     return;
@@ -174,8 +177,6 @@ void LoadComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t 
 
     // Serial.println("Received NacellePacket:");
     // printNacellePacket(s_instance->incomingPacket_, Serial);
-    rxEvents++;
-    bytesReceived += len;
 
     (void)xQueueOverwrite(priorityDataQueue, data); // Allegedly cannot fail
   } else {
