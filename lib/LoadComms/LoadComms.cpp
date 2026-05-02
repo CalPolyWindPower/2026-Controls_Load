@@ -128,7 +128,7 @@ etl::string<LoadComms::LOG_STRING_SIZE> LoadComms::getLogString() const {
         etl::format_spec decFormatB;
         decFormatB.width(7).fill('0'); // [7 chars]
         etl::to_string(bytesSent, logString, decFormatB, true); // 7 chars
-        logString.append(", TxBS: ");                 // 8 chars
+        logString.append(", TxBF: ");                 // 8 chars
         etl::to_string(bytesNotSent, logString, decFormatB, true); // 7 chars
 
         logString.append(", RxE: ");                 // 7 chars
