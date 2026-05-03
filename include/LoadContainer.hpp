@@ -8,6 +8,7 @@
 #include "LoadTasks.hpp"
 #include "MCP23008T.hpp"
 #include <Adafruit_INA260.h>
+#include <atomic>
 
 /**
  * @brief Class to manage the container for load data
@@ -84,12 +85,47 @@ class LoadContainer {
         return this->angularAccell_RPMPS;
     }
 
+    static constexpr uint_fast8_t LOG_STRING_SIZE =
+        3 + 7 + 5 + 5 + 10 + 5 + 6 +
+        1; // TODO - improve this and null terminator may not be needed
+    /**
+     * @brief Get at string that describes the current state of the PID instance
+     * @returns the current state of the PID instance as a string
+     */
+    etl::string<LOG_STRING_SIZE> getLogString() {
+        etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
+        (void)logString.append(": RPM: ");           // 7 chars
+
+        etl::format_spec decFormatA;
+        (void)decFormatA.width(5).fill('0'); // [5 chars]
+        /**
+         * @details I don't think we need strong guarantees on logging data
+         * @see
+         * https://stackoverflow.com/questions/12346487/what-do-each-memory-order-mean
+         * @see https://en.cppreference.com/cpp/atomic/memory_order
+         */
+        etl::to_string(currentRPM.load(std::memory_order::relaxed), logString,
+                       decFormatA, true);     // 5 chars
+        (void)logString.append(", dRPM/s: "); // 10 chars
+
+        etl::to_string(getAngularAccell_RPMPS(), logString, decFormatA,
+                       true); // 5 chars
+
+        (void)logString.append(", SF: "); // 6 chars
+
+        etl::format_spec decFormatB;
+        decFormatB.width(1).fill('0'); // [1 chars]
+        etl::to_string(static_cast<uint_fast8_t>(getSafetyFlag()), logString,
+                       decFormatB, true); // 1 char
+
+        return logString;
+    }
+
   private:
     MCP23008T &loadDevice;
     ESTOP_TYPE_FAST safetyFlag = ESTOP_TYPE_FAST::NONE; // todo - make atomic?
     LoadComms &loadComms;
     // bool powerPositive = false;
-    int_fast16_t currentRPM = 0;          // todo
     int_fast16_t angularAccell_RPMPS = 0; // todo
 
     /**
@@ -132,5 +168,5 @@ class LoadContainer {
     // static_assert(std::atomic<int_fast16_t>::is_always_lock_free,
     //               "Atomic operations on int_fast16_t are not lock-free on "
     //               "this platform.");
-    // std::atomic<int_fast16_t> currentRPM = 0;
+    std::atomic<int_fast16_t> currentRPM = 0; // todo
 };

@@ -657,6 +657,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         // TODO: Improve logging, check ESTOP logic
 
         ESP_LOGI(TAG, "%s", INA260::getLogString().c_str());
+        ESP_LOGI(TAG, "Current State: %d", loadFSM.getCurrentState());
+        ESP_LOGI(TAG, "%S", load.getLogString().c_str());
+        ESP_LOGI(TAG, "%s", loadDevice.getLogString().c_str());
 
         static unsigned int prevTime_us = 0;
         static LoadComms::LogData lastLogData = {0};
