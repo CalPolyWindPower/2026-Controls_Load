@@ -267,14 +267,14 @@ class MCP23008T {
      */
     etl::string<LOG_STRING_SIZE> getLogString() {
         etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-        logString.append(": @ox");                   // 5 chars
+        (void)logString.append(": @ox");             // 5 chars
 
         etl::format_spec format2;
-        format2.hex().width(2).fill('0');                       // [2 chars]
+        (void)format2.hex().width(2).fill('0');                 // [2 chars]
         etl::to_string(getAddress(), logString, format2, true); // 2 chars
 
         etl::format_spec format3;
-        format3.hex().width(3).fill('0');                        // [3 chars]
+        (void)format3.hex().width(3).fill('0');                  // [3 chars]
         etl::to_string(readIntCap(), logString, format3, true);  // 3 chars
         etl::to_string(readIntFlag(), logString, format3, true); // 3 chars
 

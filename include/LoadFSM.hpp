@@ -48,7 +48,7 @@ class LoadFSM {
          * @details Trim -1 to an 8-bit unsigned integer(255), unsigned extend
          * to uint_fast8_t
          */
-        ERROR = (uint_fast8_t)(uint8_t)-1
+        ERROR = static_cast<uint_fast8_t>(static_cast<uint8_t>(-1))
     };
 
     /**
@@ -72,7 +72,9 @@ class LoadFSM {
                    (load.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
             // sESTOP -> sESTOP: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
-        } // else: ~safetyTask
+        } else {
+            // else: ~safetyTask
+        }
 
         // Check reset conditions
         constexpr uint_fast16_t START_RUN_2_RPM = 500; // todo
@@ -92,11 +94,13 @@ class LoadFSM {
                    load.getRPM() <= START_RUN_2_RPM) {
             // sRST -> sRST: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
-        } // else: producingPositivePower or maybe just still starting up
+        } else {
+            // else: producingPositivePower or maybe just still starting up
+        }
 
         // Check other transition conditions
         if ((currentState == FSMCommon::States::sRST) &&
-            load.getRPM() > START_RUN_2_RPM) {
+            (load.getRPM() > START_RUN_2_RPM)) {
             // sRST -> sStartRun
             currentState = FSMCommon::States::sStartRun;
 

@@ -12,16 +12,19 @@ namespace INA260 {
     constexpr uint_fast16_t u_TO_m = 1000;
     constexpr uint_fast32_t u_TO_BASE = m_TO_BASE * u_TO_m;
     static constexpr int_fast8_t MIN_VOLTAGE_V = -32;
-    static constexpr int_fast16_t MIN_VOLTAGE_mV = MIN_VOLTAGE_V * m_TO_BASE;
+    static constexpr int_fast16_t MIN_VOLTAGE_mV =
+        MIN_VOLTAGE_V * static_cast<int_fast16_t>(m_TO_BASE);
     static constexpr int_fast8_t MAX_VOLTAGE_V = 32;
     static constexpr int_fast16_t MAX_VOLTAGE_mV = MAX_VOLTAGE_V * m_TO_BASE;
     static constexpr int_fast8_t MIN_CURRENT_A = -15;
-    static constexpr int_fast16_t MIN_CURRENT_mA = MIN_CURRENT_A * m_TO_BASE;
+    static constexpr int_fast16_t MIN_CURRENT_mA =
+        MIN_CURRENT_A * static_cast<int_fast16_t>(m_TO_BASE);
     static constexpr int_fast8_t MAX_CURRENT_A = 15;
     static constexpr int_fast16_t MAX_CURRENT_mA = MAX_CURRENT_A * m_TO_BASE;
     static constexpr int_fast16_t MIN_POWER_W =
         MIN_VOLTAGE_V * MIN_CURRENT_A * -1;
-    static constexpr int_fast16_t MIN_POWER_mW = MIN_POWER_W * m_TO_BASE;
+    static constexpr int_fast16_t MIN_POWER_mW =
+        MIN_POWER_W * static_cast<int_fast16_t>(m_TO_BASE);
     static constexpr int_fast16_t MAX_POWER_W = MAX_VOLTAGE_V * MAX_CURRENT_A;
     static constexpr int_fast16_t MAX_POWER_mW = MAX_POWER_W * m_TO_BASE;
 
@@ -65,18 +68,18 @@ namespace INA260 {
         unsigned long currentTime_us = micros();
         unsigned long dTime_us = currentTime_us - detail::lastUpdateTime_us;
 
-        auto vTemp_mV = (uint_fast32_t)powerSensor.readBusVoltage();
+        auto vTemp_mV = static_cast<int_fast32_t>(powerSensor.readBusVoltage());
         if ((vTemp_mV > MAX_VOLTAGE_mV) ||
             (vTemp_mV < PSENSOR::MIN_VOLTAGE_mV)) {
             ESP_LOGE("TAG", "V reading out of bounds: %u mV", vTemp_mV);
-            result &= false;
+            result = false;
         } // Else: Valid reading
         prevVoltage_mV = voltage_mV;
         voltage_mV = vTemp_mV;
         int_fast16_t dVoltage_mV = voltage_mV - prevVoltage_mV;
         dVoltage_mVPS = dVoltage_mV * u_TO_BASE / dTime_us;
 
-        auto iTemp = (uint_fast32_t)powerSensor.readCurrent();
+        auto iTemp = static_cast<int_fast32_t>(powerSensor.readCurrent());
         if ((iTemp > MAX_CURRENT_mA) || (iTemp < MIN_CURRENT_mA)) {
             ESP_LOGE("TAG", "C reading out of bounds: %d mA", iTemp);
             result &= false;
@@ -86,7 +89,7 @@ namespace INA260 {
         int_fast16_t dCurrent_mA = current_mA - prevCurrent_mA;
         dCurrent_mAPS = dCurrent_mA * u_TO_BASE / dTime_us;
 
-        auto pTemp = (uint_fast32_t)powerSensor.readPower();
+        auto pTemp = static_cast<int_fast32_t>(powerSensor.readPower());
         if ((pTemp > (MAX_VOLTAGE_mV * MAX_CURRENT_A)) ||
             (pTemp < (PSENSOR::MIN_VOLTAGE_mV * MIN_CURRENT_A))) {
             ESP_LOGE("TAG", "P out of bounds: %d mW", pTemp);
@@ -109,10 +112,10 @@ namespace INA260 {
      */
     etl::string<LOG_STRING_SIZE> getLogString() {
         etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-        logString.append(": mV: ");                  // 6 chars
+        (void)logString.append(": mV: ");            // 6 chars
 
         etl::format_spec decFormatA;
-        decFormatA.width(5).fill('0'); // [5 chars]
+        (void)decFormatA.width(5).fill('0'); // [5 chars]
         /**
          * @details I don't think we need strong guarantees on logging data
          * @see
@@ -120,20 +123,20 @@ namespace INA260 {
          * @see https://en.cppreference.com/cpp/atomic/memory_order
          */
         etl::to_string(voltage_mV.load(), logString, decFormatA,
-                       true);       // 5 chars
-        logString.append(", mA: "); // 6 chars
+                       true);             // 5 chars
+        (void)logString.append(", mA: "); // 6 chars
         etl::to_string(current_mA.load(), logString, decFormatA,
-                       true);       // 5 chars
-        logString.append(", mW: "); // 6 chars
+                       true);             // 5 chars
+        (void)logString.append(", mW: "); // 6 chars
         etl::to_string(power_mW.load() / m_TO_BASE, logString, decFormatA,
-                       true);         // 5 chars
-        logString.append(", mV/s: "); // 8 chars
+                       true);               // 5 chars
+        (void)logString.append(", mV/s: "); // 8 chars
         etl::to_string(dVoltage_mVPS.load(), logString, decFormatA,
-                       true);         // 5 chars
-        logString.append(", mA/s: "); // 8 chars
+                       true);               // 5 chars
+        (void)logString.append(", mA/s: "); // 8 chars
         etl::to_string(dCurrent_mAPS.load(), logString, decFormatA,
-                       true);         // 5 chars
-        logString.append(", mW/s: "); // 8 chars
+                       true);               // 5 chars
+        (void)logString.append(", mW/s: "); // 8 chars
         etl::to_string(dPower_mWPS.load(), logString, decFormatA,
                        true); // 5 chars
 

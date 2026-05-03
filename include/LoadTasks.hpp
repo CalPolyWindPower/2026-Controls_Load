@@ -8,8 +8,8 @@
 
 // MARK: Datatypes & Constants
 struct TaskInfo {
-    const TaskFunction_t function;
-    const char *const name;
+    const TaskFunction_t function = nullptr;
+    const char *const name = nullptr;
     const configSTACK_DEPTH_TYPE stackSize_bytes = 1024;
     void *const pvParameters = nullptr;
     const UBaseType_t priority; // Note: Task priority must be <25 for some

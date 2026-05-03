@@ -110,10 +110,10 @@ class LoadComms {
     LogData getLogData() const;
 
   private:
-    NacellePacket incomingPacket_; ///< Received packet from nacelle.
-    LoadboxPacket outgoingPacket_; ///< Outgoing packet to send.
-    unsigned long lastSendTime_;   ///< Timestamp of last transmission.
-    unsigned long lastRxTime_;     ///< Timestamp of last received packet.
+    NacellePacket incomingPacket_ = {0}; ///< Received packet from nacelle.
+    LoadboxPacket outgoingPacket_ = {0}; ///< Outgoing packet to send.
+    unsigned long lastSendTime_;         ///< Timestamp of last transmission.
+    unsigned long lastRxTime_;           ///< Timestamp of last received packet.
     static std::atomic<uint_fast32_t>
         txEvents; // DONE: check against last years code
     static std::atomic<uint_fast32_t> bytesSent;

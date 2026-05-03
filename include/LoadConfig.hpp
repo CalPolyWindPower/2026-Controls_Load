@@ -128,8 +128,9 @@ namespace PSENSOR {
     constexpr int_fast16_t MAX_VOLTAGE_V = 48; // CONFIG
     // CONFIG
     constexpr uint_fast16_t MAX_VOLTAGE_mV = MAX_VOLTAGE_V * m_TO_BASE;
-    constexpr int_fast16_t MIN_CURRENT_A = -20;                        // CONFIG
-    constexpr int_fast16_t MIN_CURRENT_mA = MIN_CURRENT_A * m_TO_BASE; // CONFIG
+    constexpr int_fast16_t MIN_CURRENT_A = -20; // CONFIG
+    constexpr int_fast16_t MIN_CURRENT_mA =
+        MIN_CURRENT_A * static_cast<int_fast16_t>(m_TO_BASE);          // CONFIG
     constexpr int_fast16_t MAX_CURRENT_A = 20;                         // CONFIG
     constexpr int_fast16_t MAX_CURRENT_mA = MAX_CURRENT_A * m_TO_BASE; // CONFIG
     // CONFIG

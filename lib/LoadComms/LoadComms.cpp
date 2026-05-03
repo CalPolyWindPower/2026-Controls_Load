@@ -53,6 +53,9 @@ bool LoadComms::begin() {
     }
 
     etl::array<uint8_t, 6> MACAddress = {0};
+    // TODO: Conversions between pointers and integer types should not be
+    // performed. Consider inspecting the second argument of the
+    // 'esp_wifi_get_mac' function call.
     esp_err_t opStatus = esp_wifi_get_mac(WIFI_IF_STA, MACAddress.data());
     if (opStatus != ESP_OK) {
         ESP_LOGE(TAG, "Failed to get MAC address: %d", opStatus);
@@ -99,7 +102,7 @@ bool LoadComms::begin() {
 
 esp_err_t LoadComms::setupPeer_() {
     esp_now_peer_info_t peerInfo = {};
-    memcpy(peerInfo.peer_addr, NACELLE_MAC, 6);
+    (void)memcpy(peerInfo.peer_addr, NACELLE_MAC, 6);
     peerInfo.channel = 0;
     peerInfo.encrypt = false;
 
@@ -122,7 +125,7 @@ etl::string<LoadComms::LOG_STRING_SIZE> LoadComms::getLogString() const {
     logString.append(": TxE: ");                 // 7 chars
 
     etl::format_spec decFormatA;
-    decFormatA.width(6).fill(
+    (void)decFormatA.width(6).fill(
         '0'); // [6 chars, expecting up to 30 mins * (1/(2ms)) = 900,000 events]
     /**
      * @details I don't think we need strong guarantees on logging data
@@ -135,17 +138,17 @@ etl::string<LoadComms::LOG_STRING_SIZE> LoadComms::getLogString() const {
     logString.append(", TxBS: ");     // 8 chars
 
     etl::format_spec decFormatB;
-    decFormatB.width(7).fill('0'); // [7 chars]
+    (void)decFormatB.width(7).fill('0'); // [7 chars]
     etl::to_string(bytesSent.load(std::memory_order_relaxed), logString,
-                   decFormatB, true); // 7 chars
-    logString.append(", TxBF: ");     // 8 chars
+                   decFormatB, true);   // 7 chars
+    (void)logString.append(", TxBF: "); // 8 chars
     etl::to_string(bytesNotSent.load(std::memory_order_relaxed), logString,
                    decFormatB, true); // 7 chars
 
-    logString.append(", RxE: "); // 7 chars
+    (void)logString.append(", RxE: "); // 7 chars
     etl::to_string(rxEvents.load(std::memory_order_relaxed), logString,
-                   decFormatA, true); // 6 chars
-    logString.append(", RxB: ");     // 7 chars
+                   decFormatA, true);  // 6 chars
+    (void)logString.append(", RxB: "); // 7 chars
     etl::to_string(bytesReceived.load(std::memory_order_relaxed), logString,
                    decFormatB, true); // 7 chars
 
@@ -206,8 +209,9 @@ bool LoadComms::sendLoadboxData(int16_t d_mVPS, int16_t current_mA,
                                 int16_t dIPS, ESTOP_TYPE_NET safety) {
     // if (now - lastSendTime_ >= LOAD_COMMS_SEND_PERIOD_MS) {
     makeLoadboxPacket(outgoingPacket_, d_mVPS, current_mA, dIPS, safety);
-    esp_err_t result = esp_now_send(NACELLE_MAC, (uint8_t *)&outgoingPacket_,
-                                    sizeof(outgoingPacket_));
+    esp_err_t result =
+        esp_now_send(NACELLE_MAC, reinterpret_cast<uint8_t *>(&outgoingPacket_),
+                     sizeof(outgoingPacket_));
     if (result == ESP_OK) {
         lastSendTime_ = millis();
         linkAlive_ = true;

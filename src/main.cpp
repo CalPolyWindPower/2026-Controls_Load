@@ -260,6 +260,13 @@ void setup() {
                 continue;
             }
 
+            /**
+             * @details PVS-Studio: "The modulo by 1 operation is meaningless.
+             * The result will always be zero."
+             * @see https://pvs-studio.com/en/docs/warnings/v1063/
+             * @details PVS=Studio: "Expression is always false."
+             * @see https://pvs-studio.com/en/docs/warnings/v547/
+             */
             if (taskDesc->stackSize_bytes % sizeof(StackType_t) != 0) {
                 ESP_LOGE(TAG, "Stack size not aligned");
                 continue;
@@ -295,16 +302,20 @@ void setup() {
         //     0.0f, 1500.0f); // todo - just a quick performances test
 
         // Configure FSM
+        // PVS-Studio: One of these is always true...
         LoadFSM::UPDATE_RESULT result = loadFSM.updateState();
         if (result == LoadFSM::UPDATE_RESULT::ERROR) {
-            ESP_LOGE(TAG, "Error during FSM init., %d", (uint_fast8_t)result);
+            // PVS=Studio: "Expression [...] is always false."
+            ESP_LOGE(TAG, "Error during FSM init., %d",
+                     static_cast<uint_fast8_t>(result));
         } else if (result == LoadFSM::UPDATE_RESULT::STATE_CHANGED) {
             ESP_LOGI(TAG, "Initialized FSM to state %d",
-                     (uint_fast8_t)loadFSM.getCurrentState());
+                     static_cast<uint_fast8_t>(loadFSM.getCurrentState()));
         } else if (result == LoadFSM::UPDATE_RESULT::NO_CHANGE) {
             ESP_LOGE(TAG, "Failed to enter a valid state");
         } else {
-            ESP_LOGE(TAG, "Unknown FSM init. result: %d", (uint_fast8_t)result);
+            ESP_LOGE(TAG, "Unknown FSM init. result: %d",
+                     static_cast<uint_fast8_t>(result));
         }
 
         ESP_LOGI(TAG, "Setup complete!");
@@ -324,13 +335,15 @@ void setup() {
 [[noreturn]] void
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        // LoadFSM::UPDATE_RESULT result = loadFSM.updateState();
-        // if (result == LoadFSM::UPDATE_RESULT::STATE_CHANGED) {
-        //     ESP_LOGI(TAG, "FSM State Changed: %d",
-        //     loadFSM.getCurrentState());
-        // } else if (result == LoadFSM::UPDATE_RESULT::ERROR) {
-        //     ESP_LOGE(TAG, "Error updating FSM state");
-        // }
+        LoadFSM::UPDATE_RESULT result = loadFSM.updateState();
+        if (result == LoadFSM::UPDATE_RESULT::STATE_CHANGED) {
+            ESP_LOGI(TAG, "FSM State Changed: %d", loadFSM.getCurrentState());
+        } else if (result == LoadFSM::UPDATE_RESULT::ERROR) {
+            // PVS-Studio says this is always false
+            ESP_LOGE(TAG, "Error updating FSM state");
+        } else {
+            // No change, nothing to log
+        }
         delay(RUN::TASK_INTERVALS::TI_FSM_mS);
     }
 }
@@ -626,7 +639,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         float tsens_out;
         ESP_ERROR_CHECK(
             temperature_sensor_get_celsius(tempSensHandle, &tsens_out));
-        auto tempTrunc_C = (int32_t)tsens_out;
+        auto tempTrunc_C = static_cast<int32_t>(tsens_out);
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
         if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
@@ -637,6 +650,11 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         // Disable the temperature sensor if it is not needed and save the power
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
         // delay(LOG_ITEM_INTERVAL_MS);
+
+        ESP_LOGI(TAG, "Current State: %d", loadFSM.getCurrentState());
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        // TODO: Improve logging, check ESTOP logic
 
         ESP_LOGI(TAG, "%s", INA260::getLogString().c_str());
 
@@ -668,8 +686,6 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
                  deltaBytesReceived * u_TO_BASE / deltaTime_us);
         prevTime_us = currentTime_us;
         lastLogData = currentLogData;
-
-        prevTime_us = currentTime_us;
 
         delay(LOG_ITEM_INTERVAL_MS);
 

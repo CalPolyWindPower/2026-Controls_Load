@@ -14,6 +14,7 @@
  */
 class LoadContainer {
   public:
+    static constexpr const char *TAG = "LC";
     // constexpr uint_fast8_t NUM_MAIN_TASKS = 1;
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
@@ -50,13 +51,18 @@ class LoadContainer {
     inline bool isSteadyRPM() const {
         return (angularAccell_RPMPS < 20);
     } // todo - steady power is actually more important
-    inline bool isTargetRPMExceeded() const { return false; } // todo
+    inline bool isTargetRPMExceeded() const {
+        constexpr uint_fast16_t TARGET_RPM = 2200; // todo
+        return (currentRPM > TARGET_RPM);
+    } // todo
 
     inline void updateSafetyFlag(bool safetyFlag) {
         if (digitalRead(UM_PROS3::ESTOP_PIN) == LOW) {
             this->safetyFlag = ESTOP_TYPE_FAST::BUTTON;
         } else if (abs(INA260::current_mA) <
                    PSENSOR::LOAD_SHED_I_THRESHOLD_mA) {
+            this->safetyFlag = ESTOP_TYPE_FAST::LOAD_DISCONNECT;
+        } else {
             this->safetyFlag = ESTOP_TYPE_FAST::NONE;
         }
     }
@@ -64,7 +70,10 @@ class LoadContainer {
     //     this->powerPositive = powerPositive;
     // }
     inline void setLoadGPIO(uint_fast8_t value) {
-        loadDevice.setGPIO((uint32_t)value);
+        bool result = loadDevice.setGPIO(static_cast<uint32_t>(value));
+        if (!result) {
+            ESP_LOGE(TAG, "Failed to set load GPIO");
+        }
     }
     inline void setRPM(int_fast16_t rpm) { this->currentRPM = rpm; }
     inline int_fast16_t getRPM() const { return this->currentRPM; }
