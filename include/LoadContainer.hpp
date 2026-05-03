@@ -50,7 +50,7 @@ class LoadContainer {
     inline ESTOP_TYPE_FAST getSafetyFlag() const { return (safetyFlag); }
     inline bool isPowerPositive() const { return (INA260::current_mA > 0); }
     inline bool isSteadyRPM() const {
-        return (angularAccell_RPMPS < 20);
+        return (angularAccel_RPMPS < 20);
     } // todo - steady power is actually more important
     inline bool isTargetRPMExceeded() const {
         constexpr uint_fast16_t TARGET_RPM = 2200; // todo
@@ -78,11 +78,11 @@ class LoadContainer {
     }
     inline void setRPM(int_fast16_t rpm) { this->currentRPM = rpm; }
     inline int_fast16_t getRPM() const { return this->currentRPM; }
-    inline void setAngularAccell_RPMPS(int_fast16_t angularAccell_RPMPS) {
-        this->angularAccell_RPMPS = angularAccell_RPMPS;
+    inline void setAngularAccel_RPMPS(int_fast16_t angularAccel_RPMPS) {
+        this->angularAccel_RPMPS = angularAccel_RPMPS;
     }
-    inline int_fast16_t getAngularAccell_RPMPS() const {
-        return this->angularAccell_RPMPS;
+    inline int_fast16_t getAngularAccel_RPMPS() const {
+        return this->angularAccel_RPMPS;
     }
 
     static constexpr uint_fast8_t LOG_STRING_SIZE =
@@ -108,7 +108,7 @@ class LoadContainer {
                        decFormatA, true);     // 5 chars
         (void)logString.append(", dRPM/s: "); // 10 chars
 
-        etl::to_string(getAngularAccell_RPMPS(), logString, decFormatA,
+        etl::to_string(getAngularAccel_RPMPS(), logString, decFormatA,
                        true); // 5 chars
 
         (void)logString.append(", SF: "); // 6 chars
@@ -126,7 +126,7 @@ class LoadContainer {
     ESTOP_TYPE_FAST safetyFlag = ESTOP_TYPE_FAST::NONE; // todo - make atomic?
     LoadComms &loadComms;
     // bool powerPositive = false;
-    int_fast16_t angularAccell_RPMPS = 0; // todo
+    int_fast16_t angularAccel_RPMPS = 0; // todo
 
     /**
      * @brief Check for C++17 support, which allows us to verify if std::atomic

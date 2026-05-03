@@ -23,7 +23,7 @@
 #include "MCP23008T.hpp"
 #define COMMS_STRATEGY_OLD 0
 #define COMMS_STRATEGY_NEW 1
-#define COMMS_STRATEGY_UCHI 2
+#define COMMS_STRATEGY_UHCI 2
 #define COMMS_STRATEGY COMMS_STRATEGY_NEW
 #if COMMS_STRATEGY == COMMS_STRATEGY_OLD
 #    include "2026Core/Net/Net-Application/NTP.hpp"
@@ -34,7 +34,7 @@
 #    include "2026Core/Net/NetAdapter_A.hpp"
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include "2026Core/TurbinePacket/TurbinePacket.hpp"
-#elif COMMS_STRATEGY == COMMS_STRATEGY_UCHI
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
 #    include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 #else
 #    error "Invalid COMMS_STRATEGY"
@@ -405,7 +405,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
         if (xQueueReceive(LoadComms::priorityDataQueue, &packet, 0) == pdPASS) {
             ESP_LOGV(TAG, "Received packet: rpm=%u", packet.rpm);
             load.setRPM(packet.rpm);
-            load.setAngularAccell_RPMPS(packet.angularAccell_RPMPS);
+            load.setAngularAccel_RPMPS(packet.angularAccel_RPMPS);
         }
 
         BaseType_t xWasDelayed = xTaskDelayUntil(

@@ -1,3 +1,32 @@
 {
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}\\compile_commands.json"
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}\\compile_commands.json",
+    "cSpell.words": [
+        "Adafruit",
+        "CIPO",
+        "COPI",
+        "DISSLW",
+        "GPINTEN",
+        "GPPU",
+        "HAEN",
+        "INTPOL",
+        "IPOL",
+        "JTAG",
+        "LOGD",
+        "LOGI",
+        "LOGV",
+        "LOGW",
+        "LSBFIRST",
+        "MOSI",
+        "MTCK",
+        "MTDI",
+        "MTDO",
+        "MTMS",
+        "NOSONAR",
+        "OLAT",
+        "PSENSOR",
+        "RPMPS",
+        "rssi",
+        "tsens",
+        "UHCI"
+    ]
 }
