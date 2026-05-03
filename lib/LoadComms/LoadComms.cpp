@@ -145,6 +145,10 @@ etl::string<LoadComms::LOG_STRING_SIZE> LoadComms::getLogString() const {
         return logString;
     }
 
+LoadComms::LogData LoadComms::getLogData() const {
+    return LogData{txEvents, bytesSent, bytesNotSent, rxEvents, bytesReceived};
+}
+
 void LoadComms::onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_status_t status) {
   // (void)tx_info;
   // Serial.print("Send status: ");

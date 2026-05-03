@@ -98,6 +98,16 @@ public:
      */
     etl::string<LOG_STRING_SIZE> getLogString() const;
 
+    struct LogData {
+        uint_fast32_t txEvents;
+        uint_fast32_t bytesSent;
+        uint_fast32_t bytesNotSent;
+        uint_fast32_t rxEvents;
+        uint_fast32_t bytesReceived;
+    };
+
+    LogData getLogData() const;
+
 private:
   NacellePacket incomingPacket_;  ///< Received packet from nacelle.
   LoadboxPacket outgoingPacket_;   ///< Outgoing packet to send.
