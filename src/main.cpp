@@ -668,7 +668,6 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         prevTime_us = currentTime_us;
         lastLogData = currentLogData;
 
-        unsigned int elapsedTime_us = currentTime_us - prevTime_us;
         prevTime_us = currentTime_us;
 
         delay(LOG_ITEM_INTERVAL_MS);
