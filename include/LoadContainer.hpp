@@ -48,7 +48,7 @@ class LoadContainer {
     inline ESTOP_TYPE_FAST getSafetyFlag() const { return (safetyFlag); }
     inline bool isPowerPositive() const { return (INA260::current_mA > 0); }
     inline bool isSteadyRPM() const {
-        return false;
+        return (angularAccell_RPMPS < 20);
     } // todo - steady power is actually more important
     inline bool isTargetRPMExceeded() const { return false; } // todo
 
@@ -67,13 +67,21 @@ class LoadContainer {
         loadDevice.setGPIO((uint32_t)value);
     }
     inline void setRPM(int_fast16_t rpm) { this->currentRPM = rpm; }
+    inline int_fast16_t getRPM() const { return this->currentRPM; }
+    inline void setAngularAccell_RPMPS(int_fast16_t angularAccell_RPMPS) {
+        this->angularAccell_RPMPS = angularAccell_RPMPS;
+    }
+    inline int_fast16_t getAngularAccell_RPMPS() const {
+        return this->angularAccell_RPMPS;
+    }
 
   private:
     MCP23008T &loadDevice;
     ESTOP_TYPE_FAST safetyFlag = ESTOP_TYPE_FAST::NONE; // todo - make atomic?
     LoadComms &loadComms;
     // bool powerPositive = false;
-    int_fast16_t currentRPM = 0; // todo
+    int_fast16_t currentRPM = 0;          // todo
+    int_fast16_t angularAccell_RPMPS = 0; // todo
 
     /**
      * @brief Check for C++17 support, which allows us to verify if std::atomic

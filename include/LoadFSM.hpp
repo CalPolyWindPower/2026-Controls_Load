@@ -63,46 +63,50 @@ class LoadFSM {
             // * -> sESTOP
             currentState = FSMCommon::States::sESTOP;
 
-            // TODO: Signal nacelle to ESTOP (setSafetyFlag)
+            // DONE: Signal nacelle to ESTOP (setSafetyFlag)
             vTaskSuspend(load.tAdjustLoad.pxHandle);
-            load.setLoadGPIO(0b0000'0000); // todo: one inverted?
+            // Don't adjust load
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sESTOP) &&
                    (load.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
-            // Nothing to do
+            // sESTOP -> sESTOP: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } // else: ~safetyTask
 
         // Check reset conditions
-        if ((currentState != FSMCommon::States::sRST) &&
-            !load.isPowerPositive()) {
+        constexpr uint_fast16_t START_RUN_2_RPM = 500; // todo
+        if ((currentState != FSMCommon::States::sRST)) {
             // * -> sRST
             currentState = FSMCommon::States::sRST;
 
             // Signal Nacelle (unset safetyFlag)
             vTaskSuspend(load.tAdjustLoad.pxHandle);
-            load.setLoadGPIO(0b0000'0000); // todo: one inverted?
+            /**
+             * @details None inverted, set to max for easiest cut in
+             */
+            load.setLoadGPIO(LOAD::PINS_Msk);
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRST) &&
-                   !load.isPowerPositive()) {
-            // Nothing to do
+                   load.getRPM() <= START_RUN_2_RPM) {
+            // sRST -> sRST: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
-        } // else: producingPositivePower
+        } // else: producingPositivePower or maybe just still starting up
 
         // Check other transition conditions
-        if (currentState == FSMCommon::States::sRST) {
-            // sRST -> sStartLoad
-            currentState = FSMCommon::States::sStartLoad;
+        if ((currentState == FSMCommon::States::sRST) &&
+            load.getRPM() > START_RUN_2_RPM) {
+            // sRST -> sStartRun
+            currentState = FSMCommon::States::sStartRun;
 
             // Signal nacelle (set producingPositivePower)
             // Load is already off
 
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if ((currentState == FSMCommon::States::sStartLoad) &&
+        } else if ((currentState == FSMCommon::States::sStartRun) &&
                    load.isSteadyRPM()) {
-            // sStartLoad -> sRunLoad
+            // sStartRun -> sRunLoad
             // Note: The producing positive power condition is handled by the
             // reset logic
             currentState = FSMCommon::States::sRunLoad;
@@ -119,7 +123,7 @@ class LoadFSM {
             currentState = FSMCommon::States::sCurtail;
 
             // Nacelle can detect this on it's own
-            // Load is already on
+            vTaskSuspend(load.tAdjustLoad.pxHandle);
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sCurtail) &&
@@ -128,7 +132,7 @@ class LoadFSM {
             currentState = FSMCommon::States::sRunLoad;
 
             // Nacelle can detect this on it's own
-            // Load is already on
+            vTaskResume(load.tAdjustLoad.pxHandle);
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else {

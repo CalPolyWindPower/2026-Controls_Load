@@ -392,6 +392,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
         if (xQueueReceive(LoadComms::priorityDataQueue, &packet, 0) == pdPASS) {
             ESP_LOGV(TAG, "Received packet: rpm=%u", packet.rpm);
             load.setRPM(packet.rpm);
+            load.setAngularAccell_RPMPS(packet.angularAccell_RPMPS);
         }
 
         BaseType_t xWasDelayed = xTaskDelayUntil(

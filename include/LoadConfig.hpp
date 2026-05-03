@@ -89,15 +89,15 @@ namespace LED {
 namespace RUN {
     // Task Execution Intervals
     enum TASK_INTERVALS : uint32_t {
-        TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
-        TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz)
-        TI_ADJUST_LOAD_mS = 10, // CONFIG - 10 ms (100 Hz)
-        TI_RECV_ms = 100,       // CONFIG - 100 ms (10 Hz)
-        TI_SEND_ms = 100,       // CONFIG - 10 ms (100 Hz) // FIXME
-        TI_CFG_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
-        TI_TELNET_ms = 500,     // CONFIG - 500 ms (2 Hz)
-        TI_OTA_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
-        TI_LOG_DATA_ms = 4000,  // CONFIG - 4000 ms (0.25 Hz)
+        TI_FSM_mS = 100,         // CONFIG - 100 ms (10 Hz)
+        TI_POLL_SENSORS_mS = 2,  // CONFIG - 2 ms (500 Hz)
+        TI_ADJUST_LOAD_mS = 100, // CONFIG - 100 ms (10 Hz)
+        TI_RECV_ms = 100,        // CONFIG - 100 ms (10 Hz)
+        TI_SEND_ms = 100,        // CONFIG - 10 ms (100 Hz) // FIXME
+        TI_CFG_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
+        TI_TELNET_ms = 500,      // CONFIG - 500 ms (2 Hz)
+        TI_OTA_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
+        TI_LOG_DATA_ms = 4000,   // CONFIG - 4000 ms (0.25 Hz)
         FAIL_BACKOFF_BASE_FACTOR =
             10, // CONFIG - Multiplier for task delay on failure
         FAIL_BACKOFF_MULTIPLIER =
