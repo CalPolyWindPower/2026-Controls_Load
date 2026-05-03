@@ -145,7 +145,7 @@ etl::string<LoadComms::LOG_STRING_SIZE> LoadComms::getLogString() const {
     logString.append(", RxE: "); // 7 chars
     etl::to_string(rxEvents.load(std::memory_order_relaxed), logString,
                    decFormatA, true); // 6 chars
-    logString.append(", RxBS: ");     // 8 chars
+    logString.append(", RxB: ");     // 7 chars
     etl::to_string(bytesReceived.load(std::memory_order_relaxed), logString,
                    decFormatB, true); // 7 chars
 

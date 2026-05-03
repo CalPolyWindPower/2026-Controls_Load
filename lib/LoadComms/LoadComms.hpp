@@ -92,7 +92,7 @@ class LoadComms {
 
     // TODO - improve this and null terminator may not be needed
     static constexpr uint_fast8_t LOG_STRING_SIZE =
-        3 + 7 + 6 + ((8 + 7) * 2) + 7 + 6 + 8 + 7 + 1;
+        3 + 7 + 6 + ((8 + 7) * 2) + 7 + 6 + 7 + 7 + 1;
     /**
      * @brief Get at string that describes the current state of the PID instance
      * @returns the current state of the PID instance as a string
