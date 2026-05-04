@@ -57,8 +57,8 @@ class LoadContainer {
         return (currentRPM > TARGET_RPM);
     } // todo
 
-    inline void updateSafetyFlag(bool safetyFlag) {
-        if (digitalRead(UM_PROS3::ESTOP_PIN) == LOW) {
+    inline void updateSafetyFlag() {
+        if (digitalRead(UM_PROS3::ESTOP_PIN) == HIGH) {
             this->safetyFlag = ESTOP_TYPE_FAST::BUTTON;
         } else if (abs(INA260::current_mA) <
                    PSENSOR::LOAD_SHED_I_THRESHOLD_mA) {
