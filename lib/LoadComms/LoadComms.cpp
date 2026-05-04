@@ -23,10 +23,11 @@ std::atomic<uint_fast32_t> LoadComms::bytesReceived = 0;
 /**
  * @brief MAC address of the nacelle controller.
  */
-// const uint8_t NACELLE_MAC[] = {0x30, 0xED, 0xA0, 0xE0, 0x6B, 0x78}; //
-// Slightly questionable controller
-const uint8_t NACELLE_MAC[] = {0xD0, 0xCF, 0x13,
-                               0xEA, 0x4A, 0x08}; // N's personal C5
+const uint8_t CPWP_DF2C5_A[] = {0x30, 0xED, 0xA0, 0xE0, 0x6B, 0x78};
+// Slightly questionable controller (?)
+const uint8_t BSI_DF2C5[] = {0xD0, 0xCF, 0x13, 0xEA, 0x4A, 0x08};
+
+const uint8_t *NACELLE_MAC = CPWP_DF2C5_A;
 
 /**
  * @brief Pointer to instance for static callbacks.

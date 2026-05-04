@@ -29,7 +29,7 @@
 /**
  * @brief MAC address of the nacelle controller.
  */
-extern const uint8_t NACELLE_MAC[];
+extern const uint8_t *NACELLE_MAC;
 
 /**
  * @brief Communication timeout threshold in milliseconds.
