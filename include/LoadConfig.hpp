@@ -41,11 +41,15 @@ namespace UM_PROS3 {
     // ESTOP
     constexpr uint_fast8_t ESTOP_PIN = 5;
 
-    // I2C
+// I2C
+#define CPWP_USE_ALT_PINS 0
+#if !CPWP_USE_ALT_PINS
     constexpr uint_fast8_t I2C_SDA_PIN = SDA;
     constexpr uint_fast8_t I2C_SCL_PIN = SCL;
-    // constexpr uint_fast8_t I2C_SDA_PIN = 2; // FIXME
-    // constexpr uint_fast8_t I2C_SCL_PIN = 1; // FIXME
+#else
+    constexpr uint_fast8_t I2C_SDA_PIN = 1;
+    constexpr uint_fast8_t I2C_SCL_PIN = 2;
+#endif
 
     // SPI
     constexpr uint_fast8_t SPI_CIPO_PIN = MISO; // todo
