@@ -59,8 +59,10 @@ LoadComms loadComms;
 // SyncedClock netClock(adapterESPNow); // todo
 
 Adafruit_NeoPixel leds(1, UM_PROS3::LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
-MCP23008T loadDevice(static_cast<MCP23008T::I2C_ADDRESS>(LOAD::I2C_ADDRESS),
-                     &Wire);
+MCP23008T
+loadDevice(static_cast<MCP23008T::I2C_ADDRESS>(LOAD::I2C_ADDRESS),
+           &Wire); // AI: Does not protect against invalid addresses, but
+                   // will fail to initialize if address is not valid`
 bool loadConfigured = false;
 
 LoadContainer load(loadDevice, loadComms);
@@ -79,12 +81,18 @@ bool configureLoad() {
         ESP_LOGE(TAG, "Failed to initialize INA260 power sensor at 0x%02X",
                  PSENSOR::I2C_ADDRESS);
         return false;
+    } else {
+        ESP_LOGI(TAG, "INA260 power sensor init at 0x%02X",
+                 PSENSOR::I2C_ADDRESS);
     }
 
     if (!loadDevice.begin()) {
         ESP_LOGE(TAG, "Failed to initialize MCP23008T device at 0x%02X",
                  loadDevice.getAddress());
         return false;
+    } else {
+        ESP_LOGI(TAG, "MCP23008T IO device init at 0x%02X",
+                 loadDevice.getAddress());
     }
 
     // First six pins outputs, made last two inputs as that's the default
@@ -159,6 +167,16 @@ void setup() {
 
     // Configure ESTOP pin
     pinMode(UM_PROS3::ESTOP_PIN, INPUT_PULLUP);
+    attachInterrupt(
+        digitalPinToInterrupt(UM_PROS3::ESTOP_PIN),
+        []() {
+            // Note: This ISR is not guaranteed to trigger on every ESTOP press,
+            // but that's acceptable as the main safety check is in the FSM
+            // task, and this is just a backup. Also, we want to avoid doing too
+            // much in the ISR to prevent potential issues.
+            load.updateSafetyFlag();
+        },
+        CHANGE);
 
     // Configure New ESP-NOW + WiFI implementation
 
@@ -296,6 +314,9 @@ void setup() {
                     taskDesc->stackSize_bytes);
             }
         }
+        vTaskResume(load.tFSM.pxHandle);
+        // vTaskResume(load.tPoll.pxHandle); // TODO: Verify that this isn't
+        // needed
         tasksSetup = true;
 
         // pitchPIDController.enable(
@@ -335,6 +356,8 @@ void setup() {
 [[noreturn]] void
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
+
         LoadFSM::UPDATE_RESULT result = loadFSM.updateState();
         if (result == LoadFSM::UPDATE_RESULT::STATE_CHANGED) {
             ESP_LOGI(TAG, "FSM State Changed: %d", loadFSM.getCurrentState());
@@ -344,7 +367,12 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
         } else {
             // No change, nothing to log
         }
-        delay(RUN::TASK_INTERVALS::TI_FSM_mS);
+
+        BaseType_t xWasDelayed = xTaskDelayUntil(
+            &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_FSM_mS));
+        if (xWasDelayed != pdTRUE) {
+            ESP_LOGE(TAG, "Timing not met!");
+        }
     }
 }
 
@@ -354,15 +382,27 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
+
+        // load.updateSafetyFlag(); // Moved to interrupts before noticing that
+        // the backoff was the problem, might as well leave it that way
+
         static uint32_t backoffFactor =
             RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
+        uint32_t delay_ms = 0;
         if (INA260::updateReadings()) {
             backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
-            delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
+            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS;
         } else {
             // Logging already handled
-            delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS * backoffFactor);
+            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS * backoffFactor;
             backoffFactor *= RUN::TASK_INTERVALS::FAIL_BACKOFF_MULTIPLIER;
+        }
+
+        BaseType_t xWasDelayed =
+            xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(delay_ms));
+        if (xWasDelayed != pdTRUE) {
+            ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
@@ -402,17 +442,18 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         NacellePacket packet;
-        if (xQueueReceive(LoadComms::priorityDataQueue, &packet, 0) == pdPASS) {
+        if (xQueueReceive(LoadComms::priorityDataQueue, &packet,
+                          RUN::TASK_INTERVALS::TI_RECV_ms) == pdPASS) {
             ESP_LOGV(TAG, "Received packet: rpm=%u", packet.rpm);
             load.setRPM(packet.rpm);
             load.setAngularAccel_RPMPS(packet.angularAccel_RPMPS);
         }
 
-        BaseType_t xWasDelayed = xTaskDelayUntil(
-            &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
-        if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
-        }
+        // BaseType_t xWasDelayed = xTaskDelayUntil(
+        //     &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
+        // if (xWasDelayed != pdTRUE) {
+        //     ESP_LOGE(TAG, "Timing not met!");
+        // }
 
         // Never need to suspend on the load
     }
