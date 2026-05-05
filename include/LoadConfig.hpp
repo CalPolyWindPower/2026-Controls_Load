@@ -93,11 +93,11 @@ namespace LED {
 namespace RUN {
     // Task Execution Intervals
     enum TASK_INTERVALS : uint32_t {
-        TI_FSM_mS = 100,         // CONFIG - 100 ms (10 Hz)
+        TI_FSM_mS = 50,         // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2,  // CONFIG - 2 ms (500 Hz)
         TI_ADJUST_LOAD_mS = 100, // CONFIG - 100 ms (10 Hz)
-        TI_RECV_ms = 100,        // CONFIG - 100 ms (10 Hz)
-        TI_SEND_ms = 100,        // CONFIG - 10 ms (100 Hz) // FIXME
+        TI_RECV_ms = 50,        // CONFIG - 100 ms (10 Hz)
+        TI_SEND_ms = 75,        // CONFIG - 10 ms (100 Hz) // FIXME
         TI_CFG_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
         TI_TELNET_ms = 500,      // CONFIG - 500 ms (2 Hz)
         TI_OTA_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
@@ -143,12 +143,12 @@ namespace PSENSOR {
     constexpr int_fast32_t MAX_POWER_mW = MAX_VOLTAGE_mV * MAX_CURRENT_mA;
 
     static constexpr uint_fast16_t LOAD_SHED_I_THRESHOLD_mA =
-        500; // CONFIG // todo
+        0; // CONFIG // todo
 } // namespace PSENSOR
 
 // MARK: Load
 namespace LOAD {
-    constexpr uint8_t I2C_ADDRESS = 0x4E; // A0-A2 all high
+    constexpr uint8_t I2C_ADDRESS = 0x27; // A0-A2 all high
 
     /**
      * @brief Bitmask for the load control pins.
