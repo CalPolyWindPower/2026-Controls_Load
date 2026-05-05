@@ -20,7 +20,7 @@ class LoadContainer {
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
 
-    TaskInfo tFSM{vTaskUpdateFSM, "FSM", 1024, nullptr, 24, nullptr, 0, false};
+    TaskInfo tFSM{vTaskUpdateFSM, "FSM", 2048, nullptr, 20, nullptr, 0, false};
     TaskInfo tPoll{vTaskPollSensors, "Poll", 4096, nullptr, 20,
                    nullptr,          0,      false};
     TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048, nullptr, 20,
@@ -29,7 +29,7 @@ class LoadContainer {
 
     TaskInfo tSend{vTaskSendData, "Send", 4096, nullptr, 15, nullptr, 0, false};
     TaskInfo tCfg{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0, false};
-    TaskInfo tLED{vTaskStatusLED, "LED", 2048, nullptr, 2, nullptr, 0, false};
+    TaskInfo tLED{vTaskStatusLED, "LED", 4096, nullptr, 2, nullptr, 0, false};
     TaskInfo tLog{vTLog, "Log", 4096, nullptr, 2, nullptr, 0, false};
     // namespace TaskInfo
 
@@ -58,6 +58,7 @@ class LoadContainer {
     } // todo
 
     inline void updateSafetyFlag() {
+        ESP_LOGD(TAG, "ESTOP: %d", digitalRead(UM_PROS3::ESTOP_PIN));
         if (digitalRead(UM_PROS3::ESTOP_PIN) == HIGH) {
             this->safetyFlag = ESTOP_TYPE_FAST::BUTTON;
         } else if (abs(INA260::current_mA) <
@@ -115,7 +116,7 @@ class LoadContainer {
 
         etl::format_spec decFormatB;
         decFormatB.width(1).fill('0'); // [1 chars]
-        etl::to_string(static_cast<uint_fast8_t>(getSafetyFlag()), logString,
+        etl::to_string(static_cast<uint_fast8_t>(safetyFlag.load()), logString,
                        decFormatB, true); // 1 char
 
         return logString;
@@ -123,7 +124,8 @@ class LoadContainer {
 
   private:
     MCP23008T &loadDevice;
-    ESTOP_TYPE_FAST safetyFlag = ESTOP_TYPE_FAST::NONE; // todo - make atomic?
+    std::atomic<ESTOP_TYPE_FAST> safetyFlag =
+        ESTOP_TYPE_FAST::NONE; // todo - make atomic?
     LoadComms &loadComms;
     // bool powerPositive = false;
     int_fast16_t angularAccel_RPMPS = 0; // todo
