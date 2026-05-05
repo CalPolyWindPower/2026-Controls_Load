@@ -1,0 +1,474 @@
+[    26][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   337800 B ( 329.9 KB)
+  Free Bytes        :   298720 B ( 291.7 KB)
+  Allocated Bytes   :    33512 B (  32.7 KB)
+  Minimum Free Bytes:   293452 B ( 286.6 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : May  3 2026 00:57:06
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   149][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca1230
+
+[   149][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fca1230
+
+[   150][I][main.cpp:146] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+
+[   150][I][main.cpp:160] setup(): [LoMa] LED initialized
+
+[   216][I][LoadComms.cpp:65] begin(): [LCO] Device MAC: EC:DA:3B:5B:03:D4
+
+[   219][I][LoadComms.cpp:116] setupPeer_(): [LCO] Peer added: 30:ED:A0:E0:6B:78
+
+Loadbox ready
+
+[   220][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+
+[   221][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+
+[   229][I][main.cpp:85] configureLoad(): [LoMa] INA260 power sensor init at 0x41
+
+[   229][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+
+[   230][I][main.cpp:94] configureLoad(): [LoMa] MCP23008T IO device init at 0x27
+
+[   231][I][main.cpp:259] setup(): [LoMa] Setting up tasks...
+
+[   232][D][main.cpp:300] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+
+[   233][D][main.cpp:300] setup(): [LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+
+[   233][D][main.cpp:300] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+
+[   234][D][main.cpp:300] setup(): [LoMa] Crea[   234][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 350 mW
+
+ted task Recv with priority 15 and stack size 2048 bytes
+
+[   235][D][main.cpp:300] setup(): [LoMa] Created task Send with priority 15 and stack size 4096 bytes
+
+[   236][D][main.cpp:300] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+
+[   237][D][main.cpp:300] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+
+[   237][D][main.cpp:584] vTLog(): [LoMa] Logging Data:
+
+[   237][I][main.cpp:586] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[   240][D][main.cpp:612] vTLog(): [LoMa] Task Buffer Used (): 65
+
+[   240][D][main.cpp:614] vTLog(): [LoMa] Stats Buffer Used: 501 bytes
+
+[   240][D][main.cpp:615] vTLog(): [LoMa] Stats Buffer Free: 259 bytes
+
+[   241][D][main.cpp:617] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[   241][I][main.cpp:618] vTLog(): [LoMa] Task Run Time Stats:
+Log            	0		<1%
+
+loopTask       	26484		11%
+
+IDLE0          	132251		55%
+
+IDLE1          	170856		71%
+
+AdLd           	19		<1%
+
+Recv           	74		<1%
+
+Send           	274		<1%
+
+LED            	132		<1%
+
+tiT            	48		<1%
+
+Cfg            	12		<1%
+
+Poll           	1043		<1%
+
+arduino_events 	218		<1%
+
+ipc1           	38322		15%
+
+esp_timer      	132		<1%
+
+sys_evt        	660		<1%
+
+FSM            	18		<1%
+
+Tmr Svc        	66		<1%
+
+wifi           	66298		27%
+
+ipc0           	26156		10%
+
+
+
+[   243][I][main.cpp:635] vTLog(): [LoMa] T: FSM, U: 808, F: 216
+
+[   243][I][main.cpp:635] vTLog(): [LoMa] T: Poll, U: 1708, F: 2388
+
+[   244][I][main.cpp:635] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[   244][I][main.cpp:635] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[   244][I][main.cpp:635] vTLog(): [LoMa] T: Send, U: 1008, F: 3088
+
+[   245][I][main.cpp:635] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[   245][I][main.cpp:635] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[   245][I][main.cpp:635] vTLog(): [LoMa] T: Log, U: 2828, F: 1268
+
+[   245][I][main.cpp:644] vTLog(): [LoMa] Min, free heap: 8595288 b
+
+[   248][I][main.cpp:659] vTLog(): [LoMa] Temp.: 59 dC
+
+[   248][I][main.cpp:665] vTLog(): [LoMa] Current State: 2
+
+[   248][D][main.cpp:300] setup(): [LoMa] Created task Log with priority 2 and stack size 4096 bytes
+
+Guru Meditation Error: Core  1 panic'ed (Double exception). 
+
+
+
+Core  1 register dump:
+
+PC      : 0x40387506  PS      : 0x00040236  A0      : 0x820a9d5c  A1      : 0x3fcb57b0  
+
+A2      : 0x3c0f4b54  A3      : 0x00000032  A4      : 0x02625a00  A5      : 0x3c0f4f90  
+
+A6      : 0x00000000  A7      : 0x3fcb56fc  A8      : 0x00000000  A9      : 0x3fcb5730  
+
+A10     : 0x3c0f4e80  A11     : 0x00003000  A12     : 0x00000001  A13     : 0x3c0f4e80  
+
+A14     : 0x3c0f4b54  A15     : 0x3fcb5750  SAR     : 0x0000001a  EXCCAUSE: 0x00000002  
+
+EXCVADDR: 0xffffffe0  LBEG    : 0x400570e8  LEND    : 0x400570f3  LCOUNT  : 0xffffffff  
+
+
+
+
+
+Backtrace: 0x40387503:0x3fcb57b0 0x420a9d59:0x3fcb57e0 0x40387503:0x3fcb5820 0x40387503:0x3fcb5840 0x4037407d:0x3fcb56a0 0x4037e68b:0x3c0b873c |<-CORRUPTED
+
+
+
+
+
+
+
+
+
+ELF file SHA256: 563b655cf
+
+
+
+Rebooting...
+
+ESP-ROM:esp32s3-20210327
+
+Build:Mar 27 2021
+
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+
+Saved PC:0x4037aae6
+
+SPIWP:0xee
+
+mode:DIO, clock div:1
+
+load:0x3fce2820,len:0x10cc
+
+load:0x403c8700,len:0xc2c
+
+load:0x403cb700,len:0x30c0
+
+entry 0x403c88b8
+
+[    31][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   337800 B ( 329.9 KB)
+  Free Bytes        :   298720 B ( 291.7 KB)
+  Allocated Bytes   :    33512 B (  32.7 KB)
+  Minimum Free Bytes:   293452 B ( 286.6 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : May  3 2026 00:57:06
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca1230
+
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fca1230[   155][I][main.cpp:146] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+
+[   155][I][main.cpp:160] setup(): [LoMa] LED initialized
+
+[   276][I][LoadComms.cpp:65] begin(): [LCO] Device MAC: EC:DA:3B:5B:03:D4
+
+[   279][I][LoadComms.cpp:116] setupPeer_(): [LCO] Peer added: 30:ED:A0:E0:6B:78
+
+Loadbox ready
+
+[   280][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+
+[   281][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+
+[   289][I][main.cpp:85] configureLoad(): [LoMa] INA260 power sensor init at 0x41
+
+[   289][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+
+[   290][I][main.cpp:94] configureLoad(): [LoMa] MCP23008T IO device init at 0x27
+
+[   291][I][main.cpp:259] setup(): [LoMa] Setting up tasks...
+
+[   292][D][main.cpp:300] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+
+[   292][D][main.cpp:300] setup(): [LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+
+[   293][D][main.cpp:300] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+
+[   294][D][main.cpp:300] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+
+[   294][D][main.cpp:300] setup(): [LoMa] Created task Send with priority 15 and stack size 4096 bytes
+
+[   295][D][main.c[p p : 320905]][ Es]e[tIuNpA(2)6:0 [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+
+.hpp:95] updateReadings(): [TAG] P out of bounds: 0 mW
+
+[   296][D][main.cpp:300] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+
+[   296][D][main.cpp:584] vTLog(): [LoMa] Logging Data:
+
+[   296][I][main.cpp:586] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[   299][D][main.cpp:612] vTLog(): [LoMa] Task Buffer Used (): 65
+
+[   299][D][main.cpp:614] vTLog(): [LoMa] Stats Buffer Used: 501 bytes
+
+[   300][D][main.cpp:615] vTLog(): [LoMa] Stats Buffer Free: 259 bytes
+
+[   300][D][main.cpp:617] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[   300][I][main.cpp:618] vTLog(): [LoMa] Task Run Time Stats:
+Log            	0		<1%
+
+loopTask       	26671		8%
+
+IDLE0          	132362		44%
+
+IDLE1          	180732		60%
+
+AdLd           	32		<1%
+
+Recv           	89		<1%
+
+Send           	186		<1%
+
+LED            	139		<1%
+
+tiT            	47		<1%
+
+Cfg            	25		<1%
+
+Poll           	1099		<1%
+
+arduino_events 	214		<1%
+
+ipc1           	88327		29%
+
+esp_timer      	131		<1%
+
+sys_evt        	657		<1%
+
+FSM            	28		<1%
+
+Tmr Svc        	67		<1%
+
+wifi           	119686		40%
+
+ipc0           	31008		10%
+
+
+
+[   302][I][main.cpp:635] vTLog(): [LoMa] T: FSM, U: 812, F: 212
+
+[   302][I][main.cpp:635] vTLog(): [LoMa] T: Poll, U: 1708, F: 2388
+
+[   303][I][main.cpp:635] vTLog(): [LoMa] T: AdLd, U: 728, F: 1320
+
+[   303][I][main.cpp:635] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[   303][I][main.cpp:635] vTLog(): [LoMa] T: Send, U: 980, F: 3116
+
+[   304][I][main.cpp:635] vTLog(): [LoMa] T: Cfg, U: 708, F: 316
+
+[   304][I][main.cpp:635] vTLog(): [LoMa] T: LED, U: 896, F: 1152
+
+[   304][I][main.cpp:635] vTLog(): [LoMa] T: Log, U: 2820, F: 1276
+
+[   305][I][main.cpp:644] vTLog(): [LoMa] Min, free heap: 8595100 b
+
+[   307][I][main.cpp:659] vTLog(): [LoMa] Temp.: 46 dC
+
+[   307][I][main.cpp:665] vTLog(): [LoMa] Current State: 2
+
+[   308][D][main.cpp:300] setup(): [LoMa] Created task Log with priority 2 and stack size 4096 bytes
+
+Guru Meditation Error: Core  1 panic'ed (Double exception). 
+
+
+
+Core  1 register dump:
+
+PC      : 0x40387506  PS      : 0x00040236  A0      : 0x820a9d5c  A1      : 0x3fcb59d0  
+
+A2      : 0x3c0f4b54  A3      : 0x00000032  A4      : 0x02625a00  A5      : 0x3c0f4f7c  
+
+A6      : 0x00000000  A7      : 0x3fcb591c  A8      : 0x00000000  A9      : 0x3fcb5950  
+
+A10     : 0x3c0f4e80  A11     : 0x00003000  A12     : 0x00000001  A13     : 0x3c0f4e80  
+
+A14     : 0x3c0f4b54  A15     : 0x3fcb5970  SAR     : 0x0000001a  EXCCAUSE: 0x00000002  
+
+EXCVADDR: 0xffffffe0  LBEG    : 0x400570e8  LEND    : 0x400570f3  LCOUNT  : 0xffffffff  
+
+
+
+
+
+Backtrace: 0x40387503:0x3fcb59d0 0x420a9d59:0x3fcb5a00 0x40387503:0x3fcb5a40 0x40387503:0x3fcb5a60 0x4037407d:0x3fcb58c0 0x4037e68b:0x3c0b873c |<-CORRUPTED
+
+
+
+
+
+
+
+
+
+ELF file SHA256: 563b655cf
+
+
+
+Rebooting...
+

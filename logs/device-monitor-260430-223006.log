@@ -1,0 +1,1249 @@
+[    30][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   338160 B ( 330.2 KB)
+  Free Bytes        :   298932 B ( 291.9 KB)
+  Allocated Bytes   :    33644 B (  32.9 KB)
+  Minimum Free Bytes:   293664 B ( 286.8 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr 29 2026 23:43:39
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   153][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca10c8
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fca10c8[   154][I][main.cpp:121] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+[   155][I][main.cpp:135] setup(): [LoMa] LED initialized
+[   211][I][LoadComms.cpp:92] setupPeer_(): [LCO] Peer added: 30:ED:A0:E0:6B:78
+Loadbox ready
+[   212][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+[   213][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[   263][E][INA260.hpp:36] begin(): [TAG] Failed to initialize INA260 at 0x41
+[   263][E][main.cpp:62] configureLoad(): [LoMa] Failed to initialize INA260 power sensor at 0x41
+[   264][I][main.cpp:234] setup(): [LoMa] Setting up tasks...
+[   264][D][main.cpp:268] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+[   265][D][main.cpp:268] setup(): [LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+[   266][D][main.cpp:268] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+[   266][D][main.cpp:268] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+[   267][D][main.cpp:268] setup(): [LoMa] Created task Send with priority 15 and stack size 4096 bytes
+[   267][D][main.cpp:268] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+[   268][D][main.cpp:268] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+[   269][D][main.cpp:539] vTLog(): [LoMa] Logging Data:
+[   269][I][main.cpp:541] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[   272][D][main.cpp:567] vTLog(): [LoMa] Task Packet received from: 30:ED:A0:E0:6B:78
+Buffer Used (): 65
+[   272][D][main.cpp:569] vTLog(): [LoMa] Stats Buffer Used: 499 bytes
+[   272][D][main.cpp:570] vTLog(): [LoMa] Stats Buffer Free: 261 bytes
+[   273][D][main.cpp:572] vTLog(): [LoMa] Stats Buffer Size: 760
+[   273][I][main.cpp:573] vTLog(): [LoMa] Task Run Time Stats:
+Log            	0		<1%
+loopTask       	23391		8%
+IDLE0          	167488		61%
+IDLE1          	208039		76%
+AdLd           	24		<1%
+Poll           	335		<1%
+FSM            	11		<1%
+Recv           	72		<1%
+LED            	200		<1%
+tiT            	49		<1%
+Cfg            	19		<1%
+Send           	398		<1%
+arduino_events 	174		<1%
+ipc1           	36505		13%
+esp_timer      	125		<1%
+sys_evt        	578		<1%
+Tmr Svc        	72		<1%
+wifi           	57789		21%
+ipc0           	30558		11%
+
+[   275][I][main.cpp:590] vTLog(): [LoMa] T: FSM, U: 696, F: 328
+[   275][I][main.cpp:590] vTLog(): [LoMa] T: Poll, U: 1488, F: 2608
+[   276][I][main.cpp:590] vTLog(): [LoMa] T: AdLd, U: 704, F: 1344
+[   276][I][main.cpp:590] vTLog(): [LoMa] T: Recv, U: 776, F: 1272
+[   277][I][main.cpp:590] vTLog(): [LoMa] T: Send, U: 1064, F: 3032
+[   277][I][main.cpp:590] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+[   277][I][main.cpp:590] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+[   278][I][main.cpp:590] vTLog(): [LoMa] T: Log, U: 2716, F: 1380
+[   278][I][main.cpp:599] vTLog(): [LoMa] Min, free heap: 8595060 b
+[   280][I][main.cpp:614] vTLog(): [LoMa] Temp.: 91 dC
+[   281][I][main.cpp:620] vTLog(): [LoMa] PS: mV: 00000, mA: 00000, W: 00000
+[   281][D][main.cpp:268] setup(): [LoMa] Created task Log with priority 2 and stack size 4096 bytes
+Packet received from: 30:ED:A0:E0:6B:78
+E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   315][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   316][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[   361][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[   366][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   367][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   367][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[   418][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   419][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   419][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+failed
+Packet received from: 30:ED:A0:E0:6B:78
+[   443][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[   469][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[   470][I][main.cpp:285] setup(): [LoMa] Initialized FSM to state 2
+[   470][I][main.cpp:293] setup(): [LoMa] Setup complete!
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   338160 B ( 330.2 KB)
+  Free Bytes        :   222552 B ( 217.3 KB)
+  Allocated Bytes   :   106656 B ( 104.2 KB)
+  Minimum Free Bytes:   222428 B ( 217.2 KB)
+  Largest Free Block:   180212 B ( 176.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8367868 B (8171.7 KB)
+  Allocated Bytes   :    17836 B (  17.4 KB)
+  Minimum Free Bytes:  8367848 B (8171.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     5 : GPIO
+     8 : I2C_MASTER_SDA[0]
+     9 : I2C_MASTER_SCL[0]
+    18 : RMT_TX
+    19 : USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+Packet received from: 30:ED:A0:E0:6B:78
+): [LCO] Tx failed
+ndLoadboxData(): [LCO] Tx failed
+[   520][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   521][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   521][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+Packet received from: 30:ED:A0:E0:6B:78
+x failed
+[ ] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[   572][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   573][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   573][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+oadComms.Packet received from: 30:ED:A0:E0:6B:78
+cpp:144] sendLoadboxData(): [LCO] Tx failed
+failed
+[   624][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   625][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   625][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+d
+Packet received from: 30:ED:A0:E0:6B:78
+[   673][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[   693][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[   715][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   716][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   716][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+s.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[   767][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   768][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   768][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+Packet received from: 30:ED:A0:E0:6B:78
+[   797][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[   819][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   820][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   820][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+Packet received from: 30:ED:A0:E0:6B:78
+[   859][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[   879][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[   921][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[   941][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[   950][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[   951][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[   951][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+Packet received from: 30:ED:A0:E0:6B:78
+ed
+[  1002][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  [  1003][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+LoadComms.cpp:144] sendLoadboxDat[a ( )1:0 [0L3C]O[]E ]T[xI NfAa2i6l0ed.h
+pp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+Packet received from: 30:ED:A0:E0:6B:78
+[  1045][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  1054][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  1055][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  1055][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+dLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  1191][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+CO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  1253][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  1265][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  1266][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  1266][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  1315][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  1317][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  1318][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  1318][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+Packet received from: 30:ED:A0:E0:6B:78
+[  1359][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  1369][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  1370][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  1370][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+failed
+Packet received from: 30:ED:A0:E0:6B:78
+d
+Packet received from: 30:ED:A0:E0:6B:78
+[  1441][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ndLoadboxData(): [LCO] Tx failed
+[  1505][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+4] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+xData(): [LCO] Tx failed
+[  1589][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  1609][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadboxData(): [LCO] Tx failed
+cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Data(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  1735][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  1740][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  1741][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  1741][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+[  1755][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  1792][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  1793][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  1793][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+led
+[  1817][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  1844][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  1845][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  1845][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+oxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  1923][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Tx failed
+[  2091][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2111][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2153][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+oadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2215][cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ [LCO] Tx failed
+[  2257][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+d
+Packet received from: 30:ED:A0:E0:6B:78
+144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2361][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  2383][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2403][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2445][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+boxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2527][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  2535][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  2536][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  2536][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+Packet received from: 30:ED:A0:E0:6B:78
+a(): [LCO] Tx failed
+[  2587][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  2588][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  2588][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+oxData(): [LCO] Tx failed
+d
+Packet received from: 30:ED:A0:E0:6B:78
+[  2639][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  2640][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  2640][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+Packet received from: 30:ED:A0:E0:6B:78
+ Tx failed
+boxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+O] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+CO] Tx failed
+led
+Packet received from: 30:ED:A0:E0:6B:78
+[  2799][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ta(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+xData(): [LCO] Tx failed
+[  2883][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  2903][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+p:144] sendLoadboxData(): [LCO] Tx failed
+[  2965][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  3007][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  3029][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+ failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  3091][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ailed
+[  3133O] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+] Tx failed
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+dLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ed
+ata(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+3][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  3363][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  3405][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  3427][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  3447][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  3489][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+Packet received from: 30:ED:A0:E0:6B:78
+[  3551][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  3593][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+iled
+adComfailed
+Packet received from: 30:ED:A0:E0:6B:78
+LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+d
+Packet received from: 30:ED:A0:E0:6B:78
+[  3761][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+d
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ed
+Packet received from: 30:ED:A0:E0:6B:78
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ata(): [LCO] Tx failed
+[  3970][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  3971][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  3971][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LCO] Tx failed
+[  4022][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  4023][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  4023][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+Packet received from: 30:ED:A0:E0:6B:78
+[  4053][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+O] Tx failed
+[  4074][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  4075][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  4075][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+Packet received from: 30:ED:A0:E0:6B:78
+Comms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  41boxData(): [LCO] Tx failed
+[  4221][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  4241][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  4281][D][main.cpp:539] vTLog(): [LoMa] Logging Data:
+[  4281][I][main.cpp:541] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[  4284][D][main.cpp:567] vTLog(): [LoMa] Task Buffer Used (): 67
+[  428[4 ][ E4]2[8L4o]a[dDCo]m[mmsa.icnp.pc:p1p4:45]6 9s]e nvdTLLoaodgb(o)x:D a[tLao(M)a:]  [SLtCaOt]s  TBxu ffafielre dUs
+ed: 516 bytes
+[  4285][D][main.cpp:570] vTLog(): [LoMa] Stats Buffer Free: 244 bytes
+[  4285][D][main.cpp:572] vTLog(): [LoMa] Stats Buffer Size: 760
+[  4285][I][main.cpp:573] vTLog(): [LoMa] Task Run Time Stats:
+Log            	12792		<1%
+IDLE0          	3533673		82%
+IDLE1          	4158532		97%
+FSM            	531		<1%
+Recv           	1329		<1%
+loopTask       	31329		<1%
+tiT            	1449		<1%
+Cfg            	69		<1%
+Poll           	39707		<1%
+LED            	381		<1%
+Send           	71627		1%
+ipc1           	36505		<1%
+sys_evt        	578		<1%
+AdLd           	36		<1%
+Tmr Svc        	100		<1%
+esp_timer      	783		<1%
+wifi           	630624		14%
+ipc0           	30558		<1%
+arduino_events 	174		<1%
+
+[  4287][I][main.cpp:590] vTLog(): [LoMa] T: FSM, U: 696, F: 328
+[  4287][I][main.cpp:590] vTLog(): [LoMa] T: Poll, U: 2220, F: 1876
+[  4288][I][main.cpp:590] vTLog(): [LoMa] T: AdLd, U: 704, F: 1344
+[  4288][I][main.cpp:590] vTLog(): [LoMa] T: Recv, U: 776, F: 1272
+[  4288][I][main.cpp:590] vTLog(): [LoMa] T: Send, U: 1976, F: 2120
+[  4289][I][main.cpp:590] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+[  4289][I][main.cpp:590] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+[  4289][I][main.cpp:590] vTLog(): [LoMa] T: Log, U: 2716, F: 1380
+[  4290][I][main.cpp:599] vTLog(): [LoMa] Min, free heap: 8589424 b
+[  4292][I][main.cpp:614] vTLog(): [LoMa] Temp.: 102 dC
+[  4292][I][main.cpp:620] vTLog(): [LoMa] PS: mV: 000-1, mA: 000-1, W: 4294967
+Packet received from: 30:ED:A0:E0:6B:78
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  4387][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  4429][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[  4513][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  4535][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+O] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  4597][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+ailed
+Packet received from: 30:ED:A0:E0:6B:78
+[  4659][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][E][LoadComms Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LCO] Tx failed
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  4827][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  484ms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  4869][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[  4911][E][Loadp:144] sendLoadboxDa): [LCO] Tx failed
+[  4931][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  4973][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  4995][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5015][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5057][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  5079][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5099][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  5141][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5163][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+45][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5287][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  5307][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+: [LCO] Tx failed
+[ LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5475][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+(): [LCO] Tx failed
+[  5537][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5601][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+21][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5663][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+(): [LCO] Tx failed
+[  5705][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadboxData(): [LCO] Tx failed
+[  5789][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  5831][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  5851][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+d
+Packet received from: 30:ED:A0:E0:6B:78
+[  5913][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6019][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[  6081][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6103][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6123][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+dC): [LCO] Tx failed
+[  6185][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6247][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6291][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+xData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6375][E][LoadComms.cpp:144] sendLoadboxData(): [LPacket received from: 30:ED:A0:E0:6B:78
+[  6395][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6437][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+x failed
+Packet received from: 30:ED:A0:E0:6B:78
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6521][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+
+Packet received from: 30:ED:A0:E0:6B:78
+dLoadboxData(): [LCO] Tx failed
+[  6605][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6625][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6667][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6685][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  6686][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  6686][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+[  6687][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6729][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6737][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  6738][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  6738][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6789][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[  6790][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[  6790][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+Packet received from: 30:ED:A0:E0:6B:78
+[  6813][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6835][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6855][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6897][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6919][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  6939][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  6981][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7001][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7043][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+): [LCO] Tx failed
+[  7085][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7127][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  7147][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7211][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7253][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][E][LoadC failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7315][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7399][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  7419][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7461][E][LoadComms.cpp:144] sendLoadboxData(): [LCOPacket received from: 30:ED:A0:E0:6B:78
+] Tx failed
+adboxData(): [LCO] Tx failed
+[  7485][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7547][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  7589][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7651][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7715][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  7735][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[  7777][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  7799][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+d
+Packet received from: 30:ED:A0:E0:6B:78
+[  7861][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+1][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  7923][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  7945][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8029][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  8049][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+: [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8113][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  8133][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[  8195][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8259][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8293][D][main.cpp:539] vTLog(): [LoMa] Logging Data:
+[  8293][I][main.cpp:541] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[  8296][D][main.cpp:567] vTLog(): [LoMa] Task Buffer Used (): 68
+[  8296][D][main.cpp:569] vTLog(): [LoMa] Stats Buffer Used: 521 bytes
+[  8297][D][main.cpp:570] vTLog(): [LoMa] Stats Buffer Free: 239 bytes
+[  8297][D][main.cpp:572] vTLog(): [LoMa] Stats Buffer Size: 760
+[  8297][I][main.cpp:573] vTLog(): [LoMa] Task Run Time Stats:
+Log            	24485		<1%
+IDLE0          	6919904		83%
+IDLE1          	8151453		98%
+FSM            	1034		<1%
+Recv           	2553		<1%
+loopTask       	31435		<1%
+tiT            	2839		<1%
+Cfg            	114		<1%
+LED            	527		<1%
+Poll           	44603		<1%
+Send           	141609		1%
+sys_evt        	578		<1%
+AdLd           	36		<1%
+ipc0           	30558		<1%
+Tmr Svc        	123		<1%
+esp_timer      	1173		<1%
+wifi           	1185074		14%
+arduino_events 	174		<1%
+ipc1           	36505		<1%
+
+[  8299][I][main.cpp:590] vTLog(): [LoMa] T: FSM, U: 696, F: 328
+[  8299][I][main.cpp:590] vTLog(): [LoMa] T: Poll, U: 2220, F: 1876
+[  8300][I][main.cpp:590] vTLog(): [LoMa] T: AdLd, U: 704, F: 1344
+[  8300][I][main.cpp:590] vTLog(): [LoMa] T: Recv, U: 776, F: 1272
+[  83  
+8301][E][LoadComms.cpp:144] sendLoadboxData([) :  8[L3C0O1]] [TIx] [fmaaiilne.dcp
+p:590] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+[  8301][I][main.cpp:590] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+[  8301][I][main.cpp:590] vTLog(): [LoMa] T: Log, U: 2716, F: 1380
+[  8302][I][main.cpp:599] vTLog(): [LoMa] Min, free heap: 8589424 b
+[  8304][I][main.cpp:614] vTLog(): [LoMa] Temp.: 105 dC
+[  8304][I][main.cpp:620] vTLog(): [LoMa] PS: mV: 000-1, mA: 000-1, W: 4294967
+ [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8343][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  8405][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+47][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8469][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  8489][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ailed
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  8615][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  8635][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[  8677][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8741][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  8761][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8865][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LCO] Tx failed
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  8971][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  9033][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9095][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  9117][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9137][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9179][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+
+[  9263][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9305][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9325][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9367][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9451][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9535][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  9 Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  9639][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9681][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9703][E][LoadComms.cpp:144] sendLoadboxD[  9723][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9767][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9829][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  9849][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+1][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[  9913][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9933][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[  9975][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+ [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10079][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+10121][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10163][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10205][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10267][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ failed
+[ 10309][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+1][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+1][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10413][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 10435][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10455][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10497][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+led
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10559][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10581][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 10601][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10643][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10705][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 10707][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 10727][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10771][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10833][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10853][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 10895][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 10Packet received from: 30:ED:A0:E0:6B:78
+979][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 10981][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11001][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+pp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+O] Tx failed
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11189][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11273][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11293][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11335][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11355][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11417][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ailed
+[ 11543][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11605][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11647][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11689][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11751][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11771][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11813][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11875][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11897][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11917][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 11959][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 11960][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[ 11961][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[ 11961][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+[ 11979][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12012][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[ 12013][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[ 12013][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+3][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+63][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 12064][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+[ 12065][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+[ 12065][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+Packet received from: 30:ED:A0:E0:6B:78
+05][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 12125][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12189][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12251][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ailed
+[ 12305][D][main.cpp:539] vTLog(): [LoMa] Logging Data:
+[ 12305][I][main.cpp:541] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 12308][D][main.cpp:567] vTLog(): [LoMa] Task Buffer Used (): 68
+[ 12308][D][main.cpp:569] vTLog(): [LoMa] Stats Buffer Used: 523 bytes
+[ 12308][D][main.cpp:570] vTLog(): [LoMa] Stats Buffer Free: 237 bytes
+[ 12309][D][main.cpp:572] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 12309][I][main.cpp:573] vTLog(): [LoMa] Task Run Time Stats:
+Log            	36193		<1%
+IDLE0          	10311409		83%
+IDLE1          	12144070		98%
+FSM            	1533		<1%
+Recv           	3829		<1%
+loopTask       	31517		<1%
+tiT            	4234		<1%
+Cfg            	159		<1%
+LED            	800		<1%
+Poll           	49394		<1%
+Send           	211009		1%
+AdLd           	36		<1%
+ipc0           	30558		<1%
+arduino_events 	174		<1%
+Tmr Svc        	150		<1%
+esp_timer      	1877		<1%
+wifi           	1734752		14%
+ipc1           	36505		<1%
+sys_evt        	578		<1%
+
+[ 12311][I][main.cpp:590] vTLog(): [LoMa] T: FSM, U: 696, F: 328
+[ 12311][I][main.cpp:590] vTLog(): [LoMa] T: Poll, U: 2220, F: 1876
+[ 12312][I][main.cpp:590Packet received from: 30:ED:A0:E0:6B:78
+] vTLog(): [LoMa] T: AdLd, U: 704, F: 1344
+[ 12312][I][main.cpp:590] vTLog(): [LoMa] T: Recv, U: 776, F: 1272
+[ 12312][I][main.cpp:590] vTLog(): [LoMa] T: Send, U: 1976, F: 2120
+[ 12313][E][LoadComms.cpp:144] sendLoadbox[D a1t2a3(1)3:] [[LIC]O[]m aTixn .faciplpe:d59
+0] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+[ 12313][I][main.cpp:590] vTLog(): [LoMa] T: LED, U: 948, F: 1100
+[ 12313][I][main.cpp:590] vTLog(): [LoMa] T: Log, U: 2748, F: 1348
+[ 12314][I][main.cpp:599] vTLog(): [LoMa] Min, free heap: 8589424 b
+[ 12316][E][main.cpp:612] vTLog(): [LoMa] Temp. out of bounds: 106 dC
+[ 12317][I][main.cpp:620] vTLog(): [LoMa] PS: mV: 000-1, mA: 000-1, W: 4294967
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12355][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12397][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+boxData(): [LCO] Tx failed
+[ 12439][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12481][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 12503][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12565][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12585][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 12649][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12669][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12711][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 12731][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12773][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12793][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12855][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12897][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 12917][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12959][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 12979][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 13021][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13105][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 13125][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+p:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13249][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 13271][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13313][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 13333][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13375][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13395][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13437][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+57][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13603][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 13645][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13707][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13769][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13789][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+d
+[ 13873][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13915][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 13957][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 13999][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14019][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+3][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14147][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14167][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14229][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14293][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14313][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14355][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14377][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14397][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14439][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14461][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14481][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14543][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14585][E][LoadComms.cpp:14ata(): [LCO] Tx failed
+[ 14607][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14627][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14669][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14691][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+oadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+ed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 14775][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+d
+Packet received from: 30:ED:A0:E0:6B:78
+7][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14857][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+9][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 14941][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15005][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15067][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 15087][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15129][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15151][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+ [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15213][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15235][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 15255][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+adComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 15381][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 15401][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15443][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15505][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 15525][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[ 15587][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15629][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15649][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+Comms.cpp:144] sendLoadboxData()
+1][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+73][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+dComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15877][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+ailed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15939][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 15959][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+[E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed
+Packet received from: 30:ED:A0:E0:6B:78
+[ 16021][E][LoadComms.cpp:144] sendLoadboxData(): [LCO] Tx failed

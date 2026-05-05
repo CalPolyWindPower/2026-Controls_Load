@@ -1,0 +1,2000 @@
+[    25][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   338416 B ( 330.5 KB)
+  Free Bytes        :   299448 B ( 292.4 KB)
+  Allocated Bytes   :    33416 B (  32.6 KB)
+  Minimum Free Bytes:   294180 B ( 287.3 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr 28 2026 22:08:21
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   147][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca0fc4
+
+[   148][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already ha[   148][I][main.cpp:121] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+
+[   149][I][main.cpp:135] setup(): [LoMa] LED initialized
+
+[   201][E][LoadComms.cpp:47] begin(): [LCO] Failed to set WiFi bandwidth
+
+[   201][E][main.cpp:172] setup(): [LoMa] Failed to initialize load comms
+
+[   202][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+
+[   203][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+
+[   203][E][INA260.hpp:36] begin(): [TAG] Failed to initialize INA260 at 0x41
+
+[   204][E][main.cpp:62] configureLoad(): [LoMa] Failed to initialize INA260 power sensor at 0x41
+
+[   204][I][main.cpp:234] setup(): [LoMa] Setting up tasks...
+
+[   204][D][main.cpp:268] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+
+[   205][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   206][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   206][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   205[   207][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   207][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   207][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+][D][main.cpp:268] setup(): [   208][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   208][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   209][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+
+[   209][D][main.cpp:268] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+
+[   210][D][main.cpp:268] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+
+[   210][D][main.cpp:268] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+
+[   211][D][main.cpp:268] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+
+[   211][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   21[2 ] [ E2]1[2W]i[rgm(())::  [iL2ocMWar]i tLeoRgegaidnNgo DnaSttao:p
+
+ returned Error 259
+
+[   212][I][main.cpp:522] vTLog(): [LoMa] [F r ee R2T1O2S] [TEa]s[kIsN:A 21680
+.
+hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+k Buffer Used (): 65
+
+ :[3L6o9M]a ]i 2SctWartis tBeuRfefadNeorn SUtsoepd(:) :4 7i12 bynE.RcRp_pI:N5V51A]L IvTDL_oSgT(A)T: E[
+L
+oMa] Stats Buffer Free: 249 bytes
+
+[   215][E][Wire.cpp:52[0 ]   r2e1q5u]e[sDt]F[rmoaimn(.c)p:p :i525c3W] rviTtLeoRge(a)d:N apin:.6c3p]p :u5p5d4a]t evRTeLaodgi(n)g:s ([)L:o M[aT]A GT]a sCk  rReuand iTnigm eo Sutta tosf:
+ Pbooluln d s :   - 1  3889		1%
+
+Log            	93		<1%
+
+loopTask       	22229		10%
+
+[I D L E20 1 4 ] [D] [ m a i n .	128981		60%
+
+IDLE1          	154- h a l	-6i62	c	-<n1%g
+.
+cL:E3D6 9 ]   i 2 c W r i t e R	e9a8d		N<o1n%S
+t
+otpi(T) :   i 2 c _ m a s t e 	r4_5t	r	a<n1s%m
+i
+tC_frge c e i v e   f  a i l e	d9:	 	[<215%9
+]
+ AEdSLPd_ E R R _  I N V A L I	D9_	S	T<A1T%E
+
+
+
+sys_evt        	488		<1%
+
+arduino_e[v t2F5r2o	m	(1)4:% 
+i
+2wciWfrii t e R e a  d N o n S	t4o5p5 8r8e	t	u2r1n%e
+d
+ eEsrp_rtoirm e2r5 9 
+ 
+   	91		<1%
+
+Tmr Svc        	1t%e
+R
+e
+a
+dings(): [TAG] P out of bounds: -1 mW
+[ 
+  217][Ic]p[pm:a2i6n8.]c pspe:t5u7p1(]) :v T[LoLgo(M)a:]  [CLroeMaat]e dT :t aFsSkM ,L oUg:  w7i0t8h,  pFr:i o3r1i6t
+y
+ 2 and stack size 4096 bytes
+
+[   217][I][main.cpp:571] vTLog(): [LoMa] T: Poll, U: 2248, F: 1848
+
+[   [2 17 ] [2I1]7[]m[aEi]n[.ecsppp3:25-7h1a]l -viT2Lco-gn(g).:c :[2L7o5M]a ]i 2Tc:W ArdiLtde,( )U::  7i020c,_ mFa:s t1e3r4_8t
+r
+ansmit failed: [259] ESP_ERR_INVALID_STATE
+
+[   218][I][main.cpp:571] vTLog[( ) :  2[1L8o]M[aI]] [Tm:a iRne.ccvp,p :U2:8 57]7 2s,e tFu:p (1)2:7 6[
+L
+oMa] Initialized FSM to state 2
+
+[   218][I][main.[c p p :527118]] [vTIL]o[gm(a)i:n .[cLpopM:a2]9 3T]:  sCeftgu,p U(:) :7 0[8L,o MFa:]  3S1e6t
+u
+p complete!
+
+=========== After [S e t u2p1 8S]t[aIr]t[ m=a=i=n=.=c=p=p=:=5=7=1=]
+ vTLog(): [LoMa] T: LED, U: 892, F: 1156
+
+INTERNAL Memory Info:
+--------------[- - - -2-1-9-]-[-I-]-[-m-a-i-n-.-cp-p-:5-7-1-]- -v-T-L-o-g
+(): [LoMa] T: Log, U: 2640, F: 1456
+
+ [  T o t2a1l9 ]S[iIz][em ai n . c p p : 5:8 0 ]  3v3T8L4o1g6( )B:  ([ L3o3M0a.]5  MKiBn),
+ free heap: 8601100 b
+
+  Free Bytes        :   233900 B ( 228.4 KB)
+[   220][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   220][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   220][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   221][[I ] [ m2a2i1n].[cEp]p[:e5s9p5]3 2v-ThLaolg-()i:2 c[-LnogM.ac]: 3T6e9m]p .i:2 c2W8r diCt
+e
+ReadNonStop(): i2c_master_transmit_receive failed: [[2 5 9 ]2 2E1S]P[_IE]R[Rm_aIiNnV.AcLpIpD:_6S0T1A] TvETL
+o
+g(): [LoMa] PS: mV: 000-1, mA: 000-1[,   W :2 2422]9[4E9]6[7W
+ire.
+cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   222][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   223][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   223][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   223][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+  Allocated Bytes   :    96156 B (  93.9 KB)
+  Minimum Free Bytes:   233164 B ( 227.7 KB)
+  Largest Free Block:   192500 B ( 188.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8367936 B (8171.8 KB)
+  Allocated Bytes   :    17800 B (  17.4 KB)
+[   226][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   226][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   226][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   227][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   227][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   228][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   228][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   229][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   229][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+  Minimum Free Bytes:  8367936 B (8171.8 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     5 : GPIO
+     8 : I2C_MASTER_SDA[0]
+     9 : I2C_MASTER_SCL[0]
+    18 : RMT_TX
+    19 : USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+[   232][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   232][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   232][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   233][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   233][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   234][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   234][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   235][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   235][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   237][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   238][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   238][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   239][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   239][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   240][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   240][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   241][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   241][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   243][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   244][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   244][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   245][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   245][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   246][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   246][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   247][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   247][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   249][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   250][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   250][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   251][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   251][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   252][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   252][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   253][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   253][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   255][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   256][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   256][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   257][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   257][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   258][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   258][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   259][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   259][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   261][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   262][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   262][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   263][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   263][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   264][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   264][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   265][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   265][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   267][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   268][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   268][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   269][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   269][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   270][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   270][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   271][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   271][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   273][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   274][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   274][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   275][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   275][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   276][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   276][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   277][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   277][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   279][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   280][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   280][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   281][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   281][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   282][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   282][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   283][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   283][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   285][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   286][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   286][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   287][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   287][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   288][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   288][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   288][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   289][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   291][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   292][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   292][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   293][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   293][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   294][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   294][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   295][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   295][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   297][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   298][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   298][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   299][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   299][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   300][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   300][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   300][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   301][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   303][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   304][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   304][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   305][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   305][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   306][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   306][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   307][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   307][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   309][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   310][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   310][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   311][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   311][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   312][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   312][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   313][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   313][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   315][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   316][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   316][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   317][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   317][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   318][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   318][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   319][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   319][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   321][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   322][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   322][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   323][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   323][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   324][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   324][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   325][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   325][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   327][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   328][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   328][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   329][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   329][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   330][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   330][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   331][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   331][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   333][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   334][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   334][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   335][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   335][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   336][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   336][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   336][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   337][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   339][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   340][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   340][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   341][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   341][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   342][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   342][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   343][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   343][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   345][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   346][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   346][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   347][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   347][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   348][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   348][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   349][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   349][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   351][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   352][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   352][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   353][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   353][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   354][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   354][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   354][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   355][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   357][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   358][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   358][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   359][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   359][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   360][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   360][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   361][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   361][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   363][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   364][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   364][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   365][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   365][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   366][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   366][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   367][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   367][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   369][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   370][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   370][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   371][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   371][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   372][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   372][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   373][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   373][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   375][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   376][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   376][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   377][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   377][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   378][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   378][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   379][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   379][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   381][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   382][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   382][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   383][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   383][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   384][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   384][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   385][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   385][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   387][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   388][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   388][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   389][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   389][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   390][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   390][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   391][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   391][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   393][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   394][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   394][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   395][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   395][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   396][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   396][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   397][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   397][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   399][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   400][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   400][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   401][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   401][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   402][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   402][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   402][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   403][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   405][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   406][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   406][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   407][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   407][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   408][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   408][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   408][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   409][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   411][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   412][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   412][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   413][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   413][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   414][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   414][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   415][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   415][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   417][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   418][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   418][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   419][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   419][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   420][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   420][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   420][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   421][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   423][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   424][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   424][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   425][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   425][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   426][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   426][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   426][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   427][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   429][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   430][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   430][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   431][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   431][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   432][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   432][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   432][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   433][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   435][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   436][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   436][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   437][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   437][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   438][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   438][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   438][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   439][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   441][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   442][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   442][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   443][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   443][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   444][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   444][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   444][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   445][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   447][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   448][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   448][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   449][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   449][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   450][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   450][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   450][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   451][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   453][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   454][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   454][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   455][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   455][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   455][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   456][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   456][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   457][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   459][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   460][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   460][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   461][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   461][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   462][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   462][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   462][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   463][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   465][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   466][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   466][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   467][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   467][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   468][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   468][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   468][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   469][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   471][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   472][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   472][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   473][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   473][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   474][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   474][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   474][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   475][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   477][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   478][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   478][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   479][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   479][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   480][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   480][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   481][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   481][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   483][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   484][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   484][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   485][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   485][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   486][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   486][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   486][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   487][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   489][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   490][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   490][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   491][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   491][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   492][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   492][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   492][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   493][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   495][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   496][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   496][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   497][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   497][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   498][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   498][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   498][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   499][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   501][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   502][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   502][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   503][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   503][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   504][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   504][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   504][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   505][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   507][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   508][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   508][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   509][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   509][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   510][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   510][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   510][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   511][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   513][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   514][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   514][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   515][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   515][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   516][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   516][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   516][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   517][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   519][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   520][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   520][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   521][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   521][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   522][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   522][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   522][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   523][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   525][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   526][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   526][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   527][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   527][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   528][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   528][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   528][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   529][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   531][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   532][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   532][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   533][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   533][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   534][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   534][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   534][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   535][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   537][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   538][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   538][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   539][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   539][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   540][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   540][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   540][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   541][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   543][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   544][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   544][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   545][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   545][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   546][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   546][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   547][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   547][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   549][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   550][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   550][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   551][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   551][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   552][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   552][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   552][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   553][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   555][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   556][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   556][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   557][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   557][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   558][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   558][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   558][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   559][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   561][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   562][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   562][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   563][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   563][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   564][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   564][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   564][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   565][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   567][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   568][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   568][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   569][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   569][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   570][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   570][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   570][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   571][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   573][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   574][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   574][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   575][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   575][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   576][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   576][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   576][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   577][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   579][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   580][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   580][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   581][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   581][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   582][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   582][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   583][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   583][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   585][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   586][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   586][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   587][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   587][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   588][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   588][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   588][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   589][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   591][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   592][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   592][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   593][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   593][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   594][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   594][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   594][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   595][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   597][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   598][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   598][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   599][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   599][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   600][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   600][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   600][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   601][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   603][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   604][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   604][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   605][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   605][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   606][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   606][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   606][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   607][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   609][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   610][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   610][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   611][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   611][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   612][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   612][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   612][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   613][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   615][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   616][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   616][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   617][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   617][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   618][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   618][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   618][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   619][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   621][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   622][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   622][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   623][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   623][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   624][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   624][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   624][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   625][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   627][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   628][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   628][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   629][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   629][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   630][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   630][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   630][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   631][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   633][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   634][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   634][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   635][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   635][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   636][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   636][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   637][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   637][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   639][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   640][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   640][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   641][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   641][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   642][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   642][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   642][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   643][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   645][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   646][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   646][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   647][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   647][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   648][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   648][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   648][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   649][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   652][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   652][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   652][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   653][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   653][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   654][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   654][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   655][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   655][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   657][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   658][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   658][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   659][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   659][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   660][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   660][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   661][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   661][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   663][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   664][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   664][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   665][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   665][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   666][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   666][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   666][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   667][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   669][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   670][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   670][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   671][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   671][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   672][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   672][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   673][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   673][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   675][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   676][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   676][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   677][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   677][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   678][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   678][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   678][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   679][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   681][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   682][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   682][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   683][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   683][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   684][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   684][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   684][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   685][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   687][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   688][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   688][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   689][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   689][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   690][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   690][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   690][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   691][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   693][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   694][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   694][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   695][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   695][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   696][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   696][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   696][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   697][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   699][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   700][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   700][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   701][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   701][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   702][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   702][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   703][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   703][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   705][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   706][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   706][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   707][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   707][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   708][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   708][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   708][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   709][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   711][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   712][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   712][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   713][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   713][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   714][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   714][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   715][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   715][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   717][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   718][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   718][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   719][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   719][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   720][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   720][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   720][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   721][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   723][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   724][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   724][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   725][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   725][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   726][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   726][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   726][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   727][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   729][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   730][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   730][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   731][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   731][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   732][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   732][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   732][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   733][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   735][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   736][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   736][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   737][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   737][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   738][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   738][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   738][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   739][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   741][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   742][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   742][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   743][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   743][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   744][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   744][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   744][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   745][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   747][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   748][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   748][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   749][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   749][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   750][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   750][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   750][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   751][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   753][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   754][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   754][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   755][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   755][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   756][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   756][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   756][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   757][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   759][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   760][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   760][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   761][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   761][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   762][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   762][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   762][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   763][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   765][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   766][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   766][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   767][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   767][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   768][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   768][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   768][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   769][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   771][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   772][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   772][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   773][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   773][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   774][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   774][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   774][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   775][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   777][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   778][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   778][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   779][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   779][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   780][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   780][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   780][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   781][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   783][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   784][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   784][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   785][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   785][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   785][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   786][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   786][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   787][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   789][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   790][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   790][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   791][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   791][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   792][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   792][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   792][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   793][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   795][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   796][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   796][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   797][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   797][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   798][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   798][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   798][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   799][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   801][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   802][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   802][E][INA260.hpp:56] updateReadings(): [TAG] V reading out of bounds: 4294967295 mV
+
+[   803][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   803][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   804][E][INA260.hpp:63] updateReadings(): [TAG] C reading out of bounds: -1 mA
+
+[   804][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   804][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   805][E][INA260.hpp:71] updateReadings(): [TAG] P out of bounds: -1 mW
+
+[   807][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   808][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+

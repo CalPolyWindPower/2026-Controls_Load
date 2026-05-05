@@ -1,0 +1,3000 @@
+[    30][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   337816 B ( 329.9 KB)
+  Free Bytes        :   298588 B ( 291.6 KB)
+  Allocated Bytes   :    33644 B (  32.9 KB)
+  Minimum Free Bytes:   293320 B ( 286.4 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : May  3 2026 00:57:06
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   153][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca1220
+
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fca1220
+
+[   154][I][main.cpp:138] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+
+[   155][I][main.cpp:152] setup(): [LoMa] LED initialized
+
+[   219][I][LoadComms.cpp:64] begin(): [LCO] Device MAC: EC:DA:3B:5C:93:04
+
+[   223][I][LoadComms.cpp:115] setupPeer_(): [LCO] Peer added: D0:CF:13:EA:4A:08
+
+Loadbox ready
+
+[   223][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+
+[   224][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+
+[   275][E][INA260.hpp:51] begin(): [TAG] Failed to initialize INA260 at 0x41
+
+[   275][E][main.cpp:79] configureLoad(): [LoMa] Failed to initialize INA260 power sensor at 0x41
+
+[   276][I][main.cpp:251] setup(): [LoMa] Setting up tasks...
+
+[   276][D][main.cpp:292] setup(): [LoMa] Created task FSM with priority 24 and stack size 1024 bytes
+
+[   277][D][main.cpp:292] setup(): [LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+
+[   277][D][main.cpp:292] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+
+[   278][D][main.cpp:292] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+
+[   278][D][main.cpp:292] setup(): [LoMa] Created task Send with priority 15 and stack size 4096 bytes
+
+[   279][D][main.cpp:292] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+
+[   280][D][main.cpp:292] setup(): [LoMa] Created task LED with priority 2 and stack size 2048 bytes
+
+[   280][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[   280][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[   283][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 65
+
+[   283][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 499 bytes
+
+[   283][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 261 bytes
+
+[   284][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[   284][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	0		<1%
+
+loopTask       	23679		8%
+
+IDLE0          	175999		62%
+
+IDLE1          	213124		75%
+
+AdLd           	15		<1%
+
+Recv           	71		<1%
+
+Send           	200		<1%
+
+LED            	135		<1%
+
+tiT            	46		<1%
+
+Cfg            	14		<1%
+
+Poll           	224		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		15%
+
+esp_timer      	129		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+wifi           	60349		21%
+
+Tmr Svc        	68		<1%
+
+ipc0           	30577		10%
+
+
+
+[   286][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[   286][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 1480, F: 2616
+
+[   286][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[   287][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[   287][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 960, F: 3136
+
+[   287][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[   288][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[   288][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 2828, F: 1268
+
+[   288][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8595304 b
+
+[   291][I][main.cpp:648] vTLog(): [LoMa] Temp.: 81 dC
+
+[   291][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[   291][D][main.cpp:292] setup(): [LoMa] Created task Log with priority 2 and stack size 4096 bytes
+
+[   291][E][main.cpp:315] setup(): [LoMa] Failed to enter a valid state
+
+[   292][I][main.cpp:321] setup(): [LoMa] Setup complete!
+
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   337816 B ( 329.9 KB)
+  Free Bytes        :   228176 B ( 222.8 KB)
+  Allocated Bytes   :   101200 B (  98.8 KB)
+  Minimum Free Bytes:   227388 B ( 222.1 KB)
+  Largest Free Block:   184308 B ( 180.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8367916 B (8171.8 KB)
+  Allocated Bytes   :    17804 B (  17.4 KB)
+  Minimum Free Bytes:  8367916 B (8171.8 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     5 : GPIO
+     8 : I2C_MASTER_SDA[0]
+     9 : I2C_MASTER_SCL[0]
+    18 : RMT_TX
+    19 : USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+
+ Error 259
+
+ounds: 2147483647 mV
+
+iled: [259] ESP_ERR_INVALID_STATE
+
+ requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   429][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   429][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returnerror 259
+
+[   429][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+TE
+
+om(): i2cWriteReadNonStop returned Error 259
+
+eReadings(): [TAG] V reading out of bounds: 2147483647 mV
+
+9] ESP_ERR_INVALID_STATE
+
+rom(): i2cWriteReadNonStop returned Error 259
+
+
+
+cWriteReadNonStop returned Error 259
+
+[   601][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+[esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transe.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+ounds: 2147483647 mV
+
+RR_INVALID_STATE
+
+20] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+aster_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[   793][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[   793][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+p returned Error 259
+
+[   924][E][INA260.hpp:74] updateReadings(): [TAG] V reading out of bounds: 2147483647 mV
+
+aster_transmit_re520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+t_receive failed: [259] ESP_ERR_INVALID_STATE
+
+adNonStop returned Error 259
+
+[  1025][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+ [259] ESP_ERR_INVALID_STATE
+
+NonStop returned Error 259
+
+0.hpp:74] updateReadings(): [TAG] V reading out of bounds: 2147483647 mV
+
+RR_INVALID_STATE
+
+p:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+aster_transmit_receive failed: [259] ESP_ERR_INadNonStop returned Error 259
+
+s(): [TAG] P out of bounds: 2147483647 mW
+
+RR_INVALID_STATE
+
+tFrom(): i2cWriteReadNonStop returned Error 259
+
+dings(): [TAG] V reading out of bounds: 2147483647 mV
+
+[  1760][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+(): i2cWriteReadNonStop returned Error 259
+
+ESP_ERR_INVALID_STATE
+
+259
+
+[  1811][E][INA26eadings(): [TAG] P out of bounds: 2147483647 mW
+
+LID_STATE
+
+rom(): i2cWriteReadNonStop returned Error 259
+
+ out of bounds: 2147483647 mV
+
+[  2553][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_m553][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+aster_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  2604][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop retngs(): [TAG] P out of bounds: 2147483647 mW
+
+[  3935][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_md Error 259
+
+[  3935][E][INA260.hpp:74] updateReadings(): [TAG] V reading out of bounds: 2147483647 mV
+
+[  3986][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_m  3986][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+sp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmieReadNonStop returned Error 259
+
+ mW
+
+[  4291][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[  4292][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[  4292][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[  4342][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  4343][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[  4393][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  4394][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[  4292][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[  4394][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000010, TxBS: 0000000, TxBF: 0000230, RxE: 000000, RxB: 0000000
+
+[  4395][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 52, RxE/s: 0, RxB/s: 0
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+ransmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  6648][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[  6648][E][INA260.hpp:74] updateReadings(): [TAG] V reading out of bounds: 2147483647 mV
+
+i2cWriteReadNonStop returned Error 259
+
+[  6750][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[  6750][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[  6750][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+[  7678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[  8395][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[  8395][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[  8398][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 67
+
+[  8398][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 514 bytes
+
+[  8398][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 246 bytes
+
+[  8399][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[  8399][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	15818		<1%
+
+IDLE0          	8208920		97%
+
+IDLE1          	8306298		98%
+
+Recv           	2012		<1%
+
+tiT            	2680		<1%
+
+Send           	8439		<1%
+
+Cfg            	87		<1%
+
+loopTask       	29373		<1%
+
+LED            	438		<1%
+
+Poll           	34194		<1%
+
+AdLd           	983		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+Tmr Svc        	114		<1%
+
+esp_timer      	927		<1%
+
+wifi           	94767		1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+
+
+[  8401][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[  8401][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[  8401][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[  8402][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[  8402][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[  8402][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[  8403][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[  8403][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[  8403][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[  8405][I][main.cpp:648] vTLog(): [LoMa] Temp.: 85 dC
+
+[  8406][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+dComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 11678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+aster_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 11921][E]83647 mV
+
+[esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transe.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[259] ESP_ERR_INVALID_STATE
+
+
+dateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+[ 12406][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 12407][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 12407][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 12457][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 12458][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 12508][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 12509][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 12407][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 12509][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000031, TxBS: 0000000, TxBF: 0000713, RxE: 000000, RxB: 0000000
+
+[ 12510][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 59, RxE/s: 0, RxB/s: 0
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 14478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 16510][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 16510][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 16513][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 68
+
+[ 16513][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 522 bytes
+
+[ 16513][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 238 bytes
+
+[ 16514][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 16514][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	30868		<1%
+
+IDLE0          	16283140		98%
+
+IDLE1          	16406016		99%
+
+Recv           	3653		<1%
+
+tiT            	4978		<1%
+
+Send           	13373		<1%
+
+LED            	718		<1%
+
+Cfg            	158		<1%
+
+loopTask       	29513		<1%
+
+Poll           	37823		<1%
+
+AdLd           	1855		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+Tmr Svc        	159		<1%
+
+esp_timer      	2083		<1%
+
+wifi           	120714		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+
+
+[ 16515][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 16516][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 16516][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 16516][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 16517][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 16517][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 16517][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 16518][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 16518][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 16520][I][main.cpp:648] vTLog(): [LoMa] Temp.: 87 dC
+
+[ 16520][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 18478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 19878][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 20521][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 20522][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 20522][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 20572][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 20573][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 20623][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 20624][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 20522][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 20624][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000052, TxBS: 0000000, TxBF: 0001196, RxE: 000000, RxB: 0000000
+
+[ 20625][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 59, RxE/s: 0, RxB/s: 0
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+aster_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 22313][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 22313][E][INA260.hpp:74] updateReadings(): [TAG] V reading out of bounds: 2147483647 mV
+
+2-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 22364][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 22415][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonS
+
+out of bounds: 2147483647 mW
+
+[ 22478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 24625][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 24625][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 24628][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 68
+
+[ 24628][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 523 bytes
+
+[ 24628][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 237 bytes
+
+[ 24629][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 24629][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	45935		<1%
+
+IDLE0          	24359845		98%
+
+IDLE1          	24505670		99%
+
+AdLd           	2713		<1%
+
+Recv           	5261		<1%
+
+Send           	18362		<1%
+
+Cfg            	230		<1%
+
+loopTask       	29652		<1%
+
+LED            	1138		<1%
+
+Poll           	41752		<1%
+
+tiT            	7019		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+Tmr Svc        	228		<1%
+
+esp_timer      	2855		<1%
+
+wifi           	144390		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+
+
+[ 24630][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 24631][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 24631][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 24631][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 24632][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 24632][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 24632][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 24633][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 24633][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 24635][I][main.cpp:648] vTLog(): [LoMa] Temp.: 89 dC
+
+[ 24636][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 27878][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 28636][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 28637][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 28637][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 28687][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 28688][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 28738][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 28739][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 28637][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 28739][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000072, TxBS: 0000000, TxBF: 0001656, RxE: 000000, RxB: 0000000
+
+[ 28740][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 56, RxE/s: 0, RxB/s: 0
+
+2391
+
+[ 30678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 32078][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 32740][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 32740][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 32743][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 68
+
+[ 32743][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 523 bytes
+
+[ 32743][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 237 bytes
+
+[ 32744][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 32744][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	61262		<1%
+
+IDLE0          	32437820		99%
+
+IDLE1          	32605114		99%
+
+Recv           	6847		<1%
+
+Send           	23348		<1%
+
+tiT            	9157		<1%
+
+Cfg            	303		<1%
+
+loopTask       	29786		<1%
+
+LED            	1419		<1%
+
+Poll           	41752		<1%
+
+AdLd           	3572		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+Tmr Svc        	276		<1%
+
+esp_timer      	3618		<1%
+
+wifi           	170777		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+
+
+[ 32746][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 32746][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 32746][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 32747][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 32747][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 32747][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 32748][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 32748][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 32748][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 32750][I][main.cpp:648] vTLog(): [LoMa] Temp.: 90 dC
+
+[ 32751][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[ 33478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 34778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 36178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 36751][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 36752][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 36752][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 36802][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 36803][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 36853][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 36854][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 36752][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 36854][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000095, TxBS: 0000000, TxBF: 0002185, RxE: 000000, RxB: 0000000
+
+[ 36855][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 65, RxE/s: 0, RxB/s: 0
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 40278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 40855][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 40855][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 40858][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 68
+
+[ 40858][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 524 bytes
+
+[ 40858][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 236 bytes
+
+[ 40858][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 40859][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	76514		<1%
+
+IDLE0          	40516840		99%
+
+IDLE1          	40704580		99%
+
+Recv           	8433		<1%
+
+tiT            	11230		<1%
+
+Send           	28265		<1%
+
+Cfg            	377		<1%
+
+loopTask       	29928		<1%
+
+Poll           	41752		<1%
+
+LED            	1836		<1%
+
+AdLd           	4429		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+esp_timer      	4649		<1%
+
+Tmr Svc        	345		<1%
+
+wifi           	195872		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+
+
+[ 40860][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 40861][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 40861][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 40861][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 40862][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 40862][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 40862][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 40863][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 40863][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 40865][I][main.cpp:648] vTLog(): [LoMa] Temp.: 92 dC
+
+[ 40865][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[ 41578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+aster_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 42946][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 42946][E][INA260.hpp:74] updateReadings(): [TAG] V reading out of bounds: 2147483647 mV
+
+[ 42997][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 42997][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 43048][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_m048][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 43048][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+Comms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 44866][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 44867][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 44867][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 44917][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 44918][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 44968][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 44969][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 44867][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 44969][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000118, TxBS: 0000000, TxBF: 0002714, RxE: 000000, RxB: 0000000
+
+[ 44970][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 65, RxE/s: 0, RxB/s: 0
+
+dComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+adComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 48578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 48970][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 48970][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 48973][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[ 48973][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 525 bytes
+
+[ 48973][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 235 bytes
+
+[ 48974][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 48974][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	91617		<1%
+
+IDLE0          	48588971		99%
+
+IDLE1          	48804241		99%
+
+Recv           	10080		<1%
+
+tiT            	13308		<1%
+
+Cfg            	452		<1%
+
+loopTask       	30069		<1%
+
+Send           	33548		<1%
+
+LED            	2115		<1%
+
+Poll           	45512		<1%
+
+AdLd           	5294		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+Tmr Svc        	392		<1%
+
+esp_timer      	5426		<1%
+
+wifi           	224025		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+
+
+[ 48975][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 48976][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 48976][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 48976][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 48977][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 48977][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 48977][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 48978][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 48978][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 48980][I][main.cpp:648] vTLog(): [LoMa] Temp.: 93 dC
+
+[ 48981][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 52981][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 52982][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 52982][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 53032][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 53033][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 53083][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 53084][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 52982][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 53084][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000139, TxBS: 0000000, TxBF: 0003197, RxE: 000000, RxB: 0000000
+
+[ 53085][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 59, RxE/s: 0, RxB/s: 0
+
+Comms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+adComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 56578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 57085][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 57085][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 57088][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[ 57088][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 526 bytes
+
+[ 57088][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 234 bytes
+
+[ 57089][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 57089][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	106756		<1%
+
+IDLE0          	56670220		99%
+
+IDLE1          	56903826		99%
+
+AdLd           	6155		<1%
+
+Recv           	11696		<1%
+
+LED            	2528		<1%
+
+Cfg            	527		<1%
+
+loopTask       	30205		<1%
+
+Send           	38423		<1%
+
+Poll           	45512		<1%
+
+tiT            	15364		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+esp_timer      	6182		<1%
+
+Tmr Svc        	460		<1%
+
+wifi           	247196		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+
+
+[ 57091][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 57091][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 57091][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 57092][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 57092][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 57092][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 57093][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 57093][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 57093][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 57095][I][main.cpp:648] vTLog(): [LoMa] Temp.: 94 dC
+
+[ 57096][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[ 57878][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 60678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 61096][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 61097][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 61097][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 61147][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 61148][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 61198][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 61199][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 61097][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 61199][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000159, TxBS: 0000000, TxBF: 0003657, RxE: 000000, RxB: 0000000
+
+[ 61200][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 56, RxE/s: 0, RxB/s: 0
+
+ sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 63278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 65200][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 65200][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 65203][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[ 65203][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 526 bytes
+
+[ 65203][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 234 bytes
+
+[ 65204][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 65204][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	121980		<1%
+
+IDLE0          	64749496		99%
+
+IDLE1          	65003368		99%
+
+Recv           	13274		<1%
+
+Cfg            	607		<1%
+
+loopTask       	30347		<1%
+
+Send           	43255		<1%
+
+tiT            	17626		<1%
+
+LED            	2828		<1%
+
+Poll           	45512		<1%
+
+AdLd           	6999		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+Tmr Svc        	505		<1%
+
+esp_timer      	6932		<1%
+
+wifi           	272321		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+
+
+[ 65206][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 65206][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 65206][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 65207][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 65207][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 65207][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 65208][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 65208][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 65208][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 65211][I][main.cpp:648] vTLog(): [LoMa] Temp.: 95 dC
+
+[ 65211][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 68778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 69211][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 69212][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 69212][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 69262][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 69263][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 69313][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 69314][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 69212][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 69314][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000181, TxBS: 0000000, TxBF: 0004163, RxE: 000000, RxB: 0000000
+
+[ 69315][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 62, RxE/s: 0, RxB/s: 0
+
+[ 70178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 71578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 73315][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 73315][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 73318][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[ 73318][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 526 bytes
+
+[ 73318][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 234 bytes
+
+[ 73319][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 73319][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	137363		<1%
+
+IDLE0          	72826829		99%
+
+IDLE1          	73102751		99%
+
+AdLd           	7888		<1%
+
+Recv           	14886		<1%
+
+LED            	3113		<1%
+
+tiT            	19693		<1%
+
+Send           	48417		<1%
+
+Cfg            	689		<1%
+
+Poll           	45512		<1%
+
+loopTask       	30487		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+Tmr Svc        	550		<1%
+
+esp_timer      	7853		<1%
+
+wifi           	299019		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+
+
+[ 73321][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 73321][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 73321][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 73322][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 73322][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 73322][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 73323][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 73323][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 73323][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 73326][I][main.cpp:648] vTLog(): [LoMa] Temp.: 96 dC
+
+[ 73326][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+dComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 75678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 76978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 77326][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 77327][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 77327][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 77377][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 77378][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 77428][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 77429][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 77327][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 77429][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000202, TxBS: 0000000, TxBF: 0004646, RxE: 000000, RxB: 0000000
+
+[ 77430][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 59, RxE/s: 0, RxB/s: 0
+
+[ 78378][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 79778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 81430][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 81430][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 81433][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[ 81433][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 526 bytes
+
+[ 81433][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 234 bytes
+
+[ 81434][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 81434][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	152751		<1%
+
+IDLE0          	80906484		99%
+
+IDLE1          	81202051		99%
+
+Recv           	16476		<1%
+
+tiT            	21737		<1%
+
+Send           	53338		<1%
+
+Cfg            	761		<1%
+
+loopTask       	30656		<1%
+
+LED            	3529		<1%
+
+Poll           	45512		<1%
+
+AdLd           	8751		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+Tmr Svc        	623		<1%
+
+esp_timer      	8628		<1%
+
+wifi           	323753		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+
+
+[ 81435][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 81436][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 81436][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 81436][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 81437][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 81437][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 81437][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 81438][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 81438][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 81440][I][main.cpp:648] vTLog(): [LoMa] Temp.: 97 dC
+
+[ 81440][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+CO] Tx fail w/ 12391
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 84059][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_meReadNonStop returned Error 259
+
+ut of bounds: 2147483647 mV
+
+[ 84110][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_m110][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+0][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+ updateReadings(): [TAG] P out of bounds: 2147483647 mW
+
+[ 85178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 85441][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 85442][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 85442][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 85492][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 85493][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 85543][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 85544][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 85442][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 85544][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000224, TxBS: 0000000, TxBF: 0005152, RxE: 000000, RxB: 0000000
+
+[ 85545][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 62, RxE/s: 0, RxB/s: 0
+
+[ 86478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 87778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 89545][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 89545][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 89548][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[ 89548][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 526 bytes
+
+[ 89548][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 234 bytes
+
+[ 89548][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 89549][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	167752		<1%
+
+IDLE0          	88981671		99%
+
+IDLE1          	89301805		99%
+
+Recv           	18102		<1%
+
+tiT            	23786		<1%
+
+Send           	58266		<1%
+
+LED            	3809		<1%
+
+Cfg            	833		<1%
+
+loopTask       	30795		<1%
+
+Poll           	49150		<1%
+
+AdLd           	9614		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+Tmr Svc        	668		<1%
+
+esp_timer      	9390		<1%
+
+wifi           	349409		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+
+
+[ 89550][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 89551][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 89551][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 89551][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 89552][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 89552][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 89552][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 89553][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 89553][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 89555][I][main.cpp:648] vTLog(): [LoMa] Temp.: 97 dC
+
+[ 89555][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[ 90578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+LoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 93556][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[ 93557][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[ 93557][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[ 93607][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 93608][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 93658][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[ 93659][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[ 93557][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[ 93659][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000244, TxBS: 0000000, TxBF: 0005612, RxE: 000000, RxB: 0000000
+
+[ 93660][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 56, RxE/s: 0, RxB/s: 0
+
+91
+
+[ 95878][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 97278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 97660][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[ 97660][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[ 97663][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[ 97663][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 528 bytes
+
+[ 97663][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 232 bytes
+
+[ 97664][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[ 97664][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	182929		<1%
+
+IDLE0          	97061123		99%
+
+IDLE1          	97401349		99%
+
+Recv           	19685		<1%
+
+tiT            	25927		<1%
+
+Send           	63268		<1%
+
+Cfg            	907		<1%
+
+loopTask       	30933		<1%
+
+LED            	4231		<1%
+
+Poll           	49150		<1%
+
+AdLd           	10471		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+Tmr Svc        	738		<1%
+
+esp_timer      	10159		<1%
+
+wifi           	374180		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+
+
+[ 97666][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[ 97666][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[ 97666][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[ 97667][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[ 97667][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[ 97667][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[ 97668][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[ 97668][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[ 97668][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[ 97670][I][main.cpp:648] vTLog(): [LoMa] Temp.: 98 dC
+
+[ 97671][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[ 98578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[ 99978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+w/ 12391
+
+[101671][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[101672][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[101672][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[101722][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[101723][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[101773][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[101774][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[101672][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[101774][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000266, TxBS: 0000000, TxBF: 0006118, RxE: 000000, RxB: 0000000
+
+[101775][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 62, RxE/s: 0, RxB/s: 0
+
+[104178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[105478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[105775][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[105775][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[105778][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[105778][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 530 bytes
+
+[105778][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 230 bytes
+
+[105779][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[105779][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	198329		<1%
+
+IDLE0          	105139519		99%
+
+IDLE1          	105500709		99%
+
+Recv           	21258		<1%
+
+tiT            	27970		<1%
+
+Cfg            	980		<1%
+
+loopTask       	31078		<1%
+
+Send           	68307		<1%
+
+LED            	4511		<1%
+
+Poll           	49150		<1%
+
+AdLd           	11315		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+Tmr Svc        	784		<1%
+
+esp_timer      	10932		<1%
+
+wifi           	400208		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+
+
+[105781][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[105781][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[105781][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[105782][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[105782][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[105782][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[105783][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[105783][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[105783][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[105785][I][main.cpp:648] vTLog(): [LoMa] Temp.: 99 dC
+
+[105786][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+x fail w/ 12391
+
+[108278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[109578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[109786][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[109787][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[109787][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[109837][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[109838][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[109888][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[109889][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[109787][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[109889][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000288, TxBS: 0000000, TxBF: 0006624, RxE: 000000, RxB: 0000000
+
+[109890][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 62, RxE/s: 0, RxB/s: 0
+
+Comms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+dComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[113890][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[113890][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[113893][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[113893][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 531 bytes
+
+[113893][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 229 bytes
+
+[113894][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[113894][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	213599		<1%
+
+IDLE0          	113220324		99%
+
+IDLE1          	113600154		99%
+
+AdLd           	12187		<1%
+
+Recv           	22872		<1%
+
+tiT            	30039		<1%
+
+Cfg            	1055		<1%
+
+loopTask       	31218		<1%
+
+Send           	73143		<1%
+
+Poll           	49150		<1%
+
+LED            	4923		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+esp_timer      	11682		<1%
+
+Tmr Svc        	854		<1%
+
+wifi           	423850		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+
+
+[113896][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[113896][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[113896][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[113897][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[113897][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[113897][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[113898][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 888, F: 1160
+
+[113898][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[113898][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[113900][I][main.cpp:648] vTLog(): [LoMa] Temp.: 99 dC
+
+[113901][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[114778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+(): [LCO] Tx fail w/ 12391
+
+[117378][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[117901][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[117902][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[117902][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[117952][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[117953][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[118003][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[118004][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[117902][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[118004][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000306, TxBS: 0000000, TxBF: 0007038, RxE: 000000, RxB: 0000000
+
+[118005][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 51, RxE/s: 0, RxB/s: 0
+
+[118678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+il w/ 12391
+
+[122005][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[122005][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[122008][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[122008][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 531 bytes
+
+[122008][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 229 bytes
+
+[122009][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[122009][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	228885		<1%
+
+IDLE0          	121302140		99%
+
+IDLE1          	121699626		99%
+
+Recv           	24444		<1%
+
+tiT            	32164		<1%
+
+Cfg            	1127		<1%
+
+loopTask       	31365		<1%
+
+Send           	77817		<1%
+
+LED            	5234		<1%
+
+Poll           	49150		<1%
+
+AdLd           	13047		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+Tmr Svc        	901		<1%
+
+esp_timer      	12457		<1%
+
+wifi           	446693		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+
+
+[122011][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[122011][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[122011][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[122012][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[122012][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[122012][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[122013][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[122013][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[122013][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[122015][I][main.cpp:648] vTLog(): [LoMa] Temp.: 100 dC
+
+[122016][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+ndLoadboxData(): [LCO] Tx fail w/ 12391
+
+[123978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+w/ 12391
+
+[126016][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[126017][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[126017][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[126067][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[126068][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[126118][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[126119][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[126017][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[126119][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000326, TxBS: 0000000, TxBF: 0007498, RxE: 000000, RxB: 0000000
+
+[126120][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 56, RxE/s: 0, RxB/s: 0
+
+oadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[130120][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[130120][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[130123][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 69
+
+[130123][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 531 bytes
+
+[130123][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 229 bytes
+
+[130123][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[130124][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	244028		<1%
+
+IDLE0          	129382699		99%
+
+IDLE1          	129799247		99%
+
+AdLd           	13905		<1%
+
+Recv           	26015		<1%
+
+LED            	5515		<1%
+
+Send           	82624		<1%
+
+Cfg            	1204		<1%
+
+loopTask       	31508		<1%
+
+Poll           	49150		<1%
+
+tiT            	34240		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+Tmr Svc        	947		<1%
+
+esp_timer      	13226		<1%
+
+wifi           	470742		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+
+
+[130125][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[130126][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[130126][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 696, F: 1352
+
+[130127][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[130127][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[130127][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[130127][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[130128][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[130128][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[130130][I][main.cpp:648] vTLog(): [LoMa] Temp.: 100 dC
+
+[130131][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[131978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[133278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[134131][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[134132][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[134132][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[134182][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[134183][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[134233][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[134234][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[134132][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[134234][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000347, TxBS: 0000000, TxBF: 0007981, RxE: 000000, RxB: 0000000
+
+[134235][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 59, RxE/s: 0, RxB/s: 0
+
+[134578][E][LoadComms.cpp:220] ] Tx fail w/ 12391
+
+[135878][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[137178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[138235][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[138235][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[138238][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[138238][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 532 bytes
+
+[138238][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 228 bytes
+
+[138239][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[138239][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	259117		<1%
+
+IDLE0          	137463429		99%
+
+IDLE1          	137898874		99%
+
+Recv           	27589		<1%
+
+Send           	87575		<1%
+
+Cfg            	1280		<1%
+
+loopTask       	31651		<1%
+
+tiT            	36475		<1%
+
+LED            	5943		<1%
+
+Poll           	49150		<1%
+
+AdLd           	14760		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+Tmr Svc        	1016		<1%
+
+esp_timer      	14103		<1%
+
+wifi           	494088		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+
+
+[138241][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[138241][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[138241][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[138242][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[138242][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[138242][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[138243][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[138243][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[138243][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[138245][I][main.cpp:648] vTLog(): [LoMa] Temp.: 100 dC
+
+[138246][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[138478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[139778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[141078][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[142246][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[142247][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[142247][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[142297][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[142298][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[142348][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[142349][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[142247][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[142349][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000365, TxBS: 0000000, TxBF: 0008395, RxE: 000000, RxB: 0000000
+
+[142350][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 51, RxE/s: 0, RxB/s: 0
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+fail w/ 12391
+
+[145178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[146350][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[146350][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[146353][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[146353][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 532 bytes
+
+[146353][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 228 bytes
+
+[146354][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[146354][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	274521		<1%
+
+IDLE0          	145543656		99%
+
+IDLE1          	145998218		99%
+
+Recv           	29153		<1%
+
+Send           	92616		<1%
+
+tiT            	38467		<1%
+
+LED            	6223		<1%
+
+Cfg            	1361		<1%
+
+loopTask       	31809		<1%
+
+Poll           	49150		<1%
+
+AdLd           	15622		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+Tmr Svc        	1062		<1%
+
+esp_timer      	15106		<1%
+
+wifi           	518086		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+
+
+[146356][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[146356][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[146356][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[146357][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[146357][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[146357][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[146358][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[146358][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[146358][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[146361][I][main.cpp:648] vTLog(): [LoMa] Temp.: 101 dC
+
+[146361][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[146478][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[147878][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[149278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[150361][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[150362][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[150362][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[150412][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[150413][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[150463][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[150464][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[150362][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[150464][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000387, TxBS: 0000000, TxBF: 0008901, RxE: 000000, RxB: 0000000
+
+[150465][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 62, RxE/s: 0, RxB/s: 0
+
+12391
+
+[151978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[153378][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[154465][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[154465][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[154468][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[154468][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 532 bytes
+
+[154468][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 228 bytes
+
+[154469][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[154469][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	289941		<1%
+
+IDLE0          	153623876		99%
+
+IDLE1          	154097518		99%
+
+Recv           	30727		<1%
+
+Send           	97698		<1%
+
+tiT            	40476		<1%
+
+Cfg            	1434		<1%
+
+loopTask       	31949		<1%
+
+LED            	6648		<1%
+
+Poll           	49150		<1%
+
+AdLd           	16480		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+Tmr Svc        	1130		<1%
+
+esp_timer      	15884		<1%
+
+wifi           	542139		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+
+
+[154471][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[154471][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[154471][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[154472][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 784, F: 1264
+
+[154472][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1692, F: 2404
+
+[154472][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[154473][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[154473][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[154473][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[154475][I][main.cpp:648] vTLog(): [LoMa] Temp.: 101 dC
+
+[154476][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[154578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[157278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[158476][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[158477][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[158477][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[158527][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[158528][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[158578][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[158579][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[158477][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[158579][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000408, TxBS: 0000000, TxBF: 0009384, RxE: 000000, RxB: 0000000
+
+[158580][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 59, RxE/s: 0, RxB/s: 0
+
+[158778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[160278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[161678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[162580][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[162580][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[162583][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[162583][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+
+[162583][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+
+[162584][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[162584][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	305329		<1%
+
+IDLE0          	161701057		99%
+
+IDLE1          	162196898		99%
+
+AdLd           	17348		<1%
+
+Send           	102879		<1%
+
+Recv           	32353		<1%
+
+Cfg            	1509		<1%
+
+loopTask       	32087		<1%
+
+LED            	6929		<1%
+
+Poll           	49150		<1%
+
+tiT            	42503		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+Tmr Svc        	1178		<1%
+
+esp_timer      	16666		<1%
+
+wifi           	569164		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+
+
+[162586][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[162586][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[162586][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[162587][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 832, F: 1216
+
+[162587][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1968, F: 2128
+
+[162587][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[162588][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[162588][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[162588][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[162590][I][main.cpp:648] vTLog(): [LoMa] Temp.: 102 dC
+
+[162591][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+8][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+ALID_STATE
+
+ Error 259
+
+AG] V reading out of bounds: 2147483647 mV
+
+[166182][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[166182][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmor 259
+
+s: 2147483647 mW
+
+[166591][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[166592][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[166592][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[166642][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[166643][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[166693][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[166694][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[166592][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[166694][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000432, TxBS: 0000000, TxBF: 0009936, RxE: 000000, RxB: 0000000
+
+[166695][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 68, RxE/s: 0, RxB/s: 0
+
+[167178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+
+[169778][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[170695][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[170695][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[170698][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[170698][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+
+[170698][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+
+[170699][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[170699][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	320708		<1%
+
+IDLE0          	169775590		99%
+
+IDLE1          	170296243		99%
+
+Send           	107808		<1%
+
+Recv           	33961		<1%
+
+tiT            	44651		<1%
+
+Cfg            	1581		<1%
+
+loopTask       	32222		<1%
+
+LED            	7351		<1%
+
+Poll           	52961		<1%
+
+AdLd           	18218		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+esp_timer      	17445		<1%
+
+Tmr Svc        	1246		<1%
+
+wifi           	595065		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+
+
+[170701][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[170701][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[170701][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[170702][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 832, F: 1216
+
+[170702][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1968, F: 2128
+
+[170702][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[170703][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[170703][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[170703][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[170705][I][main.cpp:648] vTLog(): [LoMa] Temp.: 102 dC
+
+[170706][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[171178][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+adComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[173978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[174706][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[174707][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[174707][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[174757][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[174758][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[174808][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[174809][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[174707][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[174809][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000453, TxBS: 0000000, TxBF: 0010419, RxE: 000000, RxB: 0000000
+
+[174810][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 59, RxE/s: 0, RxB/s: 0
+
+][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[176678][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[178810][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[178810][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[178813][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[178813][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+
+[178813][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+
+[178814][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[178814][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	336020		<1%
+
+IDLE0          	177856264		99%
+
+IDLE1          	178395697		99%
+
+Recv           	35556		<1%
+
+Send           	112800		<1%
+
+tiT            	46685		<1%
+
+Cfg            	1658		<1%
+
+loopTask       	32362		<1%
+
+LED            	7626		<1%
+
+Poll           	52961		<1%
+
+AdLd           	19071		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+Tmr Svc        	1293		<1%
+
+esp_timer      	18218		<1%
+
+wifi           	618839		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+
+
+[178815][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[178816][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[178816][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[178817][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 832, F: 1216
+
+[178817][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1968, F: 2128
+
+[178817][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[178818][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[178818][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[178818][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[178820][I][main.cpp:648] vTLog(): [LoMa] Temp.: 103 dC
+
+[178821][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[179278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[181978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[182821][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[182822][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[182822][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[182872][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[182873][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[182923][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[182924][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[182822][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[182924][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000473, TxBS: 0000000, TxBF: 0010879, RxE: 000000, RxB: 0000000
+
+[182925][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 56, RxE/s: 0, RxB/s: 0
+
+[183278][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[184678][E][LoadComms.cpp
+[186078][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[186925][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[186925][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[186928][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[186928][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+
+[186928][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+
+[186929][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[186929][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+Log            	351387		<1%
+
+IDLE0          	185935151		99%
+
+IDLE1          	186495096		99%
+
+AdLd           	19936		<1%
+
+Recv           	37151		<1%
+
+Send           	117752		<1%
+
+tiT            	48767		<1%
+
+Cfg            	1734		<1%
+
+loopTask       	32503		<1%
+
+Poll           	52961		<1%
+
+LED            	7908		<1%
+
+FSM            	19		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+Tmr Svc        	1339		<1%
+
+esp_timer      	19006		<1%
+
+wifi           	644359		<1%
+
+ipc1           	42772		<1%
+
+sys_evt        	676		<1%
+
+
+
+[186930][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[186931][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[186931][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[186931][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 832, F: 1216
+
+[186932][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1968, F: 2128
+
+[186932][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[186932][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[186933][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[186933][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[186935][I][main.cpp:648] vTLog(): [LoMa] Temp.: 103 dC
+
+[186936][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+dComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[190936][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[190937][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[190937][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[190987][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[190988][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[191038][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[191039][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[190937][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[191039][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000496, TxBS: 0000000, TxBF: 0011408, RxE: 000000, RxB: 0000000
+
+[191040][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 2, TxBS/s: 0, TxBF/s: 65, RxE/s: 0, RxB/s: 0
+
+[191578][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[192978][E][LoadComms.cpp:220] sendLoadboxData(): [LCO] Tx fail w/ 12391
+
+[195040][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[195040][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[195043][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[195043][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+
+[195044][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+
+[195044][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[195044][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+wifi           	693003		<1%
+
+Log            	366428		<1%
+
+IDLE0          	193990159		99%
+
+IDLE1          	194594814		99%
+
+Recv           	38796		<1%
+
+Send           	123299		<1%
+
+tiT            	50829		<1%
+
+Cfg            	1806		<1%
+
+loopTask       	32649		<1%
+
+LED            	8338		<1%
+
+Poll           	52961		<1%
+
+AdLd           	20821		<1%
+
+ipc0           	30577		<1%
+
+arduino_events 	211		<1%
+
+ipc1           	42772		<1%
+
+Tmr Svc        	1411		<1%
+
+esp_timer      	19799		<1%
+
+sys_evt        	676		<1%
+
+FSM            	19		<1%
+
+
+
+[195046][I][main.cpp:624] vTLog(): [LoMa] T: FSM, U: 800, F: 224
+
+[195046][I][main.cpp:624] vTLog(): [LoMa] T: Poll, U: 2052, F: 2044
+
+[195047][I][main.cpp:624] vTLog(): [LoMa] T: AdLd, U: 776, F: 1272
+
+[195047][I][main.cpp:624] vTLog(): [LoMa] T: Recv, U: 832, F: 1216
+
+[195047][I][main.cpp:624] vTLog(): [LoMa] T: Send, U: 1968, F: 2128
+
+[195048][I][main.cpp:624] vTLog(): [LoMa] T: Cfg, U: 704, F: 320
+
+[195048][I][main.cpp:624] vTLog(): [LoMa] T: LED, U: 920, F: 1128
+
+[195048][I][main.cpp:624] vTLog(): [LoMa] T: Log, U: 3100, F: 996
+
+[195049][I][main.cpp:633] vTLog(): [LoMa] Min, free heap: 8588824 b
+
+[195051][E][main.cpp:646] vTLog(): [LoMa] Temp. out of bounds: 111 dC
+
+[195052][I][main.cpp:654] vTLog(): [LoMa] Current State: 2
+
+[199052][I][main.cpp:659] vTLog(): [LoMa] PS: mV: 2147483647, mA: 000-1, mW: 2147483, mV/s: 00000, mA/s: 00000, mW/s: 
+
+[199053][I][main.cpp:660] vTLog(): [LoMa] Current State: 2
+
+[199053][I][main.cpp:661] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+
+[199103][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[199104][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[199154][E][esp32-hal-i2c-ng.c:369] i2cWriteReadNonStop(): i2c_master_transmit_receive failed: [259] ESP_ERR_INVALID_STATE
+
+[199155][E][Wire.cpp:520] requestFrom(): i2cWriteReadNonStop returned Error 259
+
+[199053][I][main.cpp:662] vTLog(): [LoMa] IOE: @ox4efffffff
+
+[199155][I][main.cpp:667] vTLog(): [LoMa] LCO: TxE: 000589, TxBS: 0000000, TxBF: 0013547, RxE: 000000, RxB: 0000000
+
+[199156][I][main.cpp:684] vTLog(): [LoMa] TxE/s: 11, TxBS/s: 0, TxBF/s: 263, RxE/s: 0, RxB/s: 0
+
+[203156][D][main.cpp:573] vTLog(): [LoMa] Logging Data:
+
+[203156][I][main.cpp:575] vTLog(): [LoMa] FreeRTOS Tasks: 19
+
+[203159][D][main.cpp:601] vTLog(): [LoMa] Task Buffer Used (): 70
+
+[203159][D][main.cpp:603] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+
+[203159][D][main.cpp:604] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+
+[203160][D][main.cpp:606] vTLog(): [LoMa] Stats Buffer Size: 760
+
+[203160][I][main.cpp:607] vTLog(): [LoMa] Task Run Time Stats:
+tiT            	52902		<1%
+
+Log            	382721		<1%
+
+IDLE0          	201983009		99%
