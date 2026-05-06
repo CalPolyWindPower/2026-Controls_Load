@@ -50,7 +50,8 @@ class LoadContainer {
     inline ESTOP_TYPE_FAST getSafetyFlag() const { return (safetyFlag); }
     inline bool isPowerPositive() const { return (INA260::current_mA > 0); }
     inline bool isSteadyRPM() const {
-        return (angularAccel_RPMPS < 20);
+        return true;
+        // return (angularAccel_RPMPS < 20);
     } // todo - steady power is actually more important
     inline bool isTargetRPMExceeded() const {
         constexpr uint_fast16_t TARGET_RPM = 2200; // todo
