@@ -93,11 +93,11 @@ namespace LED {
 namespace RUN {
     // Task Execution Intervals
     enum TASK_INTERVALS : uint32_t {
-        TI_FSM_mS = 50,         // CONFIG - 100 ms (10 Hz)
+        TI_FSM_mS = 50,          // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2,  // CONFIG - 2 ms (500 Hz)
-        TI_ADJUST_LOAD_mS = 100, // CONFIG - 100 ms (10 Hz)
-        TI_RECV_ms = 50,        // CONFIG - 100 ms (10 Hz)
-        TI_SEND_ms = 75,        // CONFIG - 10 ms (100 Hz) // FIXME
+        TI_ADJUST_LOAD_mS = 500, // CONFIG - 500 ms (2 Hz)
+        TI_RECV_ms = 50,         // CONFIG - 100 ms (10 Hz)
+        TI_SEND_ms = 75,         // CONFIG - 10 ms (100 Hz) // FIXME
         TI_CFG_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
         TI_TELNET_ms = 500,      // CONFIG - 500 ms (2 Hz)
         TI_OTA_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
@@ -184,6 +184,11 @@ namespace LOAD {
     // According to GitHub Copilot, GPT-5.1, Ask mode
     static_assert(NUM_COMBINATIONS == (1u << NUM_PINS),
                   "NUM_COMBINATIONS must be 2^NUM_PINS");
+
+    etl::array<uint_fast8_t, 46> RES_INDEX_TABLE = {
+        0,  1,  2,  4,  3,  8,  5,  6,  9,  12, 16, 11, 7,  14, 13, 15,
+        19, 24, 21, 22, 25, 23, 28, 29, 32, 31, 33, 35, 36, 40, 37, 41,
+        39, 44, 48, 45, 46, 50, 47, 51, 56, 53, 54, 57, 55, 60};
 
     /**
      * @brief Resistor values, in milli‑ohms, corresponding to each pin.  Note
