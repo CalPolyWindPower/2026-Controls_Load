@@ -64,7 +64,7 @@ class LoadContainer {
             this->safetyFlag = ESTOP_TYPE_FAST::BUTTON;
         } else if (abs(INA260::current_mA) <
                    PSENSOR::LOAD_SHED_I_THRESHOLD_mA) {
-            this->safetyFlag = ESTOP_TYPE_FAST::LOAD_DISCONNECT;
+            this->safetyFlag = ESTOP_TYPE_FAST::LOAD_DISCONNECT_I;
         } else {
             this->safetyFlag = ESTOP_TYPE_FAST::NONE;
         }
