@@ -77,8 +77,9 @@ class LoadFSM {
         }
 
         // Check reset conditions
-        constexpr uint_fast16_t START_RUN_2_RPM = 500; // todo
-        if ((currentState != FSMCommon::States::sRST)) {
+        constexpr uint_fast16_t START_RUN_2_RPM = 200; // todo
+        if ((currentState != FSMCommon::States::sRST) &&
+            (load.getRPM() <= START_RUN_2_RPM)) { // todo check me!
             // * -> sRST
             currentState = FSMCommon::States::sRST;
 
@@ -97,7 +98,7 @@ class LoadFSM {
         } else {
             // else: producingPositivePower or maybe just still starting up
         }
-
+        // todo cycling between 2 and 3
         // Check other transition conditions
         if ((currentState == FSMCommon::States::sRST) &&
             (load.getRPM() > START_RUN_2_RPM)) {
