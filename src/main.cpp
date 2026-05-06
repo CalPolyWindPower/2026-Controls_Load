@@ -418,6 +418,32 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         //          pitchPIDController.compute(
         //              i)); // todo - just a quick performances test
         i += 20;
+        static int_fast32_t lastPower = 0;
+        static int_fast8_t powerIndex = 46;
+        if (INA260::current_mA > 0) {
+            // Don't run at startup
+            delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
+        } else if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.05)) {
+            // Wait for power to stabilize
+        } else if ((lastPower == 0) && (powerIndex > 0)) {
+            powerIndex--;
+            load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
+                     LOAD::RES_INDEX_TABLE[powerIndex]);
+        } else if ((INA260::dPower_mWPS > lastPower) && (powerIndex > 0)) {
+            powerIndex--;
+            load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            ESP_LOGI(TAG, "Decreasing load to %d",
+                     LOAD::RES_INDEX_TABLE[powerIndex]);
+        } else if ((INA260::dPower_mWPS < lastPower) && (powerIndex < 46)) {
+            powerIndex++;
+            load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            ESP_LOGI(TAG, "Increasing load to %d",
+                     LOAD::RES_INDEX_TABLE[powerIndex]);
+            delay(20 *
+                  1000); // todo RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS * 100
+        } // todo: change trigger to when rpm changes or when power changes
+
         delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
     }
 }
