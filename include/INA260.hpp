@@ -128,7 +128,7 @@ namespace INA260 {
         etl::to_string(current_mA.load(), logString, decFormatA,
                        true);             // 5 chars
         (void)logString.append(", mW: "); // 6 chars
-        etl::to_string(power_mW.load() / m_TO_BASE, logString, decFormatA,
+        etl::to_string(power_mW.load(), logString, decFormatA,
                        true);               // 5 chars
         (void)logString.append(", mV/s: "); // 8 chars
         etl::to_string(dVoltage_mVPS.load(), logString, decFormatA,
