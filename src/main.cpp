@@ -381,8 +381,8 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_FSM_mS));
-        if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+        if (xWasDelayed == pdFALSE) {
+            ESP_LOGE(TAG, "Timing");
         }
     }
 }
@@ -415,7 +415,8 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime,
             pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS));
-        // xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(delay_ms));
+        // BaseType_t xWasDelayed =
+        //     xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(delay_ms));
         if (xWasDelayed == pdFALSE) {
             ESP_LOGE(TAG, "Timing"); // FIXME!
         }
@@ -508,8 +509,8 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         // BaseType_t xWasDelayed = xTaskDelayUntil(
         //     &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
-        // if (xWasDelayed != pdTRUE) {
-        //     ESP_LOGE(TAG, "Timing not met!");
+        // if (xWasDelayed == pdFALSE) {
+        //     ESP_LOGE(TAG, "Timing");
         // }
 
         // Never need to suspend on the load
@@ -559,8 +560,8 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         BaseType_t xWasDelayed =
             xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(delay_ms));
-        if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+        if (xWasDelayed == pdFALSE) {
+            ESP_LOGE(TAG, "Timing");
         }
     }
 }
