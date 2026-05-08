@@ -260,23 +260,28 @@ class MCP23008T {
      */
     inline uint32_t readGPIO() { return regGPIO.read(); }
 
-    static constexpr uint_fast8_t LOG_STRING_SIZE = 3 + 5 + 2 + (3 * 2) + 1;
+    static constexpr uint_fast8_t LOG_STRING_SIZE =
+        3 + 5 + 2 + ((6 + 3) * 2) + 1;
     /**
      * @brief Get at string that describes the current state of the actuator
      * @returns the current state of the actuator as a string
      */
     etl::string<LOG_STRING_SIZE> getLogString() {
         etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-        (void)logString.append(": @ox");             // 5 chars
+        (void)logString.append(": @0x");             // 5 chars
 
         etl::format_spec format2;
         (void)format2.hex().width(2).fill('0');                 // [2 chars]
         etl::to_string(getAddress(), logString, format2, true); // 2 chars
+        (void)logString.append(", IC: ");                       // 6 chars
 
         etl::format_spec format3;
         (void)format3.hex().width(3).fill('0');                  // [3 chars]
         etl::to_string(readIntCap(), logString, format3, true);  // 3 chars
+        (void)logString.append(", IF: ");                        // 6 chars
         etl::to_string(readIntFlag(), logString, format3, true); // 3 chars
+        (void)logString.append(", IO: ");                        // 6 chars
+        etl::to_string(readGPIO(), logString, format3, true);    // 3 chars
 
         return logString;
     }
