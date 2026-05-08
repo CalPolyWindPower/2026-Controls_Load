@@ -257,6 +257,9 @@ void setup() {
     if (!Wire.begin(UM_PROS3::I2C_SDA_PIN, UM_PROS3::I2C_SCL_PIN)) {
         ESP_LOGE(TAG, "Failed to initialize I2C on pins %d (SDA) and %d (SCL)",
                  UM_PROS3::I2C_SDA_PIN, UM_PROS3::I2C_SCL_PIN);
+    } else {
+        // Constant error spam when set to 1
+        Wire.setTimeOut(2);
     }
 
     loadConfigured = configureLoad();
@@ -395,22 +398,26 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
         // load.updateSafetyFlag(); // Moved to interrupts before noticing that
         // the backoff was the problem, might as well leave it that way
 
-        static uint32_t backoffFactor =
-            RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
-        uint32_t delay_ms = 0;
-        if (INA260::updateReadings()) {
-            backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
-            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS;
-        } else {
-            // Logging already handled
-            delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS * backoffFactor;
-            backoffFactor *= RUN::TASK_INTERVALS::FAIL_BACKOFF_MULTIPLIER;
-        }
+        // static uint32_t backoffFactor =
+        //     RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
+        // uint32_t delay_ms = 0;
+        // if (INA260::updateReadings()) {
+        //     backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
+        //     delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS;
+        // } else {
+        //     // Logging already handled
+        //     delay_ms = RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS *
+        //     backoffFactor; backoffFactor *=
+        //     RUN::TASK_INTERVALS::FAIL_BACKOFF_MULTIPLIER;
+        // }
+        INA260::updateReadings();
 
-        BaseType_t xWasDelayed =
-            xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(delay_ms));
-        if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+        BaseType_t xWasDelayed = xTaskDelayUntil(
+            &xLastWakeTime,
+            pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS));
+        // xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(delay_ms));
+        if (xWasDelayed == pdFALSE) {
+            ESP_LOGE(TAG, "Timing"); // FIXME!
         }
     }
 }

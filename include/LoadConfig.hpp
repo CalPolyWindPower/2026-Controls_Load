@@ -94,10 +94,11 @@ namespace RUN {
     // Task Execution Intervals
     enum TASK_INTERVALS : uint32_t {
         TI_FSM_mS = 50,          // CONFIG - 100 ms (10 Hz)
-        TI_POLL_SENSORS_mS = 2,  // CONFIG - 2 ms (500 Hz)
+        TI_POLL_SENSORS_mS = 3,  // CONFIG - 3 ms (333 Hz), stopped likeing 2 ms
+                                 // (100 Hz) around commit 9d80f8b
         TI_ADJUST_LOAD_mS = 500, // CONFIG - 500 ms (2 Hz)
-        TI_RECV_ms = 50,         // CONFIG - 100 ms (10 Hz)
-        TI_SEND_ms = 75,         // CONFIG - 10 ms (100 Hz) // FIXME
+        TI_RECV_ms = 50,         // CONFIG - 100 ms (10 Hz)   
+        TI_SEND_ms = 75,         // CONFIG - 75 ms (13.33 Hz) // FIXME
         TI_CFG_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
         TI_TELNET_ms = 500,      // CONFIG - 500 ms (2 Hz)
         TI_OTA_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
