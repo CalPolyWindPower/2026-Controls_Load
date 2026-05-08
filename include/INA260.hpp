@@ -90,8 +90,11 @@ namespace INA260 {
         dCurrent_mAPS = dCurrent_mA * u_TO_BASE / dTime_us;
 
         auto pTemp = static_cast<int_fast32_t>(powerSensor.readPower());
-        if ((pTemp > (MAX_VOLTAGE_mV * MAX_CURRENT_A)) ||
-            (pTemp < (PSENSOR::MIN_VOLTAGE_mV * MIN_CURRENT_A))) {
+        if ((pTemp >
+             (MAX_VOLTAGE_mV * static_cast<int_fast16_t>(MAX_CURRENT_A))) ||
+            (pTemp < (PSENSOR::MIN_VOLTAGE_mV *
+                      static_cast<int_fast16_t>(MIN_CURRENT_A) * -1))) {
+            // FIXED? 1540 mW out of bounds
             ESP_LOGE("TAG", "P out of bounds: %d mW", pTemp);
             result &= false;
         } // Else: Valid reading
