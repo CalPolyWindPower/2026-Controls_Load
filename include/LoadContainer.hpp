@@ -23,7 +23,7 @@ class LoadContainer {
     TaskInfo tFSM{vTaskUpdateFSM, "FSM", 2048,  nullptr, 20,
                   nullptr,        0,     false, true};
     TaskInfo tPoll{vTPollS, "Poll", 4096,  nullptr, 20,
-                   nullptr,          0,      false, false};
+                   nullptr, 0,      false, false};
     TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048,  nullptr, 15,
                          nullptr,         0,      false, true};
     TaskInfo tRecv{vTaskRecvData, "Recv", 2048,  nullptr, 10,
@@ -64,14 +64,24 @@ class LoadContainer {
     } // todo
 
     inline void updateSafetyFlag() {
-        ESP_LOGD(TAG, "ESTOP: %d", digitalRead(UM_PROS3::ESTOP_PIN));
+        // ESP_LOGD(TAG, "ESTOP: %d", digitalRead(UM_PROS3::ESTOP_PIN));
+        static uint_fast8_t loadDisconnectCounter = 0;
         if (digitalRead(UM_PROS3::ESTOP_PIN) == HIGH) {
             this->safetyFlag = ESTOP_TYPE_FAST::BUTTON;
+            loadDisconnectCounter = 0;
         } else if (abs(INA260::current_mA) <
                    PSENSOR::LOAD_SHED_I_THRESHOLD_mA) {
-            this->safetyFlag = ESTOP_TYPE_FAST::LOAD_DISCONNECT_I;
+            loadDisconnectCounter++;
+            constexpr uint_fast32_t LOAD_DISCONNECT_DELAY_ms = 1000;
+            constexpr uint_fast32_t LOAD_DISCONNECT_DELAY_CNT =
+                LOAD_DISCONNECT_DELAY_ms /
+                RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS;
+            if (loadDisconnectCounter > LOAD_DISCONNECT_DELAY_CNT) {
+                this->safetyFlag = ESTOP_TYPE_FAST::LOAD_DISCONNECT_I;
+            }
         } else {
             this->safetyFlag = ESTOP_TYPE_FAST::NONE;
+            loadDisconnectCounter = 0;
         }
     }
     // inline void updatePowerPositive(bool powerPositive) {

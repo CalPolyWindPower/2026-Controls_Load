@@ -394,9 +394,6 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
-        // load.updateSafetyFlag(); // Moved to interrupts before noticing that
-        // the backoff was the problem, might as well leave it that way
-
         // static uint32_t backoffFactor =
         //     RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
         // uint32_t delay_ms = 0;
@@ -410,6 +407,9 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
         //     RUN::TASK_INTERVALS::FAIL_BACKOFF_MULTIPLIER;
         // }
         INA260::updateReadings();
+
+        load.updateSafetyFlag(); // Moved to interrupts before noticing that
+        // the backoff was the problem, might as well leave it that way
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime,
