@@ -10,6 +10,7 @@
 // Library Includes
 #include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
+#include <etl/circular_buffer.h>
 
 // Include LoadConfig first
 #include "LoadConfig.hpp"
@@ -435,42 +436,66 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         // i += 20;
         static int_fast32_t lastPower = INT_FAST32_MIN;
         static int_fast8_t powerIndex = 46;
+        // static bool searchDone = false;
+        enum class LoadAdjustment : uint_fast8_t { INCREASE, DECREASE, NONE };
+        // static LoadAdjustment adjustment = LoadAdjustment::NONE;
+        static etl::circular_buffer<LoadAdjustment, 2> adjustmentHistory = {
+            LoadAdjustment::NONE, LoadAdjustment::NONE};
+
         // if (INA260::current_mA > 0) {
         /** @deprecated first check */
         if (loadFSM.getCurrentState() != FSMCommon::States::sRunLoad) {
             // Don't run at startup
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
             continue;
+        }
+        if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.10)) {
+            // TODO: Maybe wait for a bigger change?, maybe over a longer time
+            adjustmentHistory[0] = LoadAdjustment::NONE;
+            adjustmentHistory[1] = LoadAdjustment::NONE;
+            // Wait for power to stabilize
         } else if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.05)) {
+            // TODO: Maybe wait for a bigger change?
             // Wait for power to stabilize
         } else if ((lastPower == INT_FAST32_MIN) && (powerIndex > 0)) {
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
                      static_cast<int>(lastPower),
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
-        } else if ((INA260::power_mW > lastPower) && (powerIndex > 0)) {
+
+        } else if ((adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
+                   (adjustmentHistory[1] != LoadAdjustment::INCREASE) &&
+                   (INA260::power_mW > lastPower) && (powerIndex > 0)) {
+            // searchDone = false;
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            // lastAdjustment = LoadAdjustment::DECREASE;
+            adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
                      static_cast<int>(lastPower),
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Decreasing load to %d",
-                     LOAD::RES_INDEX_TABLE[powerIndex]);
+                     LOAD::RES_INDEX_TABLE[powerIndex]); // TODO: Try by twos
         } else if ((INA260::power_mW < lastPower) && (powerIndex < 46)) {
+            // TODO: Not the best?
             powerIndex++;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            // lastAdjustment = LoadAdjustment::INCREASE;
+            adjustmentHistory.push(LoadAdjustment::INCREASE);
             ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
                      static_cast<int>(lastPower),
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Increasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
-            delay(20 *
-                  1000); // todo RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS * 100
+            // todo RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS * 100
+            // Delay an extra 1/2 second
+            delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
         } else { // todo: change trigger to when rpm changes or when power
-                 // changes
+            // changes
             // No change
         }
         lastPower = INA260::power_mW;
