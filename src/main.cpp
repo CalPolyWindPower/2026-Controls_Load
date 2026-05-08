@@ -417,15 +417,15 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
         //          pitchPIDController.compute(
         //              i)); // todo - just a quick performances test
-        i += 20;
-        static int_fast32_t lastPower = 0;
+        // i += 20;
+        static int_fast32_t lastPower = INT_FAST32_MIN;
         static int_fast8_t powerIndex = 46;
         if (INA260::current_mA > 0) {
             // Don't run at startup
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
         } else if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.05)) {
             // Wait for power to stabilize
-        } else if ((lastPower == 0) && (powerIndex > 0)) {
+        } else if ((lastPower == INT_FAST32_MIN) && (powerIndex > 0)) {
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
@@ -443,6 +443,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(20 *
                   1000); // todo RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS * 100
         } // todo: change trigger to when rpm changes or when power changes
+        lastPower = INA260::power_mW;
 
         delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
     }
