@@ -390,8 +390,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @brief Task to poll high priority sensors
  */
-[[noreturn]] void
-vTPollS([[maybe_unused]] void *pvParameters) { // NOSONAR
+[[noreturn]] void vTPollS([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
@@ -681,11 +680,10 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
             REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
         char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
         if (uxTaskGetNumberOfTasks() > NUM_MAIN_TASKS + NUM_ESP_TASKS) {
-            ESP_LOGE(
-                TAG,
-                "Number of tasks (%d) exceeds expected max (%d), skipping to "
-                "prevent memory corruption",
-                uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
+            ESP_LOGE(TAG,
+                     "Task count (%d) > (%d), skipping to prevent memory "
+                     "corruption",
+                     uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
             // delay(LOG_ITEM_INTERVAL_MS);
         } else {
             // } else if (statsBuffer[0] == '\0') {
@@ -697,19 +695,19 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
                 '\0'; // hard cap, avoid over-read
             // uxTaskGetSystemState();
             size_t usedBytes = strnlen(statsBuffer, STATS_BUFFER_SIZE);
-            ESP_LOGD(TAG, "Task Buffer Used (%): %d",
+            ESP_LOGD(TAG, "Task Buff U (%): %d",
                      usedBytes * 100 / sizeof(statsBuffer));
-            ESP_LOGD(TAG, "Stats Buffer Used: %d bytes", usedBytes);
-            ESP_LOGD(TAG, "Stats Buffer Free: %d bytes",
+            ESP_LOGD(TAG, "Stats Buff U: %d bytes", usedBytes);
+            ESP_LOGD(TAG, "Stats Buff F: %d bytes",
                      sizeof(statsBuffer) - usedBytes);
-            ESP_LOGD(TAG, "Stats Buffer Size: %d", sizeof(statsBuffer));
-            ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+            ESP_LOGD(TAG, "Stats Buff Sz: %d", sizeof(statsBuffer));
+            ESP_LOGI(TAG, "Task RT Stats:\n%s", statsBuffer);
             // Serial.flush();
             // delay(LOG_ITEM_INTERVAL_MS);
 
             for (TaskInfo *taskDesc : load.mainTaskDescriptions) {
                 if (taskDesc == nullptr) {
-                    ESP_LOGE(TAG, "Caught null task description pointer!");
+                    ESP_LOGE(TAG, "Caught null task desc. ptr!");
                     continue;
                 }
 
@@ -750,13 +748,13 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
         // delay(LOG_ITEM_INTERVAL_MS);
 
-        ESP_LOGI(TAG, "Current State: %d", loadFSM.getCurrentState());
-        delay(LOG_ITEM_INTERVAL_MS);
+        ESP_LOGI(TAG, "Curr. State: %d", loadFSM.getCurrentState());
+        // delay(LOG_ITEM_INTERVAL_MS);
 
         // TODO: Improve logging, check ESTOP logic
 
         ESP_LOGI(TAG, "%s", INA260::getLogString().c_str());
-        ESP_LOGI(TAG, "Current State: %d", loadFSM.getCurrentState());
+        // ESP_LOGI(TAG, "Curr. State: %d", loadFSM.getCurrentState());
         ESP_LOGI(TAG, "%S", load.getLogString().c_str());
         ESP_LOGI(TAG, "%s", loadDevice.getLogString().c_str());
 
