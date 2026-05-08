@@ -439,21 +439,33 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         } else if ((lastPower == INT_FAST32_MIN) && (powerIndex > 0)) {
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(lastPower),
+                     static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
         } else if ((INA260::power_mW > lastPower) && (powerIndex > 0)) {
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(lastPower),
+                     static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Decreasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
         } else if ((INA260::power_mW < lastPower) && (powerIndex < 46)) {
             powerIndex++;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(lastPower),
+                     static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Increasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
             delay(20 *
                   1000); // todo RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS * 100
-        } // todo: change trigger to when rpm changes or when power changes
+        } else { // todo: change trigger to when rpm changes or when power
+                 // changes
+            // No change
+        }
         lastPower = INA260::power_mW;
 
         delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
