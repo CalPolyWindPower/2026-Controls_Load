@@ -439,12 +439,12 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
-        } else if ((INA260::dPower_mWPS > lastPower) && (powerIndex > 0)) {
+        } else if ((INA260::power_mW > lastPower) && (powerIndex > 0)) {
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             ESP_LOGI(TAG, "Decreasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
-        } else if ((INA260::dPower_mWPS < lastPower) && (powerIndex < 46)) {
+        } else if ((INA260::power_mW < lastPower) && (powerIndex < 46)) {
             powerIndex++;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             ESP_LOGI(TAG, "Increasing load to %d",
