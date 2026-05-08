@@ -22,16 +22,16 @@ class LoadContainer {
 
     TaskInfo tFSM{vTaskUpdateFSM, "FSM", 2048,  nullptr, 20,
                   nullptr,        0,     false, true};
-    TaskInfo tPoll{vTaskPollSensors, "Poll", 4096,  nullptr, 20,
+    TaskInfo tPoll{vTPollS, "Poll", 4096,  nullptr, 20,
                    nullptr,          0,      false, false};
-    TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048,  nullptr, 20,
+    TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048,  nullptr, 15,
                          nullptr,         0,      false, true};
-    TaskInfo tRecv{vTaskRecvData, "Recv", 2048,  nullptr, 15,
+    TaskInfo tRecv{vTaskRecvData, "Recv", 2048,  nullptr, 10,
                    nullptr,       0,      false, false};
 
-    TaskInfo tSend{vTaskSendData, "Send", 4096,  nullptr, 15,
+    TaskInfo tSend{vTaskSendData, "Send", 4096,  nullptr, 10,
                    nullptr,       0,      false, false};
-    TaskInfo tCfg{vTaskConfigure, "Cfg", 1024,  nullptr, 10,
+    TaskInfo tCfg{vTaskConfigure, "Cfg", 1024,  nullptr, 5,
                   nullptr,        0,     false, true};
     TaskInfo tLED{vTaskStatusLED, "LED", 4096,  nullptr, 2,
                   nullptr,        0,     false, false};
