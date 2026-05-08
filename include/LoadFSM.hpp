@@ -79,7 +79,8 @@ class LoadFSM {
         // Check reset conditions
         constexpr uint_fast16_t START_RUN_2_RPM = 200; // todo
         if ((currentState != FSMCommon::States::sRST) &&
-            (load.getRPM() <= START_RUN_2_RPM)) { // todo check me!
+            (load.getRPM() <=
+             static_cast<int_fast16_t>(START_RUN_2_RPM))) { // todo check me!
             // * -> sRST
             currentState = FSMCommon::States::sRST;
 
@@ -92,7 +93,8 @@ class LoadFSM {
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRST) &&
-                   load.getRPM() <= START_RUN_2_RPM) {
+                   load.getRPM() <=
+                       static_cast<int_fast16_t>(START_RUN_2_RPM)) {
             // sRST -> sRST: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } else {
@@ -101,7 +103,7 @@ class LoadFSM {
         // todo cycling between 2 and 3
         // Check other transition conditions
         if ((currentState == FSMCommon::States::sRST) &&
-            (load.getRPM() > START_RUN_2_RPM)) {
+            (load.getRPM() > static_cast<int_fast16_t>(START_RUN_2_RPM))) {
             // sRST -> sStartRun
             currentState = FSMCommon::States::sStartRun;
 
