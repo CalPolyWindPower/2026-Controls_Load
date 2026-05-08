@@ -306,7 +306,7 @@ void setup() {
                 xTaskCreate(taskDesc->function, taskDesc->name,
                             taskDesc->stackSize_bytes, taskDesc->pvParameters,
                             taskDesc->priority, &(taskDesc->pxHandle));
-            if (result != pdPASS && taskDesc->initSuspended) {
+            if (result == pdPASS && taskDesc->initSuspended) {
                 vTaskSuspend(taskDesc->pxHandle);
             }
             taskEXIT_CRITICAL(&taskSetupLock);
@@ -429,10 +429,12 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         static int_fast32_t lastPower = INT_FAST32_MIN;
         static int_fast8_t powerIndex = 46;
         // if (INA260::current_mA > 0) {
+        /** @deprecated first check */
         if (loadFSM.getCurrentState() != FSMCommon::States::sRunLoad) {
             // Don't run at startup
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
-        } else if (abs(INA260::dPower_mWPS) < (abs(INA260::power_mW) * 0.05)) {
+            continue;
+        } else if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.05)) {
             // Wait for power to stabilize
         } else if ((lastPower == INT_FAST32_MIN) && (powerIndex > 0)) {
             powerIndex--;
