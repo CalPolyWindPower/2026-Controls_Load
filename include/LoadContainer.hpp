@@ -20,17 +20,22 @@ class LoadContainer {
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
 
-    TaskInfo tFSM{vTaskUpdateFSM, "FSM", 2048, nullptr, 20, nullptr, 0, false};
-    TaskInfo tPoll{vTaskPollSensors, "Poll", 4096, nullptr, 20,
-                   nullptr,          0,      false};
-    TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048, nullptr, 20,
-                         nullptr,         0,      false};
-    TaskInfo tRecv{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0, false};
+    TaskInfo tFSM{vTaskUpdateFSM, "FSM", 2048,  nullptr, 20,
+                  nullptr,        0,     false, true};
+    TaskInfo tPoll{vTaskPollSensors, "Poll", 4096,  nullptr, 20,
+                   nullptr,          0,      false, false};
+    TaskInfo tAdjustLoad{vTaskAdjustLoad, "AdLd", 2048,  nullptr, 20,
+                         nullptr,         0,      false, true};
+    TaskInfo tRecv{vTaskRecvData, "Recv", 2048,  nullptr, 15,
+                   nullptr,       0,      false, false};
 
-    TaskInfo tSend{vTaskSendData, "Send", 4096, nullptr, 15, nullptr, 0, false};
-    TaskInfo tCfg{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0, false};
-    TaskInfo tLED{vTaskStatusLED, "LED", 4096, nullptr, 2, nullptr, 0, false};
-    TaskInfo tLog{vTLog, "Log", 4096, nullptr, 2, nullptr, 0, false};
+    TaskInfo tSend{vTaskSendData, "Send", 4096,  nullptr, 15,
+                   nullptr,       0,      false, false};
+    TaskInfo tCfg{vTaskConfigure, "Cfg", 1024,  nullptr, 10,
+                  nullptr,        0,     false, true};
+    TaskInfo tLED{vTaskStatusLED, "LED", 4096,  nullptr, 2,
+                  nullptr,        0,     false, false};
+    TaskInfo tLog{vTLog, "Log", 4096, nullptr, 2, nullptr, 0, false, false};
     // namespace TaskInfo
 
     etl::array<TaskInfo *, NUM_MAIN_TASKS> mainTaskDescriptions = {

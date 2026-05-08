@@ -17,6 +17,7 @@ struct TaskInfo {
     TaskHandle_t pxHandle = nullptr;
     UBaseType_t minFreeStack_Bytes = 0;
     bool initialized = false;
+    bool initSuspended = false;
 };
 
 // MARK: Constants

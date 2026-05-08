@@ -1,0 +1,195 @@
+[    31][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   336752 B ( 328.9 KB)
+  Free Bytes        :   297672 B ( 290.7 KB)
+  Allocated Bytes   :    33512 B (  32.7 KB)
+  Minimum Free Bytes:   292404 B ( 285.6 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : May  3 2026 00:57:06
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca13fc
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fca13fc[   155][I][main.cpp:146] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+[   155][I][main.cpp:160] setup(): [LoMa] LED initialized
+[   213][I][LoadComms.cpp:65] begin(): [LCO] Device MAC: EC:DA:3B:5B:03:D4
+[   216][I][LoadComms.cpp:116] setupPeer_(): [LCO] Peer added: 30:ED:A0:E0:6B:78
+Loadbox ready
+[   217][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+[   218][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+[   225][I][main.cpp:85] configureLoad(): [LoMa] INA260 power sensor init at 0x41
+[   225][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+[   225][I][main.cpp:94] configureLoad(): [LoMa] MCP23008T IO device init at 0x27
+[   227][I][main.cpp:269] setup(): [LoMa] Setting up tasks...
+[   227][D][main.cpp:310] setup(): [LoMa] Created task FSM with priority 20 and stack size 2048 bytes
+[   228][D][main.cpp:310] setup(): [LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+[   229][D][main.cpp:310] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+[   229][D][main.cpp:310] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+[   230][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 0 mW
+[   230][D][main.cpp:310] setup(): [LoMa] Created task Send with priority 15 and stack size 4096 bytes
+[   231][D][main.cpp:310] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+[   232][D][main.cpp:310] setup(): [LoMa] Created task LED with priority 2 and stack size 4096 bytes
+[   232][D][main.cpp:634] vTLog(): [LoMa] Logging Data:
+[   232][I][main.cpp:636] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[   235][D][main.cpp:662] vTLog(): [LoMa] Task Buffer Used (): 66
+[   235][D][main.cpp:664] vTLog(): [LoMa] Stats Buffer Used: 502 bytes
+[   236][D][main.cpp:665] vTLog(): [LoMa] Stats Buffer Free: 258 bytes
+[   236][D][main.cpp:667] vTLog(): [LoMa] Stats Buffer Size: 760
+[   236][I][main.cpp:668] vTLog(): [LoMa] Task Run Time Stats:
+Log            	0		<1%
+loopTask       	26123		11%
+IDLE0          	131743		56%
+IDLE1          	168167		71%
+Recv           	81		<1%
+Send           	192		<1%
+LED            	130		<1%
+tiT            	46		<1%
+AdLd           	157		<1%
+Cfg            	14		<1%
+Poll           	1058		<1%
+ipc1           	36495		15%
+esp_timer      	104		<1%
+sys_evt        	790		<1%
+arduino_events 	246		<1%
+FSM            	75		<1%
+wifi           	56411		23%
+Tmr Svc        	65		<1%
+ipc0           	31017		13%
+
+[   238][I][main.cpp:685] vTLog(): [LoMa] T: FSM, U: 820, F: 1228
+[   238][I][main.cpp:685] vTLog(): [LoMa] T: Poll, U: 1712, F: 2384
+[   239][I][main.cpp:685] vTLog(): [LoMa] T: AdLd, U: 1420, F: 628
+[   239][I][main.cpp:685] vTLog(): [LoMa] T: Recv, U: 804, F: 1244
+[   239][I][main.cpp:685] vTLog(): [LoMa] T: Send, U: 972, F: 3124
+[   240][I][main.24[ 
+  240][D][main.cpp:310] setup(): [LoMa] Created task Log with priority 2 andt24e0s][
+I][main.cpp:685] vTLog(): [LoMa] T: LED, U: 900, F: 3196
+[   241][I][main.cp[   241][I][main.cpp:333] setup(): [LoMa] Initialized FSM7s9k2U,p dFa:t e1F3S0M4()
+: [LoMa] FSM State Changed: 3
+ to st[a t e  2341
+][I][main.cpp:694] vTLog(): [[L o M a2]4 1Mi]n[,I ]f[rmeaei nh.ecappp:: 384529]0 4s16e tbup
+(): [LoMa] Setup complete!
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   336752 B ( 328.9 KB)
+  Free Bytes        :   223964 B ( 218.7 KB)
+  Allocated Bytes   :   104236 B ( 101.8 KB)
+  Minimum Free Bytes:   222976 B ( 217.8 KB)
+  Largest Free Block:   180212 B ( 176.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+-----------------------TLog(): [LoMa] Temp.: 34 dC
+[[      224444]][[II]][[mmaaini.nc.pcpp:p7:1751]5 ]v TvLToL oB  B( 8(18921.902 .K0B )K
+B)
+  Free Bytes        :  8367464 B (8171.4 KB)
+  Allocated Bytes   :    18224 B (  17.8 KB)
+  Minimum Free Bytes:  8367440 B (8171.3 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     5 : GPIO
+     8 : I2C_MASTER_SDA[0]
+     9 : I2C_MASTER_SCL[0]
+    18 : RMT_TX
+    19 : USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+[   250][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 0 mW
+[   277][I][main.cpp:363] vTaskUpdateFSM(): [LoMa] FSM State Changed: 4
+[   289][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 10 mW
+[   369][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 0 mW
+[   529][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 0 mW
+[   849][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 0 mW
+[  1489][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 760 mW
+[  2769][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 1730 mW
+4][I][main.cpp:720] vTLog(): [LoMa] PS: mV: 06421, mA: 00268, mW.cpp:721] vTLog(): [LoMa] Current State: 4
+ dRPM/s: 00000, SF: 0
+01242, TxBF: 0000000, RxE: 000841, RxB: 0003364
+F/s: 0, RxE/s: 198, RxB/s: 792
+[  5329][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 560 mW
+in.cpp:634] vTLog(): [LoMa] Logging Data:
+[main.cpp:636] vTLog(): [LoMa] FreeRTOS Tasks: 19
+Buffer Used (): 68
+Buffer Used: 520 bytes
+ Free: 240 bytes
+Ma] Stats Buffer Size: 760
+er      	8098		<1%
+wifi           	342915		4%
+ipc0       1017		<1%
+ipc1           	36495		<1%
+
+F: 156
+4, F: 2192
+ U: 1420, F: 628
+n.cpp:685] vTLog(): [LoMa] T: Recv, U: 804, F: 1244
+][main.[  8255][I][main.cpp:685] vTLog(): [LoMa] T: Cfg, U: 700, F: 324
+
+[  8256][I][main.cpp:685] vTLog(): [LoMa] T: Log, U: 2860, F: 1236
+[  8256][I][main.cpp:694] vTLog(): [LoMa] Min, free heap: 8590232 b
+[I][main.cpp:715] vTLog(): [LoMa] Current State: 4
+[ 10449][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 1700 mW

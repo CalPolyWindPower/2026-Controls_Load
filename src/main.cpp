@@ -300,21 +300,29 @@ void setup() {
             // Syntax: xTaskCreate(Task function, Name of the task (for
             // debugging), Stack size (in bytes, not words), Task input
             // parameter, Priority of the task, Task handle)
+            static portMUX_TYPE taskSetupLock = portMUX_INITIALIZER_UNLOCKED;
+            taskENTER_CRITICAL(&taskSetupLock);
             BaseType_t result =
                 xTaskCreate(taskDesc->function, taskDesc->name,
                             taskDesc->stackSize_bytes, taskDesc->pvParameters,
                             taskDesc->priority, &(taskDesc->pxHandle));
+            if (result != pdPASS && taskDesc->initSuspended) {
+                vTaskSuspend(taskDesc->pxHandle);
+            }
+            taskEXIT_CRITICAL(&taskSetupLock);
+
             if (result != pdPASS) {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc->name);
             } else {
-                ESP_LOGD(
-                    TAG,
-                    "Created task %s with priority %u and stack size %u bytes",
-                    taskDesc->name, taskDesc->priority,
-                    taskDesc->stackSize_bytes);
+                ESP_LOGD(TAG,
+                         "Created task %s: Priority %u, Stack size %u bytes, "
+                         "Suspended: %d",
+                         taskDesc->name, taskDesc->priority,
+                         taskDesc->stackSize_bytes, taskDesc->initSuspended);
             }
         }
         vTaskResume(load.tFSM.pxHandle);
+        vTaskResume(load.tCfg.pxHandle);
         // vTaskResume(load.tPoll.pxHandle); // TODO: Verify that this isn't
         // needed
         tasksSetup = true;

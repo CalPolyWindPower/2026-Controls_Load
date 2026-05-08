@@ -1,0 +1,1240 @@
+[    31][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-S3
+  Package           : 0
+  Revision          : 0.02
+  Cores             : 2
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 40 MHz
+  Features Bitfield : 0x00000012
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : No
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   337768 B ( 329.9 KB)
+  Free Bytes        :   298688 B ( 291.7 KB)
+  Allocated Bytes   :    33512 B (  32.7 KB)
+  Minimum Free Bytes:   293420 B ( 286.5 KB)
+  Largest Free Block:   241652 B ( 236.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8386296 B (8189.7 KB)
+  Allocated Bytes   :        0 B (   0.0 KB)
+  Minimum Free Bytes:  8386296 B (8189.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+  Bus Mode          : QSPI
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         : 16777216 B (16 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  6400.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00650000, size:  6400.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00C90000, size:  3456.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x00FF0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : May  3 2026 00:57:06
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : Unexpected Maker PROS3
+  Arduino Variant   : um_pros3
+  Core Debug Level  : 4
+  Arduino Runs Core : 1
+  Arduino Events on : 1
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 19 already has type USB_DM (45) with bus 0x3fca124c
+[   154][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 20 already has type USB_DP (46) with bus 0x3fca124c
+[   155][I][main.cpp:146] setup(): [LoMa] Serial initialized @ 115200 baud w/ buffer size 1024
+[   155][I][main.cpp:160] setup(): [LoMa] LED initialized
+[   228][I][LoadComms.cpp:65] begin(): [LCO] Device MAC: EC:DA:3B:5B:03:D4
+[   231][I][LoadComms.cpp:116] setupPeer_(): [LCO] Peer added: 30:ED:A0:E0:6B:78
+Loadbox ready
+[   232][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=8 scl=9 freq=100000
+[   233][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+[   241][I][main.cpp:85] configureLoad(): [LoMa] INA260 power sensor init at 0x41
+[   241][W][Wire.cpp:300] begin(): Bus already started in Master Mode.
+[   242][I][main.cpp:94] configureLoad(): [LoMa] MCP23008T IO device init at 0x27
+[   243][I][main.cpp:259] setup(): [LoMa] Setting up tasks...
+[   244][D][main.cpp:300] setup(): [LoMa] Created task FSM with priority 24 and stack size 2048 bytes
+[   245][D][main.cpp:300] setup(): [LoMa] Created task Poll with priority 20 and stack size 4096 bytes
+[   245][D][main.cpp:300] setup(): [LoMa] Created task AdLd with priority 20 and stack size 2048 bytes
+[   246][D][main.cpp:300] setup(): [LoMa] Created task Recv with priority 15 and stack size 2048 bytes
+[   246][D][main.cpp:300] setup(): [LoMa] Created task Send with priority 15 and stack size 4096 bytes
+[   247][D][main.cpp:300] setup(): [LoMa] Created task Cfg with priority 10 and stack size 1024 bytes
+[   248][E][INA260.hpp:95] updateReadings(): [TAG] [P   o u2t4 8o]f[ Db]o[umnadisn:. c8p7p0: 3m0W0]
+ setup(): [LoMa] Created task LED with priority 2 and stack size 4096 bytes
+[   248][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[   249][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[   251][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 65
+[   252][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 501 bytes
+[   252][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 259 bytes
+[   252][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[   253][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+wifi           	72954		29%
+Log            	0		<1%
+loopTask       	26460		10%
+IDLE0          	130812		52%
+IDLE1          	177279		70%
+AdLd           	34		<1%
+Recv           	44		<1%
+Send           	242		<1%
+LED            	180		<1%
+tiT            	47		<1%
+Cfg            	22		<1%
+Poll           	1315		<1%
+arduino_events 	203		<1%
+ipc1           	43755		17%
+esp_timer      	127		<1%
+sys_evt        	662		<1%
+FSM            	87		<1%
+Tmr Svc        	70		<1%
+ipc0           	30995		12%
+
+[   254][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 812, F: 1236
+[   255][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 1704, F: 2392
+[   255][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[   255][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 684, F: 1364
+[   256][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 916, F: 3180
+[   256][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[   257][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 892, F: 3204
+[   257][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2800, F: 1296
+[   257][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591924 b
+[   259][I][main.cpp:676] vTLog(): [LoMa] Temp.: 39 dC
+[   260][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[   260][D][main.cpp:300] setup(): [LoMa] Created task Log with priority 2 and stack size 4096 bytes
+[   261][E][main.cpp:325] setup(): [LoMa] Failed to enter[   261][I][main.cpp:352] vTaskUpdateFSM(): [LoMa] FSM State Changed: 2
+ a valid state
+[   261][I][main.cpp:331] setup(): [LoMa] Setup complete!
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   337768 B ( 329.9 KB)
+  Free Bytes        :   224844 B ( 219.6 KB)
+  Allocated Bytes   :   104388 B ( 101.9 KB)
+  Minimum Free Bytes:   224056 B ( 218.8 KB)
+  Largest Free Block:   184308 B ( 180.0 KB)
+------------------------------------------
+SPIRAM Memory Info:
+------------------------------------------
+  Total Size        :  8388608 B (8192.0 KB)
+  Free Bytes        :  8367868 B (8171.7 KB)
+  Allocated Bytes   :    17836 B (  17.4 KB)
+  Minimum Free Bytes:  8367868 B (8171.7 KB)
+  Largest Free Block:  8257524 B (8064.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     5 : GPIO
+     8 : I2C_MASTER_SDA[0]
+     AG]R MPT _oTuXt o
+f bound s:   1 5109  m:W 
+USB_DM
+    20 : USB_DP
+    43 : UART_TX[0]
+    44 : UART_RX[0]
+============ After Setup End =============
+6][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 30 mW
+7][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 10 mW
+ounds: 50 mW
+66][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 4470 mW
+P out of bounds: 120 mW
+60.hpp:95] updateReadings(): [TAG] P out of bounds: 40 mW
+[  4260][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06423, mA: 000-6, mW: 00000, mV/s: 00003, mA/s: 00003, mW/s: 01513
+[  4261][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[  4261][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[  4262][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[  4263][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000040, TxBS: 0000782, TxBF: 0000138, RxE: 000578, RxB: 0002312
+[  4264][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 183, TxBF/s: 32, RxE/s: 135, RxB/s: 542
+[  5AG] P out of bounds: 140 mW
+[  8264][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[  8265][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[  8267][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 68
+[  8268][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 522 bytes
+[  8268][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 238 bytes
+[  8268][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[  8269][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	14795		<1%
+IDLE0          	7112029		86%
+IDLE1          	8170028		98%
+FSM            	3560		<1%
+AdLd           	1285		<1%
+Recv           	1767		<1%
+Send           	12102		<1%
+tiT            	2836		<1%
+Cfg            	133		<1%
+LED            	504		<1%
+Poll           	9559		<1%
+loopTask       	33691		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+Tmr Svc        	119		<1%
+esp_timer      	6899		<1%
+wifi           	1072835		12%
+ipc0           	30995		<1%
+arduino_events 	203		<1%
+
+[  8270][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[  8271][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 1932, F: 2164
+[  8271][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[  8271][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[  8272][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[  8272][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[  8272][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 892, F: 3204
+[  8273][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[  8273][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[  8275][I][main.cpp:676] vTLog(): [LoMa] Temp.: 46 dC
+[  8276][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+260.hpp:95] updateReadings(): [TAG] P out of bounds: 40 mW
+[ 10543][I][main.cpp:352] vTaskUpdateFSM(): [LoMa] FSM State Changed: 1
+[ 12275][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06438, mA: 000-3, mW: 00000, mV/s: 00409, mA/s: 00001, mW/s: 00400
+[ 12276][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[ 12276][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[ 12277][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 12278][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000121, TxBS: 0002576, TxBF: 0000207, RxE: 002145, RxB: 0008580
+[ 12279][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 10, TxBS/s: 223, TxBF/s: 8, RxE/s: 195, RxB/s: 246
+[ 16279][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 16280][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 16282][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 69
+[ 16283][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 526 bytes
+[ 16283][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 234 bytes
+[ 16283][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 16283][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	28966		<1%
+IDLE0          	14291449		87%
+IDLE1          	16170214		99%
+FSM            	6608		<1%
+Recv           	3469		<1%
+Send           	23673		<1%
+tiT            	5354		<1%
+LED            	820		<1%
+Cfg            	249		<1%
+Poll           	10440		<1%
+loopTask       	33856		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+Tmr Svc        	165		<1%
+esp_timer      	13476		<1%
+wifi           	1881778		11%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+
+[ 16285][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 16286][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 1932, F: 2164
+[ 16286][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 16286][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 16287][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[ 16287][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 16287][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 16288][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 16288][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 16290][I][main.cpp:676] vTLog(): [LoMa] Temp.: 46 dC
+[ 16290][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[ 20290][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06438, mA: 000-3, mW: 00000, mV/s: 00409, mA/s: 00001, mW/s: 00400
+[ 20291][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[ 20291][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[ 20292][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 20293][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000201, TxBS: 0004416, TxBF: 0000207, RxE: 003749, RxB: 0014996
+[ 20294][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+ut of bounds: 40 mW
+[ 20743][I][main.cpp:352] vTaskUpdateFSM(): [LoMa] FSM State Changed: 2
+[ 24294][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 24295][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 24297][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 69
+[ 24298][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 527 bytes
+[ 24298][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 233 bytes
+[ 24298][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 24298][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	42955		<1%
+IDLE0          	21412531		88%
+IDLE1          	24169713		99%
+Recv           	5177		<1%
+Send           	35397		<1%
+tiT            	7577		<1%
+Cfg            	364		<1%
+loopTask       	34040		<1%
+LED            	1312		<1%
+Poll           	11324		<1%
+FSM            	9882		<1%
+ipc0           	30995		<1%
+arduino_events 	203		<1%
+AdLd           	1625		<1%
+Tmr Svc        	232		<1%
+esp_timer      	20151		<1%
+wifi           	2749862		11%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+
+[ 24300][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 24301][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 1932, F: 2164
+[ 24301][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 24301][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 24302][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[ 24302][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 24302][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 24303][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 24303][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 24305][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 24305][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[ 28305][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06426, mA: 000-6, mW: 00000, mV/s: 00206, mA/s: 00207, mW/s: 00000
+[ 28306][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[ 28306][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[ 28307][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 28308][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000281, TxBS: 0006256, TxBF: 0000207, RxE: 005351, RxB: 0021404
+[ 28309][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 199, RxB/s: 263
+[ 32309][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 32310][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 32312][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 69
+[ 32313][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 528 bytes
+[ 32313][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 232 bytes
+[ 32313][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 32313][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	57056		<1%
+IDLE0          	28551216		88%
+IDLE1          	32169841		99%
+Recv           	6875		<1%
+Send           	47135		<1%
+tiT            	9845		<1%
+Cfg            	503		<1%
+loopTask       	34208		<1%
+LED            	1621		<1%
+Poll           	11324		<1%
+FSM            	12748		<1%
+arduino_events 	203		<1%
+AdLd           	1625		<1%
+ipc1           	43755		<1%
+Tmr Svc        	278		<1%
+esp_timer      	26778		<1%
+wifi           	3601089		11%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+
+[ 32315][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 32316][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 1932, F: 2164
+[ 32316][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 32316][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 32317][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[ 32317][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 32317][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 32318][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 32318][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 32320][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 32320][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[ 36320][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06426, mA: 000-6, mW: 00000, mV/s: 00206, mA/s: 00207, mW/s: 00000
+[ 36321][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[ 36321][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[ 36322][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 36323][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000361, TxBS: 0008096, TxBF: 0000207, RxE: 006954, RxB: 0027816
+[ 36324][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[ 40324][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 40325][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 40327][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 69
+[ 40328][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 529 bytes
+[ 40328][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 231 bytes
+[ 40328][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 40329][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	71082		<1%
+IDLE0          	35707437		88%
+IDLE1          	40169605		99%
+Recv           	8598		<1%
+Send           	58978		<1%
+LED            	2070		<1%
+tiT            	12048		<1%
+Poll           	11324		<1%
+Cfg            	629		<1%
+loopTask       	34368		<1%
+FSM            	15577		<1%
+AdLd           	1625		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+Tmr Svc        	350		<1%
+esp_timer      	33431		<1%
+wifi           	4435020		10%
+ipc0           	30995		<1%
+arduino_events 	203		<1%
+
+[ 40330][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 40331][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 1932, F: 2164
+[ 40331][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 40331][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 40332][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[ 40332][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 40333][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 40333][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 40333][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 40335][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 40336][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[s: 40 mW
+[ 44335][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06431, mA: 000-5, mW: 00000, mV/s: 00000, mA/s: 00000, mW/s: 00000
+[ 44336][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[ 44336][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[ 44337][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 44338][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000441, TxBS: 0009936, TxBF: 0000207, RxE: 008557, RxB: 0034228
+[ 44338][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[ 48338][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 48339][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 48341][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 69
+[ 48342][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 530 bytes
+[ 48342][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 230 bytes
+[ 48342][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 48343][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	85131		<1%
+IDLE0          	42864805		88%
+IDLE1          	48168549		99%
+Recv           	10321		<1%
+Send           	70668		<1%
+tiT            	14250		<1%
+Cfg            	743		<1%
+loopTask       	34534		<1%
+LED            	2392		<1%
+Poll           	12334		<1%
+FSM            	18408		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+Tmr Svc        	397		<1%
+esp_timer      	40067		<1%
+wifi           	5265923		10%
+arduino_events 	203		<1%
+AdLd           	1625		<1%
+
+[ 48344][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 48345][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[ 48345][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 48345][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 48346][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[ 48346][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 48347][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 48347][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 48347][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 48350][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 48350][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[ 52350][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06431, mA: 000-5, mW: 00000, mV/s: 00000, mA/s: 00000, mW/s: 00000
+[ 52351][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[ 52351][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[ 52352][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 52353][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000521, TxBS: 0011776, TxBF: 0000207, RxE: 010160, RxB: 0040640
+[ 52354][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 199, RxB/s: 264
+[ 56354][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 56355][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 56357][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 69
+[ 56358][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 530 bytes
+[ 56358][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 230 bytes
+[ 56358][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 56358][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	99565		<1%
+IDLE0          	50030970		88%
+IDLE1          	56169263		99%
+Recv           	12054		<1%
+Send           	82541		<1%
+tiT            	16471		<1%
+LED            	2726		<1%
+Cfg            	865		<1%
+loopTask       	34701		<1%
+Poll           	12334		<1%
+FSM            	21282		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+arduino_events 	203		<1%
+Tmr Svc        	445		<1%
+esp_timer      	46778		<1%
+wifi           	6090525		10%
+AdLd           	1625		<1%
+ipc1           	43755		<1%
+
+[ 56360][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 56361][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[ 56361][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 56361][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 56362][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[ 56362][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 56362][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 56363][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 56363][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 56365][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 56366][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[ 60365][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06431, mA: 000-5, mW: 00000, mV/s: 00000, mA/s: 00000, mW/s: 00000
+[ 60366][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[ 60366][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[ 60367][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 60368][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000602, TxBS: 0013593, TxBF: 0000253, RxE: 011750, RxB: 0047000
+[ 60369][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 10, TxBS/s: 226, TxBF/s: 5, RxE/s: 198, RxB/s: 257
+[ 64368][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 64369][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 64371][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 69
+[ 64372][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 531 bytes
+[ 64372][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 229 bytes
+[ 64372][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 64373][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	113537		<1%
+IDLE0          	57249175		88%
+IDLE1          	64168027		99%
+Recv           	13740		<1%
+Send           	94320		<1%
+tiT            	18755		<1%
+Cfg            	973		<1%
+loopTask       	34863		<1%
+LED            	3196		<1%
+Poll           	12334		<1%
+FSM            	24141		<1%
+ipc0           	30995		<1%
+arduino_events 	203		<1%
+AdLd           	1625		<1%
+Tmr Svc        	523		<1%
+esp_timer      	53379		<1%
+wifi           	6861554		10%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+
+[ 64374][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 64375][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[ 64375][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 64376][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 64376][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1140, F: 2956
+[ 64376][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 64377][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 64377][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 64377][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 64379][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 64380][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[ 68379][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06431, mA: 000-5, mW: 00000, mV/s: 00000, mA/s: 00000, mW/s: 00000
+[ 68380][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[ 68380][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[ 68381][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 68382][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000682, TxBS: 0015433, TxBF: 0000253, RxE: 013353, RxB: 0053412
+[ 68383][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[ 72382][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 72383][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 72385][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[ 72386][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+[ 72386][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+[ 72386][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 72386][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	127705		<1%
+IDLE0          	64449899		89%
+IDLE1          	72167086		99%
+Recv           	15459		<1%
+Send           	106014		<1%
+tiT            	21005		<1%
+Cfg            	1089		<1%
+loopTask       	35032		<1%
+LED            	3515		<1%
+Poll           	12334		<1%
+FSM            	26976		<1%
+arduino_events 	203		<1%
+AdLd           	1625		<1%
+ipc1           	43755		<1%
+Tmr Svc        	568		<1%
+esp_timer      	60056		<1%
+wifi           	7649779		10%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+
+[ 72388][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 72389][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[ 72389][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 72389][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 72390][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[ 72390][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 740, F: 284
+[ 72390][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 72391][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 72391][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 72393][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 72393][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[ 76393][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06431, mA: 000-5, mW: 00000, mV/s: 00000, mA/s: 00000, mW/s: 00000
+[ 76394][I][main.cpp:688] vTLog(): [LoMa] Current State: 2
+[ 76394][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 0
+[ 76395][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 76396][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000762, TxBS: 0017273, TxBF: 0000253, RxE: 014955, RxB: 0059820
+[ 76397][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 199, RxB/s: 263
+[ 80397][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 80398][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 80400][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[ 80401][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+[ 80401][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+[ 80401][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 80402][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	141676		<1%
+IDLE0          	71650813		89%
+IDLE1          	80167131		99%
+Recv           	17156		<1%
+Send           	117704		<1%
+LED            	3963		<1%
+tiT            	23232		<1%
+Cfg            	1215		<1%
+loopTask       	35198		<1%
+Poll           	12334		<1%
+FSM            	29868		<1%
+AdLd           	1625		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+Tmr Svc        	640		<1%
+esp_timer      	66685		<1%
+wifi           	8438902		10%
+ipc0           	30995		<1%
+arduino_events 	203		<1%
+
+[ 80403][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 80404][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[ 80404][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 80404][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 80405][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[ 80405][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[ 80406][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 80406][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 80406][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 80408][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 80409][I][main.cpp:682] vTLog(): [LoMa] Current State: 2
+[ 82147][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 4240 mW
+[ 82243][I][main.cpp:352] vTaskUpdateFSM(): [LoMa] FSM State Changed: 1
+[ 84408][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[ 84409][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[ 84409][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[ 84410][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 84411][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000842, TxBS: 0019113, TxBF: 0000253, RxE: 016558, RxB: 0066232
+[ 84412][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[ 88412][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 88413][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 88415][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[ 88416][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 533 bytes
+[ 88416][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 227 bytes
+[ 88416][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 88416][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	155869		<1%
+IDLE0          	78844789		89%
+IDLE1          	88166563		99%
+Recv           	18839		<1%
+Send           	129487		<1%
+tiT            	25465		<1%
+Cfg            	1330		<1%
+loopTask       	35371		<1%
+LED            	4289		<1%
+Poll           	13315		<1%
+FSM            	32984		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+Tmr Svc        	684		<1%
+esp_timer      	73317		<1%
+wifi           	9234215		10%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+
+[ 88418][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 88419][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[ 88419][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 88419][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 88420][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[ 88420][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[ 88420][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 88421][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 88421][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 88423][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 88423][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[ 92423][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[ 92424][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[ 92424][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[ 92425][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[ 92426][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 000922, TxBS: 0020953, TxBF: 0000253, RxE: 018161, RxB: 0072644
+[ 92427][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 199, RxB/s: 264
+[ 96427][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[ 96428][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[ 96430][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[ 96431][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 534 bytes
+[ 96431][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 226 bytes
+[ 96431][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[ 96432][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+wifi           	10032558		10%
+Log            	169968		<1%
+IDLE0          	86036675		89%
+IDLE1          	96166792		99%
+Recv           	20517		<1%
+Send           	141073		<1%
+tiT            	27705		<1%
+LED            	4592		<1%
+Cfg            	1492		<1%
+loopTask       	35541		<1%
+Poll           	13315		<1%
+FSM            	35646		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+Tmr Svc        	731		<1%
+esp_timer      	79986		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+
+[ 96434][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[ 96434][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[ 96434][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[ 96435][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[ 96435][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[ 96435][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[ 96436][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[ 96436][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[ 96436][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[ 96439][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[ 96439][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[100439][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[100440][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[100440][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[100441][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[100442][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001002, TxBS: 0022793, TxBF: 0000253, RxE: 019764, RxB: 0079056
+[100443][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 199, RxB/s: 264
+[104443][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[104444][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[104446][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[104447][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 535 bytes
+[104447][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 225 bytes
+[104447][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[104448][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	184275		<1%
+IDLE0          	93218395		89%
+IDLE1          	104166740		99%
+Send           	153089		<1%
+FSM            	38349		<1%
+tiT            	29945		<1%
+Cfg            	1605		<1%
+loopTask       	35706		<1%
+LED            	5064		<1%
+Poll           	13315		<1%
+Recv           	22212		<1%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+Tmr Svc        	802		<1%
+esp_timer      	86558		<1%
+wifi           	10842462		10%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+
+[104450][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[104450][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[104450][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[104451][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[104451][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[104451][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[104452][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[104452][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[104452][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[104455][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[104455][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[108455][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[108456][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[108456][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[108457][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[108458][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001083, TxBS: 0024656, TxBF: 0000253, RxE: 021367, RxB: 0085468
+[108459][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 10, TxBS/s: 232, TxBF/s: 0, RxE/s: 199, RxB/s: 264
+[112459][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[112460][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[112462][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[112463][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 536 bytes
+[112463][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 224 bytes
+[112463][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[112464][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	198799		<1%
+IDLE0          	100402988		89%
+IDLE1          	112167535		99%
+Recv           	23929		<1%
+Send           	164851		<1%
+tiT            	32158		<1%
+Cfg            	1720		<1%
+loopTask       	35882		<1%
+LED            	5363		<1%
+Poll           	13315		<1%
+FSM            	41022		<1%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+Tmr Svc        	853		<1%
+wifi           	11648745		10%
+esp_timer      	93357		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+
+[112465][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[112466][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[112466][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[112466][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[112467][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[112467][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[112468][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[112468][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[112468][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[112470][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[112471][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[116470][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[116471][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[116471][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[116472][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[116473][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001163, TxBS: 0026496, TxBF: 0000253, RxE: 022970, RxB: 0091880
+[116474][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[120474][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[120475][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[120477][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[120478][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 536 bytes
+[120478][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 224 bytes
+[120478][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[120479][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	213026		<1%
+IDLE0          	107572606		89%
+IDLE1          	120167602		99%
+Recv           	25653		<1%
+Send           	176455		<1%
+LED            	5796		<1%
+tiT            	34496		<1%
+Cfg            	1833		<1%
+loopTask       	36040		<1%
+Poll           	13315		<1%
+FSM            	43715		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+Tmr Svc        	923		<1%
+esp_timer      	99929		<1%
+wifi           	12469128		10%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+
+[120480][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[120481][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[120481][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[120481][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[120482][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[120482][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[120483][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[120483][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[120483][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[120486][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[120486][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[124485][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[124486][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[124486][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[124487][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[124488][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001243, TxBS: 0028336, TxBF: 0000253, RxE: 024571, RxB: 0098284
+[124489][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 199, RxB/s: 263
+[128489][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[128490][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[128492][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[128493][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 537 bytes
+[128493][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 223 bytes
+[128493][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[128493][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	227282		<1%
+IDLE0          	114745319		89%
+IDLE1          	128167443		99%
+Recv           	27376		<1%
+Send           	188198		<1%
+tiT            	36725		<1%
+Cfg            	1946		<1%
+loopTask       	36206		<1%
+LED            	6133		<1%
+Poll           	13315		<1%
+FSM            	46374		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+Tmr Svc        	969		<1%
+esp_timer      	106633		<1%
+wifi           	13286598		10%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+
+[128495][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[128496][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[128496][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[128496][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[128497][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[128497][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[128497][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[128498][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[128498][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[128500][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[128500][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[132500][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[132501][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[132501][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[132502][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[132503][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001323, TxBS: 0030176, TxBF: 0000253, RxE: 026177, RxB: 0104708
+[132504][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 265
+[136504][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[136505][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[136507][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[136508][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[136508][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[136508][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[136508][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	241197		<1%
+IDLE0          	121928522		89%
+IDLE1          	136167784		99%
+Recv           	29074		<1%
+Send           	199710		<1%
+tiT            	38937		<1%
+LED            	6436		<1%
+Cfg            	2057		<1%
+loopTask       	36374		<1%
+Poll           	13315		<1%
+FSM            	49041		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+Tmr Svc        	1017		<1%
+esp_timer      	113216		<1%
+wifi           	14093837		10%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+
+[136510][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[136511][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[136511][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[136511][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[136512][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[136512][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[136512][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[136513][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[136513][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[136515][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[136516][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[140515][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[140516][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[140516][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[140517][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[140518][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001403, TxBS: 0032016, TxBF: 0000253, RxE: 027779, RxB: 0111116
+[140518][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[144518][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[144519][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[144521][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[144522][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[144522][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[144522][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[144522][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+wifi           	14914059		10%
+Log            	255126		<1%
+IDLE0          	129097272		89%
+IDLE1          	144167189		99%
+Recv           	30792		<1%
+Send           	211355		<1%
+tiT            	41143		<1%
+Cfg            	2170		<1%
+loopTask       	36537		<1%
+LED            	6899		<1%
+Poll           	13315		<1%
+FSM            	51793		<1%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+Tmr Svc        	1087		<1%
+esp_timer      	119843		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+
+[144524][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[144525][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[144525][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[144525][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[144526][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[144526][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[144526][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[144527][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[144527][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[144529][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[144529][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[148529][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[148530][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[148530][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[148531][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[148532][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001483, TxBS: 0033856, TxBF: 0000253, RxE: 029382, RxB: 0117528
+[148532][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 199, RxB/s: 263
+[152532][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[152533][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[152535][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[152536][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[152536][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[152536][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[152536][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	268876		<1%
+IDLE0          	136259825		89%
+IDLE1          	152166505		99%
+Recv           	32523		<1%
+Send           	223013		<1%
+tiT            	43338		<1%
+Cfg            	2287		<1%
+loopTask       	36704		<1%
+LED            	7225		<1%
+Poll           	13315		<1%
+FSM            	54434		<1%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+Tmr Svc        	1137		<1%
+esp_timer      	126497		<1%
+wifi           	15740838		10%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+
+[152538][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[152539][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[152539][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[152539][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[152540][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[152540][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[152540][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[152541][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[152541][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[152543][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[152543][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[156543][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06182, mA: 0-686, mW: 00004, mV/s: 00049, mA/s: 00043, mW/s: 00051
+[156544][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[156544][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[156545][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[156546][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001563, TxBS: 0035696, TxBF: 0000253, RxE: 030985, RxB: 0123940
+[156547][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[160547][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[160548][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[160550][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[160551][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[160551][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[160551][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[160552][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	283116		<1%
+IDLE0          	143414103		89%
+IDLE1          	160166257		99%
+FSM            	57128		<1%
+Recv           	34260		<1%
+Send           	234949		<1%
+tiT            	45530		<1%
+Cfg            	2393		<1%
+loopTask       	36868		<1%
+Poll           	13315		<1%
+LED            	7675		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+Tmr Svc        	1208		<1%
+esp_timer      	133166		<1%
+wifi           	16576549		10%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+
+[160553][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[160554][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[160554][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[160555][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[160555][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[160555][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[160556][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[160556][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[160556][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[160558][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[160559][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[164066][E][INA260.hpp:95] updateReadings(): [TAG] P out of bounds: 4200 mW
+[164558][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06185, mA: 0-680, mW: 00004, mV/s: 00000, mA/s: 00000, mW/s: 00025
+[164559][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[164559][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[164560][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[164561][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001644, TxBS: 0037559, TxBF: 0000253, RxE: 032582, RxB: 0130328
+[164562][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 10, TxBS/s: 232, TxBF/s: 0, RxE/s: 199, RxB/s: 261
+[168562][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[168563][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[168565][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[168566][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[168566][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[168566][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[168566][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	297378		<1%
+IDLE0          	150572328		89%
+IDLE1          	168166372		99%
+Recv           	36006		<1%
+Send           	246727		<1%
+tiT            	47778		<1%
+Cfg            	2510		<1%
+loopTask       	37029		<1%
+LED            	8007		<1%
+Poll           	14262		<1%
+FSM            	59793		<1%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+Tmr Svc        	1259		<1%
+esp_timer      	139808		<1%
+wifi           	17407260		10%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+
+[168568][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[168569][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[168569][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[168569][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[168570][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[168570][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[168570][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[168571][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[168571][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[168573][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[168574][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[172573][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06185, mA: 0-680, mW: 00004, mV/s: 00000, mA/s: 00000, mW/s: 00025
+[172574][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[172574][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[172575][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[172576][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001724, TxBS: 0039399, TxBF: 0000253, RxE: 034186, RxB: 0136744
+[172577][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[176577][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[176578][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[176580][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[176581][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[176581][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[176581][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[176582][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	311556		<1%
+IDLE0          	157749223		89%
+IDLE1          	176166077		99%
+Recv           	37709		<1%
+Send           	258488		<1%
+tiT            	50004		<1%
+LED            	8338		<1%
+Cfg            	2631		<1%
+loopTask       	37190		<1%
+Poll           	14262		<1%
+FSM            	62428		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+Tmr Svc        	1307		<1%
+esp_timer      	146388		<1%
+wifi           	18220916		10%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+
+[176584][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[176584][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[176584][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[176585][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[176585][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[176585][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[176586][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[176586][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[176586][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[176589][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[176589][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[180589][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06185, mA: 0-680, mW: 00004, mV/s: 00000, mA/s: 00000, mW/s: 00025
+[180590][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[180590][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[180591][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[180592][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001804, TxBS: 0041239, TxBF: 0000253, RxE: 035794, RxB: 0143176
+[180593][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 266
+[184593][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[184594][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[184596][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[184597][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[184597][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[184597][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[184597][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+Log            	326075		<1%
+IDLE0          	164904232		89%
+IDLE1          	184166832		99%
+Recv           	39406		<1%
+Send           	270136		<1%
+tiT            	52253		<1%
+Cfg            	2756		<1%
+loopTask       	37356		<1%
+LED            	8799		<1%
+Poll           	14262		<1%
+FSM            	65072		<1%
+AdLd           	1625		<1%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+Tmr Svc        	1383		<1%
+esp_timer      	153014		<1%
+wifi           	19056943		10%
+sys_evt        	662		<1%
+ipc0           	30995		<1%
+
+[184599][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[184600][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[184600][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[184600][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[184601][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[184601][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[184601][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[184602][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[184602][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[184604][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[184605][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[188604][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06185, mA: 0-680, mW: 00004, mV/s: 00000, mA/s: 00000, mW/s: 00025
+[188605][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[188605][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[188606][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[188607][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001884, TxBS: 0043079, TxBF: 0000253, RxE: 037397, RxB: 0149588
+[188608][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
+[192608][D][main.cpp:601] vTLog(): [LoMa] Logging Data:
+[192609][I][main.cpp:603] vTLog(): [LoMa] FreeRTOS Tasks: 19
+[192611][D][main.cpp:629] vTLog(): [LoMa] Task Buffer Used (): 70
+[192612][D][main.cpp:631] vTLog(): [LoMa] Stats Buffer Used: 538 bytes
+[192612][D][main.cpp:632] vTLog(): [LoMa] Stats Buffer Free: 222 bytes
+[192612][D][main.cpp:634] vTLog(): [LoMa] Stats Buffer Size: 760
+[192613][I][main.cpp:635] vTLog(): [LoMa] Task Run Time Stats:
+wifi           	19886341		10%
+Log            	340222		<1%
+IDLE0          	172065194		89%
+IDLE1          	192166711		99%
+Recv           	41106		<1%
+Send           	281894		<1%
+tiT            	54480		<1%
+Cfg            	2876		<1%
+loopTask       	37520		<1%
+LED            	9104		<1%
+Poll           	14262		<1%
+FSM            	67719		<1%
+arduino_events 	203		<1%
+ipc1           	43755		<1%
+sys_evt        	662		<1%
+Tmr Svc        	1429		<1%
+esp_timer      	159671		<1%
+ipc0           	30995		<1%
+AdLd           	1625		<1%
+
+[192614][I][main.cpp:652] vTLog(): [LoMa] T: FSM, U: 1656, F: 392
+[192615][I][main.cpp:652] vTLog(): [LoMa] T: Poll, U: 2012, F: 2084
+[192615][I][main.cpp:652] vTLog(): [LoMa] T: AdLd, U: 740, F: 1308
+[192615][I][main.cpp:652] vTLog(): [LoMa] T: Recv, U: 828, F: 1220
+[192616][I][main.cpp:652] vTLog(): [LoMa] T: Send, U: 1156, F: 2940
+[192616][I][main.cpp:652] vTLog(): [LoMa] T: Cfg, U: 852, F: 172
+[192616][I][main.cpp:652] vTLog(): [LoMa] T: LED, U: 1036, F: 3060
+[192617][I][main.cpp:652] vTLog(): [LoMa] T: Log, U: 2832, F: 1264
+[192617][I][main.cpp:661] vTLog(): [LoMa] Min, free heap: 8591716 b
+[192619][I][main.cpp:676] vTLog(): [LoMa] Temp.: 47 dC
+[192620][I][main.cpp:682] vTLog(): [LoMa] Current State: 1
+[196619][I][main.cpp:687] vTLog(): [LoMa] PS: mV: 06185, mA: 0-680, mW: 00004, mV/s: 00000, mA/s: 00000, mW/s: 00025
+[196620][I][main.cpp:688] vTLog(): [LoMa] Current State: 1
+[196620][I][main.cpp:689] vTLog(): [LoMa] LC: RPM: 00000, dRPM/s: 00000, SF: 1
+[196621][I][main.cpp:690] vTLog(): [LoMa] IOE: @ox27000000
+[196622][I][main.cpp:695] vTLog(): [LoMa] LCO: TxE: 001964, TxBS: 0044919, TxBF: 0000253, RxE: 039000, RxB: 0156000
+[196623][I][main.cpp:712] vTLog(): [LoMa] TxE/s: 9, TxBS/s: 229, TxBF/s: 0, RxE/s: 200, RxB/s: 264
