@@ -391,7 +391,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
  * @brief Task to poll high priority sensors
  */
 [[noreturn]] void
-vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
+vTPollS([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 

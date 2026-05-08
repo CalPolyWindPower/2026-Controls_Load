@@ -37,7 +37,7 @@ constexpr uint_fast8_t NUM_OPTIONAL_TASKS = 2; // Must match number of entires!
 /**
  * @brief Task to poll high priority sensors
  */
-[[noreturn]] void vTaskPollSensors([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTPollS([[maybe_unused]] void *pvParameters);
 /**
  * @brief Task to control the load
  */
