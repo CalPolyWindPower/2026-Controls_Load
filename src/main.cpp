@@ -40,6 +40,7 @@
 #else
 #    error "Invalid COMMS_STRATEGY"
 #endif
+#include <2026Core/Units.hpp>
 
 /* Config */
 static constexpr const char *TAG = "LoMa";
@@ -434,7 +435,13 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         //          pitchPIDController.compute(
         //              i)); // todo - just a quick performances test
         // i += 20;
-        static int_fast32_t lastPower = INT_FAST32_MIN;
+        // static int_fast32_t lastPower = INT_FAST32_MIN;
+        constexpr uint32_t powerHistoryLength_s = 5;
+        constexpr uint32_t powerHistoryLength =
+            powerHistoryLength_s *
+            (UNITS::MILLIS_PER_SEC / RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
+        static etl::circular_buffer<int_fast32_t, powerHistoryLength>
+            powerHistory;
         static int_fast8_t powerIndex = 46;
         // static bool searchDone = false;
         enum class LoadAdjustment : uint_fast8_t { INCREASE, DECREASE, NONE };
@@ -449,46 +456,49 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
             continue;
         }
-        if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.10)) {
-            // TODO: Maybe wait for a bigger change?, maybe over a 5 second
-            // longer time, maybe record every 5
+        if (abs(powerHistory.front()) * 1.30 < abs(powerHistory.back())) {
+            // DONE: Consider waiting for a bigger change over 5 seconds instead
+            // of checking dPower_mWPS
+            // Run algo again if power increases by more than 30% in five
+            // seconds
             adjustmentHistory[0] = LoadAdjustment::NONE;
             adjustmentHistory[1] = LoadAdjustment::NONE;
             // Wait for power to stabilize
         } else if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.05)) {
-            // TODO: Maybe wait for a bigger change?
             // Wait for power to stabilize
-        } else if ((lastPower == INT_FAST32_MIN) && (powerIndex > 0)) {
+        } else if ((powerHistory.empty()) && (powerIndex > 0)) {
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
-                     static_cast<int>(lastPower),
+                     static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
 
         } else if ((adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
                    (adjustmentHistory[1] != LoadAdjustment::INCREASE) &&
-                   (INA260::power_mW > lastPower) && (powerIndex > 0)) {
+                   (INA260::power_mW > powerHistory.back()) &&
+                   (powerIndex > 0)) {
             // searchDone = false;
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             // lastAdjustment = LoadAdjustment::DECREASE;
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
-                     static_cast<int>(lastPower),
+                     static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Decreasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]); // TODO: Try by twos
-        } else if ((INA260::power_mW < lastPower) && (powerIndex < 46)) {
+        } else if ((INA260::power_mW < powerHistory.back()) &&
+                   (powerIndex < 46)) {
             // TODO: Not the best?
             powerIndex++;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             // lastAdjustment = LoadAdjustment::INCREASE;
             adjustmentHistory.push(LoadAdjustment::INCREASE);
             ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
-                     static_cast<int>(lastPower),
+                     static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Increasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
@@ -499,7 +509,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             // changes
             // No change
         }
-        lastPower = INA260::power_mW;
+        powerHistory.push(INA260::power_mW);
 
         delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
     }
