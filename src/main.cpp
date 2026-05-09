@@ -439,10 +439,10 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         //              i)); // todo - just a quick performances test
         // i += 20;
         // static int_fast32_t lastPower = INT_FAST32_MIN;
-        constexpr uint32_t powerHistoryLength_s = 5;
+        constexpr uint32_t powerHistoryLength_s = 3 * 3;
         constexpr uint32_t powerHistoryLength =
-            powerHistoryLength_s *
-            (UNITS::MILLIS_PER_SEC / RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
+            powerHistoryLength_s * UNITS::MILLIS_PER_SEC /
+            RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS;
         static etl::circular_buffer<int_fast32_t, powerHistoryLength>
             powerHistory;
         // static int_fast8_t powerIndex = powerHistory.size() - 1;
@@ -484,9 +484,10 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
             // Don't do anything until one reading has been made
-        } else if ((powerHistory.size() == 1) && (powerIndex > 0)) {
+        } else if ((powerHistory.size() == 1) && (powerIndex > 1)) {
             // Make initial adjustment when one value filled
-            powerIndex--;
+            // powerIndex--;
+            powerIndex -= 2;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
@@ -496,9 +497,10 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      LOAD::RES_INDEX_TABLE[powerIndex]);
         } else if ((adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
                    (INA260::power_mW > powerHistory.back()) &&
-                   (powerIndex > 0)) {
+                   (powerIndex > 1)) {
             // Decreasing + got better -> decrease again
-            powerIndex--;
+            // powerIndex--;
+            powerIndex -= 2;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
@@ -507,10 +509,13 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGI(TAG, "1Decreasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]); // TODO: Try by twos
         } else if ((adjustmentHistory[0] != LoadAdjustment::INCREASE) &&
+                   (INA260::power_mW > powerHistory.back()) &&
                    (powerIndex <
                     LOAD::RES_INDEX_TABLE.size() - 1)) { // MARK: BOLD LOAD
             // increasing + got better -> increase again
             // TODO: Not the best?
+            // TODO: Fix cycleing
+            // TODO: DOn't decrease when equal power
             powerIndex++;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::INCREASE);
@@ -543,7 +548,8 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                    (adjustmentHistory[0] != LoadAdjustment::INCREASE) &&
                    (powerIndex > 0)) { // MARK: BOLD LOAD
             // increasing + got worse a bunch -> decrease
-            powerIndex--;
+            // powerIndex--;
+            powerIndex -= 2;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",

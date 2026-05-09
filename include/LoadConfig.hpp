@@ -99,7 +99,7 @@ namespace RUN {
         TI_FSM_mS = 50,         // CONFIG - 50 ms (20 Hz)
         TI_POLL_SENSORS_mS = 3, // CONFIG - 3 ms (333 Hz), stopped likeing 2 ms
                                 // (100 Hz) around commit 9d80f8b
-        TI_ADJUST_LOAD_mS = 1000, // CONFIG - 1000 ms (1 Hz)
+        TI_ADJUST_LOAD_mS = 3000, // CONFIG - 1000 ms (1 Hz)
         TI_RECV_ms = 50,          // CONFIG - 100 ms (10 Hz)
         TI_SEND_ms = 75,          // CONFIG - 75 ms (13.33 Hz) // FIXME
         TI_CFG_ms = 1000,         // CONFIG - 1000 ms (1 Hz)
