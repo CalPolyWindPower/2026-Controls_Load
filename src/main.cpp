@@ -450,7 +450,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             continue;
         }
         if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.10)) {
-            // TODO: Maybe wait for a bigger change?, maybe over a longer time
+            // TODO: Maybe wait for a bigger change?, maybe over a 5 second longer time, maybe record every 5
             adjustmentHistory[0] = LoadAdjustment::NONE;
             adjustmentHistory[1] = LoadAdjustment::NONE;
             // Wait for power to stabilize
