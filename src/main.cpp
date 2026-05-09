@@ -494,45 +494,69 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
-
         } else if ((adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
-                   (adjustmentHistory[1] != LoadAdjustment::INCREASE) &&
                    (INA260::power_mW > powerHistory.back()) &&
-                   (powerIndex > 5)) {
-            // searchDone = false;
-            // powerIndex--;
-            powerIndex -= 5;
+                   (powerIndex > 0)) {
+            // Decreasing + got better -> decrease again
+            powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
-            // lastAdjustment = LoadAdjustment::DECREASE;
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
                      static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
-            ESP_LOGI(TAG, "Decreasing load to %d",
+            ESP_LOGI(TAG, "1Decreasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]); // TODO: Try by twos
-        } else if ((INA260::power_mW < powerHistory[powerHistory.size() - 3]) &&
-                   (INA260::power_mW < powerHistory[powerHistory.size() - 2]) &&
-                   (INA260::power_mW < powerHistory[powerHistory.size() - 1]) &&
+        } else if ((adjustmentHistory[0] != LoadAdjustment::INCREASE) &&
                    (powerIndex <
                     LOAD::RES_INDEX_TABLE.size() - 1)) { // MARK: BOLD LOAD
-            // INA260::power_mW < powerHistory[powerHistory.size() - 2])
-            // didn't work
+            // increasing + got better -> increase again
             // TODO: Not the best?
             powerIndex++;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
-            // lastAdjustment = LoadAdjustment::INCREASE;
             adjustmentHistory.push(LoadAdjustment::INCREASE);
             ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
                      static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
-            ESP_LOGI(TAG, "Increasing load to %d",
+            ESP_LOGI(TAG, "2Increasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
-            // todo RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS * 100
             // Delay an extra 1/2 second
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
-        } else { // todo: change trigger to when rpm changes or when power
+        } else if ((INA260::power_mW < powerHistory[powerHistory.size() - 3]) &&
+                   (INA260::power_mW < powerHistory[powerHistory.size() - 2]) &&
+                   (INA260::power_mW < powerHistory[powerHistory.size() - 1]) &&
+                   (adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
+                   (powerIndex <
+                    LOAD::RES_INDEX_TABLE.size() - 1)) { // MARK: BOLD LOAD
+            // Decreasing + got worse a bunch -> increase again
+            // TODO: Not the best?
+            powerIndex++;
+            load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            adjustmentHistory.push(LoadAdjustment::INCREASE);
+            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(powerHistory.back()),
+                     static_cast<int>(INA260::power_mW));
+            ESP_LOGI(TAG, "3Increasing load to %d",
+                     LOAD::RES_INDEX_TABLE[powerIndex]);
+            // Delay an extra 1/2 second
+            delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
+        } else if ((INA260::power_mW < powerHistory.back()) &&
+                   (adjustmentHistory[0] != LoadAdjustment::INCREASE) &&
+                   (powerIndex > 0)) { // MARK: BOLD LOAD
+            // increasing + got worse a bunch -> decrease
+            powerIndex--;
+            load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
+            adjustmentHistory.push(LoadAdjustment::DECREASE);
+            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(powerHistory.back()),
+                     static_cast<int>(INA260::power_mW));
+            ESP_LOGI(TAG, "4Decreasing load to %d",
+                     LOAD::RES_INDEX_TABLE[powerIndex]);
+            // Delay an extra 1/2 second
+            delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
+        } else { // DONE: change trigger to when rpm changes or when power
             // changes
             // No change
+            // DONE: What if it increases and gets worse?
         }
         powerHistory.push(INA260::power_mW);
 
