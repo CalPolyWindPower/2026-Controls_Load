@@ -571,9 +571,15 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
 
         uint32_t delay_ms = 0;
+        // Prepare power reading
+        int_fast32_t power_mW = INA260::power_mW;
+        if (power_mW < 0) {
+            power_mW = 0; // Don't send negative power readings
+        }
+        // Send
         if (loadComms.sendLoadboxData(
                 INA260::dVoltage_mVPS, INA260::current_mA,
-                INA260::dCurrent_mAPS,
+                INA260::dCurrent_mAPS, static_cast<uint16_t>(power_mW),
                 static_cast<ESTOP_TYPE_NET>(load.getSafetyFlag()))) {
             backoffFactor = RUN::TASK_INTERVALS::FAIL_BACKOFF_BASE_FACTOR;
             delay_ms = RUN::TASK_INTERVALS::TI_SEND_ms;

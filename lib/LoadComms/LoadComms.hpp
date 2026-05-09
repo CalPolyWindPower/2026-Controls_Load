@@ -68,7 +68,7 @@ class LoadComms {
      * @param safety Safety value to send.
      */
     bool sendLoadboxData(int16_t d_mVPS, int16_t current_mA, int16_t dIPS,
-                         ESTOP_TYPE_NET safety);
+                         uint16_t powerIfWholeNum_mW, ESTOP_TYPE_NET safety);
 
     /**
      * @brief Process communication - call in main loop.

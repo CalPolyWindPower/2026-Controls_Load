@@ -207,9 +207,11 @@ void LoadComms::onDataRecv_(const esp_now_recv_info_t *recv_info,
 }
 
 bool LoadComms::sendLoadboxData(int16_t d_mVPS, int16_t current_mA,
-                                int16_t dIPS, ESTOP_TYPE_NET safety) {
+                                int16_t dIPS, uint16_t powerIfWholeNum_mW,
+                                ESTOP_TYPE_NET safety) {
     // if (now - lastSendTime_ >= LOAD_COMMS_SEND_PERIOD_MS) {
-    makeLoadboxPacket(outgoingPacket_, d_mVPS, current_mA, dIPS, safety);
+    makeLoadboxPacket(outgoingPacket_, d_mVPS, current_mA, dIPS,
+                      powerIfWholeNum_mW, safety);
     esp_err_t result =
         esp_now_send(NACELLE_MAC, reinterpret_cast<uint8_t *>(&outgoingPacket_),
                      sizeof(outgoingPacket_));
