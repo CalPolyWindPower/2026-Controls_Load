@@ -38,6 +38,9 @@ namespace UM_PROS3 {
     // Onboard LED
     constexpr uint_fast8_t LED_DATA_PIN = RGB_DATA;
 
+    // Antenna Mux
+    constexpr uint_fast8_t ANTENNA_MUX_PIN = 11;
+
     // ESTOP
     constexpr uint_fast8_t ESTOP_PIN = 5;
 
@@ -93,16 +96,16 @@ namespace LED {
 namespace RUN {
     // Task Execution Intervals
     enum TASK_INTERVALS : uint32_t {
-        TI_FSM_mS = 50,          // CONFIG - 50 ms (20 Hz)
-        TI_POLL_SENSORS_mS = 3,  // CONFIG - 3 ms (333 Hz), stopped likeing 2 ms
-                                 // (100 Hz) around commit 9d80f8b
-        TI_ADJUST_LOAD_mS = 500, // CONFIG - 500 ms (2 Hz)
-        TI_RECV_ms = 50,         // CONFIG - 100 ms (10 Hz)
-        TI_SEND_ms = 75,         // CONFIG - 75 ms (13.33 Hz) // FIXME
-        TI_CFG_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
-        TI_TELNET_ms = 500,      // CONFIG - 500 ms (2 Hz)
-        TI_OTA_ms = 1000,        // CONFIG - 1000 ms (1 Hz)
-        TI_LOG_DATA_ms = 4000,   // CONFIG - 4000 ms (0.25 Hz)
+        TI_FSM_mS = 50,         // CONFIG - 50 ms (20 Hz)
+        TI_POLL_SENSORS_mS = 3, // CONFIG - 3 ms (333 Hz), stopped likeing 2 ms
+                                // (100 Hz) around commit 9d80f8b
+        TI_ADJUST_LOAD_mS = 1000, // CONFIG - 1000 ms (1 Hz)
+        TI_RECV_ms = 50,          // CONFIG - 100 ms (10 Hz)
+        TI_SEND_ms = 75,          // CONFIG - 75 ms (13.33 Hz) // FIXME
+        TI_CFG_ms = 1000,         // CONFIG - 1000 ms (1 Hz)
+        TI_TELNET_ms = 500,       // CONFIG - 500 ms (2 Hz)
+        TI_OTA_ms = 1000,         // CONFIG - 1000 ms (1 Hz)
+        TI_LOG_DATA_ms = 4000,    // CONFIG - 4000 ms (0.25 Hz)
         FAIL_BACKOFF_BASE_FACTOR =
             10, // CONFIG - Multiplier for task delay on failure
         FAIL_BACKOFF_MULTIPLIER =

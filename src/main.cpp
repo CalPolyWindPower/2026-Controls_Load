@@ -183,6 +183,9 @@ void setup() {
     // Configure New ESP-NOW + WiFI implementation
 
     // Configure WiFi
+    // TODO
+    pinMode(UM_PROS3::ANTENNA_MUX_PIN, OUTPUT);
+    digitalWrite(UM_PROS3::ANTENNA_MUX_PIN, HIGH);
     // static bool wifiInitialized = false;
     // if (!wifiInitialized) {
     //     leds.setPixelColor(0, 0x00, 0x00, 0xFF); // blue
@@ -430,7 +433,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        static int i = 0;
+        // static int i = 0;
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
         //          pitchPIDController.compute(
         //              i)); // todo - just a quick performances test
@@ -442,6 +445,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             (UNITS::MILLIS_PER_SEC / RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
         static etl::circular_buffer<int_fast32_t, powerHistoryLength>
             powerHistory;
+        // static int_fast8_t powerIndex = powerHistory.size() - 1;
         static int_fast8_t powerIndex = 46;
         // static bool searchDone = false;
         enum class LoadAdjustment : uint_fast8_t { INCREASE, DECREASE, NONE };
@@ -456,17 +460,32 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
             continue;
         }
-        if (abs(powerHistory.front()) * 1.30 < abs(powerHistory.back())) {
+        if (abs(powerHistory.front()) * 1.20 < abs(powerHistory.back())) {
             // DONE: Consider waiting for a bigger change over 5 seconds instead
             // of checking dPower_mWPS
             // Run algo again if power increases by more than 30% in five
             // seconds
             adjustmentHistory[0] = LoadAdjustment::NONE;
             adjustmentHistory[1] = LoadAdjustment::NONE;
+            ESP_LOGI(TAG, "Running load adjustment");
+            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(powerHistory.back()),
+                     static_cast<int>(INA260::power_mW));
             // Wait for power to stabilize
         } else if (abs(INA260::dPower_mWPS) > (abs(INA260::power_mW) * 0.05)) {
+            ESP_LOGW(TAG, "Power unstable");
+            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(powerHistory.back()),
+                     static_cast<int>(INA260::power_mW));
             // Wait for power to stabilize
-        } else if ((powerHistory.empty()) && (powerIndex > 0)) {
+        } else if (powerHistory.empty()) {
+            ESP_LOGW(TAG, "Insufficient data");
+            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(powerHistory.back()),
+                     static_cast<int>(INA260::power_mW));
+            // Don't do anything until one reading has been made
+        } else if ((powerHistory.size() == 1) && (powerIndex > 0)) {
+            // Make initial adjustment when one value filled
             powerIndex--;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
@@ -479,9 +498,10 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         } else if ((adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
                    (adjustmentHistory[1] != LoadAdjustment::INCREASE) &&
                    (INA260::power_mW > powerHistory.back()) &&
-                   (powerIndex > 0)) {
+                   (powerIndex > 5)) {
             // searchDone = false;
-            powerIndex--;
+            // powerIndex--;
+            powerIndex -= 5;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             // lastAdjustment = LoadAdjustment::DECREASE;
             adjustmentHistory.push(LoadAdjustment::DECREASE);
@@ -490,8 +510,13 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Decreasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]); // TODO: Try by twos
-        } else if ((INA260::power_mW < powerHistory.back()) &&
-                   (powerIndex < 46)) {
+        } else if ((INA260::power_mW < powerHistory[powerHistory.size() - 3]) &&
+                   (INA260::power_mW < powerHistory[powerHistory.size() - 2]) &&
+                   (INA260::power_mW < powerHistory[powerHistory.size() - 1]) &&
+                   (powerIndex <
+                    LOAD::RES_INDEX_TABLE.size() - 1)) { // MARK: BOLD LOAD
+            // INA260::power_mW < powerHistory[powerHistory.size() - 2])
+            // didn't work
             // TODO: Not the best?
             powerIndex++;
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
@@ -790,7 +815,8 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
         // delay(LOG_ITEM_INTERVAL_MS);
 
-        ESP_LOGI(TAG, "Curr. State: %d", loadFSM.getCurrentState());
+        ESP_LOGI(TAG, "Curr. State: %d",
+                 loadFSM.getCurrentState()); // todo - can get stuck?
         // delay(LOG_ITEM_INTERVAL_MS);
 
         // TODO: Improve logging, check ESTOP logic

@@ -59,8 +59,10 @@ class LoadContainer {
         // return (angularAccel_RPMPS < 20);
     } // todo - steady power is actually more important
     inline bool isTargetRPMExceeded() const {
-        constexpr uint_fast16_t TARGET_RPM = 2200; // todo
-        return (currentRPM > TARGET_RPM);
+        // constexpr uint_fast16_t TARGET_RPM = 2200; // todo
+        // return (currentRPM > TARGET_RPM);
+        constexpr uint_fast16_t TARGET_POWER_mW = 28000; // todo
+        return (INA260::power_mW > TARGET_POWER_mW);
     } // todo
 
     inline void updateSafetyFlag() {

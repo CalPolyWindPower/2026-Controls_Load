@@ -102,6 +102,7 @@ class LoadFSM {
         }
         // todo cycling between 2 and 3
         // Check other transition conditions
+        constexpr int_fast16_t MIN_LOAD_VOLTAGE_mV = 10000;
         if ((currentState == FSMCommon::States::sRST) &&
             (load.getRPM() > static_cast<int_fast16_t>(START_RUN_2_RPM))) {
             // sRST -> sStartRun
@@ -111,7 +112,8 @@ class LoadFSM {
             // Load is already off
 
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if ((currentState == FSMCommon::States::sStartRun) &&
+        } else if ((INA260::voltage_mV >= MIN_LOAD_VOLTAGE_mV) &&
+                   (currentState == FSMCommon::States::sStartRun) &&
                    load.isSteadyRPM()) {
             // sStartRun -> sRunLoad
             // Note: The producing positive power condition is handled by the
