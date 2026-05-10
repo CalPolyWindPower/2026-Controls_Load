@@ -465,8 +465,9 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             // of checking dPower_mWPS
             // Run algo again if power increases by more than 30% in five
             // seconds
-            adjustmentHistory[0] = LoadAdjustment::NONE;
-            adjustmentHistory[1] = LoadAdjustment::NONE;
+            // adjustmentHistory[0] = LoadAdjustment::NONE;
+            // adjustmentHistory[1] = LoadAdjustment::NONE;
+            adjustmentHistory.clear();
             ESP_LOGI(TAG, "Running load adjustment");
             ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
                      static_cast<int>(powerHistory.back()),
