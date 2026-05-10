@@ -527,8 +527,8 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Delay an extra 1/2 second
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
         } else if ((powerHistory.size() >= 3) &&
-                   (INA260::power_mW < powerHistory[powerHistory.size() - 3]) &&
-                   (INA260::power_mW < powerHistory[powerHistory.size() - 2]) &&
+                   (INA260::power_mW < powerHistory[powerHistory.size() - 3]) && // TODO
+                   (INA260::power_mW < powerHistory[powerHistory.size() - 2]) && // FIXME: 
                    (INA260::power_mW < powerHistory[powerHistory.size() - 1]) &&
                    (adjustmentHistory.back() == LoadAdjustment::DECREASE) &&
                    (powerIndex <
