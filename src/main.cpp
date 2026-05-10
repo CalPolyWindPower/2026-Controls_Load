@@ -495,7 +495,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "Initial load adjustment, setpoint: %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]);
-        } else if ((adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
+        } else if ((adjustmentHistory.back() == LoadAdjustment::DECREASE) &&
                    (INA260::power_mW > powerHistory.back()) &&
                    (powerIndex > 1)) {
             // Decreasing + got better -> decrease again
@@ -508,7 +508,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      static_cast<int>(INA260::power_mW));
             ESP_LOGI(TAG, "1Decreasing load to %d",
                      LOAD::RES_INDEX_TABLE[powerIndex]); // TODO: Try by twos
-        } else if ((adjustmentHistory[0] != LoadAdjustment::INCREASE) &&
+        } else if ((adjustmentHistory.back() == LoadAdjustment::INCREASE) &&
                    (INA260::power_mW > powerHistory.back()) &&
                    (powerIndex <
                     LOAD::RES_INDEX_TABLE.size() - 1)) { // MARK: BOLD LOAD
@@ -529,7 +529,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         } else if ((INA260::power_mW < powerHistory[powerHistory.size() - 3]) &&
                    (INA260::power_mW < powerHistory[powerHistory.size() - 2]) &&
                    (INA260::power_mW < powerHistory[powerHistory.size() - 1]) &&
-                   (adjustmentHistory[0] != LoadAdjustment::DECREASE) &&
+                   (adjustmentHistory.back() == LoadAdjustment::DECREASE) &&
                    (powerIndex <
                     LOAD::RES_INDEX_TABLE.size() - 1)) { // MARK: BOLD LOAD
             // Decreasing + got worse a bunch -> increase again
@@ -545,7 +545,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Delay an extra 1/2 second
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
         } else if ((INA260::power_mW < powerHistory.back()) &&
-                   (adjustmentHistory[0] != LoadAdjustment::INCREASE) &&
+                   (adjustmentHistory.back() == LoadAdjustment::INCREASE) &&
                    (powerIndex > 0)) { // MARK: BOLD LOAD
             // increasing + got worse a bunch -> decrease
             // powerIndex--;
