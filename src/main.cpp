@@ -460,7 +460,13 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
             continue;
         }
-        if (abs(powerHistory.front()) * 1.20 < abs(powerHistory.back())) {
+        if (powerHistory.empty()) {
+            ESP_LOGW(TAG, "Insufficient data");
+            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
+                     static_cast<int>(powerHistory.back()),
+                     static_cast<int>(INA260::power_mW));
+            // Don't do anything until one reading has been made
+        } else if (abs(powerHistory.front()) * 1.20 < abs(powerHistory.back())) {
             // DONE: Consider waiting for a bigger change over 5 seconds instead
             // of checking dPower_mWPS
             // Run algo again if power increases by more than 30% in five
@@ -478,16 +484,10 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
             // Wait for power to stabilize
-        } else if (powerHistory.empty()) {
-            ESP_LOGW(TAG, "Insufficient data");
-            ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
-                     static_cast<int>(powerHistory.back()),
-                     static_cast<int>(INA260::power_mW));
-            // Don't do anything until one reading has been made
         } else if ((powerHistory.size() == 1) && (powerIndex > 1)) {
             // Make initial adjustment when one value filled
             // powerIndex--;
-            powerIndex -= 2;
+            powerIndex > 2 ? powerIndex -= 2 : powerIndex = 0; // FIXED, avoiding out of bounds condition
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
@@ -500,7 +500,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                    (powerIndex > 1)) {
             // Decreasing + got better -> decrease again
             // powerIndex--;
-            powerIndex -= 2;
+            powerIndex > 2 ? powerIndex -= 2 : powerIndex = 0; // FIXED, avoiding out of bounds condition
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGD(TAG, "Last power: %d mW, current power: %d mW",
@@ -526,7 +526,8 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                      LOAD::RES_INDEX_TABLE[powerIndex]);
             // Delay an extra 1/2 second
             delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
-        } else if ((INA260::power_mW < powerHistory[powerHistory.size() - 3]) &&
+        } else if ((powerHistory.size() >= 3) &&
+                   (INA260::power_mW < powerHistory[powerHistory.size() - 3]) &&
                    (INA260::power_mW < powerHistory[powerHistory.size() - 2]) &&
                    (INA260::power_mW < powerHistory[powerHistory.size() - 1]) &&
                    (adjustmentHistory.back() == LoadAdjustment::DECREASE) &&
@@ -549,7 +550,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
                    (powerIndex > 0)) { // MARK: BOLD LOAD
             // increasing + got worse a bunch -> decrease
             // powerIndex--;
-            powerIndex -= 2;
+            powerIndex > 2 ? powerIndex -= 2 : powerIndex = 0; // FIXED, avoiding out of bounds condition
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[powerIndex]);
             adjustmentHistory.push(LoadAdjustment::DECREASE);
             ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
