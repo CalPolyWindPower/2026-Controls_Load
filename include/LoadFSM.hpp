@@ -114,7 +114,7 @@ class LoadFSM {
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((INA260::voltage_mV >= MIN_LOAD_VOLTAGE_mV) &&
                    (currentState == FSMCommon::States::sStartRun) &&
-                   load.isSteadyRPM()) {
+                   load.isSteadyRPM()) { // FIXME - steady ROM condition
             // sStartRun -> sRunLoad
             // Note: The producing positive power condition is handled by the
             // reset logic
