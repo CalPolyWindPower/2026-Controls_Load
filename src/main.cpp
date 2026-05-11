@@ -574,18 +574,24 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
 #endif
         constexpr int_fast16_t V1SP_mV = 10000;  // CONFIG - 10 V
         constexpr int_fast16_t V2SP_mV = 15000;  // CONFIG - 15 V
+        constexpr int_fast16_t V3SP_mV = 18000;  // CONFIG - 18 V
         constexpr float FALL_HYSTERESIS = 0.95f; // CONFIG - 5% margin
+        constexpr uint_fast8_t LOAD_GPIO_V0SP =
+            63; // CONFIG - GPIO for V1 setpoint
         constexpr uint_fast8_t LOAD_GPIO_V1SP =
             31; // CONFIG - GPIO for V1 setpoint
         constexpr uint_fast8_t LOAD_GPIO_V2SP =
-            5; // CONFIG - GPIO for V2 setpoint, must be different from V1
+            25; // CONFIG - GPIO for V2 setpoint, must be different from V1
+        constexpr uint_fast8_t LOAD_GPIO_V3SP =
+            5; // CONFIG - GPIO for V3 setpoint, must be different from V1 and
+               // V2
 
         if (INA260::voltage_mV <
             static_cast<int_fast16_t>(V1SP_mV * FALL_HYSTERESIS)) {
             /* Fall below minimum: (< 10*0.05 V) */
-            load.setLoadGPIO(63);
+            load.setLoadGPIO(LOAD_GPIO_V0SP);
             ESP_LOGI(TAG, "Voltage below %d mV, setting load to %d", V2SP_mV,
-                     63);
+                     LOAD_GPIO_V0SP);
         } else if ((INA260::voltage_mV > V1SP_mV) &&
                    (INA260::voltage_mV <= V2SP_mV)) {
             /* Increase to stage 2: !(< 10*0.05 V) & (> 10 V & < 15 V) */
@@ -599,12 +605,26 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             load.setLoadGPIO(LOAD_GPIO_V1SP);
             ESP_LOGI(TAG, "Voltage below %d mV, setting load to %d", V2SP_mV,
                      LOAD_GPIO_V1SP);
-        } else if (INA260::voltage_mV > V2SP_mV) {
+        } else if ((INA260::voltage_mV > V2SP_mV) &&
+                   (INA260::voltage_mV <= V3SP_mV)) {
             /* Increase to stage 3: !(< 10*0.05 V) & !(> 10 V & < 15 V) &
-             !(< 15*0.05 V) & (> 15 V) */
+             !(< 15*0.05 V) & (> 15 V & <= 18 V) */
             load.setLoadGPIO(LOAD_GPIO_V2SP);
             ESP_LOGI(TAG, "Voltage above %d mV, setting load to %d", V1SP_mV,
                      LOAD_GPIO_V2SP);
+        } else if (INA260::voltage_mV <
+                   static_cast<int_fast16_t>(V3SP_mV * FALL_HYSTERESIS)) {
+            /* Fall to stage 3: !(< 10*0.05 V) & !(> 10 V & < 15 V) &
+             !(< 15*0.05 V) & !(> 15 V & <= 18 V) & (< 18*0.05 V) */
+            load.setLoadGPIO(LOAD_GPIO_V2SP);
+            ESP_LOGI(TAG, "Voltage below %d mV, setting load to %d", V3SP_mV,
+                     LOAD_GPIO_V2SP);
+        } else if (INA260::voltage_mV > V3SP_mV) {
+            /* Increase to stage 4: !(< 10*0.05 V) & !(> 10 V & < 15 V) &
+             !(< 15*0.05 V) & !(> 15 V) & !(< 18*0.05 V) & (> 18 V) */
+            load.setLoadGPIO(LOAD_GPIO_V3SP);
+            ESP_LOGI(TAG, "Voltage above %d mV, setting load to %d", V3SP_mV,
+                     LOAD_GPIO_V3SP);
         }
 
         delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
