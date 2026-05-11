@@ -40,6 +40,7 @@ namespace INA260 {
     std::atomic<int_fast32_t> power_mW = 0;
     int_fast32_t prevPower_mW = 0;
     std::atomic<int_fast32_t> dPower_mWPS = 0;
+    static int_fast32_t antiBackwards = 0;
 
     namespace detail {
         unsigned long lastUpdateTime_us = 0;

@@ -61,7 +61,7 @@ class LoadContainer {
     inline bool isTargetRPMExceeded() const {
         // constexpr uint_fast16_t TARGET_RPM = 2200; // todo
         // return (currentRPM > TARGET_RPM);
-        constexpr uint_fast16_t TARGET_POWER_mW = 28000; // todo
+        constexpr uint_fast16_t TARGET_POWER_mW = 40000; // todo
         return (INA260::power_mW > TARGET_POWER_mW);
     } // todo
 

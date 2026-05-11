@@ -585,20 +585,23 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         // Note: Could be more efficient (?) but then I'd have to add more flow
         // control
-        if ((INA260::voltage_mV > V1SP_mV) && (INA260::voltage_mV <= V2SP_mV)) {
+        if ((INA260::antiBackwards < 1) && (INA260::voltage_mV > V1SP_mV) && (INA260::voltage_mV <= V2SP_mV)) {
             /* Increase to stage 2: (> 10 V & < 15 V) */
+            INA260::antiBackwards = 1;
             load.setLoadGPIO(LOAD_GPIO_V1SP);
             ESP_LOGI(TAG, "Voltage between %d mV and %d mV, setting load to %d",
                      V1SP_mV, V2SP_mV, LOAD_GPIO_V1SP);
-        } else if ((INA260::voltage_mV > V2SP_mV) &&
+        } else if ((INA260::antiBackwards < 2) &&(INA260::voltage_mV > V2SP_mV) &&
                    (INA260::voltage_mV <= V3SP_mV)) {
+            INA260::antiBackwards = 2;
             /* Increase to stage 3:  !(> 10 V & < 15 V) & (> 15 V & <= 18 V) */
             load.setLoadGPIO(LOAD_GPIO_V2SP);
             ESP_LOGI(TAG, "Voltage above %d mV, setting load to %d", V1SP_mV,
                      LOAD_GPIO_V2SP);
-        } else if (INA260::voltage_mV > V3SP_mV) {
+        } else if ((INA260::antiBackwards < 3) && (INA260::voltage_mV > V3SP_mV)) {
             /* Increase to stage 4: !(< 10*0.05 V) & !(> 10 V & < 15 V) &
              !(< 15*0.05 V) & !(> 15 V) & !(< 18*0.05 V) & (> 18 V) */
+            INA260::antiBackwards = 3;
             load.setLoadGPIO(LOAD_GPIO_V3SP);
             ESP_LOGI(TAG, "Voltage above %d mV, setting load to %d", V3SP_mV,
                      LOAD_GPIO_V3SP);
