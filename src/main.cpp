@@ -430,9 +430,13 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @brief Task to control the pitch actuator
  */
+#define LOAD_STRATEGY_MPPT_POM 0
+#define LOAD_STRATEGY_VOLTAGE_LIV 1
+#define LOAD_STRATEGY LOAD_STRATEGY_VOLTAGE_LIV
 [[noreturn]] void
 vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
+#if LOAD_STRATEGY == LOAD_STRATEGY_MPPT_POM
         // static int i = 0;
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
         //          pitchPIDController.compute(
@@ -467,8 +471,7 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             // seconds
             // adjustmentHistory[0] = LoadAdjustment::NONE;
             // adjustmentHistory[1] = LoadAdjustment::NONE;
-            adjustmentHistory.clear();
-            ESP_LOGI(TAG, "Running load adjustment");
+            adjustmentHistory.clear() ESP_LOGI(TAG, "Running load adjustment");
             ESP_LOGI(TAG, "Last power: %d mW, current power: %d mW",
                      static_cast<int>(powerHistory.back()),
                      static_cast<int>(INA260::power_mW));
@@ -566,6 +569,43 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             // DONE: What if it increases and gets worse?
         }
         powerHistory.push(INA260::power_mW);
+#elif LOAD_STRATEGY == LOAD_STRATEGY_VOLTAGE_LIV
+
+#endif
+        constexpr int_fast16_t V1SP_mV = 10000;  // CONFIG - 10 V
+        constexpr int_fast16_t V2SP_mV = 15000;  // CONFIG - 15 V
+        constexpr float FALL_HYSTERESIS = 0.95f; // CONFIG - 5% margin
+        constexpr uint_fast8_t LOAD_GPIO_V1SP =
+            31; // CONFIG - GPIO for V1 setpoint
+        constexpr uint_fast8_t LOAD_GPIO_V2SP =
+            5; // CONFIG - GPIO for V2 setpoint, must be different from V1
+
+        if (INA260::voltage_mV <
+            static_cast<int_fast16_t>(V1SP_mV * FALL_HYSTERESIS)) {
+            /* Fall below minimum: (< 10*0.05 V) */
+            load.setLoadGPIO(63);
+            ESP_LOGI(TAG, "Voltage below %d mV, setting load to %d", V2SP_mV,
+                     63);
+        } else if ((INA260::voltage_mV > V1SP_mV) &&
+                   (INA260::voltage_mV <= V2SP_mV)) {
+            /* Increase to stage 2: !(< 10*0.05 V) & (> 10 V & < 15 V) */
+            load.setLoadGPIO(LOAD_GPIO_V1SP);
+            ESP_LOGI(TAG, "Voltage between %d mV and %d mV, setting load to %d",
+                     V1SP_mV, V2SP_mV, LOAD_GPIO_V1SP);
+        } else if (INA260::voltage_mV <
+                   static_cast<int_fast16_t>(V2SP_mV * FALL_HYSTERESIS)) {
+            /* Fall to stage 2: !(< 10*0.05 V) & !(> 10 V & < 15 V) &
+             (< 15*0.05 V) */
+            load.setLoadGPIO(LOAD_GPIO_V1SP);
+            ESP_LOGI(TAG, "Voltage below %d mV, setting load to %d", V2SP_mV,
+                     LOAD_GPIO_V1SP);
+        } else if (INA260::voltage_mV > V2SP_mV) {
+            /* Increase to stage 3: !(< 10*0.05 V) & !(> 10 V & < 15 V) &
+             !(< 15*0.05 V) & (> 15 V) */
+            load.setLoadGPIO(LOAD_GPIO_V2SP);
+            ESP_LOGI(TAG, "Voltage above %d mV, setting load to %d", V1SP_mV,
+                     LOAD_GPIO_V2SP);
+        }
 
         delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
     }
@@ -599,7 +639,8 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
         }
 
         // BaseType_t xWasDelayed = xTaskDelayUntil(
-        //     &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
+        //     &xLastWakeTime,
+        //     pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
         // if (xWasDelayed == pdFALSE) {
         //     ESP_LOGE(TAG, "Timing");
         // }
@@ -772,8 +813,8 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
 
         constexpr uint_fast8_t REC_BYTES_PER_TASK = 40;
         constexpr uint_fast8_t NUM_ESP_TASKS =
-            11; // TODO: Why was this set to 8 and why did I need to increase it
-                // by 3?
+            11; // TODO: Why was this set to 8 and why did I need to
+                // increase it by 3?
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
         char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
@@ -842,7 +883,8 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS = RUN::TASK_INTERVALS::TI_LOG_DATA_ms;
         } else {
             ESP_LOGI(TAG, "Temp.: %d dC", tempTrunc_C);
         }
-        // Disable the temperature sensor if it is not needed and save the power
+        // Disable the temperature sensor if it is not needed and save the
+        // power
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
         // delay(LOG_ITEM_INTERVAL_MS);
 
