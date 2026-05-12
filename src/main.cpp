@@ -612,15 +612,16 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         }
 #elif LOAD_STRATEGY == LOAD_STRATEGY_VOLTAGE_FIX
         // Iterate over the parallel array in revers order
-        static uint_fast8_t voltLimitIndex = LOAD::VOLT_LIMITS_TABLE_mV.size() - 1;
+        static uint_fast8_t voltLimitIndex =
+            LOAD::VOLT_LIMITS_TABLE_mV.size() - 1;
         // LCR: Load Control Resistor
         static uint_fast8_t lCRIndex = LOAD::RES_INDEX_TABLE.size() - 1;
 
         constexpr int_fast16_t MAX_SAFE_VOLTAGE_mV =
             30000; // CONFIG - Actually 32 or 36 V max
         if (INA260::voltage_mV > MAX_SAFE_VOLTAGE_mV) {
-            ESP_LOGW(TAG, "%d mV exceeds max safe of %d mV", INA260::voltage_mV,
-                     MAX_SAFE_VOLTAGE_mV);
+            ESP_LOGW(TAG, "%d mV exceeds max safe of %d mV",
+                     INA260::voltage_mV.load(), MAX_SAFE_VOLTAGE_mV);
             // Decrease limit
             if (voltLimitIndex > 0) {
                 // Have not reached lowest value
@@ -637,7 +638,8 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
         }
 
         ESP_LOGI(TAG, "Adjust Load: %d mV, Threshold: %d mV",
-                 INA260::voltage_mV, LOAD::VOLT_LIMITS_TABLE_mV[voltLimitIndex]);
+                 INA260::voltage_mV.load(),
+                 LOAD::VOLT_LIMITS_TABLE_mV[voltLimitIndex]);
         if (INA260::voltage_mV > LOAD::VOLT_LIMITS_TABLE_mV[voltLimitIndex]) {
             // Exceeded threshold voltage
             load.setLoadGPIO(LOAD::RES_INDEX_TABLE[lCRIndex]);
