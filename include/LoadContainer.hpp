@@ -20,7 +20,7 @@ class LoadContainer {
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
 
-    TaskInfo tFSM{vTaskUpdateFSM, "FSM", 2048,  nullptr, 20,
+    TaskInfo tFSM{vTaskUpdateFSM, "FSM", 4096,  nullptr, 20,
                   nullptr,        0,     false, true};
     TaskInfo tPoll{vTPollS, "Poll", 4096,  nullptr, 20,
                    nullptr, 0,      false, false};
@@ -61,7 +61,7 @@ class LoadContainer {
     inline bool isTargetRPMExceeded() const {
         // constexpr uint_fast16_t TARGET_RPM = 2200; // todo
         // return (currentRPM > TARGET_RPM);
-        constexpr uint_fast16_t TARGET_POWER_mW = 40000; // todo
+        constexpr uint_fast16_t TARGET_POWER_mW = 40000; // TODO, expecting ? RPM
         return (INA260::power_mW > TARGET_POWER_mW);
     } // todo
 

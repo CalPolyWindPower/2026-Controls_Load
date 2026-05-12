@@ -57,13 +57,13 @@ class LoadFSM {
      * an error occurred
      */
     UPDATE_RESULT updateState() {
-        ESP_LOGI(TAG, "AWDAWDAWDA");
+        // ESP_LOGI(TAG, "AWDAWDAWDA");
         // Check safety task / E-Stop conditions
         if ((currentState != FSMCommon::States::sESTOP) &&
             (load.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
             // * -> sESTOP
             currentState = FSMCommon::States::sESTOP;
-            ESP_LOGI(TAG, "ANTIBACKWARDS = %s", antiBackwards);
+            // ESP_LOGI(TAG, "ANTIBACKWARDS = %s", antiBackwards);
             // DONE: Signal nacelle to ESTOP (setSafetyFlag)
             vTaskSuspend(load.tAdjustLoad.pxHandle);
             // Don't adjust load
@@ -71,7 +71,7 @@ class LoadFSM {
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sESTOP) &&
                    (load.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
-                    INA260::antiBackwards = 0;
+                    // INA260::antiBackwards = 0;
             // sESTOP -> sESTOP: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } else {
@@ -153,7 +153,7 @@ class LoadFSM {
         return UPDATE_RESULT::ERROR;
     }
 
-    int antiBackwards = 0;
+    // int antiBackwards = 0;
   private:               // MARK: Private
     LoadContainer &load; // todo switch to by reference
 
