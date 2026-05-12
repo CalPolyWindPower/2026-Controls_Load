@@ -189,16 +189,16 @@ namespace LOAD {
     static_assert(NUM_COMBINATIONS == (1u << NUM_PINS),
                   "NUM_COMBINATIONS must be 2^NUM_PINS");
 
-    constexpr uint_fast8_t VOLT_LIMIT_SIZE = 21; // CONFIG
+    constexpr uint_fast8_t VOLT_LIMIT_SIZE = 20; // CONFIG
     etl::array<uint_fast16_t, VOLT_LIMIT_SIZE> VOLT_LIMITS_TABLE_mV = {
         20'000, 19'500, 19'375, 19'250, 19'125, // 4
         19'000, 18'500, 18'000, 17'500, 17'000, // 3
         16'000, 00'000, 15'000, 14'600, 14'200, // 2
-        13'800, 13'400, 13'000, 12'000, 11'000, // 1
-        10'000                                  // 0
+        13'800, 13'400, 13'000, 12'000, 11'000//, // 1
+        // 10'000                                  // 0
     };
 
-    constexpr uint_fast8_t RES_INDEX_SIZE = 46; // CONFIG
+    constexpr uint_fast8_t RES_INDEX_SIZE = 45; // CONFIG
     etl::array<uint_fast8_t, RES_INDEX_SIZE> RES_INDEX_TABLE = {
         0,  1,  2,  4,  3,  // 9
         8,  5,  6,  9,  12, // 8
@@ -208,8 +208,8 @@ namespace LOAD {
         31, 33, 35, 36, 40, // 4
         37, 41, 39, 44, 48, // 3
         45, 46, 50, 47, 51, // 2
-        56, 53, 54, 57, 55, // 1
-        60                  // 0
+        56, 53, 54, 57, 55//, // 1
+        // 60                  // 0
     };
     // constexpr uint_fast8_t RES_INDEX_SIZE = 46; // CONFIG
     // etl::array<uint_fast8_t, RES_INDEX_SIZE> RES_INDEX_TABLE = {
