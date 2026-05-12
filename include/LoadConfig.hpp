@@ -189,15 +189,42 @@ namespace LOAD {
     static_assert(NUM_COMBINATIONS == (1u << NUM_PINS),
                   "NUM_COMBINATIONS must be 2^NUM_PINS");
 
-    etl::array<uint_fast8_t, 46> RES_INDEX_TABLE = {
-        0,  1,  2,  4,  3,  8,  5,  6,  9,  12, 16, 11, 7,  14, 13, 15,
-        19, 24, 21, 22, 25, 23, 28, 29, 32, 31, 33, 35, 36, 40, 37, 41,
-        39, 44, 48, 45, 46, 50, 47, 51, 56, 53, 54, 57, 55, 60};
+    constexpr uint_fast8_t VOLT_LIMIT_SIZE = 12; // CONFIG
+    etl::array<uint_fast16_t, VOLT_LIMIT_SIZE> VOLT_LIMITS_TABLE_mV = {
+        2000,                         //
+        1900, 1800, 1700, 1600, 1400, //
+        1500, 1400, 1300, 1200, 1100, //
+        1000};
+
+    constexpr uint_fast8_t RES_INDEX_SIZE = 46; // CONFIG
+    etl::array<uint_fast8_t, RES_INDEX_SIZE> RES_INDEX_TABLE = {
+        0,  1,  2,  4,  3,  //
+        8,  5,  6,  9,  12, //
+        16, 11, 7,  14, 13, //
+        15, 19, 24, 21, 22, //
+        25, 23, 28, 29, 32, //
+        31, 33, 35, 36, 40, //
+        37, 41, 39, 44, 48, //
+        45, 46, 50, 47, 51, //
+        56, 53, 54, 57, 55, //
+        60};
+    // constexpr uint_fast8_t RES_INDEX_SIZE = 46; // CONFIG
+    // etl::array<uint_fast8_t, RES_INDEX_SIZE> RES_INDEX_TABLE = {
+    //     0,  1,  2,  4,  3,  8,  5,  6,  9,  12, 16, 11, 7,  14, 13, 15,
+    //     19, 24, 21, 22, 25, 23, 28, 29, 32, 31, 33, 35, 36, 40, 37, 41,
+    //     39, 44, 48, 45, 46, 50, 47, 51, 56, 53, 54, 57, 55, 60};
+
+    static_assert(
+        VOLT_LIMIT_SIZE <= RES_INDEX_SIZE,
+        "VOLT_LIMIT_SIZE must be less than or equal to RES_INDEX_SIZE");
+    static_assert(
+        RES_INDEX_SIZE <= NUM_COMBINATIONS,
+        "RES_INDEX_SIZE must be less than or equal to NUM_COMBINATIONS");
 
     /**
-     * @brief Resistor values, in milli‑ohms, corresponding to each pin.  Note
-     * that the resistors will be connected in series, so the total resistance
-     * is the sum of the selected resistors.
+     * @brief Resistor values, in milli‑ohms, corresponding to each pin.
+     * Note that the resistors will be connected in series, so the total
+     * resistance is the sum of the selected resistors.
      */
     constexpr etl::array<uint_fast16_t, NUM_PINS> PIN_VALUES_mOhms = {
         500, 1000, 2000, 2200, 5000, 10000}; // in mOhms, in series // TODO

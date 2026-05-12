@@ -432,7 +432,8 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
  */
 #define LOAD_STRATEGY_MPPT_POM 0
 #define LOAD_STRATEGY_VOLTAGE_LIV 1
-#define LOAD_STRATEGY LOAD_STRATEGY_VOLTAGE_LIV
+#define LOAD_STRATEGY_VOLTAGE_FIX 2
+#define LOAD_STRATEGY LOAD_STRATEGY_VOLTAGE_FIX
 [[noreturn]] void
 vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
@@ -585,20 +586,23 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         // Note: Could be more efficient (?) but then I'd have to add more flow
         // control
-        if ((INA260::antiBackwards < 1) && (INA260::voltage_mV > V1SP_mV) && (INA260::voltage_mV <= V2SP_mV)) {
+        if ((INA260::antiBackwards < 1) && (INA260::voltage_mV > V1SP_mV) &&
+            (INA260::voltage_mV <= V2SP_mV)) {
             /* Increase to stage 2: (> 10 V & < 15 V) */
             INA260::antiBackwards = 1;
             load.setLoadGPIO(LOAD_GPIO_V1SP);
             ESP_LOGI(TAG, "Voltage between %d mV and %d mV, setting load to %d",
                      V1SP_mV, V2SP_mV, LOAD_GPIO_V1SP);
-        } else if ((INA260::antiBackwards < 2) &&(INA260::voltage_mV > V2SP_mV) &&
+        } else if ((INA260::antiBackwards < 2) &&
+                   (INA260::voltage_mV > V2SP_mV) &&
                    (INA260::voltage_mV <= V3SP_mV)) {
             INA260::antiBackwards = 2;
             /* Increase to stage 3:  !(> 10 V & < 15 V) & (> 15 V & <= 18 V) */
             load.setLoadGPIO(LOAD_GPIO_V2SP);
             ESP_LOGI(TAG, "Voltage above %d mV, setting load to %d", V1SP_mV,
                      LOAD_GPIO_V2SP);
-        } else if ((INA260::antiBackwards < 3) && (INA260::voltage_mV > V3SP_mV)) {
+        } else if ((INA260::antiBackwards < 3) &&
+                   (INA260::voltage_mV > V3SP_mV)) {
             /* Increase to stage 4: !(< 10*0.05 V) & !(> 10 V & < 15 V) &
              !(< 15*0.05 V) & !(> 15 V) & !(< 18*0.05 V) & (> 18 V) */
             INA260::antiBackwards = 3;
@@ -606,8 +610,54 @@ vTaskAdjustLoad([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGI(TAG, "Voltage above %d mV, setting load to %d", V3SP_mV,
                      LOAD_GPIO_V3SP);
         }
-#endif
+#elif LOAD_STRATEGY == LOAD_STRATEGY_VOLTAGE_FIX
+        // Iterate over the parallel array in revers order
+        static uint_fast8_t voltLimitIndex = LOAD::VOLT_LIMITS_TABLE_mV.size() - 1;
+        // LCR: Load Control Resistor
+        static uint_fast8_t lCRIndex = LOAD::RES_INDEX_TABLE.size() - 1;
 
+        constexpr int_fast16_t MAX_SAFE_VOLTAGE_mV =
+            30000; // CONFIG - Actually 32 or 36 V max
+        if (INA260::voltage_mV > MAX_SAFE_VOLTAGE_mV) {
+            ESP_LOGW(TAG, "%d mV exceeds max safe of %d mV", INA260::voltage_mV,
+                     MAX_SAFE_VOLTAGE_mV);
+            // Decrease limit
+            if (voltLimitIndex > 0) {
+                // Have not reached lowest value
+                voltLimitIndex--;
+            }
+            // Decrease load cont.
+            if (lCRIndex > 0) {
+                // Have not reached lowest value
+                lCRIndex--;
+                load.setLoadGPIO(LOAD::RES_INDEX_TABLE[lCRIndex]);
+            }
+            delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
+            continue;
+        }
+
+        ESP_LOGI(TAG, "Adjust Load: %d mV, Threshold: %d mV",
+                 INA260::voltage_mV, LOAD::VOLT_LIMITS_TABLE_mV[voltLimitIndex]);
+        if (INA260::voltage_mV > LOAD::VOLT_LIMITS_TABLE_mV[voltLimitIndex]) {
+            // Exceeded threshold voltage
+            load.setLoadGPIO(LOAD::RES_INDEX_TABLE[lCRIndex]);
+            ESP_LOGI(TAG, "Set: %d", LOAD::RES_INDEX_TABLE[lCRIndex]);
+            // Decrease limit
+            if (voltLimitIndex > 0) {
+                // Have not reached lowest value
+                voltLimitIndex--;
+            }
+            // Decrease load cont.
+            if (lCRIndex > 0) {
+                // Have not reached lowest value
+                lCRIndex--;
+                load.setLoadGPIO(LOAD::RES_INDEX_TABLE[lCRIndex]);
+            }
+        } else {
+            // Did not exceed threshold voltage
+            ESP_LOGD(TAG, "No change");
+        }
+#endif
         delay(RUN::TASK_INTERVALS::TI_ADJUST_LOAD_mS);
     }
 }
