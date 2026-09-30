@@ -36,7 +36,7 @@
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
-#    include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+#    include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #else
 #    error "Invalid COMMS_STRATEGY"
 #endif
@@ -52,13 +52,20 @@ bool configureLoad();
 
 // MARK:  Global Objects
 
-LoadComms loadComms;
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
 // AdapterWLAN adapterWLAN = AdapterWLAN();
 // AdapterWLAN adapterWLAN;
 // AdapterESPNow adapterESPNow = AdapterESPNow();
 // AdapterESPNow adapterESPNow;
 // SyncedClock netClock = SyncedClock(adapterESPNow); // todo
-// SyncedClock netClock(adapterESPNow); // todo
+// SyncedClock netClock(adapterESPNow);               // todo
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
+LoadComms loadComms;
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+LoadComms loadComms;
+#else
+#    error "Invalid COMMS_STRATEGY"
+#endif
 
 Adafruit_NeoPixel leds(1, UM_PROS3::LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
 MCP23008T
@@ -205,16 +212,12 @@ void setup() {
     // (void)showLEDsIfReady();
 
     // Configure ESP-NOW
-    static bool espNowInitalized = false;
-    if (loadComms.begin()) {
-        espNowInitalized = true;
-    } else {
-        ESP_LOGE(TAG, "Failed to initialize load comms");
-    }
-    // if (!espNowInitalized) {
+    static bool commsInitalized = false;
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+    // if (!commsInitalized) {
     //     if (adapterESPNow.begin()) {
     //         ESP_LOGI(TAG, "ESP-NOW initialized.");
-    //         espNowInitalized = true;
+    //         commsInitalized = true;
     //     } else {
     //         ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
     //     }
@@ -222,7 +225,7 @@ void setup() {
     // leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
     // (void)showLEDsIfReady();
 
-    // Configure ESP-NOW Peers
+    // // Configure ESP-NOW Peers
     // static bool peerRegistered = false;
     // if (!peerRegistered) {
     //     if (adapterESPNow.registerPeer(WTbNetConfig::NACELLE_MAC)) {
@@ -232,10 +235,9 @@ void setup() {
     //         ESP_LOGE(TAG, "Failed to register peer");
     //     }
     // }
-    // leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
     // (void)showLEDsIfReady();
 
-    // Sync Time // FIXME! - Load accesses fault
+    // // Sync Time // FIXME! - Load accesses fault - DONE?
     // static bool timeSynced = false;
     // if (!timeSynced) {
     //     if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
@@ -248,12 +250,28 @@ void setup() {
     // leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
     // (void)showLEDsIfReady();
 
-    // Print MAC Address // todo - verify
+    // // Print MAC Address // todo - verify
     // ESP_LOGI(
     //     TAG, "MAC Address: %s",
     //     AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
     // leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
     // (void)showLEDsIfReady();
+
+    // TODO: Check ESP-NOW impl against last years
+    // TODO: Configure response handler, load server
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
+    if (loadComms.begin()) {
+        commsInitalized = true;
+    } else {
+        ESP_LOGE(TAG, "Failed to initialize loadComms");
+    }
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+    if (loadComms.begin()) {
+        commsInitalized = true;
+    } else {
+        ESP_LOGE(TAG, "Failed to initialize loadComms");
+    }
+#endif
 
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server

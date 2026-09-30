@@ -1,6 +1,6 @@
 /**
  * @file LoadComms.h
- * @brief ESP-NOW communication module for load box controller.
+ * @brief Communication module for load box controller.
  *
  * Handles wireless communication between load box and nacelle.
  * Sends state, E-stop, and actuator position data while receiving RPM data.
@@ -18,10 +18,14 @@
 
 #include <2026Core/TurbinePacket/TurbinePacket.hpp>
 #include <Arduino.h>
-#include <WiFi.h>
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#    include <WiFi.h>
+#    include <esp_now.h>
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+#endif
 #include <atomic>
 #include <cstdint>
-#include <esp_now.h>
 #include <etl/format_spec.h>
 #include <etl/string.h>
 #include <etl/to_string.h>
@@ -48,8 +52,9 @@ extern const uint8_t *NACELLE_MAC;
 class LoadComms {
   public:
     static constexpr char *TAG = "LCO";
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
     static constexpr uint8_t wiFiChannel = 6;
-
+#endif
     static QueueHandle_t priorityDataQueue;
 
     /**
@@ -123,6 +128,7 @@ class LoadComms {
     bool linkAlive_; ///< Link health status.
     // float nacelleRPM_;                     ///< Cached RPM value.
 
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
     /**
      * @brief Configure ESP-NOW peer.
      * @returns ESP_OK if peer setup successful, error code otherwise.
@@ -146,5 +152,6 @@ class LoadComms {
     static void onDataRecv_(const esp_now_recv_info_t *recv_info,
                             const uint8_t *data, int len);
 };
+#endif
 
 #endif // LOAD_COMMS_HPP
