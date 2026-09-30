@@ -53,12 +53,12 @@ bool configureLoad();
 // MARK:  Global Objects
 
 #if COMMS_STRATEGY == COMMS_STRATEGY_OLD
-// AdapterWLAN adapterWLAN = AdapterWLAN();
-// AdapterWLAN adapterWLAN;
-// AdapterESPNow adapterESPNow = AdapterESPNow();
-// AdapterESPNow adapterESPNow;
-// SyncedClock netClock = SyncedClock(adapterESPNow); // todo
-// SyncedClock netClock(adapterESPNow);               // todo
+AdapterWLAN adapterWLAN = AdapterWLAN();
+AdapterWLAN adapterWLAN;
+AdapterESPNow adapterESPNow = AdapterESPNow();
+AdapterESPNow adapterESPNow;
+SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+SyncedClock netClock(adapterESPNow);               // todo
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 LoadComms loadComms;
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
@@ -214,48 +214,48 @@ void setup() {
     // Configure ESP-NOW
     static bool commsInitalized = false;
 #if COMMS_STRATEGY == COMMS_STRATEGY_OLD
-    // if (!commsInitalized) {
-    //     if (adapterESPNow.begin()) {
-    //         ESP_LOGI(TAG, "ESP-NOW initialized.");
-    //         commsInitalized = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
-    //     }
-    // }
-    // leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-    // (void)showLEDsIfReady();
+    if (!commsInitalized) {
+        if (adapterESPNow.begin()) {
+            ESP_LOGI(TAG, "ESP-NOW initialized.");
+            commsInitalized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+        }
+    }
+    leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    (void)showLEDsIfReady();
 
-    // // Configure ESP-NOW Peers
-    // static bool peerRegistered = false;
-    // if (!peerRegistered) {
-    //     if (adapterESPNow.registerPeer(WTbNetConfig::NACELLE_MAC)) {
-    //         ESP_LOGI(TAG, "Registered peer");
-    //         peerRegistered = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to register peer");
-    //     }
-    // }
-    // (void)showLEDsIfReady();
+    // Configure ESP-NOW Peers
+    static bool peerRegistered = false;
+    if (!peerRegistered) {
+        if (adapterESPNow.registerPeer(WTbNetConfig::NACELLE_MAC)) {
+            ESP_LOGI(TAG, "Registered peer");
+            peerRegistered = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to register peer");
+        }
+    }
+    (void)showLEDsIfReady();
 
-    // // Sync Time // FIXME! - Load accesses fault - DONE?
-    // static bool timeSynced = false;
-    // if (!timeSynced) {
-    //     if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
-    //         ESP_LOGI(TAG, "Time sync initialized successfully");
-    //         timeSynced = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to initialize time sync");
-    //     }
-    // }
-    // leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
-    // (void)showLEDsIfReady();
+    // Sync Time // FIXME! - Load accesses fault - DONE?
+    static bool timeSynced = false;
+    if (!timeSynced) {
+        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+            ESP_LOGI(TAG, "Time sync initialized successfully");
+            timeSynced = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize time sync");
+        }
+    }
+    leds.setPixelColor(0, 0x00, 0xFF, 0x00); // green
+    (void)showLEDsIfReady();
 
-    // // Print MAC Address // todo - verify
-    // ESP_LOGI(
-    //     TAG, "MAC Address: %s",
-    //     AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
-    // leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
-    // (void)showLEDsIfReady();
+    // Print MAC Address // todo - verify
+    ESP_LOGI(
+        TAG, "MAC Address: %s",
+        AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
+    leds.setPixelColor(0, 0xFF, 0xA5, 0x00); // orange
+    (void)showLEDsIfReady();
 
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
