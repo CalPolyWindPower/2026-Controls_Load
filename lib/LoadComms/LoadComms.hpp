@@ -16,6 +16,7 @@
 #ifndef LOAD_COMMS_HPP
 #define LOAD_COMMS_HPP
 
+#include "../../include/LoadConfig.hpp"
 #include <2026Core/TurbinePacket/TurbinePacket.hpp>
 #include <Arduino.h>
 #if COMMS_STRATEGY == COMMS_STRATEGY_NEW
@@ -127,6 +128,13 @@ class LoadComms {
     static std::atomic<uint_fast32_t> bytesReceived;
     bool linkAlive_; ///< Link health status.
     // float nacelleRPM_;                     ///< Cached RPM value.
+#if COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+    // Nacelle - Tx: 11, Rx: 12
+    // Load - Tx: 43, Rx: 44
+    AdapterUHCI adapterUHCI =
+        AdapterUHCI({.tx = 11, .rx = 12}); // FIXME - hardcoded
+
+#endif
 
 #if COMMS_STRATEGY == COMMS_STRATEGY_NEW
     /**
@@ -151,7 +159,7 @@ class LoadComms {
      */
     static void onDataRecv_(const esp_now_recv_info_t *recv_info,
                             const uint8_t *data, int len);
-};
 #endif
+};
 
 #endif // LOAD_COMMS_HPP

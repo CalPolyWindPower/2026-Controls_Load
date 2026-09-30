@@ -10,6 +10,8 @@
 #include <esp_log.h>
 #if COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include <esp_wifi.h>
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    include <etl/vector.h>
 #endif
 #include <etl/array.h>
 
@@ -99,6 +101,11 @@ bool LoadComms::begin() {
 
     if (setupPeer_() != ESP_OK) {
         // Logging already handled
+        return false;
+    }
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+    if (!adapterUHCI.begin()) {
+        ESP_LOGE(TAG, "Failed to initialize UHCI adapter");
         return false;
     }
 #endif
@@ -233,6 +240,10 @@ bool LoadComms::sendLoadboxData(int16_t d_mVPS, int16_t current_mA,
         linkAlive_ = false;
         ESP_LOGE(TAG, "Tx fail w/ %d", result);
     }
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+    etl::vector<uint8_t, AdapterUHCI::MAX_DATA_LEN> dataToSend;
+    memcpy(dataToSend.data(), &outgoingPacket_, sizeof(NacellePacket));
+    adapterUHCI.transmit(dataToSend);
 #endif
 
     // }

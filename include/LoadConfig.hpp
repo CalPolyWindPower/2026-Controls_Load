@@ -34,6 +34,12 @@ static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 #    warning "Not using production load board!"
 #endif
 
+// Networking
+#define COMMS_STRATEGY_OLD 0
+#define COMMS_STRATEGY_NEW 1
+#define COMMS_STRATEGY_UHCI 2
+#define COMMS_STRATEGY COMMS_STRATEGY_NEW
+
 namespace UM_PROS3 {
     // Onboard LED
     constexpr uint_fast8_t LED_DATA_PIN = RGB_DATA;
@@ -193,30 +199,31 @@ namespace LOAD {
     // etl::array<uint_fast16_t, VOLT_LIMIT_SIZE> VOLT_LIMITS_TABLE_mV = {
     //     #include "triggerVoltages_mV.csv"
     // };
-    etl::array<uint_fast16_t, VOLT_LIMIT_SIZE> VOLT_LIMITS_TABLE_mV = {
-        25000, 24000, 23660, 23330, 23000, // 9
-        22660, 22330, 22000, 21815, 21630, // 8
-        21444, 21259, 21074, 20889, 20704, // 7
-        20519, 20333, 20148, 19963, 19778, // 6
-        19593, 19407, 19222, 19037, 18852, // 5
-        18667, 18481, 18296, 18111, 17926, // 4
-        17741, 17556, 17370, 17185, 17000, // 3
-        16750, 16500, 16250, 16000, 15750, // 2
-        15500, 15250, 15000, 14750, 14500,  // 1
-        14250}; // 0, enable at 14000
+    inline constexpr etl::array<uint_fast16_t, VOLT_LIMIT_SIZE>
+        VOLT_LIMITS_TABLE_mV = {25000, 24000, 23660, 23330, 23000, // 9
+                                22660, 22330, 22000, 21815, 21630, // 8
+                                21444, 21259, 21074, 20889, 20704, // 7
+                                20519, 20333, 20148, 19963, 19778, // 6
+                                19593, 19407, 19222, 19037, 18852, // 5
+                                18667, 18481, 18296, 18111, 17926, // 4
+                                17741, 17556, 17370, 17185, 17000, // 3
+                                16750, 16500, 16250, 16000, 15750, // 2
+                                15500, 15250, 15000, 14750, 14500, // 1
+                                14250}; // 0, enable at 14000
 
     constexpr uint_fast8_t RES_INDEX_SIZE = 46; // CONFIG
-    etl::array<uint_fast8_t, RES_INDEX_SIZE> RES_INDEX_TABLE = {
-        0,  1,  2,  4,  3,  // 9
-        8,  5,  6,  9,  12, // 8
-        16, 11, 7,  14, 13, // 7
-        15, 19, 24, 21, 22, // 6
-        25, 23, 28, 29, 32, // 5
-        31, 33, 35, 36, 40, // 4
-        37, 41, 39, 44, 48, // 3
-        45, 46, 50, 47, 51, // 2
-        56, 53, 54, 57, 55, // 1
-        60                  // 0, 63 default
+    inline constexpr etl::array<uint_fast8_t, RES_INDEX_SIZE> RES_INDEX_TABLE =
+        {
+            0,  1,  2,  4,  3,  // 9
+            8,  5,  6,  9,  12, // 8
+            16, 11, 7,  14, 13, // 7
+            15, 19, 24, 21, 22, // 6
+            25, 23, 28, 29, 32, // 5
+            31, 33, 35, 36, 40, // 4
+            37, 41, 39, 44, 48, // 3
+            45, 46, 50, 47, 51, // 2
+            56, 53, 54, 57, 55, // 1
+            60                  // 0, 63 default
     };
 
     // etl::array<uint_fast16_t, VOLT_LIMIT_SIZE> VOLT_LIMITS_TABLE_mV = {

@@ -1,6 +1,16 @@
 #pragma once
 
+#include <atomic>
 #include <cstdint>
+
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+#    error "COMMS_STRATEGY_OLD not supported by LoadContainer"
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    warning "Useing experimental COMMS_STRATEGY_UHCI for UCHI UART over fiber"
+#else
+#    error "Invalid COMMS_STRATEGY"
+#endif
 
 #include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include "INA260.hpp"
@@ -8,7 +18,6 @@
 #include "LoadTasks.hpp"
 #include "MCP23008T.hpp"
 #include <Adafruit_INA260.h>
-#include <atomic>
 
 /**
  * @brief Class to manage the container for load data
@@ -61,7 +70,8 @@ class LoadContainer {
     inline bool isTargetRPMExceeded() const {
         // constexpr uint_fast16_t TARGET_RPM = 2200; // todo
         // return (currentRPM > TARGET_RPM);
-        constexpr uint_fast16_t TARGET_POWER_mW = 40000; // TODO, expecting ? RPM
+        constexpr uint_fast16_t TARGET_POWER_mW =
+            40000; // TODO, expecting ? RPM
         return (INA260::power_mW > TARGET_POWER_mW);
     } // todo
 

@@ -12,20 +12,14 @@
 #include <Arduino.h>
 #include <etl/circular_buffer.h>
 
-// Include LoadConfig first
+//  Priority Project Includes - Include LoadConfig first
 #include "LoadConfig.hpp"
 // Project Includes
 #include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
 #include "INA260.hpp"
-#include "LoadComms.hpp"
-#include "LoadContainer.hpp"
-#include "LoadFSM.hpp"
 #include "LoadTasks.hpp"
 #include "MCP23008T.hpp"
-#define COMMS_STRATEGY_OLD 0
-#define COMMS_STRATEGY_NEW 1
-#define COMMS_STRATEGY_UHCI 2
-#define COMMS_STRATEGY COMMS_STRATEGY_NEW
+// Config moved to LoadConfig.hpp
 #if COMMS_STRATEGY == COMMS_STRATEGY_OLD
 #    include "2026Core/Net/Net-Application/NTP.hpp"
 #    include "2026Core/Net/Net-Application/OTA.hpp"
@@ -35,12 +29,17 @@
 #    include "2026Core/Net/NetAdapter_A.hpp"
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include "2026Core/TurbinePacket/TurbinePacket.hpp"
+#    include "LoadComms.hpp"
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
 #    include "2026Core/TurbinePacket/TurbinePacket.hpp"
+#    include "LoadComms.hpp"
 #else
 #    error "Invalid COMMS_STRATEGY"
 #endif
+#include "LoadContainer.hpp" // Should be included after COMMS_STRATEGY is configured
+#include "LoadFSM.hpp"       // Depends on NacelleContainer
 #include <2026Core/Units.hpp>
+// TODO: Add something like the nacelle's SerialInterface?
 
 /* Config */
 static constexpr const char *TAG = "LoMa";
