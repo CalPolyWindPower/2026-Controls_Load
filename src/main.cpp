@@ -191,7 +191,11 @@ void setup() {
     // Configure WiFi
     // TODO
     pinMode(UM_PROS3::ANTENNA_MUX_PIN, OUTPUT);
-    digitalWrite(UM_PROS3::ANTENNA_MUX_PIN, HIGH);
+    // Use built in 3D ceramic antenna
+    digitalWrite(UM_PROS3::ANTENNA_MUX_PIN, LOW);
+    // Use u.FL external antenna - Do not enable with it disconnected
+    // digitalWrite(UM_PROS3::ANTENNA_MUX_PIN, HIGH);
+    
     // static bool wifiInitialized = false;
     // if (!wifiInitialized) {
     //     leds.setPixelColor(0, 0x00, 0x00, 0xFF); // blue
